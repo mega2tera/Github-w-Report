@@ -5,6 +5,12 @@ on:
     # GitHub cron 使用 UTC：周六 01:17 = 北京时间周六 09:17
     - cron: "17 1 * * 6"
   workflow_dispatch:
+    inputs:
+      push_only:
+        description: "仅推送最新一期到企业微信（不调用模型）"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -37,12 +43,14 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Generate weekly report
+        if: ${{ !inputs.push_only }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_MODELS_MODEL: ${{ vars.GITHUB_MODELS_MODEL || 'openai/gpt-4.1-mini' }}
         run: python run.py --no-push
 
       - name: Save report history to repository
+        if: ${{ !inputs.push_only }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -55,20 +63,32 @@ jobs:
           fi
 
       - name: Configure GitHub Pages
+        if: ${{ !inputs.push_only }}
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
+        if: ${{ !inputs.push_only }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
       - name: Deploy GitHub Pages
+        if: ${{ !inputs.push_only }}
         id: deployment
         uses: actions/deploy-pages@v4
 
       - name: Push to WeCom after deployment
+        if: ${{ !inputs.push_only }}
         env:
           WECOM_WEBHOOK_URL: ${{ secrets.WECOM_WEBHOOK_URL }}
           SITE_URL: ${{ vars.SITE_URL }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python run.py --push-existing
+
+      - name: Test WeCom with latest report
+        if: ${{ inputs.push_only }}
+        env:
+          WECOM_WEBHOOK_URL: ${{ secrets.WECOM_WEBHOOK_URL }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python run.py --push-latest

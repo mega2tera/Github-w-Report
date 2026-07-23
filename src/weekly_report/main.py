@@ -31,12 +31,20 @@ def main() -> None:
     parser.add_argument("--fixture", type=Path, help="使用本地 JSON 测试数据，不请求 GitHub 或模型")
     parser.add_argument("--no-push", action="store_true", help="不推送企业微信")
     parser.add_argument("--push-existing", action="store_true", help="读取当日 data 快照并仅推送企业微信")
+    parser.add_argument("--push-latest", action="store_true", help="读取最新的 data 快照并仅推送企业微信")
     args = parser.parse_args()
     report_date = args.date or datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
     root = Path(__file__).resolve().parents[2]
 
-    if args.push_existing:
-        snapshot_path = root / "data" / f"{report_date}.json"
+    if args.push_existing or args.push_latest:
+        if args.push_latest:
+            snapshots = sorted((root / "data").glob("*.json"))
+            if not snapshots:
+                raise RuntimeError("data 目录中没有可推送的历史快照")
+            snapshot_path = snapshots[-1]
+            report_date = snapshot_path.stem
+        else:
+            snapshot_path = root / "data" / f"{report_date}.json"
         snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
         site_url = site_url_from_environment()
         if not site_url:
