@@ -1,0 +1,769 @@
+{
+  "date": "2026-07-23",
+  "repositories": [
+    {
+      "full_name": "Nutlope/hallmark",
+      "html_url": "https://github.com/Nutlope/hallmark",
+      "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
+      "homepage": "https://www.usehallmark.com/",
+      "language": "CSS",
+      "stars": 15759,
+      "forks": 797,
+      "open_issues": 30,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-04-27T20:47:10Z",
+      "updated_at": "2026-07-23T05:14:17Z",
+      "pushed_at": "2026-06-26T10:08:58Z",
+      "archived": false,
+      "readme": "# Hallmark\n\n**A design skill for Claude Code, Cursor, and Codex that refuses to look AI-generated.**\n\n[Live demo →](https://www.usehallmark.com) &nbsp;·&nbsp; twenty themes &nbsp;·&nbsp; four verbs &nbsp;·&nbsp; press `T` to cycle.\n\nMade by Together AI.\n\n<p align=\"center\">\n  <img src=\"site/OG-hallmark.png\" alt=\"Hallmark, a design skill that refuses to look AI-generated\" />\n</p>\n\nHallmark picks a macrostructure for the brief, dresses it in one of twenty themes, runs fifty-seven slop-test gates plus a pre-emit self-critique, and refuses the on-distribution defaults every LLM was trained into. Two pages by Hallmark for two different briefs feel like different sites, not colour-swaps of the same template.\n\n---\n\n## Four verbs\n\n| Verb | What it does |\n| --- | --- |\n| *(default)* | Build new UI. Picks a macrostructure, applies the rule-set, runs the slop test before handing back. |\n| `hallmark audit <target>` | Score existing code against the anti-patterns. Punch list, no edits. |\n| `hallmark redesign <target>` | Throw out the structure, keep copy + IA + brand, rebuild with a different fingerprint. |\n| `hallmark study <screenshot \\| URL>` | Extract the **DNA** from a design you admire: macrostructure, type-pairing, colour anchor. Refuses pixel-clones and paid templates. Optionally emits a portable `design.md` for handoff to other AI tools. |\n\n---\n\n## Different briefs, different shapes\n\nEach generated from a different brief. The skill picks the theme, structure, and craft to fit each one, not from a template.\n\n<table>\n  <tr>\n    <td width=\"25%\"><a href=\"https://www.usehallmark.com/examples/hum-07/\"><img src=\"docs/screenshots/hero-hum-07.jpg\" alt=\"Bubble guided sourdough app hero\" /></a></td>\n    <td width=\"25%\"><a href=\"https://www.usehallmark.com/examples/cobalt-01/\"><img src=\"docs/screenshots/hero-cobalt-01.jpg\" alt=\"Distil content-extraction API hero\" /></a></td>\n    <td width=\"25%\"><a href=\"https://www.usehallmark.com/examples/carnival-01/\"><img src=\"docs/screenshots/hero-carnival-01.jpg\" alt=\"Cold Snap record-label EP hero\" /></a></td>\n    <td width=\"25%\"><a href=\"https://www.usehallmark.com/examples/lumen-01/\"><img src=\"docs/screenshots/hero-lumen-01.jpg\" alt=\"Cinder AI reasoning tool hero\" /></a></td>\n  </tr>\n  <tr>\n    <td><b>Bubble</b><br/><sub>Sourdough app · Hum</sub></td>\n    <td><b>Distil</b><br/><sub>Extraction API · Cobalt</sub></td>\n    <td><b>Cold Snap</b><br/><sub>Record label · Carnival</sub></td>\n    <td><b>Cinder</b><br/><sub>AI tool · Lumen</sub></td>\n  </tr>\n  <tr>\n    <td><a href=\"https://www.usehallmark.com/examples/custom-03/\"><img src=\"docs/screenshots/hero-custom-03.jpg\" alt=\"Ferns and Fathom tea menu hero\" /></a></td>\n    <td><a href=\"https://www.usehallmark.com/examples/garden-01/\"><img src=\"docs/screenshots/hero-garden-01.jpg\" alt=\"Hollowback Apiary honey farm hero\" /></a></td>\n    <td><a href=\"https://www.usehallmark.com/examples/riso-01/\"><img src=\"docs/screenshots/hero-riso-01.jpg\" alt=\"Off-Register risograph print fair hero\" /></a></td>\n    <td><a href=\"https://www.usehallmark.com/examples/press-01/\"><img src=\"docs/screenshots/hero-press-01.jpg\" alt=\"Press Quaternary type studio hero\" /></a></td>\n  </tr>\n  <tr>\n    <td><b>Ferns &amp; Fathom</b><br/><sub>Tea menu · Custom</sub></td>\n    <td><b>Hollowback Apiary</b><br/><sub>Honey farm · Garden</sub></td>\n    <td><b>Off-Register</b><br/><sub>Print fair · Riso</sub></td>\n    <td><b>Press Quaternary</b><br/><sub>Type studio · Custom</sub></td>\n  </tr>\n  <tr>\n    <td><a href=\"https://www.usehallmark.com/examples/tally/\"><img src=\"docs/screenshots/hero-tally.jpg\" alt=\"Tally SaaS product page hero\" /></a></td>\n    <td><a href=\"https://www.usehallmark.com/examples/wayfare/\"><img src=\"docs/screenshots/hero-wayfare.jpg\" alt=\"Wayfare travel booking hero\" /></a></td>\n    <td><a href=\"https://www.usehallmark.com/examples/najm/\"><img src=\"docs/screenshots/hero-najm.jpg\" alt=\"NAJM Moroccan fashion brand hero\" /></a></td>\n    <td><a href=\"https://www.usehallmark.com/examples/hyperlane/\"><img src=\"docs/screenshots/hero-hyperlane.jpg\" alt=\"Hyperlane developer infrastructure hero\" /></a></td>\n  </tr>\n  <tr>\n    <td><b>Tally</b><br/><sub>SaaS · modern-minimal</sub></td>\n    <td><b>Wayfare</b><br/><sub>Travel · atmospheric</sub></td>\n    <td><b>NAJM</b><br/><sub>Fashion brand</sub></td>\n    <td><b>Hyperlane</b><br/><sub>Dev infrastructure</sub></td>\n  </tr>\n</table>\n\nEach page is self-contained HTML + CSS, stamped with its macrostructure in the CSS comment. Browse the full set at [usehallmark.com](https://www.usehallmark.com) or under [`site/_tests/`](site/_tests/).\n\n---\n\n## Custom <sup>NEW</sup>\n\nWhen a brief carries creative intent that no catalog theme fits, Hallmark switches to **Custom** and designs the page from scratch: a made-to-measure palette, type, and layout. Same 57 slop-test gates, no template underneath.\n\n<table>\n  <tr>\n    <td width=\"50%\"><a href=\"https://www.usehallmark.com/examples/custom-02/\"><img src=\"docs/screenshots/hero-custom-02.jpg\" alt=\"The Cascadia Nightjar sleeper-train ticket hero\" /></a></td>\n    <td width=\"50%\"><a href=\"https://www.usehallmark.com/examples/custom-04/\"><img src=\"docs/screenshots/hero-custom-04.jpg\" alt=\"The Mend Assembly repair-café broadsheet hero\" /></a></td>\n  </tr>\n  <tr>\n    <td><b>The Cascadia Nightjar</b><br/><sub>Sleeper-train ticket · Custom</sub></td>\n    <td><b>The Mend Assembly</b><br/><sub>Repair-café broadsheet · Custom</sub></td>\n  </tr>\n</table>\n\nIt stays a quiet branch; vanilla briefs never see it. The protocol lives in [`custom-theme.md`](skills/hallmark/references/custom-theme.md).\n\n---\n\n## Install\n\n```\nnpx skills add nutlope/hallmark\n```\n\nRe-run any time to update. Or copy [`SKILL.md`](skills/hallmark/SKILL.md) + [`references/`](skills/hallmark/references/) into:\n\n- **Claude Code**: `~/.claude/skills/hallmark/`\n- **Cursor**: `.cursor/rules/hallmark.mdc` (body of `SKILL.md`, no frontmatter)\n- **Codex**: `~/.codex/skills/hallmark/` (personal) or `.codex/skills/hallmark/` (project-scoped)\n\nThe rule-set lives in [`SKILL.md`](skills/hallmark/SKILL.md) and [`references/`](skills/hallmark/references/). Worked examples in [`docs/recipes.md`](docs/recipes.md) and [`docs/study-examples.md`](docs/study-examples.md).\n\n---\n\n## Licence\n\nMIT. Use it, fork it, ship it.\n",
+      "rank": 1,
+      "weekly_stars": 8471
+    },
+    {
+      "full_name": "tirth8205/code-review-graph",
+      "html_url": "https://github.com/tirth8205/code-review-graph",
+      "description": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.",
+      "homepage": "https://code-review-graph.com",
+      "language": "Python",
+      "stars": 25459,
+      "forks": 2401,
+      "open_issues": 126,
+      "topics": [
+        "ai-coding",
+        "claude",
+        "claude-code",
+        "code-review",
+        "graphrag",
+        "incremental",
+        "knowledge-graph",
+        "llm",
+        "mcp",
+        "python",
+        "static-analysis",
+        "tree-sitter"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-26T17:25:13Z",
+      "updated_at": "2026-07-23T05:13:05Z",
+      "pushed_at": "2026-07-21T04:49:59Z",
+      "archived": false,
+      "readme": "<h1 align=\"center\">code-review-graph</h1>\n\n<a href=\"https://trendshift.io/repositories/23329?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-23329\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/23329\" alt=\"tirth8205%2Fcode-review-graph | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n<p align=\"center\">\n  <strong>Stop burning tokens. Start reviewing smarter.</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"README.md\">English</a> |\n  <a href=\"README.zh-CN.md\">简体中文</a> |\n  <a href=\"README.ja-JP.md\">日本語</a> |\n  <a href=\"README.ko-KR.md\">한국어</a> |\n  <a href=\"README.hi-IN.md\">हिन्दी</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://pypi.org/project/code-review-graph/\"><img src=\"https://img.shields.io/pypi/v/code-review-graph?style=flat-square&color=blue\" alt=\"PyPI\"></a>\n  <a href=\"https://pepy.tech/project/code-review-graph\"><img src=\"https://img.shields.io/pepy/dt/code-review-graph?style=flat-square\" alt=\"Downloads\"></a>\n  <a href=\"https://github.com/tirth8205/code-review-graph/stargazers\"><img src=\"https://img.shields.io/github/stars/tirth8205/code-review-graph?style=flat-square\" alt=\"Stars\"></a>\n  <a href=\"https://opensource.org/licenses/MIT\"><img src=\"https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square\" alt=\"MIT Licence\"></a>\n  <a href=\"https://github.com/tirth8205/code-review-graph/actions/workflows/ci.yml\"><img src=\"https://github.com/tirth8205/code-review-graph/actions/workflows/ci.yml/badge.svg\" alt=\"CI\"></a>\n  <a href=\"https://www.python.org/\"><img src=\"https://img.shields.io/badge/python-3.10%2B-blue.svg?style=flat-square\" alt=\"Python 3.10+\"></a>\n  <a href=\"https://modelcontextprotocol.io/\"><img src=\"https://img.shields.io/badge/MCP-compatible-green.svg?style=flat-square\" alt=\"MCP\"></a>\n  <a href=\"https://code-review-graph.com\"><img src=\"https://img.shields.io/badge/website-code--review--graph.com-blue?style=flat-square\" alt=\"Website\"></a>\n  <a href=\"https://discord.gg/3p58KXqGFN\"><img src=\"https://img.shields.io/badge/discord-join-5865F2?style=flat-square&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/USAGE.md\">Usage</a> ·\n  <a href=\"docs/COMMANDS.md\">Commands</a> ·\n  <a href=\"docs/FAQ.md\">FAQ</a> ·\n  <a href=\"docs/TROUBLESHOOTING.md\">Troubleshooting</a> ·\n  <a href=\"docs/GITHUB_ACTION.md\">GitHub Action</a> ·\n  <a href=\"docs/REPRODUCING.md\">Reproducing the benchmarks</a> ·\n  <a href=\"docs/ROADMAP.md\">Roadmap</a>\n</p>\n\n<br>\n\nAI coding tools can end up re-reading large parts of your codebase on review tasks. `code-review-graph` fixes that. It builds a structural map of your code with [Tree-sitter](https://tree-sitter.github.io/tree-sitter/), tracks changes incrementally, and gives your AI assistant precise context via [MCP](https://modelcontextprotocol.io/) so it reads only what matters.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram1_before_vs_after.png\" alt=\"The Token Problem: 38x to 528x token reduction across 6 real repositories\" width=\"85%\" />\n</p>\n\n---\n\n## Quick Start\n\n```bash\npip install code-review-graph                     # or: pipx install code-review-graph\ncode-review-graph install          # auto-detects and configures all supported platforms\ncode-review-graph build            # parse your codebase\n```\n\nOne command sets up everything. `install` detects which AI coding tools you have, writes the correct MCP configuration for each one, installs platform-native hooks/skills where supported, and injects graph-aware instructions into your platform rules. It auto-detects whether you installed via `uvx` or `pip`/`pipx` and generates the right config. Restart your editor/tool after installing.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram8_supported_platforms.png\" alt=\"One Install, Every Platform: auto-detects Codex, Claude Code, CodeBuddy Code, Cursor, Windsurf, Zed, Continue, OpenCode, Antigravity, Gemini CLI, Qwen, Qoder, Kiro, and GitHub Copilot\" width=\"85%\" />\n</p>\n\nTo target a specific platform:\n\n```bash\ncode-review-graph install --platform codex       # configure only Codex\ncode-review-graph install --platform cursor      # configure only Cursor\ncode-review-graph install --platform claude-code  # configure only Claude Code\ncode-review-graph install --platform gemini-cli   # configure only Gemini CLI\ncode-review-graph install --platform kiro         # configure only Kiro\ncode-review-graph install --platform copilot      # configure only GitHub Copilot (VS Code)\ncode-review-graph install --platform copilot-cli  # configure only GitHub Copilot CLI\ncode-review-graph install --platform codebuddy    # configure only CodeBuddy Code\n```\n\nRequires Python 3.10+. For the best experience, install [uv](https://docs.astral.sh/uv/) (the MCP config will use `uvx` if available, otherwise falls back to the `code-review-graph` command directly).\n\nTo remove CRG from a Git or SVN project, use the symmetric uninstall command\nfrom anywhere inside its working tree. The target is normalized to the working\ntree root, and non-repository directories are refused. It removes only\nCRG-owned files and entries; unrelated MCP servers, hooks, skills, and JSONC\ncomments remain untouched. Shared configuration changes use atomic replacement\nso a failed write leaves the original file intact.\n\n```bash\ncode-review-graph uninstall --dry-run    # preview every action; write nothing\ncode-review-graph uninstall              # preview, ask for confirmation, then apply\ncode-review-graph uninstall --yes        # apply without prompting\ncode-review-graph uninstall --all-repos  # also clean every registered repository\ncode-review-graph uninstall --keep-data  # remove integrations but keep graph databases\ncode-review-graph uninstall --keep-user-configs --repo .  # clean this project only\n```\n\nThen open your project and ask your AI assistant:\n\n```\nBuild the code review graph for this project\n```\n\nThe initial build takes ~10 seconds for a 500-file project. After that, watch mode and supported hooks can keep the graph updated automatically.\n\n\n## How It Works\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram7_mcp_integration_flow.png\" alt=\"How your AI assistant uses the graph: User asks for review, AI checks MCP tools, graph returns blast radius and risk scores, AI reads only what matters\" width=\"80%\" />\n</p>\n\nYour repository is parsed into an AST with Tree-sitter, stored as a graph of nodes (functions, classes, imports) and edges (calls, inheritance, test coverage), then queried at review time to compute the minimal set of files your AI assistant needs to read.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram2_architecture_pipeline.png\" alt=\"Architecture pipeline: Repository to Tree-sitter Parser to SQLite Graph to Blast Radius to Minimal Review Set\" width=\"100%\" />\n</p>\n\n### Blast-radius analysis\n\nWhen a file changes, the graph traces every caller, dependent, and test that could be affected. This is the \"blast radius\" of the change. Your AI reads only these files instead of scanning the whole project.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram3_blast_radius.png\" alt=\"Blast radius visualization showing how a change to login() propagates to callers, dependents, and tests\" width=\"70%\" />\n</p>\n\n### Incremental updates in < 2 seconds\n\nWhen hooks or watch mode are enabled, file saves and supported commit hooks trigger incremental updates. The graph diffs changed files, finds their dependents via SHA-256 hash checks, and re-parses only what changed. A 2,900-file project re-indexes in under 2 seconds.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram4_incremental_update.png\" alt=\"Incremental update flow: supported hook or watch update triggers diff, finds dependents, re-parses only 5 files while 2,910 are skipped\" width=\"90%\" />\n</p>\n\n### The monorepo problem, solved\n\nLarge monorepos are where token waste is most painful. The graph cuts through the noise — 27,700+ files excluded from review context, only ~15 files actually read.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram6_monorepo_funnel.png\" alt=\"code-review-graph repo: 208,821 source tokens funnel down to ~2,495 token graph responses — 93x fewer tokens per question\" width=\"80%\" />\n</p>\n\n### Broad language coverage + Jupyter notebooks\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram9_language_coverage.png\" alt=\"Language coverage organized by category: Web, Backend, Systems, Mobile, Scripting, Config, plus Jupyter and Databricks notebook support\" width=\"90%\" />\n</p>\n\nParser support covers functions, classes, imports, call sites, inheritance, and test detection across the current parser surface, using Tree-sitter where available and targeted fallbacks where needed. Current support includes Python, JavaScript/TypeScript/TSX, Go, Rust, Java, C/C++, C#, VB.NET, Ruby, Kotlin, Swift, PHP, Scala, Solidity, Dart, R, Perl, Lua/Luau, Objective-C, shell scripts, Elixir, Zig, PowerShell, Julia, ReScript, GDScript, Nix, Verilog/SystemVerilog, SQL, Terraform/OpenTofu structure (`.tf`; generic `.hcl` files are recognized as file nodes), Ansible playbooks/roles/tasks, Vue/Svelte SFCs, Astro files parsed through the TypeScript parser, Jupyter/Databricks notebooks (`.ipynb`), and Perl XS files (`.xs`). Generic YAML is not treated as source code.\n\nPHP projects additionally get repository-bounded Composer PSR-4 resolution,\nBlade template references, and Laravel Route/Eloquent semantic edges when the\nsource includes explicit framework imports, model inheritance, and receiver\nevidence.\n\n### Add your own language (no fork needed)\n\nIf your repo uses a language the parser does not cover yet, drop a `languages.toml` into `.code-review-graph/` mapping file extensions to any grammar bundled in `tree_sitter_language_pack`, plus the tree-sitter node types for functions, classes, imports, and calls:\n\n```toml\n[languages.erlang]\nextensions = [\".erl\"]\ngrammar = \"erlang\"\nfunction_node_types = [\"function_clause\"]\nclass_node_types = [\"record_decl\"]\nimport_node_types = [\"import_attribute\"]\nca",
+      "rank": 2,
+      "weekly_stars": 5639
+    },
+    {
+      "full_name": "HKUDS/DeepTutor",
+      "html_url": "https://github.com/HKUDS/DeepTutor",
+      "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
+      "homepage": "http://arxiv.org/abs/2604.26962",
+      "language": "Python",
+      "stars": 29176,
+      "forks": 3839,
+      "open_issues": 69,
+      "topics": [
+        "ai-agents",
+        "ai-tutor",
+        "clawdbot",
+        "cli-tool",
+        "deepresearch",
+        "interactive-learning",
+        "large-language-models",
+        "multi-agent-systems",
+        "rag"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2025-12-28T15:35:54Z",
+      "updated_at": "2026-07-23T05:15:51Z",
+      "pushed_at": "2026-07-21T12:23:50Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n<p align=\"center\"><img src=\"assets/figs/logo/logo.png\" alt=\"DeepTutor logo\" height=\"56\" style=\"vertical-align: middle;\">&nbsp;<img src=\"assets/figs/logo/banner.png\" alt=\"DeepTutor\" height=\"48\" style=\"vertical-align: middle;\"></p>\n\n# DeepTutor: Lifelong Personalized Tutoring\n\n<p align=\"center\">\n  <a href=\"https://deeptutor.info\" target=\"_blank\"><img alt=\"Docs — deeptutor.info\" src=\"https://img.shields.io/badge/Docs-deeptutor.info%20%E2%86%97-0A0A0A?style=for-the-badge&labelColor=F5F5F4\" height=\"36\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/17099?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-17099\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/17099\" alt=\"HKUDS%2FDeepTutor | Trendshift\" width=\"250\" height=\"55\"/></a>&nbsp;\n  <a href=\"https://trendshift.io/repositories/17099?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-17099\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/17099/daily\" alt=\"HKUDS%2FDeepTutor | Trendshift\" width=\"250\" height=\"55\"/></a>&nbsp;\n  <a href=\"https://trendshift.io/repositories/17099?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-17099\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/17099/weekly?language=Python\" alt=\"HKUDS%2FDeepTutor | Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"README.md\"><img alt=\"English\" height=\"40\" src=\"https://img.shields.io/badge/English-BCDCF7\"></a>&nbsp;\n  <a href=\"assets/README/README_CN.md\"><img alt=\"简体中文\" height=\"40\" src=\"https://img.shields.io/badge/简体中文-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_JA.md\"><img alt=\"日本語\" height=\"40\" src=\"https://img.shields.io/badge/日本語-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_ES.md\"><img alt=\"Español\" height=\"40\" src=\"https://img.shields.io/badge/Español-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_FR.md\"><img alt=\"Français\" height=\"40\" src=\"https://img.shields.io/badge/Français-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_AR.md\"><img alt=\"Arabic\" height=\"40\" src=\"https://img.shields.io/badge/Arabic-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_RU.md\"><img alt=\"Русский\" height=\"40\" src=\"https://img.shields.io/badge/Русский-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_HI.md\"><img alt=\"Hindi\" height=\"40\" src=\"https://img.shields.io/badge/Hindi-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_PT.md\"><img alt=\"Português\" height=\"40\" src=\"https://img.shields.io/badge/Português-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_TH.md\"><img alt=\"Thai\" height=\"40\" src=\"https://img.shields.io/badge/Thai-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_PL.md\"><img alt=\"Polski\" height=\"40\" src=\"https://img.shields.io/badge/Polski-CDCFD4\"></a>\n</p>\n\n[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)\n[![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)\n[![License](https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square)](LICENSE)\n[![GitHub release](https://img.shields.io/github/v/release/HKUDS/DeepTutor?style=flat-square&color=brightgreen)](https://github.com/HKUDS/DeepTutor/releases)\n[![arXiv](https://img.shields.io/badge/arXiv-2604.26962-b31b1b?style=flat-square&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2604.26962)\n\n[![Discord](https://img.shields.io/badge/Discord-Community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/eRsjPgMU4t)\n[![Feishu](https://img.shields.io/badge/Feishu-Group-00D4AA?style=flat-square&logo=feishu&logoColor=white)](./Communication.md)\n[![WeChat](https://img.shields.io/badge/WeChat-Group-07C160?style=flat-square&logo=wechat&logoColor=white)](https://github.com/HKUDS/DeepTutor/issues/78)\n\n[Features](#-key-features) · [Get Started](#-get-started) · [Explore](#-explore-deeptutor) · [CLI](#%EF%B8%8F-deeptutor-cli--agent-native-interface) · [Ecosystem](#-ecosystem--eduhub--the-skills-community) · [Community](#-community)\n\n</div>\n\n---\n\n> 🤝 **We welcome any kinds of contributing!** Vote on roadmap items or propose new ones at [`Roadmap`](https://github.com/HKUDS/DeepTutor/issues/498), and see our [Contributing Guide](CONTRIBUTING.md) for branching strategy, coding standards, and how to get started.\n\n### 📦 Releases\n\n> **[2026.7.19]** [v1.5.2](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.2) — Configurable chat attachment limits, PageIndex retrieval that reasons across your documents via agentic tool calls, broader Anthropic/OpenAI model support, and steadier Book, Knowledge Base, and chat UI.\n\n<details>\n<summary><b>Past releases (more than 1 week ago)</b></summary>\n\n> **[2026.7.9]** [v1.5.1](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.1) — Remove a single failed document from a knowledge base — even one stuck in an **error** state — instead of deleting and rebuilding the whole base.\n\n> **[2026.7.4]** [v1.5.0](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.0) — LlamaIndex ingestion now honors your **Document Parsing** engine with multimodal image extraction, Partner & Soul ids stay URL-safe for non-Latin names, and optional RAG extras install cleanly on Python 3.14+.\n\n> **[2026.6.30]** [v1.4.15](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.15) — A native **Mattermost** channel for Partners, plus fixes so Guided Learning multiple-choice questions grade correctly and a configured zero chunk overlap is honored.\n\n> **[2026.6.29]** [v1.4.14](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.14) — Click an assigned partner to chat in one step, Deep Research flags partial reports, LightRAG indexes without MinerU, FAISS handles non-ASCII paths, and PocketBase sessions are isolated per user.\n\n> **[2026.6.27]** [v1.4.13](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.13) — Partners support non-Latin names and become assignable to users, logos render after login (#599), tiny knowledge bases retrieve reliably, and containers start cleanly under rootless Podman.\n\n> **[2026.6.24]** [v1.4.12](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.12) — A new **LightRAG Server** retrieval engine, a lightweight **PyMuPDF4LLM** parsing engine, and a FAISS vector backend that makes large knowledge-base retrieval dramatically faster.\n\n> **[2026.6.23]** [v1.4.11](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.11) — Native tool calling on every cloud OpenAI-compatible provider, a redesigned admin Users page, LaTeX in quiz options, an honest session-loading spinner, and configurable container host binding.\n\n> **[2026.6.21]** [v1.4.10](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.10) — A self-service **Profile** page with avatars, a rootless-ready container guide with a single-port request-time proxy, and deny-by-default MCP tools for non-admin users.\n\n> **[2026.6.19]** [v1.4.9](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.9) — Settings polish: Search shows only the fields your provider needs, connection profiles can be renamed and auto-named by provider, and graded Mastery Path questions flow into your Question Bank.\n\n> **[2026.6.18]** [v1.4.8](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.8) — Connect your own **Partners** under **My Agents** and consult them live in chat — answering through their own persona, library and skills — and each Partner gains its own private memory.\n\n> **[2026.6.18]** [v1.4.7](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.7) — Connect your local **Claude Code / Codex** and consult it live mid-turn, **My Agents** graduates to a top-level `/agents`, and Partner conversations gain branch / resume / delete with a replayable trace.\n\n> **[2026.6.17]** [v1.4.6](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.6) — Four-surface consolidation: a Space learning dashboard with importable **My Agents** and top-level Memory, a **Knowledge Center** with GraphRAG / PageIndex / LightRAG / linked-KB / Obsidian, opened-up Settings, and per-model capability gating.\n\n> **[2026.6.14]** [v1.4.5](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.5) — Guided Learning rebuilt on the chat agent loop with a hard per-type mastery gate and a `/learning` dashboard, a new loop-plugin framework, plus Markdown export / save-to-notebook for Partner conversations.\n\n> **[2026.6.13]** [v1.4.4](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.4) — Install community skills from [ClawHub](https://clawhub.ai/) with `deeptutor skill install` behind a security gate, plus real in-browser DOCX/XLSX previews for knowledge-base files.\n\n> **[2026.6.12]** [v1.4.3](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.3) — TutorBot becomes **Partners** on a production-grade IM pipeline (15 channels, live streaming), Chat moves to a single agent loop, real per-user isolation, and a rebuilt Visualize.\n\n> **[2026.5.28]** [v1.4.2](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.2) — Stability + polish: Gemini 2.5+ unblocked across Visualize and Chat, auth-routing fix (#485), smooth-streaming chat UX, a Recents sidebar, and Lemonade local-provider support.\n\n> **[2026.5.27]** [v1.4.1](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.1) — Security + stability: TutorBot tool sandbox locked down, per-user resource isolation, multimodal image fallback, an HTTP/SSE API for TutorBots, and a v1.4.0 chat regression fix.\n\n> **[2026.5.22]** [v1.4.0](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.0) — GA cut of v1.4: Auto Mode, three-layer Memory, agentic Deep Research / Solve / Question, LlamaIndex RAG refactor, Visualize/Animator merge, and restart-safe turn runtime.\n\n> **[2026.5.21]** [v1.4.0-beta](https://github.com/HKUDS/DeepTutor/releases/tag/v1.",
+      "rank": 3,
+      "weekly_stars": 3030
+    },
+    {
+      "full_name": "MoonshotAI/kimi-code",
+      "html_url": "https://github.com/MoonshotAI/kimi-code",
+      "description": "Kimi Code CLI  —  The Starting Point for Next-Gen Agents",
+      "homepage": "https://moonshotai.github.io/kimi-code/",
+      "language": "TypeScript",
+      "stars": 4632,
+      "forks": 675,
+      "open_issues": 707,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-05-22T08:02:03Z",
+      "updated_at": "2026-07-23T05:03:57Z",
+      "pushed_at": "2026-07-23T04:43:32Z",
+      "archived": false,
+      "readme": "# Kimi Code CLI\n\n[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Docs](https://img.shields.io/badge/docs-online-blue)](https://moonshotai.github.io/kimi-code/en/) <br>\n[Documentation](https://moonshotai.github.io/kimi-code/en/) · [Issues](https://github.com/MoonshotAI/kimi-code/issues) · [中文](README.zh-CN.md)\n\n![Demo of using Kimi Code](./docs/media/intro.gif)\n\n## What is Kimi Code CLI\n\nKimi Code CLI is an AI coding agent that runs in your terminal — it can read and edit code, run shell commands, search files, fetch web pages, and choose the next step based on the feedback it receives. It works out of the box with Moonshot AI’s Kimi models and can also be configured to use other compatible providers.\n\n## Install\n\nInstall with the official script. No Node.js required.\n\n- **macOS or Linux**:\n\n```sh\ncurl -fsSL https://code.kimi.com/kimi-code/install.sh | bash\n```\n\n- **Windows (PowerShell)**:\n\n```powershell\nirm https://code.kimi.com/kimi-code/install.ps1 | iex\n```\n\n> On Windows, install [Git for Windows](https://gitforwindows.org/) before first launch because Kimi Code CLI uses the bundled Git Bash as its shell environment. If Git Bash is installed in a custom location, set `KIMI_SHELL_PATH` to the absolute path of `bash.exe`.\n\nThen, run it with a new shell session:\n\n```sh\nkimi --version\n```\n\nFor npm install, upgrade, uninstall, see [Getting Started](https://moonshotai.github.io/kimi-code/en/guides/getting-started).\n\n## Quick Start\n\nOpen a project and start the interactive UI:\n\n```sh\ncd your-project\nkimi\n```\n\nOn first launch, run `/login` inside Kimi Code CLI and choose either Kimi Code OAuth or a Moonshot AI Open Platform API key. After login, try your first task:\n\n```\nTake a look at this project and explain its main directories.\n```\n\n## Key Features\n\n- **Single-binary distribution.** Install with one command: no Node.js setup, PATH gymnastics, or global module conflicts.\n- **Blazing-fast startup.** The TUI is ready in milliseconds, so starting a session never feels heavy.\n- **Purpose-built TUI.** A carefully tuned interface, optimized end to end for long, focused agent sessions.\n- **Video input.** Drop a screen recording or demo clip into the chat and let the agent watch what is hard to describe in words — turn a reference clip into a LUT, a long video into a short, a screen recording into working code, and more.\n- **AI-native MCP configuration.** Add, edit, and authenticate Model Context Protocol servers conversationally with `/mcp-config`, without hand-editing JSON.\n- **Rich plugin ecosystem.** Install skills, MCP servers, and data sources from the marketplace or any GitHub repo, with each install's trust level surfaced up front.\n- **Subagents for focused, parallel work.** Dispatch built-in `coder`, `explore`, and `plan` subagents in isolated contexts while keeping the main conversation clean.\n- **Lifecycle hooks.** Run local commands at key points to gate risky tool calls, audit decisions, trigger desktop notifications, or connect to your own automation.\n- **Editor & IDE integration (ACP).** Drive a Kimi Code CLI session straight from Zed, JetBrains, or any [Agent Client Protocol](https://agentclientprotocol.com/) client with `kimi acp`.\n\n## Use it in your editor (ACP)\n\nKimi Code CLI speaks the [Agent Client Protocol](https://agentclientprotocol.com/), so ACP-compatible editors and IDEs (Zed, JetBrains, …) can drive a session over stdio. Log in once, then point your editor at the `kimi acp` subcommand — no extra login needed.\n\nFor Zed, add this to `~/.config/zed/settings.json`:\n\n```json\n{\n  \"agent_servers\": {\n    \"Kimi Code CLI\": {\n      \"type\": \"custom\",\n      \"command\": \"kimi\",\n      \"args\": [\"acp\"],\n      \"env\": {}\n    }\n  }\n}\n```\n\nThen open a new conversation in Zed's Agent panel. See [Using in IDEs](https://moonshotai.github.io/kimi-code/en/guides/ides) for JetBrains setup and troubleshooting, and the [`kimi acp` reference](https://moonshotai.github.io/kimi-code/en/reference/kimi-acp) for the full capability matrix.\n\n## Docs\n\n- [Getting Started](https://moonshotai.github.io/kimi-code/en/guides/getting-started)\n- [Interaction and approvals](https://moonshotai.github.io/kimi-code/en/guides/interaction)\n- [Sessions](https://moonshotai.github.io/kimi-code/en/guides/sessions)\n- [Using in IDEs (ACP)](https://moonshotai.github.io/kimi-code/en/guides/ides)\n- [Configuration](https://moonshotai.github.io/kimi-code/en/configuration/config-files)\n- [Command reference](https://moonshotai.github.io/kimi-code/en/reference/kimi-command)\n\n## Develop\n\nRequirements: Node.js ≥ 24.15.0, pnpm 10.33.0.\n\n```sh\ngit clone https://github.com/MoonshotAI/kimi-code.git\ncd kimi-code\npnpm install\n```\n\n```sh\npnpm dev:cli    # run the CLI in dev mode\npnpm test       # run tests\npnpm typecheck  # TypeScript check\npnpm lint       # oxlint\npnpm build      # build all packages\n```\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for the full contribution guide.\n\n## Community\n\n- [Issues](https://github.com/MoonshotAI/kimi-code/issues)\n- For security vulnerabilities, see [SECURITY.md](SECURITY.md).\n\n## Acknowledgements\n\nOur TUI is built on top of [`pi-tui`](https://github.com/earendil-works/pi-mono/tree/main/packages/tui). We thank the authors of `pi-tui` for their valuable work.\n\n## License\n\nReleased under the [MIT License](LICENSE).\n",
+      "rank": 4,
+      "weekly_stars": 1400
+    },
+    {
+      "full_name": "1jehuang/jcode",
+      "html_url": "https://github.com/1jehuang/jcode",
+      "description": "The most intelligent agent harness for code",
+      "homepage": "https://jcode.sh",
+      "language": "Rust",
+      "stars": 10803,
+      "forks": 1179,
+      "open_issues": 132,
+      "topics": [
+        "ai",
+        "ai-agent",
+        "ai-coding-agent",
+        "claude",
+        "cli",
+        "coding-agent",
+        "llm",
+        "mcp",
+        "openai",
+        "rust",
+        "terminal",
+        "tui"
+      ],
+      "license": "MIT",
+      "created_at": "2026-01-05T09:43:36Z",
+      "updated_at": "2026-07-23T05:15:04Z",
+      "pushed_at": "2026-07-22T22:53:51Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n# jcode\n\n[![Latest Release](https://badgen.net/github/release/1jehuang/jcode?icon=github)](https://github.com/1jehuang/jcode/releases)\n[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)\n[![Platforms](https://img.shields.io/badge/platforms-Linux%20%7C%20macOS%20%7C%20Windows-blue?style=flat-square)](https://github.com/1jehuang/jcode/releases)\n[![Last Commit](https://badgen.net/github/last-commit/1jehuang/jcode/master?icon=github)](https://github.com/1jehuang/jcode/commits/master)\n[![GitHub Stars](https://badgen.net/github/stars/1jehuang/jcode?icon=github)](https://github.com/1jehuang/jcode/stargazers)\n[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/nBe9vGyK9a)\n\nThe next generation coding agent harness to raise the skill ceiling. <br>\nBuilt for multi-session workflows, infinite customizability, and performance. \n\n<br>\n\n<a href=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-memory-demo.mp4\">\n  <img src=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-memory-demo.webp\" alt=\"jcode memory demonstration\" width=\"800\">\n</a>\n\n<br>\n\n[Website](https://jcode.sh) · [Features](#features) · [Install](#installation) · [Quick Start](#quick-start) · [Further Reading](#further-reading) · [Contributing](CONTRIBUTING.md)\n\n</div>\n\n---\n\n<div align=\"center\">\n\n## Installation\n\n</div>\n\n```bash\n# macOS & Linux\ncurl -fsSL https://jcode.sh/install | bash\n```\n\n```powershell\n# Windows 11 (PowerShell 5.1+)\nirm https://jcode.sh/install.ps1 | iex\n```\n\nNeed Homebrew, source builds, provider setup, or want an agent to set it up for you?\n[Jump to detailed installation](#detailed-installation).\n\n---\n\n\n<div align=\"center\">\n\n## Performance & Resource Efficiency\n\n</div>\n\njcode is built to be as performant and resource efficient as possible. Every metric is optimized to the bone, which is important for scaling multi-session workflows. Here we sample a few metrics to show the difference: RAM usage and boot up.\n\n### RAM comparison\n\n<div align=\"center\">\n\n<table>\n  <tr>\n    <td valign=\"top\" align=\"center\" width=\"50%\">\n      <strong>1 active session</strong>\n      <table>\n        <thead>\n          <tr>\n            <th>Tool</th>\n            <th>PSS</th>\n            <th>Comparison</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td><strong>jcode (local embedding off)</strong></td>\n            <td align=\"right\"><strong>27.8 MB</strong></td>\n            <td align=\"right\">baseline</td>\n          </tr>\n          <tr>\n            <td><strong>jcode</strong></td>\n            <td align=\"right\"><strong>167.1 MB</strong></td>\n            <td align=\"right\"><strong>6.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>pi</strong></td>\n            <td align=\"right\"><strong>144.4 MB</strong></td>\n            <td align=\"right\"><strong>5.2× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Codex CLI</strong></td>\n            <td align=\"right\"><strong>140.0 MB</strong></td>\n            <td align=\"right\"><strong>5.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>OpenCode</strong></td>\n            <td align=\"right\"><strong>371.5 MB</strong></td>\n            <td align=\"right\"><strong>13.4× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>GitHub Copilot CLI</strong></td>\n            <td align=\"right\"><strong>333.3 MB</strong></td>\n            <td align=\"right\"><strong>12.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Cursor Agent</strong></td>\n            <td align=\"right\"><strong>214.9 MB</strong></td>\n            <td align=\"right\"><strong>7.7× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Claude Code</strong></td>\n            <td align=\"right\"><strong>386.6 MB</strong></td>\n            <td align=\"right\"><strong>13.9× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Antigravity CLI</strong></td>\n            <td align=\"right\"><strong>243.7 MB</strong></td>\n            <td align=\"right\"><strong>8.8× more RAM</strong></td>\n          </tr>\n        </tbody>\n      </table>\n    </td>\n    <td width=\"24\"></td>\n    <td valign=\"top\" align=\"center\" width=\"50%\">\n      <strong>10 active sessions</strong>\n      <table>\n        <thead>\n          <tr>\n            <th>Tool</th>\n            <th>PSS</th>\n            <th>Comparison</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td><strong>jcode (local embedding off)</strong></td>\n            <td align=\"right\"><strong>117.0 MB</strong></td>\n            <td align=\"right\">baseline</td>\n          </tr>\n          <tr>\n            <td><strong>jcode</strong></td>\n            <td align=\"right\"><strong>260.8 MB</strong></td>\n            <td align=\"right\"><strong>2.2× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>pi</strong></td>\n            <td align=\"right\"><strong>833.0 MB</strong></td>\n            <td align=\"right\"><strong>7.1× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Codex CLI</strong></td>\n            <td align=\"right\"><strong>334.8 MB</strong></td>\n            <td align=\"right\"><strong>2.9× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>OpenCode</strong></td>\n            <td align=\"right\"><strong>3237.2 MB</strong></td>\n            <td align=\"right\"><strong>27.7× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>GitHub Copilot CLI</strong></td>\n            <td align=\"right\"><strong>1756.5 MB</strong></td>\n            <td align=\"right\"><strong>15.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Cursor Agent</strong></td>\n            <td align=\"right\"><strong>1632.4 MB</strong></td>\n            <td align=\"right\"><strong>14.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Claude Code</strong></td>\n            <td align=\"right\"><strong>2300.6 MB</strong></td>\n            <td align=\"right\"><strong>19.7× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Antigravity CLI</strong></td>\n            <td align=\"right\"><strong>1021.2 MB</strong></td>\n            <td align=\"right\"><strong>8.7× more RAM</strong></td>\n          </tr>\n        </tbody>\n      </table>\n    </td>\n  </tr>\n</table>\n\n</div>\n\n### Time to first frame\n\n<div align=\"center\">\n\n| Tool | Time to first frame | Range | Comparison |\n|---|---:|---:|---:|\n| **jcode** | **14.0 ms** | 10.1–19.3 ms | baseline |\n| **Antigravity CLI** | **383.5 ms** | 363.1–415.4 ms | **27.4× slower** |\n| **pi** | **590.7 ms** | 369.6–934.8 ms | **42.2× slower** |\n| **Codex CLI** | **882.8 ms** | 742.3–1640.9 ms | **63.1× slower** |\n| **OpenCode** | **1035.9 ms** | 922.5–1104.4 ms | **74.0× slower** |\n| **GitHub Copilot CLI** | **1518.6 ms** | 1357.4–1826.8 ms | **108.5× slower** |\n| **Cursor Agent** | **1949.7 ms** | 1711.0–2104.8 ms | **139.3× slower** |\n| **Claude Code** | **3436.9 ms** | 2032.7–8927.2 ms | **245.5× slower** |\n\n</div>\n\nMeasured on this Linux machine across 10 interactive PTY launches.\n\n### Time to first input\n(time until typed probe text appears on the rendered screen; Antigravity uses its internal input-ready log marker because the sign-in screen suppresses probe echo.)\n<div align=\"center\">\n\n| Tool | Time to first input | Range | Comparison |\n|---|---:|---:|---:|\n| **jcode** | **48.7 ms** | 30.3–62.7 ms | baseline |\n| **Antigravity CLI** | **383.7 ms** | 363.4–415.7 ms | **7.9× slower** |\n| **pi** | **596.4 ms** | 373.9–955.2 ms | **12.2× slower** |\n| **Codex CLI** | **905.8 ms** | 760.1–1675.7 ms | **18.6× slower** |\n| **OpenCode** | **1047.9 ms** | 931.1–1116.9 ms | **21.5× slower** |\n| **GitHub Copilot CLI** | **1583.4 ms** | 1422.8–1880.0 ms | **32.5× slower** |\n| **Cursor Agent** | **1978.7 ms** | 1727.3–2130.0 ms | **40.6× slower** |\n| **Claude Code** | **3512.8 ms** | 2137.4–9002.0 ms | **72.2× slower** |\n\n</div>\n\nMeasured on this Linux machine across 10 interactive PTY launches. Antigravity CLI was unauthenticated for this run; its sign-in screen rendered normally and emitted an internal `CLI ready for user input` marker, but did not echo the typed probe.\n\n### Additional clients / memory scaling\n\n<div align=\"center\">\n\n| Tool | Extra PSS per added session | Comparison |\n|---|---:|---:|\n| **jcode (local embedding off)** | **~9.9 MB** | baseline |\n| **jcode** | **~10.4 MB** | **1.1× more RAM** |\n| **pi** | **~76.5 MB** | **7.7× more RAM** |\n| **Codex CLI** | **~21.6 MB** | **2.2× more RAM** |\n| **OpenCode** | **~318.4 MB** | **32.2× more RAM** |\n| **GitHub Copilot CLI** | **~158.1 MB** | **16.0× more RAM** |\n| **Cursor Agent** | **~157.5 MB** | **15.9× more RAM** |\n| **Claude Code** | **~212.7 MB** | **21.5× more RAM** |\n| **Antigravity CLI** | **~86.4 MB** | **8.7× more RAM** |\n\n</div>\nversions tested for this corrected memory rerun:\n\n- `jcode v0.9.1888-dev (be386f2)`\n- `pi 0.62.0`\n- `codex-cli 0.120.0`\n- `opencode 1.0.203`\n- `GitHub Copilot CLI 1.0.24` for the 1-session rerun, `GitHub Copilot CLI 1.0.27` for the 10-session rerun\n- `Cursor Agent 2026.04.08-a41fba1`\n- `Claude Code 2.1.86 (Claude Code)`\n- `Antigravity CLI 1.0.0`\n\n<div align=\"center\">\n\n  <a href=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-performance-demo.mp4\">\n    <img src=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-performance-demo.webp\" alt=\"jcode performance demonstration\" width=\"900\">\n  </a>\n\n  <p><em>jcode performance demonstration</em></p>\n\n</div>\n\n\n---\n\n## Memory (Agent memory)\n\nJcode embeds each turn/response as a semantic vector. Every turn does queries a graph of memories to efficiently find related memory entries via a cosine similarity check. The embedding hits are fed int",
+      "rank": 5,
+      "weekly_stars": 2293
+    },
+    {
+      "full_name": "Shubhamsaboo/awesome-llm-apps",
+      "html_url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+      "homepage": "https://www.theunwindai.com",
+      "language": "Python",
+      "stars": 126490,
+      "forks": 18660,
+      "open_issues": 25,
+      "topics": [
+        "agents",
+        "llms",
+        "python",
+        "rag"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2024-04-29T05:30:25Z",
+      "updated_at": "2026-07-23T05:16:05Z",
+      "pushed_at": "2026-07-22T05:30:13Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <a href=\"http://www.theunwindai.com\">\n    <img src=\"docs/banner/unwind_black.png\" width=\"900px\" alt=\"Unwind AI\">\n  </a>\n</p>\n\n<div align=\"center\">\n\n# Awesome LLM Apps\n\n**100+ open-source AI agents, agent skills, and RAG apps. Hand-built, tested end-to-end, Apache-2.0.**\n\nClone it, ship it, sell it - 100% free and open-source\n\nWorks with Claude, Gemini, GPT, DeepSeek, Llama, Qwen and other open-source models.\n\n**[Step-by-step tutorials on Unwind AI](https://www.theunwindai.com)** · **[Quick start](#-run-one-now)** · **[Browse all templates](#-browse-all-templates)**\n\n\n<a href=\"https://trendshift.io/repositories/9876\" target=\"_blank\">\n  <img src=\"https://trendshift.io/api/badge/repositories/9876\" width=\"220\" alt=\"Featured on Trendshift as the #1 repository of the day\">\n</a>\n\n<br>\n\n</div>\n\n<table>\n  <tr>\n    <td width=\"33.3%\" align=\"center\">\n      <a href=\"agent_skills/project-graveyard/\"><img src=\"docs/gallery/project-graveyard.png\" alt=\"Project Graveyard: an agent that autopsies your dead side projects\"></a>\n      <sub><b>Project Graveyard</b></sub>\n    </td>\n    <td width=\"33.3%\" align=\"center\">\n      <a href=\"voice_ai_agents/insurance_claim_live_agent_team/\"><img src=\"docs/gallery/insurance-claim-live-team.png\" alt=\"Insurance Claim Live Agent Team: voice claims settled in real time\"></a>\n      <sub><b>Insurance Claim Live Agent Team</b></sub>\n    </td>\n    <td width=\"33.3%\" align=\"center\">\n      <a href=\"advanced_ai_agents/single_agent_apps/ai_fraud_investigation_agent/\"><img src=\"docs/gallery/ai-fraud-investigation.png\" alt=\"AI Fraud Investigation Agent: public records, cross-examined\"></a>\n      <sub><b>AI Fraud Investigation Agent</b></sub>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"center\">\n      <a href=\"agent_skills/self-improving-agent-skills/\"><img src=\"docs/gallery/self-improving-agent-skills.png\" alt=\"Self-Improving Agent Skills: skills that rewrite themselves against evals\"></a>\n      <sub><b>Self-Improving Agent Skills</b></sub>\n    </td>\n    <td align=\"center\">\n      <a href=\"advanced_ai_agents/multi_agent_apps/ai_home_renovation_agent\"><img src=\"docs/gallery/ai-home-renovation.png\" alt=\"AI Home Renovation Agent: photo in, photoreal redesign out\"></a>\n      <sub><b>AI Home Renovation Agent</b></sub>\n    </td>\n    <td align=\"center\">\n      <a href=\"always_on_agents/always_on_hn_briefing_agent/\"><img src=\"docs/gallery/always-on-hn-briefing.png\" alt=\"Always-on HN Briefing Agent: it reads Hacker News while you sleep\"></a>\n      <sub><b>Always-on HN Briefing Agent</b></sub>\n    </td>\n  </tr>\n</table>\n\n## 🚀 Run one now\n\nGive your coding agent a new skill in 10 seconds:\n\n```bash\nnpx skills add https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/project-graveyard\n```\n\nThen ask it: *\"why do I never finish my side projects?\"*\n\nOr clone and run any agent in 30 seconds:\n\n```bash\ngit clone https://github.com/Shubhamsaboo/awesome-llm-apps.git\ncd awesome-llm-apps/starter_ai_agents/ai_travel_agent\npip install -r requirements.txt\nstreamlit run travel_agent.py\n```\n\n> 📬 New templates drop weekly. [Get them in your inbox on Unwind AI](https://www.theunwindai.com).\n\n## 📂 Browse all templates\n\n### 🧩 Agent Skills\n\n*Give your coding agent new abilities. One command to install, plain English to use. Every skill ships real code and passes a security + eval CI gate. Works with Claude Code, Codex, Cursor, and other coding agents. [Browse all skills →](agent_skills/)*\n\n*   [⚰️ Project Graveyard](agent_skills/project-graveyard/) - Finds every side project you abandoned, tells you why each one died, and helps you finish the one worth going back to\n*   [🔭 Scope Creep Detector](agent_skills/scope-creep-detector/) - Checks whether a diff grew beyond its stated intent and recommends what to keep, split, or justify\n*   [🏺 Commit Archaeologist](agent_skills/commit-archaeologist/) - Reconstructs why a file or code region exists from its introducing commit, later edits, co-changes, and intent clues\n*   [🧠 Advisor Orchestrator Worker](agent_skills/advisor-orchestrator-worker/) - Meta Loop with Claude Fable 5 as advisor, GPT-5.6 as orchestrator, and Gemini 3.5 Flash as worker\n*   [♾️ Self-Improving Agent Skills](agent_skills/self-improving-agent-skills/) - Automatically optimize agent skills using Gemini and ADK\n\n### 🌱 Starter AI Agents\n\n*Single-file agents that run with just an API key - a great place to start.*\n\n*   [🎙️ AI Blog to Podcast Agent](starter_ai_agents/ai_blog_to_podcast_agent/) - Turn any blog URL into a narrated podcast episode\n*   [❤️‍🩹 AI Breakup Recovery Agent](starter_ai_agents/ai_breakup_recovery_agent/) - An agent team that talks you through the post-breakup spiral\n*   [📊 AI Data Analysis Agent](starter_ai_agents/ai_data_analysis_agent/) - Ask questions of any CSV or Excel file in plain English\n*   [🩻 AI Medical Imaging Agent](starter_ai_agents/ai_medical_imaging_agent/) - Diagnostic analysis of X-rays and scans with Gemini\n*   [😂 AI Meme Generator Agent (Browser)](starter_ai_agents/ai_meme_generator_agent_browseruse/) - Makes memes by driving a real browser, not an image API\n*   [🎵 AI Music Generator Agent](starter_ai_agents/ai_music_generator_agent/) - Prompt in, MP3 track out\n*   [🛫 AI Travel Agent (Local & Cloud)](starter_ai_agents/ai_travel_agent/) - Personalized day-by-day travel itineraries\n*   [✨ Gemini Multimodal Agent](starter_ai_agents/multimodal_ai_agent/) - Video analysis plus web search in one agent\n*   [🔄 Mixture of Agents](starter_ai_agents/mixture_of_agents/) - Multiple LLMs answer, one aggregates the best response\n*   [📊 xAI Finance Agent](starter_ai_agents/xai_finance_agent/) - Real-time stock analysis powered by Grok\n*   [🔍 OpenAI Research Agent](starter_ai_agents/openai_research_agent/) - Multi-agent topic research with the OpenAI Agents SDK\n*   [🕸️ Web Scraping AI Agent](starter_ai_agents/web_scraping_ai_agent/) - Describe what to extract and the agent scrapes it\n\n### 🚀 Advanced AI Agents\n\n*Production-style agents with tools, memory, and multi-step reasoning.*\n\n*   [🏚️ 🍌 AI Home Renovation Agent with Nano Banana Pro](advanced_ai_agents/multi_agent_apps/ai_home_renovation_agent) - Photos of your space in, renovation plan and photorealistic renders out\n*   [🧠 DevPulse AI - Multi-Agent Signal Intelligence](advanced_ai_agents/multi_agent_apps/devpulse_ai/) - Aggregates and scores technical signals into a daily intelligence digest\n*   [🔍 AI Deep Research Agent](advanced_ai_agents/single_agent_apps/ai_deep_research_agent/) - Comprehensive web research with the OpenAI Agents SDK and Firecrawl\n*   [📊 AI VC Due Diligence Agent Team](advanced_ai_agents/multi_agent_apps/agent_teams/ai_vc_due_diligence_agent_team) - Multi-agent startup investment analysis with Gemini 3\n*   [🔬 AI Research Planner & Executor (Google Interactions API)](advanced_ai_agents/single_agent_apps/research_agent_gemini_interaction_api) - Multi-phase research with stateful conversations and auto-generated infographics\n*   [🤝 AI Consultant Agent](advanced_ai_agents/single_agent_apps/ai_consultant_agent) - Market analysis and strategy recommendations with live web research\n*   [🏗️ AI System Architect Agent](advanced_ai_agents/single_agent_apps/ai_system_architect_r1/) - Architecture reviews using DeepSeek R1 reasoning plus Claude\n*   [💰 AI Financial Coach Agent](advanced_ai_agents/multi_agent_apps/ai_financial_coach_agent/) - Personalized budget, debt, and savings analysis\n*   [🎬 AI Movie Production Agent](advanced_ai_agents/single_agent_apps/ai_movie_production_agent/) - Script drafts and casting ideas from a one-line movie concept\n*   [📈 AI Investment Agent](advanced_ai_agents/single_agent_apps/ai_investment_agent/) - Stock comparison reports built on Yahoo Finance data\n*   [📡 Earnings Call Analyst Agent](advanced_ai_agents/single_agent_apps/earnings_call_analyst_agent/) - Turns YouTube earnings calls into a playback-synced analyst workspace\n*   [🏋️‍♂️ AI Health & Fitness Agent](advanced_ai_agents/single_agent_apps/ai_health_fitness_agent/) - Tailored diet and workout plans from your goals\n*   [🚀 AI Product Launch Intelligence Agent](advanced_ai_agents/multi_agent_apps/product_launch_intelligence_agent) - Go-to-market intelligence on competitor launches\n*   [🔍 AI Fraud Investigation Agent](advanced_ai_agents/single_agent_apps/ai_fraud_investigation_agent/) - Cross-references public records to flag facilities that don't add up\n*   [🗞️ AI Journalist Agent](advanced_ai_agents/single_agent_apps/ai_journalist_agent/) - Researches, writes, and edits articles on any topic\n*   [🧠 AI Mental Wellbeing Agent](advanced_ai_agents/multi_agent_apps/ai_mental_wellbeing_agent/) - A coordinated agent team for mental health support plans\n*   [📑 AI Meeting Agent](advanced_ai_agents/single_agent_apps/ai_meeting_agent/) - Context, industry insights, and strategy briefs before you walk in\n*   [🧬 AI Self-Evolving Agent](advanced_ai_agents/multi_agent_apps/ai_self_evolving_agent/) - Agents that rewrite their own workflows with EvoAgentX\n*   [👨🏻‍💼 AI Sales Intelligence Agent Team](advanced_ai_agents/multi_agent_apps/agent_teams/ai_sales_intelligence_agent_team) - Generates competitive sales battle cards in real time\n*   [🎧 AI Social Media News and Podcast Agent](advanced_ai_agents/multi_agent_apps/ai_news_and_podcast_agents/) - Curates your trusted sources into briefs and generated podcasts\n*   [🌐 Openwork - Open Browser Automation Agent](https://github.com/accomplish-ai/openwork) <sub>↗ external</sub> - Open-source agent that operates a real browser\n*   [🛡️ Trust-Gated Multi-Agent Research Team](advanced_ai_agents/multi_agent_apps/trust_gated_agent_team/) - Every agent verified, every action in a hash-chained audit trail\n\n### 🛰️ Always-on Agents\n\n*Background agents that run on schedules or events, monitor changing context, decide what needs attention, and proactively deliver updates, artifacts, or actions.*\n\n*   [📰 Always-on Hacker News Briefing Agent](always_on_agents/always_on_hn_briefing_agent/) - A scheduled scout tha",
+      "rank": 6,
+      "weekly_stars": 4690
+    },
+    {
+      "full_name": "ibelick/ui-skills",
+      "html_url": "https://github.com/ibelick/ui-skills",
+      "description": "Skills for Design Engineers",
+      "homepage": "https://www.ui-skills.com/",
+      "language": "TypeScript",
+      "stars": 6038,
+      "forks": 260,
+      "open_issues": 12,
+      "topics": [
+        "skills",
+        "ui-skills"
+      ],
+      "license": "MIT",
+      "created_at": "2026-01-07T19:35:54Z",
+      "updated_at": "2026-07-23T05:11:05Z",
+      "pushed_at": "2026-07-21T13:36:31Z",
+      "archived": false,
+      "readme": "# UI Skills\n\n![UI Skills](./public/UI-OG.webp)\n\nSkills for Design Engineers\n\nMore on [ui-skills.com](http://ui-skills.com/)\n\nRun `npx ui-skills start` to route your agent through the right UI skill set for the task.\n\n## CLI\n\n```bash\nnpx ui-skills\nnpx ui-skills start\nnpx ui-skills categories\nnpx ui-skills list --category motion\nnpx ui-skills get baseline-ui\n```\n\n## License\n\nLicensed under the [MIT license](https://github.com/ibelick/ui-skills/blob/main/LICENSE).\n",
+      "rank": 7,
+      "weekly_stars": 2206
+    },
+    {
+      "full_name": "OpenCut-app/OpenCut",
+      "html_url": "https://github.com/OpenCut-app/OpenCut",
+      "description": "The open-source CapCut alternative",
+      "homepage": "https://opencut.app",
+      "language": "TypeScript",
+      "stars": 77715,
+      "forks": 7770,
+      "open_issues": 360,
+      "topics": [
+        "editor",
+        "oss",
+        "videoeditor"
+      ],
+      "license": "MIT",
+      "created_at": "2025-06-22T08:02:17Z",
+      "updated_at": "2026-07-23T05:15:51Z",
+      "pushed_at": "2026-07-22T19:12:54Z",
+      "archived": false,
+      "readme": "<table width=\"100%\">\n  <tr>\n    <td align=\"left\" width=\"120\">\n      <img src=\"https://assets.opencut.app/branding/symbol.svg\" alt=\"OpenCut Logo\" width=\"100\" />\n    </td>\n    <td align=\"right\">\n      <h1>OpenCut</h1>\n      <h3 style=\"margin-top: -10px;\">A free and open source video editor for web, desktop, and mobile.</h3>\n    </td>\n  </tr>\n</table>\n\n[![Discord](https://img.shields.io/discord/1386309140057690133?label=Discord&logo=discord&logoColor=fff&color=5865F2&style=flat)](https://discord.gg/zmR9N35cjK)\n[![X](https://img.shields.io/badge/follow-%40opencutapp-000?logo=x&logoColor=fff&style=flat)](https://x.com/opencutapp)\n[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat)](LICENSE)\n\n## Status\n\n**OpenCut is being rewritten from the ground up.** What's coming:\n\n- An Editor API\n- First-class third party plugins (made possible by a plugin-first architecture)\n- Desktop, mobile, and browser from one codebase (Rust core)\n- MCP server (for AI agents)\n- Headless mode (automation, batch rendering)\n- A scripting tab directly in the editor\n\nYou can still find the previous version at [opencut-app/opencut-classic](https://github.com/opencut-app/opencut-classic), which is the one to reach for today. [opencut.app](https://opencut.app) still runs the classic version. The rewrite will live at [new.opencut.app](https://new.opencut.app) until it's ready to take over.\n\n## Development\n\nInstall [proto](https://moonrepo.dev/proto) if you haven't already:\n\n```sh\nbash <(curl -fsSL https://moonrepo.dev/install/proto.sh)\n```\n\nFrom the repo root:\n\n```sh\nproto use    # installs the tools pinned in .prototools\n```\n\n```sh\nmoon run web:dev       # localhost:5173\nmoon run api:dev       # localhost:8787\nmoon run desktop:dev   # see apps/desktop/README.md\n```\n\n## Contributing\n\nWe're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, [join the Discord](https://discord.gg/zmR9N35cjK) or [open an issue](https://github.com/opencut-app/opencut/issues).\n\n## Sponsors\n\nOpenCut is supported by companies that believe in open source creator tools.\n\n- [**fal.ai**](https://fal.ai?utm_source=github-opencut&utm_campaign=oss): Generative image, video, and audio models all in one place.\n\nWant your logo here? Reach out at [sponsor@opencut.app](mailto:sponsor@opencut.app).\n\n## License\n\n[MIT](LICENSE)\n",
+      "rank": 8,
+      "weekly_stars": 7394
+    },
+    {
+      "full_name": "apache/ossie",
+      "html_url": "https://github.com/apache/ossie",
+      "description": "Apache Ossie, industry wide specification effort to standardize how we exchange semantic metadata across analytics, AI and BI platforms, providing a vendor neutral, single source of truth for semantic data",
+      "homepage": "https://ossie.apache.org/",
+      "language": "Python",
+      "stars": 1511,
+      "forks": 177,
+      "open_issues": 62,
+      "topics": [
+        "metadata",
+        "semantic"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2025-11-18T23:27:51Z",
+      "updated_at": "2026-07-23T05:14:29Z",
+      "pushed_at": "2026-07-23T05:09:04Z",
+      "archived": false,
+      "readme": "<!--\n Licensed to the Apache Software Foundation (ASF) under one\n or more contributor license agreements.  See the NOTICE file\n distributed with this work for additional information\n regarding copyright ownership.  The ASF licenses this file\n to you under the Apache License, Version 2.0 (the\n \"License\"); you may not use this file except in compliance\n with the License.  You may obtain a copy of the License at\n\n  http://www.apache.org/licenses/LICENSE-2.0\n\n Unless required by applicable law or agreed to in writing,\n software distributed under the License is distributed on an\n \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n KIND, either express or implied.  See the License for the\n specific language governing permissions and limitations\n under the License.\n-->\n\n# Apache Ossie (incubating)\n\nApache Ossie is a collaborative, open-source effort dedicated to standardizing and streamlining semantic model exchange and utilization across the diverse array of tools and platforms within the data analytics, AI, and BI ecosystem. Our shared vision is to establish a common, vendor-agnostic semantic model specification, promoting unparalleled interoperability, efficiency, and collaboration among all participants. By providing a single, consistent source of truth, this vendor-agnostic standard ensures that your data's definitions and value remain consistent as they are interchanged between AI agents, BI platforms, and all other tools in your ecosystem, eliminating inconsistencies across your different tools.\n\nApache Ossie was formerly known as **Open Semantic Interchange (OSI)**.\n\nApache Ossie provides a single JSON- and YAML-based specification that any tool can read and write, addressing the semantic fragmentation common across today's data stack: the same KPI defined differently across tools, teams spending significant effort manually reconciling definitions, and AI agents producing unreliable outputs grounded in inconsistent business logic.\n\n## What's in this repository\n\n- [`core-spec/`](core-spec/) — The Ossie core specification (`spec.md`), the machine-readable schema (`spec.yaml`, `osi-schema.json`), and accompanying documentation.\n- [`converters/`](converters/) — Reference converters that translate between Ossie and other semantic formats (e.g., dbt, GoodData, Polaris, Salesforce).\n- [`examples/`](examples/) — Example semantic models, including a complete TPC-DS model.\n- [`validation/`](validation/) — Tooling for validating semantic models against the Ossie schema.\n- [`docs/`](docs/) — Project documentation and overview.\n\n## Get involved\n\n- **Contribute:** See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose specification changes, contribute code, and participate in the community.\n- **Roadmap:** See [ROADMAP.md](ROADMAP.md) for current working groups, future efforts, and planned enhancements informed by community discussion.\n- **Discuss:** Join the conversation on [GitHub Discussions](https://github.com/apache/ossie/discussions) and [Issues](https://github.com/apache/ossie/issues).\n- **Join the Slack community:** Chat directly with contributors on [Slack](https://join.slack.com/t/apache-ossie/shared_invite/zt-42zw4rflt-Gpve8_NFJq7AsdAQTY~SCg).\n",
+      "rank": 9,
+      "weekly_stars": 810
+    },
+    {
+      "full_name": "MoonshotAI/kimi-cli",
+      "html_url": "https://github.com/MoonshotAI/kimi-cli",
+      "description": "Kimi Code CLI is your next CLI agent.",
+      "homepage": "https://moonshotai.github.io/kimi-cli/",
+      "language": "Python",
+      "stars": 10634,
+      "forks": 1239,
+      "open_issues": 792,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2025-10-15T12:58:03Z",
+      "updated_at": "2026-07-23T04:37:36Z",
+      "pushed_at": "2026-07-16T10:05:51Z",
+      "archived": false,
+      "readme": "# Kimi CLI\n\n[![Commit Activity](https://img.shields.io/github/commit-activity/w/MoonshotAI/kimi-cli)](https://github.com/MoonshotAI/kimi-cli/graphs/commit-activity)\n[![Checks](https://img.shields.io/github/check-runs/MoonshotAI/kimi-cli/main)](https://github.com/MoonshotAI/kimi-cli/actions)\n[![Version](https://img.shields.io/pypi/v/kimi-cli)](https://pypi.org/project/kimi-cli/)\n[![Downloads](https://img.shields.io/pypi/dw/kimi-cli)](https://pypistats.org/packages/kimi-cli)\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/MoonshotAI/kimi-cli)\n\n[Kimi Code](https://www.kimi.com/code/) | [Documentation](https://moonshotai.github.io/kimi-cli/en/) | [文档](https://moonshotai.github.io/kimi-cli/zh/)\n\n> [!IMPORTANT]\n> **Kimi CLI is evolving into [Kimi Code CLI](https://github.com/MoonshotAI/kimi-code)** — the next-generation terminal AI agent from the same team. Installing Kimi Code CLI automatically migrates your configuration and sessions. This project will be gradually wound down; the docs and existing installations remain available.\n\nKimi CLI is an AI agent that runs in the terminal, helping you complete software development tasks and terminal operations. It can read and edit code, execute shell commands, search and fetch web pages, and autonomously plan and adjust actions during execution.\n\n## Getting Started\n\nSee [Getting Started](https://moonshotai.github.io/kimi-cli/en/guides/getting-started.html) for how to install and start using Kimi CLI.\n\n## Key Features\n\n### Shell command mode\n\nKimi CLI is not only a coding agent, but also a shell. You can switch the shell command mode by pressing `Ctrl-X`. In this mode, you can directly run shell commands without leaving Kimi CLI.\n\n![](./docs/media/shell-mode.gif)\n\n> [!NOTE]\n> Built-in shell commands like `cd` are not supported yet.\n\n### VS Code extension\n\nKimi CLI can be integrated with [Visual Studio Code](https://code.visualstudio.com/) via the [Kimi Code VS Code Extension](https://marketplace.visualstudio.com/items?itemName=moonshot-ai.kimi-code).\n\n![VS Code Extension](./docs/media/vscode.png)\n\n### IDE integration via ACP\n\nKimi CLI supports [Agent Client Protocol] out of the box. You can use it together with any ACP-compatible editor or IDE.\n\n[Agent Client Protocol]: https://github.com/agentclientprotocol/agent-client-protocol\n\nTo use Kimi CLI with ACP clients, make sure to run Kimi CLI in the terminal and send `/login` to complete the login first. Then, you can configure your ACP client to start Kimi CLI as an ACP agent server with command `kimi acp`.\n\nFor example, to use Kimi CLI with [Zed](https://zed.dev/) or [JetBrains](https://blog.jetbrains.com/ai/2025/12/bring-your-own-ai-agent-to-jetbrains-ides/), add the following configuration to your `~/.config/zed/settings.json` or `~/.jetbrains/acp.json` file:\n\n```json\n{\n  \"agent_servers\": {\n    \"Kimi CLI\": {\n      \"type\": \"custom\",\n      \"command\": \"kimi\",\n      \"args\": [\"acp\"],\n      \"env\": {}\n    }\n  }\n}\n```\n\nThen you can create Kimi CLI threads in IDE's agent panel.\n\n![](./docs/media/acp-integration.gif)\n\n### Zsh integration\n\nYou can use Kimi CLI together with Zsh, to empower your shell experience with AI agent capabilities.\n\nInstall the [zsh-kimi-cli](https://github.com/MoonshotAI/zsh-kimi-cli) plugin via:\n\n```sh\ngit clone https://github.com/MoonshotAI/zsh-kimi-cli.git \\\n  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/kimi-cli\n```\n\n> [!NOTE]\n> If you are using a plugin manager other than Oh My Zsh, you may need to refer to the plugin's README for installation instructions.\n\nThen add `kimi-cli` to your Zsh plugin list in `~/.zshrc`:\n\n```sh\nplugins=(... kimi-cli)\n```\n\nAfter restarting Zsh, you can switch to agent mode by pressing `Ctrl-X`.\n\n### MCP support\n\nKimi CLI supports MCP (Model Context Protocol) tools.\n\n**`kimi mcp` sub-command group**\n\nYou can manage MCP servers with `kimi mcp` sub-command group. For example:\n\n```sh\n# Add streamable HTTP server:\nkimi mcp add --transport http context7 https://mcp.context7.com/mcp --header \"CONTEXT7_API_KEY: ctx7sk-your-key\"\n\n# Add streamable HTTP server with OAuth authorization:\nkimi mcp add --transport http --auth oauth linear https://mcp.linear.app/mcp\n\n# Add stdio server:\nkimi mcp add --transport stdio chrome-devtools -- npx chrome-devtools-mcp@latest\n\n# List added MCP servers:\nkimi mcp list\n\n# Remove an MCP server:\nkimi mcp remove chrome-devtools\n\n# Authorize an MCP server:\nkimi mcp auth linear\n```\n\n**Ad-hoc MCP configuration**\n\nKimi CLI also supports ad-hoc MCP server configuration via CLI option.\n\nGiven an MCP config file in the well-known MCP config format like the following:\n\n```json\n{\n  \"mcpServers\": {\n    \"context7\": {\n      \"url\": \"https://mcp.context7.com/mcp\",\n      \"headers\": {\n        \"CONTEXT7_API_KEY\": \"YOUR_API_KEY\"\n      }\n    },\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"]\n    }\n  }\n}\n```\n\nRun `kimi` with `--mcp-config-file` option to connect to the specified MCP servers:\n\n```sh\nkimi --mcp-config-file /path/to/mcp.json\n```\n\n### More\n\nSee more features in the [Documentation](https://moonshotai.github.io/kimi-cli/en/).\n\n## Development\n\nTo develop Kimi CLI, run:\n\n```sh\ngit clone https://github.com/MoonshotAI/kimi-cli.git\ncd kimi-cli\n\nmake prepare  # prepare the development environment\n```\n\nThen you can start working on Kimi CLI.\n\nRefer to the following commands after you make changes:\n\n```sh\nuv run kimi  # run Kimi CLI\n\nmake format  # format code\nmake check  # run linting and type checking\nmake test  # run tests\nmake test-kimi-cli  # run Kimi CLI tests only\nmake test-kosong  # run kosong tests only\nmake test-pykaos  # run pykaos tests only\nmake build-web  # build the web UI and sync it into the package (requires Node.js/npm)\nmake build  # build python packages\nmake build-bin  # build standalone binary\nmake help  # show all make targets\n```\n\nNote: `make build` and `make build-bin` automatically run `make build-web` to embed the web UI.\n",
+      "rank": 10,
+      "weekly_stars": 1443
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 37,376 个新增 Star，Nutlope/hallmark、tirth8205/code-review-graph、HKUDS/DeepTutor 位居前三。主要开发语言集中在 Python、TypeScript、CSS。头部项目体现的方向包括：Anti-AI-slop design skill for Claude Code, Cursor, and Codex.；Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.；DeepTutor: Lifelong Personalized Tutoring。",
+    "top_picks": [
+      "Nutlope/hallmark",
+      "tirth8205/code-review-graph",
+      "HKUDS/DeepTutor"
+    ],
+    "projects": [
+      {
+        "full_name": "Nutlope/hallmark",
+        "tagline": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
+        "overview": "Hallmark 是一个设计技能工具，旨在为 Claude Code、Cursor 和 Codex 生成的界面代码提供非 AI 生成风格的设计。它通过选择宏结构、应用多种主题和运行多项检测，避免生成模板化和 AI 训练默认的设计样式，从而使不同的设计简报产生风格迥异的页面。",
+        "core_features": [
+          "提供二十种主题和四种操作动词（构建、审计、重新设计、研究）以生成或分析界面设计。",
+          "运行包括 57 项‘slop-test’检测和预发布自我批评，确保设计不落入 AI 训练的默认模式。",
+          "支持从截图或 URL 中提取设计 DNA，生成可移植的设计文档以供其他 AI 工具使用。",
+          "支持自定义主题模式，针对无法匹配目录主题的简报进行从零设计。"
+        ],
+        "problems": [
+          "AI 生成的界面设计往往模板化，缺乏多样性和个性化。",
+          "现有设计工具难以避免 AI 训练数据中的默认设计模式。",
+          "缺少自动化工具来审计和重新设计已有代码以提升设计质量。",
+          "设计风格难以从现有优秀设计中提取并应用于新项目。"
+        ],
+        "use_cases": [
+          "自动生成符合特定简报需求且风格多样的网页界面设计。",
+          "对现有界面代码进行审计，识别设计中的反模式。",
+          "基于已有内容和信息架构，重新设计界面以获得不同视觉风格。",
+          "从喜欢的设计中提取设计元素，辅助设计决策和跨工具协作。"
+        ],
+        "audience": [
+          "使用 Claude Code、Cursor 或 Codex 的开发者和设计师。",
+          "需要自动化生成或优化界面设计的产品团队。",
+          "关注设计多样性和避免 AI 模板化的设计专家。",
+          "希望从现有设计中提取风格元素的设计研究人员。"
+        ],
+        "differentiators": [
+          "专注于拒绝 AI 训练默认设计，强调设计的独特性和多样性。",
+          "集成多达 57 项设计质量检测，确保输出设计符合高标准。",
+          "支持多种操作模式，包括构建、审计、重新设计和设计研究。",
+          "提供自定义主题功能，满足特殊简报的个性化设计需求。"
+        ],
+        "quick_start": "通过命令 `npx skills add nutlope/hallmark` 安装。安装后，将相关文件复制到 Claude Code、Cursor 或 Codex 的指定技能目录中即可使用。可通过按键 `T` 在不同主题间切换，或使用命令行参数执行审计、重新设计和设计研究操作。",
+        "maturity": "项目活跃，最近更新时间为 2026 年 7 月，拥有超过 1.5 万星标和近 800 个分支，存在少量开放问题，采用 MIT 许可证，适合生产环境使用。",
+        "limitations": [
+          "目前仅支持 Claude Code、Cursor 和 Codex 三种 AI 编程助手环境。",
+          "设计输出为自包含的 HTML + CSS，可能需要额外集成工作以适配复杂前端框架。",
+          "自定义主题功能较新，使用案例和文档相对有限。",
+          "缺少对非网页界面设计的支持，如移动应用或桌面软件界面。"
+        ],
+        "potential": [
+          "扩展支持更多 AI 编程助手和设计工具，提升适用范围。",
+          "增强自定义主题功能，提供更丰富的设计参数和模板。",
+          "集成更多自动化设计质量检测和优化策略。",
+          "开发图形界面或插件，简化设计技能的使用门槛。"
+        ]
+      },
+      {
+        "full_name": "tirth8205/code-review-graph",
+        "tagline": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.",
+        "overview": "code-review-graph 是一个基于 Python 的开源项目，旨在为代码审查和大型代码库工作流构建持久的代码结构图。它利用 Tree-sitter 解析代码库生成抽象语法树（AST），并以图结构存储代码中的函数、类、导入等节点及其调用、继承、测试覆盖等边。通过增量跟踪代码变更，结合 Model Context Protocol (MCP)，为 AI 编码助手提供精准的上下文，显著减少 AI 读取的代码量，从而提升代码审查效率。",
+        "core_features": [
+          "基于 Tree-sitter 解析代码库，生成结构化的代码图谱（AST节点和边）",
+          "支持增量更新，自动跟踪代码变更，保持图谱最新",
+          "兼容多种 AI 编码平台（如 Codex、Claude Code、GitHub Copilot 等），自动配置 MCP",
+          "提供命令行工具安装、构建和卸载，支持多平台自动检测和配置"
+        ],
+        "problems": [
+          "AI 编码工具在代码审查时往往需要重复读取大量代码，导致效率低下和资源浪费",
+          "大型代码库中上下文信息庞大，难以精准定位代码变更影响范围",
+          "缺乏统一的本地代码智能图谱支持 AI 工具高效读取相关代码上下文",
+          "手动配置 AI 编码工具与代码库上下文集成复杂且易出错"
+        ],
+        "use_cases": [
+          "提升 AI 代码审查工具的上下文读取效率，减少无关代码的重复读取",
+          "在大型代码库中快速定位代码变更的影响范围和风险评分",
+          "为多种 AI 编码平台自动生成和注入 MCP 配置，实现无缝集成",
+          "持续监控代码库变更，自动更新代码图谱，支持实时智能辅助"
+        ],
+        "audience": [
+          "软件开发者，尤其是使用 AI 编码助手进行代码审查和开发的工程师",
+          "产品经理和技术负责人，关注提升代码审查效率和质量",
+          "创业者和团队，寻求利用 AI 工具优化开发流程和降低成本",
+          "开源社区和工具开发者，关注代码智能分析和 AI 集成"
+        ],
+        "differentiators": [
+          "本地优先设计，代码图谱存储在本地，保障隐私和响应速度",
+          "支持多种主流 AI 编码平台，自动检测并配置 MCP，降低集成门槛",
+          "利用增量更新机制，实时保持代码图谱最新，减少重复计算",
+          "通过结构化图谱和风险评分，精准提供代码变更影响范围，提升 AI 代码理解能力"
+        ],
+        "quick_start": [
+          "安装：pip install code-review-graph 或 pipx install code-review-graph",
+          "自动配置支持平台：code-review-graph install",
+          "构建代码图谱：code-review-graph build",
+          "卸载集成：code-review-graph uninstall，支持多种卸载选项"
+        ],
+        "maturity": "项目拥有超过 2.5 万星，2400 多个分支，活跃的社区和持续更新，支持 Python 3.10+，具备完善的文档和多语言 README，适合生产环境使用。",
+        "limitations": [
+          "目前仅支持 Python 3.10 及以上版本，限制了部分环境兼容性",
+          "依赖 Tree-sitter 解析器，支持的编程语言受限于 Tree-sitter 的覆盖范围",
+          "初次构建大型项目图谱耗时约 10 秒，可能对极大规模项目存在性能瓶颈",
+          "需要用户具备一定命令行操作能力，自动化集成依赖特定 AI 平台支持"
+        ],
+        "potential": [
+          "扩展对更多编程语言和 AI 平台的支持，提升通用性",
+          "优化性能，缩短大型项目初次构建时间",
+          "增强图谱分析能力，支持更多代码质量和安全检测功能",
+          "结合更多 AI 模型和工具，提升代码审查智能化水平"
+        ]
+      },
+      {
+        "full_name": "HKUDS/DeepTutor",
+        "tagline": "DeepTutor: Lifelong Personalized Tutoring",
+        "overview": "DeepTutor 是一个基于 Python 的开源项目，旨在提供终身个性化辅导服务。它结合了大型语言模型、多智能体系统和交互式学习技术，支持多语言界面和多种知识库管理，致力于通过人工智能实现个性化教育。",
+        "core_features": [
+          "支持多语言界面，包括简体中文、英语、日语、西班牙语、法语、阿拉伯语、俄语、印地语、葡萄牙语、泰语和波兰语。",
+          "集成大型语言模型和多智能体系统，实现智能问答和个性化教学。",
+          "支持知识库管理，能够对文档进行解析、索引和检索，支持多模态内容（如图像）处理。",
+          "提供命令行接口（CLI）工具，方便用户和开发者进行交互和扩展。"
+        ],
+        "problems": [
+          "传统教育缺乏个性化，难以满足不同学习者的需求。",
+          "知识管理和检索效率低，难以快速获取相关学习资源。",
+          "现有辅导系统缺乏持续学习和适应能力，无法实现终身学习支持。",
+          "多语言和多文化背景下的教育资源整合存在挑战。"
+        ],
+        "use_cases": [
+          "为学生提供个性化的学习辅导和答疑服务。",
+          "教育机构利用该系统构建智能教学平台。",
+          "研究人员探索基于 AI 的交互式学习和知识管理方法。",
+          "开发者基于 DeepTutor 构建定制化的教育应用和工具。"
+        ],
+        "audience": [
+          "教育技术开发者和研究人员。",
+          "学校和培训机构的教学管理者。",
+          "希望获得个性化学习支持的学生和终身学习者。",
+          "人工智能和自然语言处理领域的技术爱好者。"
+        ],
+        "differentiators": [
+          "结合多智能体系统与大型语言模型，支持复杂的交互式教学场景。",
+          "支持多语言和多文化环境，界面和文档多语种覆盖广泛。",
+          "持续更新和活跃维护，拥有较高的社区关注度和贡献度。",
+          "提供丰富的知识库管理功能，支持多模态内容解析和检索。"
+        ],
+        "quick_start": "用户可以通过安装 Python 3.11+ 环境，克隆仓库后按照官方文档（https://deeptutor.info）进行配置和启动。项目提供详细的命令行工具和示例，支持快速搭建个性化辅导系统。",
+        "maturity": "项目活跃，拥有超过 2.9 万星标和 3800 多个分支，定期发布新版本，最近一次更新在 2026 年 7 月，显示出较高的成熟度和社区活跃度。",
+        "limitations": [
+          "目前主要基于 Python 实现，可能对非 Python 用户有一定门槛。",
+          "依赖大型语言模型和多智能体系统，运行资源需求较高。",
+          "文档和示例主要以英文为主，部分语言支持可能不够完善。",
+          "项目发布时间为未来（2025 年底），实际应用和稳定性需进一步验证。"
+        ],
+        "potential": [
+          "随着 AI 技术发展，DeepTutor 有潜力成为个性化教育领域的重要平台。",
+          "多语言和多模态支持有助于拓展全球教育市场。",
+          "开放源码和社区驱动模式促进快速迭代和功能丰富。",
+          "可与其他教育技术和内容平台集成，形成生态系统。"
+        ]
+      },
+      {
+        "full_name": "MoonshotAI/kimi-code",
+        "tagline": "Kimi Code CLI  —  The Starting Point for Next-Gen Agents",
+        "overview": "Kimi Code CLI 是一个基于终端的 AI 编码代理，能够读取和编辑代码、执行 shell 命令、搜索文件、抓取网页，并根据反馈选择下一步操作。它默认支持 Moonshot AI 的 Kimi 模型，也可配置使用其他兼容的 AI 提供者。项目使用 TypeScript 开发，采用 MIT 许可证，提供单二进制分发，支持多平台安装，具备快速启动和专门优化的终端用户界面。",
+        "core_features": [
+          "单二进制分发，无需 Node.js 环境，安装简单快捷。",
+          "专门设计的终端用户界面（TUI），优化长时间专注的代理会话体验。",
+          "支持视频输入，能够分析屏幕录制或演示视频并转换为代码或其他格式。",
+          "内置丰富插件生态系统，支持从市场或任意 GitHub 仓库安装技能、模型上下文协议（MCP）服务器和数据源。"
+        ],
+        "problems": [
+          "传统 AI 编码工具多依赖复杂环境配置，安装和启动过程繁琐。",
+          "缺乏专门针对终端用户优化的交互界面，影响长时间使用体验。",
+          "难以通过视频等非文本输入辅助代码生成和理解。",
+          "插件和模型配置复杂，缺少便捷的交互式管理方式。"
+        ],
+        "use_cases": [
+          "开发者在终端环境中通过自然语言交互完成代码阅读、编辑和调试任务。",
+          "利用视频输入辅助理解复杂操作流程并生成相应代码。",
+          "在多任务场景下使用子代理并行处理编码、探索和规划工作。",
+          "通过 Agent Client Protocol 在支持的编辑器（如 Zed、JetBrains）中集成 AI 编码代理功能。"
+        ],
+        "audience": [
+          "软件开发人员，尤其偏好终端操作和命令行工具的用户。",
+          "希望将 AI 编码代理集成到现有编辑器和开发环境中的技术团队。",
+          "需要通过视频等多模态输入辅助代码生成的开发者。",
+          "对插件生态和模型配置有较高定制需求的高级用户。"
+        ],
+        "differentiators": [
+          "无需 Node.js 环境，单命令安装，极大简化部署流程。",
+          "专门为长时间代理会话设计的终端用户界面，启动速度快且交互流畅。",
+          "支持视频输入，扩展了 AI 编码代理的输入维度和应用场景。",
+          "通过会话式命令管理模型上下文协议配置，提升用户体验。"
+        ],
+        "quick_start": [
+          "通过官方脚本安装，macOS/Linux 使用 curl 命令，Windows 使用 PowerShell 脚本。",
+          "首次运行时在 CLI 内执行 /login 命令，选择 OAuth 或 API Key 登录。",
+          "进入项目目录，运行 kimi 命令启动交互式界面。",
+          "输入自然语言指令让代理分析项目结构或执行其他任务。"
+        ],
+        "maturity": "项目活跃，最近更新时间为2026年7月，拥有超过4600颗星和675个分支，存在较多活跃问题（707个），表明社区活跃且项目处于快速发展阶段。提供详细文档和贡献指南，支持多平台和编辑器集成，具备较完善的开发和测试流程。",
+        "limitations": [
+          "目前仅支持基于 Moonshot AI Kimi 模型及兼容提供者，模型选择相对有限。",
+          "Windows 平台需预先安装 Git Bash，环境配置稍复杂。",
+          "存在较多未解决的公开问题，可能影响部分功能稳定性。",
+          "视频输入功能的具体支持格式和性能细节未详述，实际应用效果待验证。"
+        ],
+        "potential": [
+          "通过丰富插件生态和多模型支持，未来可扩展为多场景多语言的 AI 编码平台。",
+          "视频输入能力为多模态 AI 编码代理开辟新方向，具备创新潜力。",
+          "与主流编辑器深度集成，提升开发者工作流效率和体验。",
+          "持续社区活跃和贡献，有望快速迭代优化功能和稳定性。"
+        ]
+      },
+      {
+        "full_name": "1jehuang/jcode",
+        "tagline": "The most intelligent agent harness for code",
+        "overview": "jcode 是一个基于 Rust 语言开发的智能代码代理工具，旨在提升编程效率和技能上限。它支持多会话工作流，具有高度的可定制性和性能优化，适用于 Linux、macOS 和 Windows 平台。项目采用 MIT 许可证，活跃维护中，拥有较高的社区关注度和贡献度。",
+        "core_features": [
+          "支持多会话工作流，方便同时处理多个编程任务",
+          "高度可定制，用户可根据需求调整代理行为",
+          "性能和资源使用优化，尤其在内存使用方面表现优异",
+          "命令行界面（CLI）和终端用户界面（TUI）支持，方便开发者操作"
+        ],
+        "problems": [
+          "传统代码辅助工具在多会话场景下资源消耗较大，影响效率",
+          "现有 AI 编码代理缺乏足够的可定制性，难以满足复杂需求",
+          "部分工具启动速度慢，影响开发体验",
+          "跨平台支持不足，限制了用户群体"
+        ],
+        "use_cases": [
+          "软件开发者使用 AI 代理辅助代码编写和调试",
+          "需要同时管理多个编码任务的开发团队",
+          "希望通过命令行工具集成 AI 编码助手的用户",
+          "追求高性能和低资源消耗的开发环境"
+        ],
+        "audience": [
+          "软件工程师和开发者，尤其是熟悉命令行操作者",
+          "技术团队和项目经理，关注开发效率和工具性能",
+          "创业者和产品经理，寻求智能编码解决方案提升产品竞争力",
+          "开源社区成员和 AI 编码工具爱好者"
+        ],
+        "differentiators": [
+          "基于 Rust 开发，兼顾性能和资源效率",
+          "内存使用显著低于同类 AI 编码代理工具，支持大规模多会话",
+          "支持本地嵌入关闭模式，进一步降低资源消耗",
+          "提供丰富的安装方式和跨平台支持，易于部署"
+        ],
+        "quick_start": [
+          "macOS 和 Linux 用户可通过命令 curl -fsSL https://jcode.sh/install | bash 安装",
+          "Windows 11 用户可通过 PowerShell 执行 irm https://jcode.sh/install.ps1 | iex 安装",
+          "安装后即可在终端使用 jcode 命令启动代理",
+          "详细安装和配置指南可访问项目主页 https://jcode.sh"
+        ],
+        "maturity": "项目活跃且维护频繁，拥有超过一万颗星和上千次分叉，社区活跃，支持多平台，具备稳定的版本发布和持续更新。",
+        "limitations": [
+          "当前内存使用虽优于多数竞品，但开启本地嵌入时内存消耗仍较高",
+          "项目创建时间显示为未来时间，可能为元数据错误，需确认实际发布时间",
+          "部分高级功能和集成可能需要额外配置，门槛较高",
+          "依赖外部大型语言模型服务，可能受限于网络和服务稳定性"
+        ],
+        "potential": [
+          "进一步优化本地嵌入技术，降低内存和计算资源消耗",
+          "扩展更多 AI 模型和服务的支持，提升兼容性",
+          "增强用户界面和交互体验，吸引更广泛用户群",
+          "开发更多自动化和智能化功能，提升开发效率"
+        ]
+      },
+      {
+        "full_name": "Shubhamsaboo/awesome-llm-apps",
+        "tagline": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+        "overview": "该项目是一个包含超过100个开源AI代理、代理技能和基于检索增强生成（RAG）应用的集合，采用Apache-2.0许可证，支持多种大型语言模型（LLM）如Claude、Gemini、GPT、Llama等。项目提供了从简单的单文件启动代理到复杂的多代理系统，涵盖多种应用场景，旨在为开发者提供可直接克隆、运行和定制的AI代理模板。",
+        "core_features": [
+          "超过100个经过端到端测试的开源AI代理和技能模板，涵盖多种应用领域。",
+          "支持多种主流和开源大型语言模型，包括Claude、Gemini、GPT、DeepSeek、Llama、Qwen等。",
+          "提供单命令安装代理技能和快速启动示例，方便快速上手和集成。",
+          "所有技能和代理均通过安全性和评估持续集成（CI）门控，保证代码质量和安全。"
+        ],
+        "problems": [
+          "开发和部署多样化AI代理需要大量时间和专业知识，项目提供现成模板降低门槛。",
+          "不同LLM模型兼容性问题，项目支持多种模型以适应不同需求。",
+          "AI代理技能更新和自我优化难度大，项目包含自我改进技能示例。",
+          "缺乏统一的开源AI代理资源库，项目整合丰富资源便于查找和使用。"
+        ],
+        "use_cases": [
+          "自动化代码审查和项目管理，如项目墓地分析、范围蔓延检测等。",
+          "多模态内容生成和分析，如博客转播客、医学影像诊断、音乐生成等。",
+          "实时数据分析和金融市场监控，如股票分析和技术信号聚合。",
+          "多代理协作完成复杂任务，如家庭装修方案设计、深度研究和多任务协调。"
+        ],
+        "audience": [
+          "AI开发者和研究人员，寻求快速构建和测试多样化AI代理。",
+          "产品经理和创业者，关注AI代理在实际业务场景中的应用和落地。",
+          "教育和培训机构，用于教学和演示现代AI代理技术。",
+          "开源社区成员，贡献和共享AI代理技能和应用模板。"
+        ],
+        "differentiators": [
+          "涵盖广泛的AI代理和技能模板，数量超过100个，且持续更新。",
+          "支持多种主流和开源大型语言模型，兼容性强。",
+          "所有代码均经过安全和功能评估，保证质量和可靠性。",
+          "提供详细的快速启动指南和分步教程，降低使用门槛。"
+        ],
+        "quick_start": [
+          "通过npx命令快速为现有编码代理添加新技能，例如添加“项目墓地”技能。",
+          "克隆仓库后进入示例代理目录，安装依赖并使用Streamlit运行示例代理。",
+          "访问官方网站获取最新模板和教程，持续获取项目更新。",
+          "单文件启动代理支持仅需API密钥即可运行，方便快速试用。"
+        ],
+        "maturity": "项目自2024年4月创建，至2026年7月持续活跃，拥有超过12.6万星标和1.8万多次分叉，社区活跃度高，代码持续更新，具备较高的成熟度和广泛用户基础。",
+        "limitations": [
+          "README中未提供具体的性能指标和模型调用细节，缺乏量化评估数据。",
+          "项目依赖外部大型语言模型API，可能受限于模型服务的可用性和费用。",
+          "部分高级代理和技能可能需要较高的计算资源和技术门槛。",
+          "缺少对多语言支持的明确说明，主要以Python语言实现。"
+        ],
+        "potential": [
+          "随着大型语言模型和多模态技术的发展，项目可扩展更多智能代理和技能。",
+          "可结合更多行业垂直应用，推动AI代理在医疗、金融、教育等领域落地。",
+          "通过社区贡献持续丰富技能库，提升代理的智能化和自动化水平。",
+          "结合自动化测试和安全审计，增强项目的企业级应用能力。"
+        ]
+      },
+      {
+        "full_name": "ibelick/ui-skills",
+        "tagline": "Skills for Design Engineers",
+        "overview": "UI Skills 是一个面向设计工程师的技能集合项目，旨在通过命令行工具提供针对不同 UI 任务的技能支持，帮助用户快速调用和管理相关技能。",
+        "core_features": [
+          "提供命令行接口（CLI）以便快速访问和管理 UI 设计相关技能",
+          "支持按类别浏览和列出技能，例如运动（motion）类别",
+          "允许用户获取特定技能的基线信息，如 baseline-ui",
+          "通过 npx 命令直接运行，无需全局安装"
+        ],
+        "problems": [
+          "设计工程师在执行不同 UI 任务时缺乏统一的技能管理和调用工具",
+          "技能分散，难以快速找到适合当前任务的 UI 技能",
+          "缺少标准化的技能分类和访问方式"
+        ],
+        "use_cases": [
+          "设计工程师通过 CLI 快速调用适合当前任务的 UI 技能集",
+          "团队成员共享和统一 UI 设计技能标准",
+          "学习和了解不同类别的 UI 设计技能"
+        ],
+        "audience": [
+          "设计工程师",
+          "UI/UX 设计师",
+          "产品经理关注设计流程的人员",
+          "前端开发人员需要理解设计技能的技术人员"
+        ],
+        "differentiators": [
+          "专注于设计工程师的技能集合，针对 UI 设计任务提供定制化支持",
+          "通过命令行工具实现技能的快速调用和管理，提升效率",
+          "基于 TypeScript 开发，易于集成和扩展",
+          "活跃的社区支持，较高的星标数和活跃度"
+        ],
+        "quick_start": "运行命令 `npx ui-skills start` 即可启动工具，根据任务自动路由到合适的 UI 技能集。其他命令包括 `npx ui-skills categories` 查看技能类别，`npx ui-skills list --category motion` 列出运动类别技能，`npx ui-skills get baseline-ui` 获取特定技能信息。",
+        "maturity": "项目拥有超过6000颗星，260个分支，活跃更新，且最近一次提交在2026年7月，显示出较高的成熟度和社区活跃度。项目采用 MIT 许可证，适合商业和开源使用。",
+        "limitations": [
+          "README 信息较为简略，缺少详细的技能内容和使用示例",
+          "项目主要通过 CLI 交互，缺少图形界面支持",
+          "目前公开信息未显示与其他设计工具的集成情况",
+          "技能覆盖范围和深度未明确说明"
+        ],
+        "potential": [
+          "扩展更多 UI 设计技能类别和详细内容，丰富技能库",
+          "开发图形用户界面，提升用户体验",
+          "与主流设计和开发工具集成，实现无缝工作流",
+          "构建社区贡献机制，促进技能库持续更新和完善"
+        ]
+      },
+      {
+        "full_name": "OpenCut-app/OpenCut",
+        "tagline": "The open-source CapCut alternative",
+        "overview": "OpenCut 是一个免费且开源的视频编辑器，支持网页、桌面和移动端。项目正在从零开始重写，目标是实现统一代码库支持多平台，并引入插件架构和自动化功能。",
+        "core_features": [
+          "支持网页、桌面和移动端的视频编辑",
+          "计划提供编辑器 API 和插件优先架构",
+          "Rust 核心实现多平台统一代码库",
+          "支持自动化批量渲染和内置脚本编辑"
+        ],
+        "problems": [
+          "现有版本功能有限，需等待重写版本完成",
+          "当前架构尚在设计中，暂不接受外部贡献",
+          "重写版本尚未完全替代经典版本",
+          "需要用户适应新版本的开发和使用流程"
+        ],
+        "use_cases": [
+          "个人或团队进行跨平台视频编辑",
+          "开发者基于编辑器 API 开发第三方插件",
+          "自动化视频处理和批量渲染任务",
+          "集成 AI 代理进行智能视频编辑"
+        ],
+        "audience": [
+          "视频内容创作者和编辑者",
+          "开源软件爱好者和贡献者",
+          "需要跨平台视频编辑解决方案的用户",
+          "希望定制或扩展视频编辑功能的开发者"
+        ],
+        "differentiators": [
+          "开源且免费，定位为 CapCut 替代品",
+          "统一的 Rust 核心支持多平台",
+          "插件优先架构，支持第三方扩展",
+          "集成 AI 代理和自动化脚本功能"
+        ],
+        "quick_start": [
+          "安装 proto 工具管理依赖",
+          "运行 moon 命令启动网页、API 和桌面开发环境",
+          "访问经典版本以获得当前稳定体验",
+          "关注 Discord 社区获取最新进展和支持"
+        ],
+        "maturity": "项目处于重写阶段，当前稳定版本为经典版本。重写版本尚未完成，暂不接受外部贡献，适合关注和测试新架构的用户。",
+        "limitations": [
+          "重写版本功能不完整，尚未替代经典版本",
+          "不支持外部贡献，社区参与受限",
+          "当前版本可能缺少成熟的插件生态",
+          "需要一定技术背景才能参与开发和使用"
+        ],
+        "potential": [
+          "成为跨平台统一的视频编辑解决方案",
+          "构建丰富的插件生态系统",
+          "集成 AI 技术提升编辑智能化水平",
+          "支持自动化和批量处理提升效率"
+        ]
+      },
+      {
+        "full_name": "apache/ossie",
+        "tagline": "行业范围的规范化努力，标准化分析、AI 和 BI 平台之间语义元数据的交换，提供供应商中立的语义数据单一真实来源",
+        "overview": "Apache Ossie 是一个开源项目，致力于在数据分析、人工智能和商业智能生态系统中标准化和简化语义模型的交换和使用。它通过提供一个供应商中立的统一语义模型规范，促进不同工具和平台之间的互操作性和一致性，解决当前数据堆栈中语义碎片化的问题。",
+        "core_features": [
+          "提供基于 JSON 和 YAML 的统一语义模型规范，任何工具均可读写",
+          "包含核心规范文档和机器可读的模式文件（spec.md、spec.yaml、osi-schema.json）",
+          "提供参考转换器，可在 Ossie 规范与其他语义格式（如 dbt、GoodData、Polaris、Salesforce）之间转换",
+          "提供语义模型验证工具，确保模型符合 Ossie 规范"
+        ],
+        "problems": [
+          "不同工具中关键绩效指标（KPI）定义不一致，导致语义碎片化",
+          "团队需要花费大量时间手动协调和统一数据定义",
+          "AI 代理因业务逻辑不一致产生不可靠的输出",
+          "缺乏供应商中立的单一语义数据真实来源"
+        ],
+        "use_cases": [
+          "在多种分析、AI 和 BI 工具之间共享和交换统一的语义模型",
+          "自动化验证和转换语义模型以保证一致性",
+          "构建基于统一语义定义的跨平台数据应用和报告",
+          "减少团队在数据定义协调上的工作量，提高数据治理效率"
+        ],
+        "audience": [
+          "数据工程师和数据架构师，负责设计和维护语义模型",
+          "BI 和分析平台开发者，需支持统一语义模型的读写",
+          "AI 开发者，依赖一致的业务逻辑和数据定义",
+          "企业数据治理和数据管理团队"
+        ],
+        "differentiators": [
+          "作为 Apache 基金会项目，具备开放社区和规范驱动的开发模式",
+          "支持多种主流语义格式的转换，增强生态系统兼容性",
+          "提供机器可读的规范和验证工具，便于自动化集成",
+          "专注于供应商中立，避免被单一厂商绑定"
+        ],
+        "quick_start": "访问项目主页 https://ossie.apache.org/ 获取文档，克隆仓库后参考 core-spec 目录下的规范文档和示例，使用 converters 目录中的工具进行格式转换，利用 validation 目录中的工具验证语义模型。",
+        "maturity": "项目处于孵化阶段，活跃开发中，拥有超过1500颗星和活跃社区支持，定期更新，包含完整的规范文档和工具集。",
+        "limitations": [
+          "作为孵化项目，规范和工具可能仍在演进中，存在不稳定性",
+          "当前生态系统和工具链的支持范围有限，需社区进一步扩展",
+          "文档和示例主要集中在核心规范，缺乏丰富的行业应用案例",
+          "对非 JSON/YAML 格式的支持依赖转换器，可能存在转换误差"
+        ],
+        "potential": [
+          "成为数据分析和 AI 领域统一语义模型的行业标准",
+          "促进跨平台数据资产的互操作性和一致性",
+          "降低企业数据治理和协作的复杂度",
+          "推动更多工具和平台集成统一语义规范，形成生态闭环"
+        ]
+      },
+      {
+        "full_name": "MoonshotAI/kimi-cli",
+        "tagline": "Kimi Code CLI is your next CLI agent.",
+        "overview": "Kimi CLI 是一个基于终端的 AI 代理，旨在辅助软件开发任务和终端操作。它支持代码阅读与编辑、执行 shell 命令、网页搜索与抓取，并能在执行过程中自主规划和调整操作。项目使用 Python 开发，采用 Apache-2.0 许可证，拥有较高的社区关注度和活跃度。",
+        "core_features": [
+          "支持切换到 shell 命令模式，允许用户直接在 Kimi CLI 内执行 shell 命令（部分内置命令如 cd 尚未支持）。",
+          "提供 Visual Studio Code 扩展，实现与 VS Code 的集成。",
+          "支持 Agent Client Protocol（ACP），可与任何 ACP 兼容的编辑器或 IDE 集成，如 Zed 和 JetBrains 系列。",
+          "支持 Zsh 集成，通过专门的 zsh-kimi-cli 插件增强 shell 体验。"
+        ],
+        "problems": [
+          "传统终端操作与代码编辑分离，缺乏智能辅助工具。",
+          "开发者在多工具间切换效率低，缺少统一的 AI 终端代理解决方案。",
+          "现有 shell 命令执行环境功能有限，无法智能规划和调整操作流程。",
+          "集成 AI 助手到多种 IDE 和终端环境存在兼容性和配置复杂性问题。"
+        ],
+        "use_cases": [
+          "开发者在终端内通过 AI 代理辅助完成代码编辑、调试和执行命令。",
+          "通过 VS Code 扩展或 ACP 协议在主流 IDE 中集成智能终端代理。",
+          "利用 MCP 协议连接多种模型上下文服务器，扩展 AI 功能。",
+          "结合 Zsh 插件提升日常 shell 使用的智能化水平。"
+        ],
+        "audience": [
+          "软件开发者，尤其是喜欢在终端环境中工作的程序员。",
+          "需要在多种 IDE 中集成 AI 助手的开发团队和个人。",
+          "终端工具和 shell 插件的使用者，寻求智能化交互体验。",
+          "对 AI 驱动的开发辅助工具感兴趣的技术人员和产品经理。"
+        ],
+        "differentiators": [
+          "集成了多种终端操作和代码编辑功能，支持自主规划执行流程的 AI 代理。",
+          "支持多种集成方式，包括 VS Code 扩展、ACP 协议和 Zsh 插件，覆盖广泛的开发环境。",
+          "提供 MCP 协议支持，方便连接多种模型上下文服务器，增强 AI 能力。",
+          "项目活跃度高，社区关注度大，且正在向下一代 Kimi Code CLI 迁移，体现持续迭代能力。"
+        ],
+        "quick_start": "访问官方文档 https://moonshotai.github.io/kimi-cli/en/guides/getting-started.html，按照说明安装 Kimi CLI。安装后可通过命令行启动，按 Ctrl-X 切换到 shell 命令模式。可根据需求安装 VS Code 扩展或 Zsh 插件，配置 ACP 客户端实现 IDE 集成。",
+        "maturity": "项目拥有超过一万颗星，1200 多个分支，活跃的提交和持续集成状态，说明处于成熟且活跃的开发阶段。项目正在逐步迁移到下一代 Kimi Code CLI，表明技术路线和产品形态在持续演进中。",
+        "limitations": [
+          "内置 shell 命令支持尚不完整，如 cd 命令暂未支持。",
+          "项目正在逐步停用，用户被建议迁移到新项目 Kimi Code CLI，可能影响长期支持。",
+          "文档和示例主要集中于英文，非英语用户可能存在理解门槛。",
+          "对 MCP 服务器的配置和使用需要一定的技术背景，门槛较高。"
+        ],
+        "potential": [
+          "通过持续迭代和迁移到 Kimi Code CLI，未来可提供更强大和完善的 AI 终端代理功能。",
+          "扩展更多 shell 命令支持，提升终端操作的智能化和便捷性。",
+          "加强多 IDE 和编辑器的集成，覆盖更广泛的开发环境和用户群体。",
+          "优化用户体验和文档，降低使用门槛，吸引更多开发者采用。"
+        ]
+      }
+    ]
+  }
+}
