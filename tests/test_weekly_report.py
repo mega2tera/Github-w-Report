@@ -15,6 +15,15 @@ class TrendingParserTests(unittest.TestCase):
         parser.feed('<article><h2><a href="/acme/tool"> acme / tool </a></h2><span>1,234 stars this week</span></article>')
         self.assertEqual(parser.items, [{"full_name": "acme/tool", "weekly_stars": 1234}])
 
+    def test_ignores_sponsor_link_before_repository(self):
+        parser = TrendingParser()
+        parser.feed(
+            '<article><a href="/sponsors/acme">Sponsor</a>'
+            '<h2><a href="/acme/tool">acme/tool</a></h2>'
+            '<span>99 stars this week</span></article>'
+        )
+        self.assertEqual(parser.items, [{"full_name": "acme/tool", "weekly_stars": 99}])
+
 
 class RenderTests(unittest.TestCase):
     def test_writes_report_archive_and_snapshot(self):

@@ -52,8 +52,11 @@ class TrendingParser(HTMLParser):
         if tag == "a":
             href = attrs_dict.get("href") or ""
             if re.fullmatch(r"/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", href):
-                if not self.current.get("full_name"):
-                    self.current["full_name"] = href.strip("/")
+                candidate = href.strip("/")
+                owner = candidate.split("/", 1)[0].lower()
+                reserved = {"sponsors", "topics", "collections", "trending", "marketplace", "settings"}
+                if owner not in reserved and not self.current.get("full_name"):
+                    self.current["full_name"] = candidate
         self.capture_text = True
 
     def handle_data(self, data: str) -> None:
@@ -133,4 +136,3 @@ def collect_weekly_repositories(token: str = "", limit: int = 10) -> list[dict[s
         repo["weekly_stars"] = item["weekly_stars"]
         results.append(repo)
     return results
-
