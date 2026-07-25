@@ -1,0 +1,794 @@
+{
+  "date": "2026-07-25",
+  "repositories": [
+    {
+      "full_name": "bojieli/ai-agent-book",
+      "html_url": "https://github.com/bojieli/ai-agent-book",
+      "description": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
+      "homepage": "",
+      "language": "Python",
+      "stars": 19278,
+      "forks": 1920,
+      "open_issues": 9,
+      "topics": [
+        "agent",
+        "agent-memory",
+        "ai-agent",
+        "book",
+        "coding-agent",
+        "context-engineering",
+        "large-language-models",
+        "llm",
+        "mcp",
+        "multi-agent",
+        "multimodal",
+        "rag",
+        "reinforcement-learning"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2025-09-09T02:41:44Z",
+      "updated_at": "2026-07-25T04:26:35Z",
+      "pushed_at": "2026-07-25T04:01:49Z",
+      "archived": false,
+      "readme": "# 深入理解 AI Agent：设计原理与工程实践\n\n[![PDF](https://img.shields.io/badge/PDF-%E4%B8%8B%E8%BD%BD-success.svg)](#-电子书) [![在线阅读](https://img.shields.io/badge/🌐_在线阅读-bojieli.github.io-success?style=flat-square)](https://bojieli.github.io/ai-agent-book/) [![Stars](https://img.shields.io/github/stars/bojieli/ai-agent-book?style=social)](https://github.com/bojieli/ai-agent-book) [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE) [![Languages](https://img.shields.io/badge/翻译-7%20种%20语言-informational.svg)](#-电子书)\n\n**中文** ← 当前 · [English](docs/en/README.md) · [正体中文](docs/zh-TW/README.md) · [Русский](docs/ru/README.md) · [Tiếng Việt](docs/vi/README.md) · [தமிழ்](docs/ta/README.md) · [日本語](docs/ja/README.md)\n\n> 📥 **[下载 PDF / EPUB](#-电子书)**（推荐）— 推荐使用 PDF / EPUB 离线阅读，排版最佳；也可[在线阅读](https://bojieli.github.io/ai-agent-book/)（支持多语言切换、章节折叠、全文搜索，每次推送自动更新）。\n\n**Agent = LLM + 上下文 + 工具**——本书围绕这个核心公式，用 10 章把 AI Agent 从原理讲到工程实战。全书正文、配图、**92 个配套实验**全部开源，欢迎亲手把实验跑一遍。\n\n| 📚 **10 章** 正文，从基础到生产 | 📂 **92 个** 配套项目（70+ 可独立运行） | 🌐 **7 种** 语言：中 / 英 / 正体中文 / 俄 / 泰米尔 / 越 / 日 |\n| :---: | :---: | :---: |\n\n## 📖 电子书\n\n> 📥 **离线下载**（推荐，全书正文，开源免费）。以下链接始终指向 main 分支的最新构建；固定版本见 [Releases](https://github.com/bojieli/ai-agent-book/releases)：\n> - **中文（原版）**：[PDF](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-zh-CN.pdf) · [EPUB](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-zh-CN.epub)\n> - **英文**（社区翻译，by [@nsdevaraj](https://github.com/nsdevaraj)、[@whanyu1212](https://github.com/whanyu1212)）：[PDF](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-en.pdf) · [EPUB](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-en.epub)\n> - **正体中文**（社区翻译，by [@tigercosmos](https://github.com/tigercosmos)）：[PDF](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-zh-TW.pdf) · [EPUB](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-zh-TW.epub)\n> - **俄语**（社区翻译，by [@ui99ru](https://github.com/ui99ru)）：[PDF](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-ru.pdf) · [EPUB](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-ru.epub)\n> - **泰米尔语**（社区翻译，by [@nsdevaraj](https://github.com/nsdevaraj)）：[PDF](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-ta.pdf) · [EPUB](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-ta.epub)\n> - **越南语**（社区翻译，by [@toanalien](https://github.com/toanalien)）：[PDF](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-vi.pdf) · [EPUB](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-vi.epub)\n> - **日语**（社区翻译，by [@eltociear](https://github.com/eltociear)）：[PDF](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-ja.pdf) · [EPUB](https://github.com/bojieli/ai-agent-book/releases/download/latest/AI-Agents-in-Depth-ja.epub)\n>\n> 🌐 也可[在线阅读](https://bojieli.github.io/ai-agent-book/) — 支持多语言切换、章节折叠、全文搜索、配套实验直达，每次 main 分支推送后自动重新构建。\n\n中文正文源码位于 [`book/`](book/)；英文/正体中文/俄语/泰米尔/越南语/日语版本为社区贡献（可能滞后于中文原版），分别位于 [`book-en/`](book-en/)、[`book-zhtw/`](book-zhtw/)、[`book-ru/`](book-ru/)、[`book-ta/`](book-ta/)、[`book-vi/`](book-vi/)、[`book-ja/`](book-ja/)。\n\n可使用统一的构建脚本生成中文、英文、正体中文、俄语、泰米尔语、越南语和日语 EPUB 3 电子书。请参阅 [EPUB 构建说明](EPUB.md)。\n\n<details>\n<summary><b>🔧 想自行编译 PDF？</b>（需 pandoc / xelatex / ElegantBook）</summary>\n\n- **正文源码**：`book/introduction.md`（引言）、`book/chapter1.md` ~ `book/chapter10.md`（第一至第十章）、`book/afterword.md`（后记）\n- **编译**：安装 pandoc、xelatex、ElegantBook 文档类与相关字体后，运行\n\n  ```bash\n  cd book && bash build_pdf.sh\n  ```\n\n  图表由 `book/gen_*_figs.py` 生成、存于 `book/images/`，排版细节见 `book/preamble.tex` 与 `book/*.lua`。\n\n</details>\n\n## 📑 内容速览（第 1–10 章）\n\n全书围绕核心公式 **Agent = LLM + 上下文 + 工具** 展开，十章层层递进：\n\n| 章 | 主题 | 一句话核心 | 正文 | 代码 |\n| :--: | --- | --- | :--: | :--: |\n| 1 | 🚀 **Agent 基础知识** | **Agent = LLM + 上下文 + 工具**；Harness 工程才是竞争力 | [读](book/chapter1.md) | [4](chapter1/README.md) |\n| 2 | 🎯 **上下文工程** | 上下文决定能力上限：KV Cache、提示工程、Agent Skills、上下文压缩 | [读](book/chapter2.md) | [9](chapter2/README.md) |\n| 3 | 📚 **用户记忆和知识库** | 跨会话记住用户、接入外部知识：用户记忆、RAG、结构化索引、知识图谱 | [读](book/chapter3.md) | [13](chapter3/README.md) |\n| 4 | 🛠️ **工具** | 工具是 Agent 的双手：MCP 协议、感知/执行/协作三类工具、事件驱动异步 Agent、主动工具发现 | [读](book/chapter4.md) | [7](chapter4/README.md) |\n| 5 | 💻 **Coding Agent 与代码生成** | 代码是「能创造新工具的工具」，生产级 Coding Agent 全景 | [读](book/chapter5.md) | [12](chapter5/README.md) |\n| 6 | 🎯 **Agent 的评估** | 把表现变成可比较信号：评估环境、指标、统计显著性、评估驱动选型 | [读](book/chapter6.md) | [11](chapter6/README.md) |\n| 7 | 🧠 **模型后训练** | 预训练/SFT/RL 三阶段：何时选 SFT、何时选 RL，工具调用内化、样本效率 | [读](book/chapter7.md) | [16](chapter7/README.md) |\n| 8 | 🔄 **Agent 的持续进化** | 从运行轨迹获得学习信号，更新知识、指令、程序与参数 | [读](book/chapter8.md) | [8](chapter8/README.md) |\n| 9 | 🎙️ **多模态与实时交互** | 从文本扩展到语音、GUI、物理世界：语音三范式、Computer Use、机器人 | [读](book/chapter9.md) | [7](chapter9/README.md) |\n| 10 | 🤝 **多 Agent 协作** | 群体智能高于个体：协作框架、上下文共享/隔离、涌现的「Agent 社会」 | [读](book/chapter10.md) | [7](chapter10/README.md) |\n\n> 💡 **读** = 在 GitHub 网页直接读章节正文（markdown）；**N** = 该章配套项目数，点击查看代码。项目类型说明（✅ 可运行 / 📖 复现 / 🚧 设计）见各章 README。\n>\n> 📚 如何高效阅读本书？详见 **[学习建议](docs/zh-CN/LEARNING.md)**（核心理念、学习路径、难度分级、实践建议）。\n\n## 🔑 API 密钥\n\n建议申请下面几个平台的 API Key 方便学习。模型选型可参考 [这篇指南](https://01.me/2025/07/llm-api-setup/)。\n\n| 平台 | 链接 | 特色 | 访问节点 |\n| --- | --- | --- | --- |\n| **Kimi**（月之暗面） | <https://platform.moonshot.cn/> | Kimi 系列，Coding、Agent 能力强 | 中国大陆 |\n| **智谱 GLM** | <https://open.bigmodel.cn/> | GLM-5.2 等，Coding、Agent 能力强 | 中国大陆 |\n| **Siliconflow** | <https://siliconflow.cn/> | 各种开源模型（DeepSeek、Qwen 等），中国大陆访问速度快 | 中国大陆 |\n| **DeepSeek** | <https://platform.deepseek.com/> | DeepSeek 官方 API | 全球 + 中国大陆 |\n| **Krill AI** | [www.krill-ai.com](https://www.krill-ai.com/register?invite=Q8D3L35725) | 一站式访问全球及国内主流模型（OpenAI、Claude、Gemini、Grok、Kimi、GLM、DeepSeek、Qwen、Minimax） | 全球 + 中国大陆 |\n| **OpenRouter** | <https://openrouter.ai/> | 一站式访问全球及国内主流模型（GPT、Claude、Gemini、Kimi、GLM、DeepSeek、Qwen 等） | 全球 |\n\n## 💎 赞助商\n\n感谢 **Krill AI** 赞助本项目！Krill 提供 GPT / Claude / Gemini / 多款国产模型的官方稳定极速 API 中转服务，支持企业级定制、报销开票、7×16h 专属技术支持，更有独家适配的 WebSocket 连接方式，畅享极速首字速度。\n\nKrill 为本书读者提供特别优惠：使用[此链接](https://www.krill-ai.com/register?invite=Q8D3L35725)注册并在充值时填写优惠码「ai-agent-book」，首次购买 Codex 套餐可享 77 折优惠！\n\n## 📦 附录 · 外部仓库获取\n\n第 6、7、9、10 章的评测基准、训练框架、机器人平台等 19 个外部仓库**未内置**（出于体积与版权），需要自行克隆到对应目录。\n\n### 一键克隆脚本\n\n<details>\n<summary><b>🔧 展开克隆命令</b>（共 19 个外部仓库）</summary>\n\n```bash\n# 第 6 章 · 评测基准\ngit clone https://github.com/google-research/android_world.git         chapter6/android_world\ngit clone https://huggingface.co/datasets/gaia-benchmark/GAIA          chapter6/GAIA\ngit clone https://github.com/xlang-ai/OSWorld.git                      chapter6/OSWorld\ngit clone https://github.com/SWE-bench/SWE-bench.git                   chapter6/SWE-bench\ngit clone https://github.com/sierra-research/tau2-bench.git            chapter6/tau2-bench\ngit clone https://github.com/laude-institute/terminal-bench.git        chapter6/terminal-bench\n\n# 第 7 章 · 训练框架（bojieli/* 为本书适配的分支）\ngit clone https://github.com/bojieli/minimind.git                      chapter7/MiniMind-pretrain/minimind      # 实验 7-3 从零训 LLM\ngit clone https://github.com/bojieli/minimind-v.git                    chapter7/MiniMind-pretrain/minimind-v    # 实验 7-4 从零训 VLM（投影层）\ngit clone https://github.com/bojieli/AdaptThink.git                    chapter7/AdaptThink-original\ngit clone https://github.com/bojieli/AWorld.git                        chapter7/AWorld\ngit clone https://github.com/bojieli/SFTvsRL.git                       chapter7/SFTvsRL\ngit clone https://github.com/bojieli/verl.git                          chapter7/verl\ngit clone https://github.com/thinking-machines-lab/tinker-cookbook.git chapter7/tinker-cookbook\ngit clone https://github.com/19PINE-AI/rlvp.git                        chapter7/RLVP/rlvp                       # 实验 7-14 RLVP 论文代码\ngit clone https://github.com/PRIME-RL/SimpleVLA-RL.git                 chapter7/SimpleVLA-RL/SimpleVLA-RL       # 实验 7-13 视觉-语言-动作 RL\n\n# 第 9 章 · 浏览器自动化与 Claude 示例\ngit clone https://github.com/browser-use/browser-use.git               chapter9/browser-use\ngit clone https://github.com/anthropics/claude-quickstarts.git         chapter9/claude-quickstarts\n\n# 第 10 章 · 双 Agent 架构（已独立为 TalkAct 项目）+ 斯坦福 AI 小镇\ngit clone https://github.com/19PINE-AI/TalkAct.git                     chapter10/use-computer-while-calling\ngit clone https://github.com/joonspk-research/generative_agents.git    chapter10/generative_agents             # 实验 10-7 斯坦福 AI 小镇\n```\n\n> 各项目 README 如标注了特定 commit，请按说明 `git checkout` 到对应版本以保证复现一致。第 10 章 `use-computer-while-calling` 已发展为独立维护的 [19PINE-AI/TalkAct](https://github.com/19PINE-AI/TalkAct)，本仓库不内置该目录，用上面的克隆命令获取。\n\n</details>\n\n### 其它复现路径\n\n下面这些实验无专属 clone 命令，但有特定的复现方式：\n\n| 实验 | 类型 | 说明 |\n| --- | :--: | --- |\n| 6-2 / 6-3 / 6-4 / 6-9 | 📝 读者练习 | 人肉基准、记忆评估、JSON Cards vs RAG、记忆选型——改造复用第 3 章 `user-memory` / `user-memory-evaluation` / `contextual-retrieval` |\n| 5-12 | 📝 读者练习 | 能创造 Agent 的 Agent——基于 `chapter5/coding-agent` 自举扩展 |\n| 7-8 | 📝 读者练习 | Prompt 蒸馏——落地实现见 `chapter8/prompt-distillation`（跨章复用） |\n| 7-9 | 📝 读者练习 | CoT 蒸馏 `[扩展]`——配套实现见 `chapter7/cot-distillation`（含 SFT 数据生成与规则验证器） |\n| 6-11 | 🤖 仿真评估 | OpenVLA + RoboTwin2——VLA 训练/环境依赖见 `chapter7/SimpleVLA-RL` 的 README |\n| 9-8 / 9-9 | 🔧 真实硬件 | XLeRobot 遥操作与 LLM Agent 控制——需 SO-100 机械臂，[Teleop](https://xlerobot.readthedocs.io/en/latest/software/getting_started/XLeRobot_teleop.html) · [LLM Agent](https://xlerobot.readthedocs.io/en/latest/software/getting_started/LLM_agent.html) |\n| 9-10 | 🔧 真实硬件 | RGB 零样本 Sim2Real 抓取——[`StoneT2000/lerobot-sim2real`](https://github.com/StoneT2000/lerobot-sim2real)（仿真可纯 GPU，部署需 SO-100） |\n\n## 🤝 贡献\n\n本书与配套代码全部开源，非常欢迎社区通过 Pull Request 参与共建：\n\n| 类型 | 说明 |\n| --- | --- |\n| 📝 **书籍内容改进** | 勘误、补充、更清晰的表述，或新增前沿进展（正文见 `book/chapter*.md`） |\n| 🐛 **代码改进与 Bug 修复** | 让配套项目更健壮、更易用、更贴近生",
+      "rank": 1,
+      "weekly_stars": 17401
+    },
+    {
+      "full_name": "koala73/worldmonitor",
+      "html_url": "https://github.com/koala73/worldmonitor",
+      "description": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+      "homepage": "https://worldmonitor.app",
+      "language": "TypeScript",
+      "stars": 73459,
+      "forks": 11021,
+      "open_issues": 259,
+      "topics": [
+        "agent",
+        "ai",
+        "dashboard",
+        "geopolitics",
+        "mcp",
+        "mcp-server",
+        "monitoring",
+        "news",
+        "opensource",
+        "osint",
+        "palantir",
+        "situation"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2026-01-08T17:26:06Z",
+      "updated_at": "2026-07-25T04:24:56Z",
+      "pushed_at": "2026-07-25T04:26:39Z",
+      "archived": false,
+      "readme": "# World Monitor\n\n[简体中文](README.zh-CN.md)\n\n**Real-time global intelligence dashboard** — AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface.\n\n[![GitHub stars](https://img.shields.io/github/stars/koala73/worldmonitor?style=social)](https://github.com/koala73/worldmonitor/stargazers)\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat&logo=discord&logoColor=white)](https://discord.gg/re63kWKxaz)\n[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)\n[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)\n[![Last commit](https://img.shields.io/github/last-commit/koala73/worldmonitor)](https://github.com/koala73/worldmonitor/commits/main)\n[![Latest release](https://img.shields.io/github/v/release/koala73/worldmonitor?style=flat)](https://github.com/koala73/worldmonitor/releases/latest)\n[![npm: worldmonitor](https://img.shields.io/npm/v/worldmonitor?logo=npm&label=npm)](https://www.npmjs.com/package/worldmonitor)\n[![smithery badge](https://smithery.ai/badge/worldmonitor/wm-mcp)](https://smithery.ai/servers/worldmonitor/wm-mcp)\n[![skills.sh](https://skills.sh/b/koala73/worldmonitor)](https://skills.sh/koala73/worldmonitor)\n\n<p align=\"center\">\n  <a href=\"https://www.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Web_App-worldmonitor.app-blue?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Web App\"></a>&nbsp;\n  <a href=\"https://tech.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Tech_Variant-tech.worldmonitor.app-0891b2?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Tech Variant\"></a>&nbsp;\n  <a href=\"https://finance.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Finance_Variant-finance.worldmonitor.app-059669?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Finance Variant\"></a>&nbsp;\n  <a href=\"https://commodity.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Commodity_Variant-commodity.worldmonitor.app-b45309?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Commodity Variant\"></a>&nbsp;\n  <a href=\"https://happy.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Happy_Variant-happy.worldmonitor.app-f59e0b?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Happy Variant\"></a>&nbsp;\n  <a href=\"https://energy.worldmonitor.app\"><img src=\"https://img.shields.io/badge/Energy_Variant-energy.worldmonitor.app-eab308?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Energy Variant\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/worldmonitor\"><img src=\"https://img.shields.io/npm/v/worldmonitor?style=for-the-badge&logo=npm&logoColor=white&label=npm%20i%20worldmonitor&color=CB3837\" alt=\"npm i worldmonitor\"></a>&nbsp;\n  <a href=\"https://www.npmjs.com/package/worldmonitor\"><img src=\"https://img.shields.io/badge/CLI-npx%20worldmonitor-CB3837?style=for-the-badge&logo=npm&logoColor=white\" alt=\"npx worldmonitor\"></a>&nbsp;\n  <a href=\"https://pypi.org/project/worldmonitor-sdk/\"><img src=\"https://img.shields.io/pypi/v/worldmonitor-sdk?style=for-the-badge&logo=pypi&logoColor=white&label=pip%20install%20worldmonitor-sdk&color=3775A9\" alt=\"pip install worldmonitor-sdk\"></a>&nbsp;\n  <a href=\"https://rubygems.org/gems/worldmonitor\"><img src=\"https://img.shields.io/gem/v/worldmonitor?style=for-the-badge&logo=rubygems&logoColor=white&label=gem%20install%20worldmonitor&color=E9573F\" alt=\"gem install worldmonitor\"></a>&nbsp;\n  <a href=\"https://pkg.go.dev/github.com/koala73/worldmonitor/sdk/go\"><img src=\"https://img.shields.io/badge/go%20get-sdk%2Fgo-00ADD8?style=for-the-badge&logo=go&logoColor=white\" alt=\"go get github.com/koala73/worldmonitor/sdk/go\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.worldmonitor.app/api/download?platform=windows-exe\"><img src=\"https://img.shields.io/badge/Download-Windows_(.exe)-0078D4?style=for-the-badge&logo=windows&logoColor=white\" alt=\"Download Windows\"></a>&nbsp;\n  <a href=\"https://www.worldmonitor.app/api/download?platform=macos-arm64\"><img src=\"https://img.shields.io/badge/Download-macOS_Apple_Silicon-000000?style=for-the-badge&logo=apple&logoColor=white\" alt=\"Download macOS ARM\"></a>&nbsp;\n  <a href=\"https://www.worldmonitor.app/api/download?platform=macos-x64\"><img src=\"https://img.shields.io/badge/Download-macOS_Intel-555555?style=for-the-badge&logo=apple&logoColor=white\" alt=\"Download macOS Intel\"></a>&nbsp;\n  <a href=\"https://www.worldmonitor.app/api/download?platform=linux-appimage\"><img src=\"https://img.shields.io/badge/Download-Linux_(.AppImage)-FCC624?style=for-the-badge&logo=linux&logoColor=black\" alt=\"Download Linux\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.worldmonitor.app/docs/documentation\"><strong>Documentation</strong></a> &nbsp;·&nbsp;\n  <a href=\"https://github.com/koala73/worldmonitor/releases/latest\"><strong>Releases</strong></a> &nbsp;·&nbsp;\n  <a href=\"https://www.worldmonitor.app/docs/contributing\"><strong>Contributing</strong></a>\n</p>\n\n![World Monitor Dashboard](docs/images/worldmonitor-7-mar-2026.jpg)\n\n---\n\n## What It Does\n\n- **500+ curated news feeds** across 15 categories, AI-synthesized into briefs\n- **Dual map engine** — 3D globe (globe.gl) and WebGL flat map (deck.gl) with 56 map layer types\n- **Cross-stream correlation** — military, economic, disaster, and escalation signal convergence\n- **Country Instability Index (CII)** — server-authoritative CII v8 stress scoring for 31 Tier-1 countries\n- **Finance radar** — 29 stock exchanges, commodities, crypto, and 7-signal market composite\n- **Local AI** — run everything with Ollama, no API keys required\n- **6 site variants** from a single codebase (world, tech, finance, commodity, happy, energy)\n- **Native desktop app** (Tauri 2) for macOS, Windows, and Linux\n- **25 languages** with native-language feeds and RTL support\n\nFor the full feature list, architecture, data sources, and algorithms, see the **[documentation](https://www.worldmonitor.app/docs/documentation)**.\n\n---\n\n## Support Status\n\nAll site variants and desktop binaries are built from a single codebase and ship from the same release process. The table below clarifies maintenance status so you know which surfaces are safe to depend on.\n\n| Surface | Status | Notes |\n|---------|--------|-------|\n| `worldmonitor.app`, `tech.`, `finance.`, `commodity.`, `happy.`, `energy.` | Stable | Public deployments built from this repo, actively maintained |\n| Desktop binaries (Windows / macOS Apple Silicon / macOS Intel / Linux AppImage) | Stable | One Tauri binary that switches variants in-app; current CI release targets are `full` and `tech` |\n\nIssues filed against any of the above are triaged from the same backlog — see the [issues board](https://github.com/koala73/worldmonitor/issues) for currently-open work.\n\n---\n\n## Quick Start\n\n```bash\ngit clone https://github.com/koala73/worldmonitor.git\ncd worldmonitor\nnpm install\nnpm run dev\n```\n\nOpen [localhost:3000](http://localhost:3000) (override the port with `DEV_PORT` in `.env.local`). The app runs with no environment variables.\n\nFeature-specific data sources may require credentials. See `.env.example` for the full list.\n\nFor variant-specific development:\n\n```bash\nnpm run dev:tech       # tech.worldmonitor.app\nnpm run dev:finance    # finance.worldmonitor.app\nnpm run dev:commodity  # commodity.worldmonitor.app\nnpm run dev:happy      # happy.worldmonitor.app\nnpm run dev:energy     # energy.worldmonitor.app\n```\n\nSee the **[self-hosting guide](https://www.worldmonitor.app/docs/getting-started)** for deployment options (Vercel, Docker, static).\n\n---\n\n## Tech Stack\n\n| Category | Technologies |\n|----------|-------------|\n| **Frontend** | Vanilla TypeScript, Vite, globe.gl + Three.js, deck.gl + MapLibre GL |\n| **Desktop** | Tauri 2 (Rust) with Node.js sidecar |\n| **AI/ML** | Ollama / Groq / OpenRouter, Transformers.js (browser-side) |\n| **API Contracts** | Protocol Buffers (281 protos, 35 services), sebuf HTTP annotations |\n| **Deployment** | Vercel Edge Functions (60+), Railway relay, Tauri, PWA |\n| **Caching** | Redis (Upstash), 3-tier cache, CDN, service worker |\n\nFull stack details in the **[architecture docs](https://www.worldmonitor.app/docs/architecture)**.\n\n---\n\n## Programmatic Access\n\nWorld Monitor is built for agents and scripts as well as browsers:\n\n- **MCP server** — `https://worldmonitor.app/mcp` (Streamable HTTP). Public `tools/list`; `tools/call` authenticates with a `X-WorldMonitor-Key` header or OAuth.\n- **REST API** — base `https://api.worldmonitor.app`, described by the [OpenAPI spec](https://worldmonitor.app/openapi.yaml).\n- **CLI** — the official [`worldmonitor`](https://www.npmjs.com/package/worldmonitor) npm package (source in [`cli/`](cli/)):\n\n  ```sh\n  npx worldmonitor tools          # run ad-hoc — list every MCP tool (no key needed)\n  npm install -g worldmonitor     # or install the `worldmonitor` (alias `wm`) command\n  worldmonitor risk IR --api-key wm_xxx\n  ```\n\n- **SDKs** — official zero-dependency client libraries mirroring the CLI: Python [`worldmonitor-sdk`](https://pypi.org/project/worldmonitor-sdk/) (source in [`sdk/python/`](sdk/python/)), Ruby [`worldmonitor`](https://rubygems.org/gems/worldmonitor) ([`sdk/ruby/`](sdk/ruby/)), Go [`github.com/koala73/worldmonitor/sdk/go`](https://pkg.go.dev/github.com/koala73/worldmonitor/sdk/go) ([`sdk/go/`](sdk/go/)). Guide: [worldmonitor.app/docs/sdks](https://www.worldmonitor.app/docs/sdks).\n\nAgent discovery files: [`llms.txt`](https://worldmonitor.app/llms.txt) · [agent-skills manifest](https://worldmonitor.app/.well-known/agent-skills/index.json) · [api-catalog](https://worldmonitor.app/.well-known/api-catalog). Get an API key at [worldmonitor.app/pro](https://www.worldmonitor.app/pro).\n\n---\n\n## Flight Data\n\nFlight data provided graciously by [Wingbits](https://wingbits.com?utm_source",
+      "rank": 2,
+      "weekly_stars": 10936
+    },
+    {
+      "full_name": "tirth8205/code-review-graph",
+      "html_url": "https://github.com/tirth8205/code-review-graph",
+      "description": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.",
+      "homepage": "https://code-review-graph.com",
+      "language": "Python",
+      "stars": 26255,
+      "forks": 2454,
+      "open_issues": 116,
+      "topics": [
+        "ai-coding",
+        "claude",
+        "claude-code",
+        "code-review",
+        "graphrag",
+        "incremental",
+        "knowledge-graph",
+        "llm",
+        "mcp",
+        "python",
+        "static-analysis",
+        "tree-sitter"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-26T17:25:13Z",
+      "updated_at": "2026-07-25T04:17:20Z",
+      "pushed_at": "2026-07-25T00:51:46Z",
+      "archived": false,
+      "readme": "<h1 align=\"center\">code-review-graph</h1>\n\n<a href=\"https://trendshift.io/repositories/23329?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-23329\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/23329\" alt=\"tirth8205%2Fcode-review-graph | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n<p align=\"center\">\n  <strong>Stop burning tokens. Start reviewing smarter.</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"README.md\">English</a> |\n  <a href=\"README.zh-CN.md\">简体中文</a> |\n  <a href=\"README.ja-JP.md\">日本語</a> |\n  <a href=\"README.ko-KR.md\">한국어</a> |\n  <a href=\"README.hi-IN.md\">हिन्दी</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://pypi.org/project/code-review-graph/\"><img src=\"https://img.shields.io/pypi/v/code-review-graph?style=flat-square&color=blue\" alt=\"PyPI\"></a>\n  <a href=\"https://pepy.tech/project/code-review-graph\"><img src=\"https://img.shields.io/pepy/dt/code-review-graph?style=flat-square\" alt=\"Downloads\"></a>\n  <a href=\"https://github.com/tirth8205/code-review-graph/stargazers\"><img src=\"https://img.shields.io/github/stars/tirth8205/code-review-graph?style=flat-square\" alt=\"Stars\"></a>\n  <a href=\"https://opensource.org/licenses/MIT\"><img src=\"https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square\" alt=\"MIT Licence\"></a>\n  <a href=\"https://github.com/tirth8205/code-review-graph/actions/workflows/ci.yml\"><img src=\"https://github.com/tirth8205/code-review-graph/actions/workflows/ci.yml/badge.svg\" alt=\"CI\"></a>\n  <a href=\"https://www.python.org/\"><img src=\"https://img.shields.io/badge/python-3.10%2B-blue.svg?style=flat-square\" alt=\"Python 3.10+\"></a>\n  <a href=\"https://modelcontextprotocol.io/\"><img src=\"https://img.shields.io/badge/MCP-compatible-green.svg?style=flat-square\" alt=\"MCP\"></a>\n  <a href=\"https://code-review-graph.com\"><img src=\"https://img.shields.io/badge/website-code--review--graph.com-blue?style=flat-square\" alt=\"Website\"></a>\n  <a href=\"https://discord.gg/3p58KXqGFN\"><img src=\"https://img.shields.io/badge/discord-join-5865F2?style=flat-square&logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/USAGE.md\">Usage</a> ·\n  <a href=\"docs/COMMANDS.md\">Commands</a> ·\n  <a href=\"docs/FAQ.md\">FAQ</a> ·\n  <a href=\"docs/TROUBLESHOOTING.md\">Troubleshooting</a> ·\n  <a href=\"docs/GITHUB_ACTION.md\">GitHub Action</a> ·\n  <a href=\"docs/REPRODUCING.md\">Reproducing the benchmarks</a> ·\n  <a href=\"docs/ROADMAP.md\">Roadmap</a>\n</p>\n\n<br>\n\nAI coding tools can end up re-reading large parts of your codebase on review tasks. `code-review-graph` fixes that. It builds a structural map of your code with [Tree-sitter](https://tree-sitter.github.io/tree-sitter/), tracks changes incrementally, and gives your AI assistant precise context via [MCP](https://modelcontextprotocol.io/) so it reads only what matters.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram1_before_vs_after.png\" alt=\"The Token Problem: 38x to 528x token reduction across 6 real repositories\" width=\"85%\" />\n</p>\n\n---\n\n## Quick Start\n\n```bash\npip install code-review-graph                     # or: pipx install code-review-graph\ncode-review-graph install          # auto-detects and configures all supported platforms\ncode-review-graph build            # parse your codebase\n```\n\nOne command sets up everything. `install` detects which AI coding tools you have, writes the correct MCP configuration for each one, installs platform-native hooks/skills where supported, and injects graph-aware instructions into your platform rules. It auto-detects whether you installed via `uvx` or `pip`/`pipx` and generates the right config. Restart your editor/tool after installing.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram8_supported_platforms.png\" alt=\"One Install, Every Platform: auto-detects Codex, Claude Code, CodeBuddy Code, Cursor, Windsurf, Zed, Continue, OpenCode, Antigravity, Gemini CLI, Qwen, Qoder, Kiro, and GitHub Copilot\" width=\"85%\" />\n</p>\n\nTo target a specific platform:\n\n```bash\ncode-review-graph install --platform codex       # configure only Codex\ncode-review-graph install --platform cursor      # configure only Cursor\ncode-review-graph install --platform claude-code  # configure only Claude Code\ncode-review-graph install --platform gemini-cli   # configure only Gemini CLI\ncode-review-graph install --platform kiro         # configure only Kiro\ncode-review-graph install --platform copilot      # configure only GitHub Copilot (VS Code)\ncode-review-graph install --platform copilot-cli  # configure only GitHub Copilot CLI\ncode-review-graph install --platform codebuddy    # configure only CodeBuddy Code\n```\n\nRequires Python 3.10+. For the best experience, install [uv](https://docs.astral.sh/uv/) (the MCP config will use `uvx` if available, otherwise falls back to the `code-review-graph` command directly).\n\nTo remove CRG from a Git or SVN project, use the symmetric uninstall command\nfrom anywhere inside its working tree. The target is normalized to the working\ntree root, and non-repository directories are refused. It removes only\nCRG-owned files and entries; unrelated MCP servers, hooks, skills, and JSONC\ncomments remain untouched. Shared configuration changes use atomic replacement\nso a failed write leaves the original file intact.\n\n```bash\ncode-review-graph uninstall --dry-run    # preview every action; write nothing\ncode-review-graph uninstall              # preview, ask for confirmation, then apply\ncode-review-graph uninstall --yes        # apply without prompting\ncode-review-graph uninstall --all-repos  # also clean every registered repository\ncode-review-graph uninstall --keep-data  # remove integrations but keep graph databases\ncode-review-graph uninstall --keep-user-configs --repo .  # clean this project only\n```\n\nThen open your project and ask your AI assistant:\n\n```\nBuild the code review graph for this project\n```\n\nThe initial build takes ~10 seconds for a 500-file project. After that, watch mode and supported hooks can keep the graph updated automatically.\n\n\n## How It Works\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram7_mcp_integration_flow.png\" alt=\"How your AI assistant uses the graph: User asks for review, AI checks MCP tools, graph returns blast radius and risk scores, AI reads only what matters\" width=\"80%\" />\n</p>\n\nYour repository is parsed into an AST with Tree-sitter, stored as a graph of nodes (functions, classes, imports) and edges (calls, inheritance, test coverage), then queried at review time to compute the minimal set of files your AI assistant needs to read.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram2_architecture_pipeline.png\" alt=\"Architecture pipeline: Repository to Tree-sitter Parser to SQLite Graph to Blast Radius to Minimal Review Set\" width=\"100%\" />\n</p>\n\n### Blast-radius analysis\n\nWhen a file changes, the graph traces every caller, dependent, and test that could be affected. This is the \"blast radius\" of the change. Your AI reads only these files instead of scanning the whole project.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram3_blast_radius.png\" alt=\"Blast radius visualization showing how a change to login() propagates to callers, dependents, and tests\" width=\"70%\" />\n</p>\n\n### Incremental updates in < 2 seconds\n\nWhen hooks or watch mode are enabled, file saves and supported commit hooks trigger incremental updates. The graph diffs changed files, finds their dependents via SHA-256 hash checks, and re-parses only what changed. A 2,900-file project re-indexes in under 2 seconds.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram4_incremental_update.png\" alt=\"Incremental update flow: supported hook or watch update triggers diff, finds dependents, re-parses only 5 files while 2,910 are skipped\" width=\"90%\" />\n</p>\n\n### The monorepo problem, solved\n\nLarge monorepos are where token waste is most painful. The graph cuts through the noise — 27,700+ files excluded from review context, only ~15 files actually read.\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram6_monorepo_funnel.png\" alt=\"code-review-graph repo: 208,821 source tokens funnel down to ~2,495 token graph responses — 93x fewer tokens per question\" width=\"80%\" />\n</p>\n\n### Broad language coverage + Jupyter notebooks\n\n<p align=\"center\">\n  <img src=\"diagrams/diagram9_language_coverage.png\" alt=\"Language coverage organized by category: Web, Backend, Systems, Mobile, Scripting, Config, plus Jupyter and Databricks notebook support\" width=\"90%\" />\n</p>\n\nParser support covers functions, classes, imports, call sites, inheritance, and test detection across the current parser surface, using Tree-sitter where available and targeted fallbacks where needed. Current support includes Python, JavaScript/TypeScript/TSX, Go, Rust, Java, C/C++, C#, VB.NET, Ruby, Kotlin, Swift, PHP, Scala, Solidity, Dart, R, Perl, Lua/Luau, Objective-C, shell scripts, Elixir, Zig, PowerShell, Julia, ReScript, GDScript, Nix, Verilog/SystemVerilog, SQL, Terraform/OpenTofu structure (`.tf`; generic `.hcl` files are recognized as file nodes), Ansible playbooks/roles/tasks, Vue/Svelte SFCs, Astro files parsed through the TypeScript parser, Jupyter/Databricks notebooks (`.ipynb`), and Perl XS files (`.xs`). Generic YAML is not treated as source code.\n\nPHP projects additionally get repository-bounded Composer PSR-4 resolution,\nBlade template references, and Laravel Route/Eloquent semantic edges when the\nsource includes explicit framework imports, model inheritance, and receiver\nevidence.\n\n### Add your own language (no fork needed)\n\nIf your repo uses a language the parser does not cover yet, drop a `languages.toml` into `.code-review-graph/` mapping file extensions to any grammar bundled in `tree_sitter_language_pack`, plus the tree-sitter node types for functions, classes, imports, and calls:\n\n```toml\n[languages.erlang]\nextensions = [\".erl\"]\ngrammar = \"erlang\"\nfunction_node_types = [\"function_clause\"]\nclass_node_types = [\"record_decl\"]\nimport_node_types = [\"import_attribute\"]\nca",
+      "rank": 3,
+      "weekly_stars": 6565
+    },
+    {
+      "full_name": "MoonshotAI/kimi-code",
+      "html_url": "https://github.com/MoonshotAI/kimi-code",
+      "description": "Kimi Code CLI  —  The Starting Point for Next-Gen Agents",
+      "homepage": "https://moonshotai.github.io/kimi-code/",
+      "language": "TypeScript",
+      "stars": 4960,
+      "forks": 722,
+      "open_issues": 776,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-05-22T08:02:03Z",
+      "updated_at": "2026-07-25T04:25:55Z",
+      "pushed_at": "2026-07-24T18:15:07Z",
+      "archived": false,
+      "readme": "# Kimi Code CLI\n\n[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Docs](https://img.shields.io/badge/docs-online-blue)](https://moonshotai.github.io/kimi-code/en/) <br>\n[Documentation](https://moonshotai.github.io/kimi-code/en/) · [Issues](https://github.com/MoonshotAI/kimi-code/issues) · [中文](README.zh-CN.md)\n\n![Demo of using Kimi Code](./docs/media/intro.gif)\n\n## What is Kimi Code CLI\n\nKimi Code CLI is an AI coding agent that runs in your terminal — it can read and edit code, run shell commands, search files, fetch web pages, and choose the next step based on the feedback it receives. It works out of the box with Moonshot AI’s Kimi models and can also be configured to use other compatible providers.\n\n## Install\n\nInstall with the official script. No Node.js required.\n\n- **macOS or Linux**:\n\n```sh\ncurl -fsSL https://code.kimi.com/kimi-code/install.sh | bash\n```\n\n- **Windows (PowerShell)**:\n\n```powershell\nirm https://code.kimi.com/kimi-code/install.ps1 | iex\n```\n\n> On Windows, install [Git for Windows](https://gitforwindows.org/) before first launch because Kimi Code CLI uses the bundled Git Bash as its shell environment. If Git Bash is installed in a custom location, set `KIMI_SHELL_PATH` to the absolute path of `bash.exe`.\n\nThen, run it with a new shell session:\n\n```sh\nkimi --version\n```\n\nFor npm install, upgrade, uninstall, see [Getting Started](https://moonshotai.github.io/kimi-code/en/guides/getting-started).\n\n## Quick Start\n\nOpen a project and start the interactive UI:\n\n```sh\ncd your-project\nkimi\n```\n\nOn first launch, run `/login` inside Kimi Code CLI and choose either Kimi Code OAuth or a Moonshot AI Open Platform API key. After login, try your first task:\n\n```\nTake a look at this project and explain its main directories.\n```\n\n## Key Features\n\n- **Single-binary distribution.** Install with one command: no Node.js setup, PATH gymnastics, or global module conflicts.\n- **Blazing-fast startup.** The TUI is ready in milliseconds, so starting a session never feels heavy.\n- **Purpose-built TUI.** A carefully tuned interface, optimized end to end for long, focused agent sessions.\n- **Video input.** Drop a screen recording or demo clip into the chat and let the agent watch what is hard to describe in words — turn a reference clip into a LUT, a long video into a short, a screen recording into working code, and more.\n- **AI-native MCP configuration.** Add, edit, and authenticate Model Context Protocol servers conversationally with `/mcp-config`, without hand-editing JSON.\n- **Rich plugin ecosystem.** Install skills, MCP servers, and data sources from the marketplace or any GitHub repo, with each install's trust level surfaced up front.\n- **Subagents for focused, parallel work.** Dispatch built-in `coder`, `explore`, and `plan` subagents in isolated contexts while keeping the main conversation clean.\n- **Lifecycle hooks.** Run local commands at key points to gate risky tool calls, audit decisions, trigger desktop notifications, or connect to your own automation.\n- **Editor & IDE integration (ACP).** Drive a Kimi Code CLI session straight from Zed, JetBrains, or any [Agent Client Protocol](https://agentclientprotocol.com/) client with `kimi acp`.\n\n## Use it in your editor (ACP)\n\nKimi Code CLI speaks the [Agent Client Protocol](https://agentclientprotocol.com/), so ACP-compatible editors and IDEs (Zed, JetBrains, …) can drive a session over stdio. Log in once, then point your editor at the `kimi acp` subcommand — no extra login needed.\n\nFor Zed, add this to `~/.config/zed/settings.json`:\n\n```json\n{\n  \"agent_servers\": {\n    \"Kimi Code CLI\": {\n      \"type\": \"custom\",\n      \"command\": \"kimi\",\n      \"args\": [\"acp\"],\n      \"env\": {}\n    }\n  }\n}\n```\n\nThen open a new conversation in Zed's Agent panel. See [Using in IDEs](https://moonshotai.github.io/kimi-code/en/guides/ides) for JetBrains setup and troubleshooting, and the [`kimi acp` reference](https://moonshotai.github.io/kimi-code/en/reference/kimi-acp) for the full capability matrix.\n\n## Docs\n\n- [Getting Started](https://moonshotai.github.io/kimi-code/en/guides/getting-started)\n- [Interaction and approvals](https://moonshotai.github.io/kimi-code/en/guides/interaction)\n- [Sessions](https://moonshotai.github.io/kimi-code/en/guides/sessions)\n- [Using in IDEs (ACP)](https://moonshotai.github.io/kimi-code/en/guides/ides)\n- [Configuration](https://moonshotai.github.io/kimi-code/en/configuration/config-files)\n- [Command reference](https://moonshotai.github.io/kimi-code/en/reference/kimi-command)\n\n## Develop\n\nRequirements: Node.js ≥ 24.15.0, pnpm 10.33.0.\n\n```sh\ngit clone https://github.com/MoonshotAI/kimi-code.git\ncd kimi-code\npnpm install\n```\n\n```sh\npnpm dev:cli    # run the CLI in dev mode\npnpm test       # run tests\npnpm typecheck  # TypeScript check\npnpm lint       # oxlint\npnpm build      # build all packages\n```\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for the full contribution guide.\n\n## Community\n\n- [Issues](https://github.com/MoonshotAI/kimi-code/issues)\n- For security vulnerabilities, see [SECURITY.md](SECURITY.md).\n\n## Acknowledgements\n\nOur TUI is built on top of [`pi-tui`](https://github.com/earendil-works/pi-mono/tree/main/packages/tui). We thank the authors of `pi-tui` for their valuable work.\n\n## License\n\nReleased under the [MIT License](LICENSE).\n",
+      "rank": 4,
+      "weekly_stars": 1589
+    },
+    {
+      "full_name": "1jehuang/jcode",
+      "html_url": "https://github.com/1jehuang/jcode",
+      "description": "The most intelligent agent harness for code",
+      "homepage": "https://jcode.sh",
+      "language": "Rust",
+      "stars": 11255,
+      "forks": 1230,
+      "open_issues": 128,
+      "topics": [
+        "ai",
+        "ai-agent",
+        "ai-coding-agent",
+        "claude",
+        "cli",
+        "coding-agent",
+        "llm",
+        "mcp",
+        "openai",
+        "rust",
+        "terminal",
+        "tui"
+      ],
+      "license": "MIT",
+      "created_at": "2026-01-05T09:43:36Z",
+      "updated_at": "2026-07-25T04:23:41Z",
+      "pushed_at": "2026-07-25T04:15:21Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n# jcode\n\n[![Latest Release](https://badgen.net/github/release/1jehuang/jcode?icon=github)](https://github.com/1jehuang/jcode/releases)\n[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)\n[![Platforms](https://img.shields.io/badge/platforms-Linux%20%7C%20macOS%20%7C%20Windows-blue?style=flat-square)](https://github.com/1jehuang/jcode/releases)\n[![Last Commit](https://badgen.net/github/last-commit/1jehuang/jcode/master?icon=github)](https://github.com/1jehuang/jcode/commits/master)\n[![GitHub Stars](https://badgen.net/github/stars/1jehuang/jcode?icon=github)](https://github.com/1jehuang/jcode/stargazers)\n[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/nBe9vGyK9a)\n\nThe next generation coding agent harness to raise the skill ceiling. <br>\nBuilt for multi-session workflows, infinite customizability, and performance. \n\n<br>\n\n<a href=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-memory-demo.mp4\">\n  <img src=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-memory-demo.webp\" alt=\"jcode memory demonstration\" width=\"800\">\n</a>\n\n<br>\n\n[Website](https://jcode.sh) · [Docs](https://jcode.sh/docs) · [Benchmarks](https://jcode.sh/bench) · [Features](#features) · [Install](#installation) · [Quick Start](#quick-start) · [Further Reading](#further-reading) · [Contributing](CONTRIBUTING.md)\n\n</div>\n\n---\n\n<div align=\"center\">\n\n## Installation\n\n</div>\n\n```bash\n# macOS & Linux\ncurl -fsSL https://jcode.sh/install | bash\n```\n\n```powershell\n# Windows 11 (PowerShell 5.1+)\nirm https://jcode.sh/install.ps1 | iex\n```\n\nNeed Homebrew, source builds, provider setup, or want an agent to set it up for you?\n[Jump to detailed installation](#detailed-installation).\n\n---\n\n\n<div align=\"center\">\n\n## Performance & Resource Efficiency\n\n</div>\n\njcode is built to be as performant and resource efficient as possible. Every metric is optimized to the bone, which is important for scaling multi-session workflows. Here we sample a few metrics to show the difference: RAM usage and boot up.\n\n### RAM comparison\n\n<div align=\"center\">\n\n<table>\n  <tr>\n    <td valign=\"top\" align=\"center\" width=\"50%\">\n      <strong>1 active session</strong>\n      <table>\n        <thead>\n          <tr>\n            <th>Tool</th>\n            <th>PSS</th>\n            <th>Comparison</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td><strong>jcode (local embedding off)</strong></td>\n            <td align=\"right\"><strong>27.8 MB</strong></td>\n            <td align=\"right\">baseline</td>\n          </tr>\n          <tr>\n            <td><strong>jcode</strong></td>\n            <td align=\"right\"><strong>167.1 MB</strong></td>\n            <td align=\"right\"><strong>6.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>pi</strong></td>\n            <td align=\"right\"><strong>144.4 MB</strong></td>\n            <td align=\"right\"><strong>5.2× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Codex CLI</strong></td>\n            <td align=\"right\"><strong>140.0 MB</strong></td>\n            <td align=\"right\"><strong>5.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>OpenCode</strong></td>\n            <td align=\"right\"><strong>371.5 MB</strong></td>\n            <td align=\"right\"><strong>13.4× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>GitHub Copilot CLI</strong></td>\n            <td align=\"right\"><strong>333.3 MB</strong></td>\n            <td align=\"right\"><strong>12.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Cursor Agent</strong></td>\n            <td align=\"right\"><strong>214.9 MB</strong></td>\n            <td align=\"right\"><strong>7.7× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Claude Code</strong></td>\n            <td align=\"right\"><strong>386.6 MB</strong></td>\n            <td align=\"right\"><strong>13.9× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Antigravity CLI</strong></td>\n            <td align=\"right\"><strong>243.7 MB</strong></td>\n            <td align=\"right\"><strong>8.8× more RAM</strong></td>\n          </tr>\n        </tbody>\n      </table>\n    </td>\n    <td width=\"24\"></td>\n    <td valign=\"top\" align=\"center\" width=\"50%\">\n      <strong>10 active sessions</strong>\n      <table>\n        <thead>\n          <tr>\n            <th>Tool</th>\n            <th>PSS</th>\n            <th>Comparison</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td><strong>jcode (local embedding off)</strong></td>\n            <td align=\"right\"><strong>117.0 MB</strong></td>\n            <td align=\"right\">baseline</td>\n          </tr>\n          <tr>\n            <td><strong>jcode</strong></td>\n            <td align=\"right\"><strong>260.8 MB</strong></td>\n            <td align=\"right\"><strong>2.2× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>pi</strong></td>\n            <td align=\"right\"><strong>833.0 MB</strong></td>\n            <td align=\"right\"><strong>7.1× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Codex CLI</strong></td>\n            <td align=\"right\"><strong>334.8 MB</strong></td>\n            <td align=\"right\"><strong>2.9× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>OpenCode</strong></td>\n            <td align=\"right\"><strong>3237.2 MB</strong></td>\n            <td align=\"right\"><strong>27.7× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>GitHub Copilot CLI</strong></td>\n            <td align=\"right\"><strong>1756.5 MB</strong></td>\n            <td align=\"right\"><strong>15.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Cursor Agent</strong></td>\n            <td align=\"right\"><strong>1632.4 MB</strong></td>\n            <td align=\"right\"><strong>14.0× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Claude Code</strong></td>\n            <td align=\"right\"><strong>2300.6 MB</strong></td>\n            <td align=\"right\"><strong>19.7× more RAM</strong></td>\n          </tr>\n          <tr>\n            <td><strong>Antigravity CLI</strong></td>\n            <td align=\"right\"><strong>1021.2 MB</strong></td>\n            <td align=\"right\"><strong>8.7× more RAM</strong></td>\n          </tr>\n        </tbody>\n      </table>\n    </td>\n  </tr>\n</table>\n\n</div>\n\n### Time to first frame\n\n<div align=\"center\">\n\n| Tool | Time to first frame | Range | Comparison |\n|---|---:|---:|---:|\n| **jcode** | **14.0 ms** | 10.1–19.3 ms | baseline |\n| **Antigravity CLI** | **383.5 ms** | 363.1–415.4 ms | **27.4× slower** |\n| **pi** | **590.7 ms** | 369.6–934.8 ms | **42.2× slower** |\n| **Codex CLI** | **882.8 ms** | 742.3–1640.9 ms | **63.1× slower** |\n| **OpenCode** | **1035.9 ms** | 922.5–1104.4 ms | **74.0× slower** |\n| **GitHub Copilot CLI** | **1518.6 ms** | 1357.4–1826.8 ms | **108.5× slower** |\n| **Cursor Agent** | **1949.7 ms** | 1711.0–2104.8 ms | **139.3× slower** |\n| **Claude Code** | **3436.9 ms** | 2032.7–8927.2 ms | **245.5× slower** |\n\n</div>\n\nMeasured on this Linux machine across 10 interactive PTY launches.\n\n### Time to first input\n(time until typed probe text appears on the rendered screen; Antigravity uses its internal input-ready log marker because the sign-in screen suppresses probe echo.)\n<div align=\"center\">\n\n| Tool | Time to first input | Range | Comparison |\n|---|---:|---:|---:|\n| **jcode** | **48.7 ms** | 30.3–62.7 ms | baseline |\n| **Antigravity CLI** | **383.7 ms** | 363.4–415.7 ms | **7.9× slower** |\n| **pi** | **596.4 ms** | 373.9–955.2 ms | **12.2× slower** |\n| **Codex CLI** | **905.8 ms** | 760.1–1675.7 ms | **18.6× slower** |\n| **OpenCode** | **1047.9 ms** | 931.1–1116.9 ms | **21.5× slower** |\n| **GitHub Copilot CLI** | **1583.4 ms** | 1422.8–1880.0 ms | **32.5× slower** |\n| **Cursor Agent** | **1978.7 ms** | 1727.3–2130.0 ms | **40.6× slower** |\n| **Claude Code** | **3512.8 ms** | 2137.4–9002.0 ms | **72.2× slower** |\n\n</div>\n\nMeasured on this Linux machine across 10 interactive PTY launches. Antigravity CLI was unauthenticated for this run; its sign-in screen rendered normally and emitted an internal `CLI ready for user input` marker, but did not echo the typed probe.\n\n### Additional clients / memory scaling\n\n<div align=\"center\">\n\n| Tool | Extra PSS per added session | Comparison |\n|---|---:|---:|\n| **jcode (local embedding off)** | **~9.9 MB** | baseline |\n| **jcode** | **~10.4 MB** | **1.1× more RAM** |\n| **pi** | **~76.5 MB** | **7.7× more RAM** |\n| **Codex CLI** | **~21.6 MB** | **2.2× more RAM** |\n| **OpenCode** | **~318.4 MB** | **32.2× more RAM** |\n| **GitHub Copilot CLI** | **~158.1 MB** | **16.0× more RAM** |\n| **Cursor Agent** | **~157.5 MB** | **15.9× more RAM** |\n| **Claude Code** | **~212.7 MB** | **21.5× more RAM** |\n| **Antigravity CLI** | **~86.4 MB** | **8.7× more RAM** |\n\n</div>\nversions tested for this corrected memory rerun:\n\n- `jcode v0.9.1888-dev (be386f2)`\n- `pi 0.62.0`\n- `codex-cli 0.120.0`\n- `opencode 1.0.203`\n- `GitHub Copilot CLI 1.0.24` for the 1-session rerun, `GitHub Copilot CLI 1.0.27` for the 10-session rerun\n- `Cursor Agent 2026.04.08-a41fba1`\n- `Claude Code 2.1.86 (Claude Code)`\n- `Antigravity CLI 1.0.0`\n\n<div align=\"center\">\n\n  <a href=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-performance-demo.mp4\">\n    <img src=\"https://github.com/1jehuang/jcode/releases/download/readme-assets/jcode-performance-demo.webp\" alt=\"jcode performance demonstration\" width=\"900\">\n  </a>\n\n  <p><em>jcode performance demonstration</em></p>\n\n</div>\n\n\n---\n\n## Memory (Agent memory)\n\nJcode embeds each turn/response as a semantic vector. Every turn does queries a graph of memories to efficiently find related memor",
+      "rank": 5,
+      "weekly_stars": 2773
+    },
+    {
+      "full_name": "diegosouzapw/OmniRoute",
+      "html_url": "https://github.com/diegosouzapw/OmniRoute",
+      "description": "Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors",
+      "homepage": "https://omniroute.online",
+      "language": "TypeScript",
+      "stars": 29033,
+      "forks": 3799,
+      "open_issues": 285,
+      "topics": [
+        "a2a",
+        "ai-agents",
+        "ai-gateway",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "cline",
+        "codex",
+        "copilot",
+        "cursor",
+        "deepseek",
+        "free-ai",
+        "gemini",
+        "kimi",
+        "llm-gateway",
+        "mcp",
+        "openai",
+        "openai-proxy",
+        "qwen",
+        "token-saver"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-13T12:38:31Z",
+      "updated_at": "2026-07-25T04:26:04Z",
+      "pushed_at": "2026-07-25T00:16:34Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n<img src=\"./docs/screenshots/MainOmniRoute.png\" alt=\"OmniRoute Dashboard\" width=\"820\"/>\n\n<br/>\n<br/>\n\n# 🚀 OmniRoute — The Free AI Gateway\n\n<img src=\"./docs/diagrams/readme-hero.svg\" width=\"100%\" alt=\"OmniRoute — Never stop coding. Every AI tool → 290 providers — 90+ free — through one endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity into FREE Claude / GPT / Gemini with auto-fallback. RTK + Caveman stacked compression saves 15–95% tokens (~89% avg) — never hit limits. 290 AI providers · 90+ free tiers · ~1.53B free tokens/mo · 19 routing strategies · $0 to start.\"/>\n\n</div>\n\n<div align=\"center\">\n\n## 💰 ~1.53B Free Tokens / Month\n\n</div>\n\n> Stacking free tiers by hand is painful — dozens of SDKs, dozens of rate limits, and no idea how much you actually have. OmniRoute aggregates the **documented** free tiers of **43 provider pools / 516 models** into one honest number and shows it live on the dashboard (`/dashboard/free-tiers`).\n\n<img src=\"./docs/diagrams/free-tier-budget.svg\" width=\"100%\" alt=\"OmniRoute free-tier budget card: ~1.53B free tokens per month steady, up to ~2.15B in the first month with signup credits, from the documented free tiers of 43 provider pools / 516 models behind one endpoint. Honest pool-deduped math — each shared pool counted once (counting every rate limit 24/7 would read ~10B; not published), 15 providers ToS-flagged so you decide. Budget bar of the countable free pools with per-model grid (Mistral Large 3 1B, GPT-4o mini 150M, Gemini 2.5 Flash 60M … Claude Sonnet 4.5 25K), one-time first-month signup credits (vertex 300M, agentrouter 200M, predibase 25M, together 25M, glm-cn 20M, doubao 15M, ai21 10M, longcat 10M, deepseek 5M, hyperbolic 5M, nscale 5M), plus permanently-free no-token-cap providers (SiliconFlow, Z.AI GLM-Flash, Kilo, OpenCode Zen, baidu …) and a $10 OpenRouter top-up unlocking +24M/mo — surfaced separately so they never inflate the headline. Live used/remaining on /dashboard/free-tiers.\"/>\n\n> Animated summary of the live `/dashboard/free-tiers` page. Full methodology (pool dedupe, credit tiers, provider terms): **[docs/reference/FREE_TIERS.md](docs/reference/FREE_TIERS.md)**.\n>\n> <sub>These figures are re-audited every two weeks against the live catalog and **move both ways** — a provider ends a free tier and the number drops; a new one lands and it climbs. We publish what the catalog actually computes, never a rounded-up best case.</sub>\n\n<br/>\n\n<div align=\"center\">\n\n<h3>\n\n⭐ Star the repo if OMNIROUTE helped you save money and make your work easier.\n\n</h3>\n\n[![Stars](https://img.shields.io/github/stars/diegosouzapw/OmniRoute?style=social)](https://github.com/diegosouzapw/OmniRoute)\n<a href=\"https://trendshift.io/repositories/23589\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/23589\" alt=\"diegosouzapw%2FOmniRoute | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n[![Star History Rank](https://api.star-history.com/badge?repo=diegosouzapw/OmniRoute&theme=dark)](https://www.star-history.com/diegosouzapw/omniroute)\n\n### 💬 Join the community\n\n**👋 Follow the maintainer — get new providers, releases & tips first:**\n\n[![Follow Diego on LinkedIn](https://img.shields.io/badge/Follow_Diego_on-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/diegosouzapw/)\n[![Follow @diegosouzapw on GitHub](https://img.shields.io/github/followers/diegosouzapw?style=for-the-badge&logo=github&logoColor=white&label=Follow%20on%20GitHub&color=181717)](https://github.com/diegosouzapw)\n\n[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/U47eFqAXCn)\n[![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/omnirouteOficial)\n[![WhatsApp Global](https://img.shields.io/badge/WhatsApp_Global-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t)\n[![WhatsApp Brasil](https://img.shields.io/badge/WhatsApp_Brasil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)\n[![Website](https://img.shields.io/badge/Website-omniroute.online-blue?logo=google-chrome&logoColor=white)](https://omniroute.online)\n\n**Questions, provider tips, roadmap & support → [Discord](https://discord.gg/U47eFqAXCn) · [Telegram](https://t.me/omnirouteOficial) · WhatsApp [🌍 Global](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t) / [🇧🇷 Brasil](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)**\n\n<br/>\n\n## 🧩 Available\n\n[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)\n![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)\n[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)\n![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)\n![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)\n\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"#-quick-start\"><b>🚀 Quick Start</b></a></td>\n    <td align=\"center\"><a href=\"#-combos--the-flagship\"><b>🎯 Combos</b></a></td>\n    <td align=\"center\"><a href=\"#-290-ai-providers--90-free\"><b>🌐 Providers</b></a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"#-full-cli--a2a--mcp\"><b>🔌 CLI &amp; MCP</b></a></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-save-1595-tokens--automatically\"><b>🗜️ Compression</b></a></td>\n    <td align=\"center\"><a href=\"https://omniroute.online\"><b>🌍 Website</b></a></td>\n  </tr>\n</table>\n\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"#-the-promise\">💥 The Promise</a></td>\n    <td align=\"center\"><a href=\"#-why-omniroute\">🤔 Why</a></td>\n    <td align=\"center\"><a href=\"#-what-sets-omniroute-apart\">🏆 What Sets Apart</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"#-compatible-clis--coding-agents\">🤖 Compatible CLIs</a></td>\n    <td align=\"center\"><a href=\"#%EF%B8%8F-where-omniroute-runs--anywhere\">🖥️ Where It Runs</a></td>\n    <td align=\"center\"><a href=\"#-private--local-first\">🔒 Private</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"#-omniroute-in-action\">🎬 In Action</a></td>\n    <td align=\"center\"><a href=\"#-dashboard-screenshots\">📸 Screenshots</a></td>\n    <td align=\"center\"><a href=\"#-support--community\">📧 Support</a></td>\n  </tr>\n</table>\n\n</div>\n\n<div align=\"center\">\n  <b>🌐 In 43 languages</b>\n  <br/><br/>\n  <a href=\"README.md\"><img src=\"docs/assets/flags/us.svg\" width=\"30\" alt=\"English (en)\" title=\"English (en)\"></a>\n  <a href=\"docs/i18n/pt-BR/README.md\"><img src=\"docs/assets/flags/br.svg\" width=\"30\" alt=\"Português — Brasil (pt-BR)\" title=\"Português — Brasil (pt-BR)\"></a>\n  <a href=\"docs/i18n/pt/README.md\"><img src=\"docs/assets/flags/pt.svg\" width=\"30\" alt=\"Português (pt)\" title=\"Português (pt)\"></a>\n  <a href=\"docs/i18n/es/README.md\"><img src=\"docs/assets/flags/es.svg\" width=\"30\" alt=\"Español (es)\" title=\"Español (es)\"></a>\n  <a href=\"docs/i18n/fr/README.md\"><img src=\"docs/assets/flags/fr.svg\" width=\"30\" alt=\"Français (fr)\" title=\"Français (fr)\"></a>\n  <a href=\"docs/i18n/it/README.md\"><img src=\"docs/assets/flags/it.svg\" width=\"30\" alt=\"Italiano (it)\" title=\"Italiano (it)\"></a>\n  <a href=\"docs/i18n/de/README.md\"><img src=\"docs/assets/flags/de.svg\" width=\"30\" alt=\"Deutsch (de)\" title=\"Deutsch (de)\"></a>\n  <a href=\"docs/i18n/nl/README.md\"><img src=\"docs/assets/flags/nl.svg\" width=\"30\" alt=\"Nederlands (nl)\" title=\"Nederlands (nl)\"></a>\n  <a href=\"docs/i18n/ru/README.md\"><img src=\"docs/assets/flags/ru.svg\" width=\"30\" alt=\"Русский (ru)\" title=\"Русский (ru)\"></a>\n  <a href=\"docs/i18n/uk-UA/README.md\"><img src=\"docs/assets/flags/ua.svg\" width=\"30\" alt=\"Українська (uk-UA)\" title=\"Українська (uk-UA)\"></a>\n  <a href=\"docs/i18n/pl/README.md\"><img src=\"docs/assets/flags/pl.svg\" width=\"30\" alt=\"Polski (pl)\" title=\"Polski (pl)\"></a>\n  <a href=\"docs/i18n/cs/README.md\"><img src=\"docs/assets/flags/cz.svg\" width=\"30\" alt=\"Čeština (cs)\" title=\"Čeština (cs)\"></a>\n  <a href=\"docs/i18n/sk/README.md\"><img src=\"docs/assets/flags/sk.svg\" width=\"30\" alt=\"Slovenčina (sk)\" title=\"Slovenčina (sk)\"></a>\n  <a href=\"docs/i18n/ro/README.md\"><img src=\"docs/assets/flags/ro.svg\" width=\"30\" alt=\"Română (ro)\" title=\"Română (ro)\"></a>\n  <a href=\"docs/i18n/hu/README.md\"><img src=\"docs/assets/flags/hu.svg\" width=\"30\" alt=\"Magyar (hu)\" title=\"Magyar (hu)\"></a>\n  <a href=\"docs/i18n/bg/README.md\"><img src=\"docs/assets/flags/bg.svg\" width=\"30\" alt=\"Български (bg)\" title=\"Български (bg)\"></a>\n  <a href=\"docs/i18n/da/README.md\"><img src=\"docs/assets/flags/dk.svg\" width=\"30\" alt=\"Dansk (da)\" title=\"Dansk (da)\"></a>\n  <a href=\"docs/i18n/fi/README.md\"><img src=\"docs/assets/flags/fi.svg\" width=\"30\" alt=\"Suomi (fi)\" title=\"Suomi (fi)\"></a>\n  <a href=\"docs/i18n/no/README.md\"><img src=\"docs/assets/flags/no.svg\" width=\"30\" alt=\"Norsk (no)\" title=\"Norsk (no)\"></a>\n  <a href=\"docs/i18n/sv/README.md\"><img src=\"docs/assets/flags/se.svg\" width=\"30\" alt=\"Svenska (sv)\" title=\"Svenska (sv)\"></a>\n  <a href=\"docs/i18n/zh-CN/README.md\"><img src=\"docs/assets/flags/cn.svg\" width=\"30\" alt=\"中文 — 简体 (zh-CN)\" title=\"中文 — 简体 (zh-CN)\"></a>\n  <a href=\"docs/i18n/zh-TW/README.md\"><img src=\"docs/assets/flags/tw.svg\" width=\"30\" alt=\"中文 — 繁體 (zh-TW)\" title=\"中文 — 繁體 (zh-TW)\"></a>\n  <a href=\"docs/i18n/ja/README.md\"><img src=\"docs/assets/flags/jp.svg\" width=\"30\" alt=\"日本語 (ja)\" title=\"日本語 (ja)\"></a>\n  <a href=\"docs/i18n/ko/README.md\"><img src=\"docs/assets/flags/kr.svg\" width=\"30\" alt=\"한국어 (ko)\" title=\"한국어 (ko)\"></a>\n  <a href=\"docs/i18n/th/README.md\"><img src=\"docs/asset",
+      "rank": 6,
+      "weekly_stars": 9965
+    },
+    {
+      "full_name": "agegr/pi-web",
+      "html_url": "https://github.com/agegr/pi-web",
+      "description": "Web UI for the pi coding agent",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 2640,
+      "forks": 352,
+      "open_issues": 49,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-03-22T13:46:04Z",
+      "updated_at": "2026-07-25T04:20:22Z",
+      "pushed_at": "2026-07-23T04:30:09Z",
+      "archived": false,
+      "readme": "# Pi Web\n\n[中文文档](./README.zh-CN.md)\n\nLocal web UI for the [pi coding agent](https://github.com/badlogic/pi-mono). Pi Web reads your local pi session files and gives you a browser workspace for session browsing, real-time chat, model configuration, skill management, and project file preview.\n\n![Pi Web shows the same pi session with structured Markdown, tool calls, and project navigation beside the CLI](https://raw.githubusercontent.com/agegr/pi-web/main/docs/screenshot2.png)\n\nThe same pi session in CLI and Pi Web: structured tool calls, readable Markdown, session browsing, and cleaner results.\n\n## Quick Start\n\n**Run without installing:**\n\n```bash\nnpx @agegr/pi-web@latest\n```\n\n**Or install globally:**\n\n```bash\nnpm install -g @agegr/pi-web\npi-web\n```\n\nThen open [http://localhost:30141](http://localhost:30141). The CLI will try to open the browser automatically after the server is ready.\n\n**Options:**\n\n```bash\npi-web --port 8080              # custom port\npi-web --hostname 127.0.0.1     # local access only\npi-web -p 8080 -H 127.0.0.1     # combine options\npi-web --no-open                # do not open the browser automatically\n\nPORT=8080 pi-web                # environment variable is also supported\nPI_WEB_NO_OPEN=1 pi-web         # useful when running as a background service\n```\n\n## HTTP Proxy\n\nPi Web reads the standard `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables for server-side model and API requests.\n\nOn macOS or Linux:\n\n```bash\nHTTP_PROXY=http://127.0.0.1:7890 \\\nHTTPS_PROXY=http://127.0.0.1:7890 \\\nNO_PROXY=localhost,127.0.0.1 \\\nnpx @agegr/pi-web@latest\n```\n\nOn Windows PowerShell:\n\n```powershell\n$env:HTTP_PROXY = \"http://127.0.0.1:7890\"\n$env:HTTPS_PROXY = \"http://127.0.0.1:7890\"\n$env:NO_PROXY = \"localhost,127.0.0.1\"\nnpx @agegr/pi-web@latest\n```\n\n## Features\n\n- **Pick work back up**: browse previous pi conversations by project without digging through terminal history or session paths.\n- **Try different directions safely**: continue from an earlier message or fork a session into a separate route.\n- **Work across branches**: switch Git worktrees from the sidebar so new sessions and the Explorer follow the checkout you choose.\n- **Chat beside the project**: browse files on the left and preview source, docs, images, audio, and PDFs on the right while the agent works.\n- **See session state clearly**: context usage, cost, compaction state, and system prompt details are visible from the top bar.\n- **Configure less from the terminal**: manage models, login/API keys, model tests, and skill switches from the web UI.\n\n## Notes\n\n- **Data directory**: Pi Web reads `~/.pi/agent/sessions` by default. Set `PI_CODING_AGENT_DIR` to point at another pi agent directory.\n- **Session files**: files are stored as `~/.pi/agent/sessions/<encoded-cwd>/<timestamp>_<uuid>.jsonl`.\n- **Model config**: the Models panel reads and writes `models.json` in the pi agent directory. Model lists and defaults come from pi's config.\n- **File access**: file browsing and preview are scoped to the selected project directory and working directories that appear in sessions.\n- **Git worktrees**: see [Worktrees in Pi Web](./docs/worktrees.md) for when the switcher appears, how new worktrees are created, and what removal does.\n- **Forks vs in-session branches**: Fork creates a new `.jsonl` file. \"Edit from here\" creates another branch inside the same session file.\n\n## Development\n\n```bash\nnpm install\nnpm run dev\n```\n\nThe local dev server runs at [http://localhost:30141](http://localhost:30141).\n\nCommon checks:\n\n```bash\nnode_modules/.bin/tsc --noEmit\nnpm run lint\n```\n\nAvoid running `next build` / `npm run build` during local development. It writes to `.next/` and can interfere with the dev server; leave builds for release work.\n\n## Project Structure\n\n```text\napp/\n  api/\n    agent/          # creates/drives AgentSession and exposes SSE events\n    auth/           # OAuth and API key management\n    cwd/validate/   # custom working directory validation\n    default-cwd/    # pi default working directory lookup\n    files/          # file listing, reading, preview, and watching\n    home/           # current user home directory\n    models/         # available models, default model, thinking levels\n    models-config/  # read/write models.json and test models\n    sessions/       # session reads, rename, delete, context, HTML export\n    skills/         # skill listing, search, install, enable/disable\ncomponents/\n  AppShell.tsx        # main layout, URL state, top panels, file tabs\n  SessionSidebar.tsx  # project selector, session tree, Explorer\n  ChatWindow.tsx      # messages, SSE, image drag/drop, minimap\n  ChatInput.tsx       # input bar, model/tools/thinking/compact/slash controls\n  MessageView.tsx     # message, thinking, tool call/result rendering\n  ModelsConfig.tsx    # model and auth configuration panel\n  SkillsConfig.tsx    # skill management panel\n  FileExplorer.tsx    # file tree\n  FileViewer.tsx      # source, diff, image, audio, PDF, DOCX preview\nlib/\n  http-dispatcher.ts  # HTTP(S) proxy setup for server-side fetch\n  rpc-manager.ts      # AgentSessionWrapper lifecycle and global registry\n  session-reader.ts   # parses .jsonl session files and branch contexts\n  normalize.ts        # normalizes toolCall field names\n  file-access.ts      # file read safety boundary\n  file-paths.ts       # path encoding and relative path helpers\n  markdown.ts         # Markdown/Mermaid/KaTeX plugin configuration\n  pi-types.ts         # pi-related types\nhooks/\n  useAgentSession.ts  # session loading, command sending, SSE state machine\n  useAudio.ts         # completion sound\n  useDragDrop.ts      # image drag/drop\n  useTheme.ts         # theme switching\nbin/\n  pi-web.js           # npm CLI entrypoint\ninstrumentation.ts    # initializes the server HTTP dispatcher\n```\n",
+      "rank": 7,
+      "weekly_stars": 1316
+    },
+    {
+      "full_name": "HKUDS/DeepTutor",
+      "html_url": "https://github.com/HKUDS/DeepTutor",
+      "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
+      "homepage": "http://arxiv.org/abs/2604.26962",
+      "language": "Python",
+      "stars": 29583,
+      "forks": 3900,
+      "open_issues": 62,
+      "topics": [
+        "ai-agents",
+        "ai-tutor",
+        "clawdbot",
+        "cli-tool",
+        "deepresearch",
+        "interactive-learning",
+        "large-language-models",
+        "multi-agent-systems",
+        "rag"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2025-12-28T15:35:54Z",
+      "updated_at": "2026-07-25T04:19:21Z",
+      "pushed_at": "2026-07-24T14:15:03Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n<p align=\"center\"><img src=\"assets/figs/logo/logo.png\" alt=\"DeepTutor logo\" height=\"56\" style=\"vertical-align: middle;\">&nbsp;<img src=\"assets/figs/logo/banner.png\" alt=\"DeepTutor\" height=\"48\" style=\"vertical-align: middle;\"></p>\n\n# DeepTutor: Lifelong Personalized Tutoring\n\n<p align=\"center\">\n  <a href=\"https://deeptutor.info\" target=\"_blank\"><img alt=\"Docs — deeptutor.info\" src=\"https://img.shields.io/badge/Docs-deeptutor.info%20%E2%86%97-0A0A0A?style=for-the-badge&labelColor=F5F5F4\" height=\"36\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/17099?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-17099\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/17099\" alt=\"HKUDS%2FDeepTutor | Trendshift\" width=\"250\" height=\"55\"/></a>&nbsp;\n  <a href=\"https://trendshift.io/repositories/17099?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-17099\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/17099/daily\" alt=\"HKUDS%2FDeepTutor | Trendshift\" width=\"250\" height=\"55\"/></a>&nbsp;\n  <a href=\"https://trendshift.io/repositories/17099?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-17099\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/17099/weekly?language=Python\" alt=\"HKUDS%2FDeepTutor | Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"README.md\"><img alt=\"English\" height=\"40\" src=\"https://img.shields.io/badge/English-BCDCF7\"></a>&nbsp;\n  <a href=\"assets/README/README_CN.md\"><img alt=\"简体中文\" height=\"40\" src=\"https://img.shields.io/badge/简体中文-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_JA.md\"><img alt=\"日本語\" height=\"40\" src=\"https://img.shields.io/badge/日本語-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_ES.md\"><img alt=\"Español\" height=\"40\" src=\"https://img.shields.io/badge/Español-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_FR.md\"><img alt=\"Français\" height=\"40\" src=\"https://img.shields.io/badge/Français-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_AR.md\"><img alt=\"Arabic\" height=\"40\" src=\"https://img.shields.io/badge/Arabic-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_RU.md\"><img alt=\"Русский\" height=\"40\" src=\"https://img.shields.io/badge/Русский-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_HI.md\"><img alt=\"Hindi\" height=\"40\" src=\"https://img.shields.io/badge/Hindi-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_PT.md\"><img alt=\"Português\" height=\"40\" src=\"https://img.shields.io/badge/Português-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_TH.md\"><img alt=\"Thai\" height=\"40\" src=\"https://img.shields.io/badge/Thai-CDCFD4\"></a>&nbsp;\n  <a href=\"assets/README/README_PL.md\"><img alt=\"Polski\" height=\"40\" src=\"https://img.shields.io/badge/Polski-CDCFD4\"></a>\n</p>\n\n[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)\n[![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)\n[![License](https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square)](LICENSE)\n[![GitHub release](https://img.shields.io/github/v/release/HKUDS/DeepTutor?style=flat-square&color=brightgreen)](https://github.com/HKUDS/DeepTutor/releases)\n[![arXiv](https://img.shields.io/badge/arXiv-2604.26962-b31b1b?style=flat-square&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2604.26962)\n\n[![Discord](https://img.shields.io/badge/Discord-Community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/eRsjPgMU4t)\n[![Feishu](https://img.shields.io/badge/Feishu-Group-00D4AA?style=flat-square&logo=feishu&logoColor=white)](./Communication.md)\n[![WeChat](https://img.shields.io/badge/WeChat-Group-07C160?style=flat-square&logo=wechat&logoColor=white)](https://github.com/HKUDS/DeepTutor/issues/78)\n\n[Features](#-key-features) · [Get Started](#-get-started) · [Explore](#-explore-deeptutor) · [CLI](#%EF%B8%8F-deeptutor-cli--agent-native-interface) · [Ecosystem](#-ecosystem--eduhub--the-skills-community) · [Community](#-community)\n\n</div>\n\n---\n\n> 🤝 **We welcome any kinds of contributing!** Vote on roadmap items or propose new ones at [`Roadmap`](https://github.com/HKUDS/DeepTutor/issues/498), and see our [Contributing Guide](CONTRIBUTING.md) for branching strategy, coding standards, and how to get started.\n\n### 📦 Releases\n\n> **[2026.7.24]** [v1.5.4](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.4) — Maintenance sweep: the post-answer \"generating\" stall is gone, IM partners render Markdown tables faithfully, LLM JSON parsing is sturdier, plus quiz, create-KB form, and Math Animator fixes.\n\n> **[2026.7.24]** [v1.5.3](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.3) — Themeable code blocks, four more coding CLIs in My Agents (Gemini, Kimi, opencode, MiMo), an Atlas Cloud LLM provider, and a broad chat, memory, embedding, and parsing reliability sweep.\n\n> **[2026.7.19]** [v1.5.2](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.2) — Configurable chat attachment limits, PageIndex retrieval that reasons across your documents via agentic tool calls, broader Anthropic/OpenAI model support, and steadier Book, Knowledge Base, and chat UI.\n\n<details>\n<summary><b>Past releases (more than 1 week ago)</b></summary>\n\n> **[2026.7.9]** [v1.5.1](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.1) — Remove a single failed document from a knowledge base — even one stuck in an **error** state — instead of deleting and rebuilding the whole base.\n\n> **[2026.7.4]** [v1.5.0](https://github.com/HKUDS/DeepTutor/releases/tag/v1.5.0) — LlamaIndex ingestion now honors your **Document Parsing** engine with multimodal image extraction, Partner & Soul ids stay URL-safe for non-Latin names, and optional RAG extras install cleanly on Python 3.14+.\n\n> **[2026.6.30]** [v1.4.15](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.15) — A native **Mattermost** channel for Partners, plus fixes so Guided Learning multiple-choice questions grade correctly and a configured zero chunk overlap is honored.\n\n> **[2026.6.29]** [v1.4.14](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.14) — Click an assigned partner to chat in one step, Deep Research flags partial reports, LightRAG indexes without MinerU, FAISS handles non-ASCII paths, and PocketBase sessions are isolated per user.\n\n> **[2026.6.27]** [v1.4.13](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.13) — Partners support non-Latin names and become assignable to users, logos render after login (#599), tiny knowledge bases retrieve reliably, and containers start cleanly under rootless Podman.\n\n> **[2026.6.24]** [v1.4.12](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.12) — A new **LightRAG Server** retrieval engine, a lightweight **PyMuPDF4LLM** parsing engine, and a FAISS vector backend that makes large knowledge-base retrieval dramatically faster.\n\n> **[2026.6.23]** [v1.4.11](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.11) — Native tool calling on every cloud OpenAI-compatible provider, a redesigned admin Users page, LaTeX in quiz options, an honest session-loading spinner, and configurable container host binding.\n\n> **[2026.6.21]** [v1.4.10](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.10) — A self-service **Profile** page with avatars, a rootless-ready container guide with a single-port request-time proxy, and deny-by-default MCP tools for non-admin users.\n\n> **[2026.6.19]** [v1.4.9](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.9) — Settings polish: Search shows only the fields your provider needs, connection profiles can be renamed and auto-named by provider, and graded Mastery Path questions flow into your Question Bank.\n\n> **[2026.6.18]** [v1.4.8](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.8) — Connect your own **Partners** under **My Agents** and consult them live in chat — answering through their own persona, library and skills — and each Partner gains its own private memory.\n\n> **[2026.6.18]** [v1.4.7](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.7) — Connect your local **Claude Code / Codex** and consult it live mid-turn, **My Agents** graduates to a top-level `/agents`, and Partner conversations gain branch / resume / delete with a replayable trace.\n\n> **[2026.6.17]** [v1.4.6](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.6) — Four-surface consolidation: a Space learning dashboard with importable **My Agents** and top-level Memory, a **Knowledge Center** with GraphRAG / PageIndex / LightRAG / linked-KB / Obsidian, opened-up Settings, and per-model capability gating.\n\n> **[2026.6.14]** [v1.4.5](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.5) — Guided Learning rebuilt on the chat agent loop with a hard per-type mastery gate and a `/learning` dashboard, a new loop-plugin framework, plus Markdown export / save-to-notebook for Partner conversations.\n\n> **[2026.6.13]** [v1.4.4](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.4) — Install community skills from [ClawHub](https://clawhub.ai/) with `deeptutor skill install` behind a security gate, plus real in-browser DOCX/XLSX previews for knowledge-base files.\n\n> **[2026.6.12]** [v1.4.3](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.3) — TutorBot becomes **Partners** on a production-grade IM pipeline (15 channels, live streaming), Chat moves to a single agent loop, real per-user isolation, and a rebuilt Visualize.\n\n> **[2026.5.28]** [v1.4.2](https://github.com/HKUDS/DeepTutor/releases/tag/v1.4.2) — Stability + polish: Gemini 2.5+ unblocked across Visualize and Chat, auth-routing fix (#485), smooth-streaming chat UX, a Recents sidebar, and Lemonade local-provider support.\n\n> **[2026.5.27]** [v1.4.1](https://github.com/HKUDS/D",
+      "rank": 8,
+      "weekly_stars": 2380
+    },
+    {
+      "full_name": "MoonshotAI/kimi-cli",
+      "html_url": "https://github.com/MoonshotAI/kimi-cli",
+      "description": "Kimi Code CLI is your next CLI agent.",
+      "homepage": "https://moonshotai.github.io/kimi-cli/",
+      "language": "Python",
+      "stars": 10796,
+      "forks": 1251,
+      "open_issues": 813,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2025-10-15T12:58:03Z",
+      "updated_at": "2026-07-25T03:35:18Z",
+      "pushed_at": "2026-07-16T10:05:51Z",
+      "archived": false,
+      "readme": "# Kimi CLI\n\n[![Commit Activity](https://img.shields.io/github/commit-activity/w/MoonshotAI/kimi-cli)](https://github.com/MoonshotAI/kimi-cli/graphs/commit-activity)\n[![Checks](https://img.shields.io/github/check-runs/MoonshotAI/kimi-cli/main)](https://github.com/MoonshotAI/kimi-cli/actions)\n[![Version](https://img.shields.io/pypi/v/kimi-cli)](https://pypi.org/project/kimi-cli/)\n[![Downloads](https://img.shields.io/pypi/dw/kimi-cli)](https://pypistats.org/packages/kimi-cli)\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/MoonshotAI/kimi-cli)\n\n[Kimi Code](https://www.kimi.com/code/) | [Documentation](https://moonshotai.github.io/kimi-cli/en/) | [文档](https://moonshotai.github.io/kimi-cli/zh/)\n\n> [!IMPORTANT]\n> **Kimi CLI is evolving into [Kimi Code CLI](https://github.com/MoonshotAI/kimi-code)** — the next-generation terminal AI agent from the same team. Installing Kimi Code CLI automatically migrates your configuration and sessions. This project will be gradually wound down; the docs and existing installations remain available.\n\nKimi CLI is an AI agent that runs in the terminal, helping you complete software development tasks and terminal operations. It can read and edit code, execute shell commands, search and fetch web pages, and autonomously plan and adjust actions during execution.\n\n## Getting Started\n\nSee [Getting Started](https://moonshotai.github.io/kimi-cli/en/guides/getting-started.html) for how to install and start using Kimi CLI.\n\n## Key Features\n\n### Shell command mode\n\nKimi CLI is not only a coding agent, but also a shell. You can switch the shell command mode by pressing `Ctrl-X`. In this mode, you can directly run shell commands without leaving Kimi CLI.\n\n![](./docs/media/shell-mode.gif)\n\n> [!NOTE]\n> Built-in shell commands like `cd` are not supported yet.\n\n### VS Code extension\n\nKimi CLI can be integrated with [Visual Studio Code](https://code.visualstudio.com/) via the [Kimi Code VS Code Extension](https://marketplace.visualstudio.com/items?itemName=moonshot-ai.kimi-code).\n\n![VS Code Extension](./docs/media/vscode.png)\n\n### IDE integration via ACP\n\nKimi CLI supports [Agent Client Protocol] out of the box. You can use it together with any ACP-compatible editor or IDE.\n\n[Agent Client Protocol]: https://github.com/agentclientprotocol/agent-client-protocol\n\nTo use Kimi CLI with ACP clients, make sure to run Kimi CLI in the terminal and send `/login` to complete the login first. Then, you can configure your ACP client to start Kimi CLI as an ACP agent server with command `kimi acp`.\n\nFor example, to use Kimi CLI with [Zed](https://zed.dev/) or [JetBrains](https://blog.jetbrains.com/ai/2025/12/bring-your-own-ai-agent-to-jetbrains-ides/), add the following configuration to your `~/.config/zed/settings.json` or `~/.jetbrains/acp.json` file:\n\n```json\n{\n  \"agent_servers\": {\n    \"Kimi CLI\": {\n      \"type\": \"custom\",\n      \"command\": \"kimi\",\n      \"args\": [\"acp\"],\n      \"env\": {}\n    }\n  }\n}\n```\n\nThen you can create Kimi CLI threads in IDE's agent panel.\n\n![](./docs/media/acp-integration.gif)\n\n### Zsh integration\n\nYou can use Kimi CLI together with Zsh, to empower your shell experience with AI agent capabilities.\n\nInstall the [zsh-kimi-cli](https://github.com/MoonshotAI/zsh-kimi-cli) plugin via:\n\n```sh\ngit clone https://github.com/MoonshotAI/zsh-kimi-cli.git \\\n  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/kimi-cli\n```\n\n> [!NOTE]\n> If you are using a plugin manager other than Oh My Zsh, you may need to refer to the plugin's README for installation instructions.\n\nThen add `kimi-cli` to your Zsh plugin list in `~/.zshrc`:\n\n```sh\nplugins=(... kimi-cli)\n```\n\nAfter restarting Zsh, you can switch to agent mode by pressing `Ctrl-X`.\n\n### MCP support\n\nKimi CLI supports MCP (Model Context Protocol) tools.\n\n**`kimi mcp` sub-command group**\n\nYou can manage MCP servers with `kimi mcp` sub-command group. For example:\n\n```sh\n# Add streamable HTTP server:\nkimi mcp add --transport http context7 https://mcp.context7.com/mcp --header \"CONTEXT7_API_KEY: ctx7sk-your-key\"\n\n# Add streamable HTTP server with OAuth authorization:\nkimi mcp add --transport http --auth oauth linear https://mcp.linear.app/mcp\n\n# Add stdio server:\nkimi mcp add --transport stdio chrome-devtools -- npx chrome-devtools-mcp@latest\n\n# List added MCP servers:\nkimi mcp list\n\n# Remove an MCP server:\nkimi mcp remove chrome-devtools\n\n# Authorize an MCP server:\nkimi mcp auth linear\n```\n\n**Ad-hoc MCP configuration**\n\nKimi CLI also supports ad-hoc MCP server configuration via CLI option.\n\nGiven an MCP config file in the well-known MCP config format like the following:\n\n```json\n{\n  \"mcpServers\": {\n    \"context7\": {\n      \"url\": \"https://mcp.context7.com/mcp\",\n      \"headers\": {\n        \"CONTEXT7_API_KEY\": \"YOUR_API_KEY\"\n      }\n    },\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\"]\n    }\n  }\n}\n```\n\nRun `kimi` with `--mcp-config-file` option to connect to the specified MCP servers:\n\n```sh\nkimi --mcp-config-file /path/to/mcp.json\n```\n\n### More\n\nSee more features in the [Documentation](https://moonshotai.github.io/kimi-cli/en/).\n\n## Development\n\nTo develop Kimi CLI, run:\n\n```sh\ngit clone https://github.com/MoonshotAI/kimi-cli.git\ncd kimi-cli\n\nmake prepare  # prepare the development environment\n```\n\nThen you can start working on Kimi CLI.\n\nRefer to the following commands after you make changes:\n\n```sh\nuv run kimi  # run Kimi CLI\n\nmake format  # format code\nmake check  # run linting and type checking\nmake test  # run tests\nmake test-kimi-cli  # run Kimi CLI tests only\nmake test-kosong  # run kosong tests only\nmake test-pykaos  # run pykaos tests only\nmake build-web  # build the web UI and sync it into the package (requires Node.js/npm)\nmake build  # build python packages\nmake build-bin  # build standalone binary\nmake help  # show all make targets\n```\n\nNote: `make build` and `make build-bin` automatically run `make build-web` to embed the web UI.\n",
+      "rank": 9,
+      "weekly_stars": 1570
+    },
+    {
+      "full_name": "earendil-works/pi",
+      "html_url": "https://github.com/earendil-works/pi",
+      "description": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 77138,
+      "forks": 9483,
+      "open_issues": 78,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2025-08-09T14:03:50Z",
+      "updated_at": "2026-07-25T04:23:11Z",
+      "pushed_at": "2026-07-24T20:34:35Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <a href=\"https://pi.dev\">\n    <img alt=\"pi logo\" src=\"https://pi.dev/logo-auto.svg\" width=\"128\">\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://discord.com/invite/3cU7Bz4UPx\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white\" /></a>\n  <a href=\"https://www.npmjs.com/package/@earendil-works/pi-coding-agent\"><img alt=\"npm\" src=\"https://img.shields.io/npm/v/@earendil-works/pi-coding-agent?style=flat-square\" /></a>\n</p>\n\n> New issues and PRs from new contributors are auto-closed by default. Maintainers review auto-closed issues daily. See [CONTRIBUTING.md](CONTRIBUTING.md).\n\n# Pi Agent Harness\n\nThis is the home of the Pi agent harness project including our self extensible coding agent.\n\n* **[@earendil-works/pi-coding-agent](packages/coding-agent)**: Interactive coding agent CLI\n* **[@earendil-works/pi-agent-core](packages/agent)**: Agent runtime with tool calling and state management\n* **[@earendil-works/pi-ai](packages/ai)**: Unified multi-provider LLM API (OpenAI, Anthropic, Google, …)\n\nTo learn more about Pi:\n\n* [Visit pi.dev](https://pi.dev), the project website with demos\n* [Read the documentation](https://pi.dev/docs/latest), but you can also ask the agent to explain itself\n\n## All Packages\n\n| Package | Description |\n|---------|-------------|\n| **[@earendil-works/pi-ai](packages/ai)** | Unified multi-provider LLM API (OpenAI, Anthropic, Google, etc.) |\n| **[@earendil-works/pi-agent-core](packages/agent)** | Agent runtime with tool calling and state management |\n| **[@earendil-works/pi-coding-agent](packages/coding-agent)** | Interactive coding agent CLI |\n| **[@earendil-works/pi-tui](packages/tui)** | Terminal UI library with differential rendering |\n\nFor Slack/chat automation and workflows see [earendil-works/pi-chat](https://github.com/earendil-works/pi-chat).\n\n## Permissions & Containerization\n\nPi does not include a built-in permission system for restricting filesystem, process, network, or credential access. By default, it runs with the permissions of the user and process that launched it.\n\nIf you need stronger boundaries, containerize or sandbox Pi. See [packages/coding-agent/docs/containerization.md](packages/coding-agent/docs/containerization.md) for three patterns:\n\n- **Gondolin extension**: keep `pi` and provider auth on the host while routing built-in tools and `!` commands into a local Linux micro-VM.\n- **Plain Docker**: run the whole `pi` process in a local container for simple isolation.\n- **OpenShell**: run the whole `pi` process in a policy-controlled sandbox.\n\n## Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines and [AGENTS.md](AGENTS.md) for project-specific rules (for both humans and agents).  Longer term plans for Pi can also be found in [RFCs](https://rfc.earendil.com/keyword/pi/).\n\n## Development\n\n```bash\nnpm install --ignore-scripts  # Install all dependencies without running lifecycle scripts\nnpm run build         # Refresh model data, then build all packages\nnpm run build:offline # Rebuild using existing model data without network access\nnpm run check         # Lint, format, and type check\n./test.sh            # Run tests (skips LLM-dependent tests without API keys)\n./pi-test.sh         # Run pi from sources (can be run from any directory)\n```\n\n## Building standalone binaries from release source\n\nGitHub releases include a versioned source archive covered by the release's `SHA256SUMS` file. Extract it and run the same build script used for the official standalone binaries:\n\n```bash\nVERSION=\"<release-version>\"\ntar -xzf \"pi-${VERSION}-source.tar.gz\"\ncd \"pi-${VERSION}\"\n./scripts/build-binaries.sh --offline-model-data --platform linux-x64 --out \"$PWD/out\"\n```\n\nThe source archive includes the generated provider model data used for the release. `--offline-model-data` builds with that snapshot instead of refreshing it from live provider catalogs. The script still installs dependencies, builds the monorepo, compiles the Bun executable, and stages its runtime assets. Package maintainers who provide dependencies separately can pass `--skip-install --skip-deps`.\n\n## Supply-chain hardening\n\nWe treat npm dependency changes as reviewed code changes.\n\n- Direct external dependencies are pinned to exact versions. Internal workspace packages remain version-ranged.\n- `.npmrc` sets `save-exact=true` and `min-release-age=2` to avoid same-day dependency releases during npm resolution.\n- `package-lock.json` is the dependency ground truth. Pre-commit blocks accidental lockfile commits unless `PI_ALLOW_LOCKFILE_CHANGE=1` is set.\n- `npm run check` verifies pinned direct deps, native TypeScript import compatibility, and the generated coding-agent shrinkwrap.\n- The published CLI package includes `packages/coding-agent/npm-shrinkwrap.json`, generated from the root lockfile, to pin transitive deps for npm users.\n- Release smoke tests use `npm run release:local` to build, pack, and create isolated npm and Bun installs outside the repo before tagging a release.\n- Local release installs, documented npm installs, and `pi update --self` use `--ignore-scripts` where supported.\n- CI installs with `npm ci --ignore-scripts`, and a scheduled GitHub workflow runs `npm audit --omit=dev` plus `npm audit signatures --omit=dev`.\n- Shrinkwrap generation has an explicit allowlist for dependency lifecycle scripts; new lifecycle-script deps fail checks until reviewed.\n\n## Share your OSS coding agent sessions\n\nIf you use Pi or other coding agents for open source work, please share your sessions.\n\nPublic OSS session data helps improve coding agents with real-world tasks, tool use, failures, and fixes instead of toy benchmarks.\n\nFor the full explanation, see [this post on X](https://x.com/badlogicgames/status/2037811643774652911).\n\nTo publish sessions, use [`badlogic/pi-share-hf`](https://github.com/badlogic/pi-share-hf). Read its README.md for setup instructions. All you need is a Hugging Face account, the Hugging Face CLI, and `pi-share-hf`.\n\nYou can also watch [this video](https://x.com/badlogicgames/status/2041151967695634619), where I show how I publish my `pi-mono` sessions.\n\nI regularly publish my own `pi-mono` work sessions here:\n\n- [badlogicgames/pi-mono on Hugging Face](https://huggingface.co/datasets/badlogicgames/pi-mono)\n\n## License\n\nMIT\n\n<p align=\"center\">\n  <a href=\"https://pi.dev\">pi.dev</a> domain graciously donated by\n  <br /><br />\n  <a href=\"https://exe.dev\"><img src=\"packages/coding-agent/docs/images/exy.png\" alt=\"Exy mascot\" width=\"48\" /><br />exe.dev</a>\n</p>\n",
+      "rank": 10,
+      "weekly_stars": 4880
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 59,375 个新增 Star，bojieli/ai-agent-book、koala73/worldmonitor、tirth8205/code-review-graph 位居前三。主要开发语言集中在 TypeScript、Python、Rust。头部项目体现的方向包括：《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码；Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface；Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.。",
+    "top_picks": [
+      "bojieli/ai-agent-book",
+      "koala73/worldmonitor",
+      "tirth8205/code-review-graph"
+    ],
+    "projects": [
+      {
+        "full_name": "bojieli/ai-agent-book",
+        "tagline": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
+        "overview": "本项目是李博杰所著《深入理解 AI Agent：设计原理与工程实践》一书的开源主仓库，包含全书正文、编译版 PDF、EPUB 电子书及按章节配套的代码实验。书中系统讲解了 AI Agent 的设计原理与工程实践，围绕“Agent = LLM + 上下文 + 工具”的核心公式，分十章逐步展开，涵盖基础知识、上下文工程、用户记忆、工具使用、代码生成、评估方法、模型后训练、持续进化、多模态交互和多 Agent 协作等内容。项目支持多语言版本，配套实验丰富，适合理论学习与实践操作结合。",
+        "core_features": [
+          "包含 10 章系统讲解 AI Agent 设计与实践的书籍正文和 92 个配套实验项目",
+          "支持中文、英文、正体中文、俄语、泰米尔语、越南语和日语七种语言版本",
+          "提供 PDF 和 EPUB 格式电子书下载及在线阅读，支持全文搜索和章节折叠",
+          "配套代码涵盖从基础知识到多 Agent 协作的多方面实验，部分项目可独立运行"
+        ],
+        "problems": [
+          "AI Agent 设计复杂，涉及多种技术融合，缺乏系统性学习资料",
+          "上下文管理和工具调用难以高效实现，影响 Agent 性能和扩展性",
+          "多模态交互和多 Agent 协作的工程实践缺少成熟的参考方案",
+          "模型训练和持续进化过程中的评估和优化机制不完善"
+        ],
+        "use_cases": [
+          "AI 研究人员和工程师系统学习和实践 AI Agent 设计与实现",
+          "开发具备上下文记忆、工具调用和多模态交互能力的智能代理",
+          "构建多 Agent 协作系统以实现复杂任务的群体智能",
+          "进行 AI Agent 性能评估、模型后训练和持续优化的实验研究"
+        ],
+        "audience": [
+          "人工智能领域的研究人员和开发工程师",
+          "对 AI Agent 技术感兴趣的产品经理和技术决策者",
+          "希望通过实践项目深入理解 AI Agent 工作原理的学习者",
+          "创业者和团队希望构建智能代理相关产品的技术人员"
+        ],
+        "differentiators": [
+          "系统性覆盖 AI Agent 理论与工程实践，内容全面且层层递进",
+          "丰富的配套实验项目，支持读者动手实践加深理解",
+          "多语言支持，便于全球不同语言背景的用户学习",
+          "开源且持续更新，结合最新技术和社区贡献"
+        ],
+        "quick_start": "推荐下载最新的 PDF 或 EPUB 电子书进行离线阅读，排版最佳。也可访问在线阅读页面（https://bojieli.github.io/ai-agent-book/）支持多语言切换和全文搜索。源码位于 book/ 目录，配套代码按章节分布。可通过项目内提供的构建脚本自行编译电子书。建议申请相关 AI 平台 API Key 以运行配套实验。",
+        "maturity": "项目已发布多个版本，拥有近两万颗星和近两千次 Fork，活跃维护中。内容涵盖基础理论到生产级工程实践，配套实验丰富且部分可独立运行，社区贡献多语言版本，整体成熟度较高。",
+        "limitations": [
+          "部分章节涉及的评测基准、训练框架和机器人平台等外部仓库未内置，需要用户自行克隆",
+          "社区翻译版本可能滞后于中文原版，存在内容更新不同步风险",
+          "项目依赖多种外部工具（如 pandoc、xelatex 等）进行电子书编译，环境配置较复杂",
+          "配套实验对 API Key 依赖较大，部分功能受限于外部服务的可用性和稳定性"
+        ],
+        "potential": [
+          "为 AI Agent 设计和开发提供系统化学习和实践平台，促进技术普及和人才培养",
+          "推动多模态和多 Agent 协作技术的研究与应用，拓展智能代理能力边界",
+          "通过持续更新和社区贡献，保持内容与技术前沿同步",
+          "结合赞助商和合作平台，提供更完善的模型接入和服务支持，提升用户体验"
+        ]
+      },
+      {
+        "full_name": "koala73/worldmonitor",
+        "tagline": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+        "overview": "World Monitor 是一个基于 TypeScript 开发的实时全球情报仪表盘，集成了 AI 驱动的新闻聚合、地缘政治监测和基础设施追踪。它通过统一的态势感知界面，提供多维度的全球信息监控和分析，支持多语言和多平台访问，包括网页和原生桌面应用。",
+        "core_features": [
+          "集成500多个精选新闻源，涵盖15个类别，利用AI合成新闻摘要",
+          "双地图引擎支持：3D地球(globe.gl)和WebGL平面地图(deck.gl)，提供56种地图图层",
+          "跨流关联分析，涵盖军事、经济、灾害和升级信号的融合监测",
+          "国家不稳定指数(CII) v8版本，针对31个一级国家进行压力评分",
+          "金融雷达功能，监控29个证券交易所、商品、加密货币及7信号市场综合指标",
+          "本地AI支持，使用Ollama运行，无需API密钥",
+          "单一代码库支持6个网站变体（全球、科技、金融、商品、幸福、能源）",
+          "基于Tauri 2的跨平台原生桌面应用，支持macOS、Windows和Linux",
+          "支持25种语言，包括本地语言新闻源和从右到左(RTL)语言支持"
+        ],
+        "problems": [
+          "需要实时整合和分析大量多源异构数据，保证信息的时效性和准确性",
+          "跨领域（军事、经济、灾害等）信号融合与关联分析的复杂性",
+          "多语言、多平台支持带来的技术实现和维护难度",
+          "本地AI运行环境的部署和性能优化挑战"
+        ],
+        "use_cases": [
+          "地缘政治分析师实时监控全球局势变化",
+          "金融分析师跟踪全球市场动态和风险信号",
+          "政府和安全机构进行国家稳定性和危机预警评估",
+          "研究人员和媒体获取多维度、综合性的全球新闻和情报信息"
+        ],
+        "audience": [
+          "地缘政治和安全领域的专业人士",
+          "金融市场分析师和投资者",
+          "情报分析机构和政府部门",
+          "对全球时事和多领域数据感兴趣的研究人员和媒体工作者"
+        ],
+        "differentiators": [
+          "结合AI技术进行新闻聚合和摘要，提升信息处理效率",
+          "双地图引擎和丰富地图图层支持，增强可视化效果和交互体验",
+          "跨领域信号融合，提供更全面的态势感知",
+          "支持本地AI运行，无需依赖外部API，增强隐私和自主性"
+        ],
+        "quick_start": "用户可以通过访问官方网站 https://worldmonitor.app 使用网页版本，或下载对应平台的原生桌面应用（支持Windows、macOS和Linux）。此外，项目提供npm、PyPI、RubyGems和Go等多语言SDK，方便开发者集成和二次开发。详细文档和使用指南可在 https://www.worldmonitor.app/docs/documentation 查阅。",
+        "maturity": "项目拥有超过7.3万星标和1.1万分叉，活跃维护中，最近一次提交和版本发布均在2026年7月，支持多平台和多语言，具备较高的成熟度和社区活跃度。",
+        "limitations": [
+          "README未详细披露具体数据源和算法细节，外部验证难度较大",
+          "项目许可标注为NOASSERTION，开源许可状态不明确，可能影响商业使用",
+          "对本地AI运行环境的硬件和系统要求未明确说明",
+          "当前公开信息未涵盖完整的安全和隐私保护措施"
+        ],
+        "potential": [
+          "通过持续丰富数据源和优化AI模型，提升情报分析的准确性和深度",
+          "扩展更多行业和地域的专题变体，满足更细分市场需求",
+          "增强用户自定义和交互功能，提升用户体验和应用场景多样性",
+          "完善开源许可和社区治理，促进更广泛的合作和生态建设"
+        ]
+      },
+      {
+        "full_name": "tirth8205/code-review-graph",
+        "tagline": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.",
+        "overview": "code-review-graph 是一个基于 Python 的开源项目，利用 Tree-sitter 解析代码库，构建代码的结构化图谱（AST），并通过 Model Context Protocol (MCP) 为 AI 编码工具提供精准的上下文信息，显著减少 AI 在代码审查和大型仓库工作流中的重复读取和计算资源消耗。项目支持多种 AI 编码平台的自动检测和配置，提供命令行工具进行安装、构建和卸载，支持增量更新和持续维护代码图谱。",
+        "core_features": [
+          "基于 Tree-sitter 构建代码的抽象语法树（AST）图谱，包含函数、类、导入等节点及调用、继承、测试覆盖等边。",
+          "通过 MCP 协议向 AI 编码助手提供精确的代码上下文，减少不必要的代码读取，提升效率。",
+          "支持多平台自动检测和配置，包括 Codex、Claude Code、GitHub Copilot 等主流 AI 编码工具。",
+          "提供命令行工具实现一键安装、构建代码图谱、卸载集成，支持增量更新和自动钩子维护。"
+        ],
+        "problems": [
+          "AI 编码工具在代码审查时往往需要重复读取大量代码，导致资源浪费和效率低下。",
+          "大型代码库的上下文信息难以高效管理，影响 AI 代码助手的响应速度和准确性。",
+          "不同 AI 编码平台集成复杂，缺乏统一的上下文管理和配置方案。",
+          "代码变更后上下文更新不及时，影响 AI 工具的代码理解和建议质量。"
+        ],
+        "use_cases": [
+          "为使用 AI 代码助手进行代码审查的开发者提供精准上下文，减少无关代码读取。",
+          "大型代码库中持续维护代码结构图谱，支持增量更新和快速上下文查询。",
+          "多平台 AI 编码工具的统一集成和配置，简化开发者使用流程。",
+          "通过上下文图谱辅助代码质量评估和风险分析，提高代码审查效率。"
+        ],
+        "audience": [
+          "软件开发者，尤其是依赖 AI 编码助手进行代码审查和开发的人员。",
+          "产品经理和技术负责人，关注提升代码审查效率和降低 AI 计算成本。",
+          "创业者和技术团队，寻求在大型代码库中优化 AI 辅助开发流程的解决方案。",
+          "开源社区成员和工具集成者，关注多平台 AI 编码工具的兼容和扩展。"
+        ],
+        "differentiators": [
+          "基于本地构建的代码结构图谱，避免云端数据泄露和隐私问题。",
+          "利用 MCP 协议实现 AI 编码工具的上下文精准传递，显著减少重复读取代码的代价。",
+          "支持多种主流 AI 编码平台的自动检测和配置，覆盖面广且易用。",
+          "增量更新和自动钩子机制保证代码图谱与代码库同步，提升维护效率。"
+        ],
+        "quick_start": [
+          "安装：pip install code-review-graph 或 pipx install code-review-graph。",
+          "安装集成：运行 code-review-graph install 自动检测并配置支持的平台。",
+          "构建代码图谱：运行 code-review-graph build 解析代码库生成图谱。",
+          "卸载集成：使用 code-review-graph uninstall 命令清理集成配置。"
+        ],
+        "maturity": "项目拥有超过 2.6 万星标和 2400 多个分支，活跃维护中，支持 Python 3.10+，具备完善的文档和多语言 README，持续集成通过，支持多平台 AI 编码工具，适合生产环境使用。",
+        "limitations": [
+          "目前仅支持 Python 3.10 及以上版本，其他语言支持情况未明确。",
+          "依赖 Tree-sitter 解析器，支持的语言和语法范围受限于 Tree-sitter 的能力。",
+          "初次构建大型项目代码图谱可能需要一定时间（约 10 秒/500 文件），实时性能依赖硬件。",
+          "对非 Git 或 SVN 代码库的支持和集成情况未明确。"
+        ],
+        "potential": [
+          "扩展对更多编程语言和 Tree-sitter 解析器的支持，提升多语言适用性。",
+          "增强与更多 AI 编码平台的深度集成，支持更多定制化功能和自动化流程。",
+          "优化增量更新和实时监控机制，提升大型项目的响应速度和用户体验。",
+          "结合代码质量分析和安全审计功能，提供更全面的代码审查辅助能力。"
+        ]
+      },
+      {
+        "full_name": "MoonshotAI/kimi-code",
+        "tagline": "Kimi Code CLI  —  The Starting Point for Next-Gen Agents",
+        "overview": "Kimi Code CLI 是一个基于终端的 AI 编码代理，能够读取和编辑代码、执行 shell 命令、搜索文件、抓取网页，并根据反馈选择下一步操作。它默认支持 Moonshot AI 的 Kimi 模型，也可配置使用其他兼容的 AI 提供者。项目使用 TypeScript 开发，采用单二进制分发，支持快速启动和专门优化的终端用户界面（TUI）。",
+        "core_features": [
+          "单二进制分发，无需 Node.js 环境或全局模块配置，安装简单。",
+          "快速启动，终端用户界面在毫秒级响应，适合长时间专注的代理会话。",
+          "支持视频输入，能够处理屏幕录制或演示视频，将视觉内容转换为代码或其他格式。",
+          "内置丰富插件生态，支持从市场或任意 GitHub 仓库安装技能、MCP 服务器和数据源，并显示信任等级。"
+        ],
+        "problems": [
+          "传统 AI 编码工具多依赖复杂环境配置，安装和启动过程繁琐。",
+          "代码代理缺乏对多模态输入（如视频）的支持，限制了交互方式。",
+          "缺少专门为长时间交互设计的终端界面，用户体验不佳。",
+          "集成多种模型和数据源时配置复杂，缺少便捷的交互式配置工具。"
+        ],
+        "use_cases": [
+          "在终端环境中通过自然语言与 AI 代理交互，辅助代码阅读、编辑和调试。",
+          "通过视频输入辅助理解复杂操作流程，自动生成对应代码或配置。",
+          "在支持 Agent Client Protocol 的编辑器（如 Zed、JetBrains）中集成 AI 编码代理，提升开发效率。",
+          "利用插件生态扩展功能，实现多模型、多数据源的灵活组合和管理。"
+        ],
+        "audience": [
+          "软件开发者，尤其偏好终端操作和命令行工具的程序员。",
+          "需要 AI 辅助编码和自动化脚本的技术团队和个人。",
+          "编辑器和 IDE 开发者，寻求集成 AI 代理的解决方案。",
+          "对多模态 AI 交互和插件扩展感兴趣的技术爱好者。"
+        ],
+        "differentiators": [
+          "单二进制分发和无依赖安装，降低使用门槛。",
+          "专门设计的终端用户界面，优化长时间交互体验。",
+          "支持视频输入作为多模态交互手段，增强理解和生成能力。",
+          "内置多种子代理（coder、explore、plan）支持并行任务处理，保持主会话简洁。"
+        ],
+        "quick_start": "下载安装脚本（macOS/Linux 使用 curl，Windows 使用 PowerShell），首次运行时通过 /login 命令登录，支持 OAuth 或 API Key。进入项目目录后运行 kimi 命令启动交互界面，输入自然语言指令即可开始使用。",
+        "maturity": "项目拥有近 5000 星和 700 多个分叉，活跃度高（每周约 1500 星），最近更新时间为 2026 年 7 月，具备较高的社区关注度和活跃开发状态。文档完善，支持多平台安装和编辑器集成，具备一定的生产环境应用潜力。",
+        "limitations": [
+          "当前存在较多未解决的开放问题（776 个），可能影响稳定性和用户体验。",
+          "依赖 Moonshot AI 的 Kimi 模型，其他模型兼容性和性能表现未详尽说明。",
+          "视频输入功能具体支持格式和处理能力未详细披露，实际应用场景受限。",
+          "对非终端用户或不熟悉命令行操作的用户友好度有限。"
+        ],
+        "potential": [
+          "通过丰富插件生态和多模型支持，未来可扩展为多场景、多语言的 AI 编码平台。",
+          "视频输入和多模态交互能力有望推动 AI 编码代理向更智能、更直观方向发展。",
+          "与主流编辑器和 IDE 的深度集成可提升开发者工作流效率，扩大用户基础。",
+          "生命周期钩子和本地命令集成为自动化和安全审计提供了扩展空间。"
+        ]
+      },
+      {
+        "full_name": "1jehuang/jcode",
+        "tagline": "The most intelligent agent harness for code",
+        "overview": "jcode 是一个基于 Rust 语言开发的智能代码代理工具，旨在提升编程效率和技能上限。它支持多会话工作流，具有高度的可定制性和性能优化，适用于 Linux、macOS 和 Windows 平台。项目活跃，拥有较高的社区关注度和持续更新。",
+        "core_features": [
+          "支持多会话工作流，方便同时管理多个编程任务",
+          "高度可定制，用户可以根据需求调整代理行为",
+          "性能和资源使用优化，尤其在内存占用和启动速度方面表现优异",
+          "命令行界面（CLI）和终端用户界面（TUI）支持，便于集成和使用"
+        ],
+        "problems": [
+          "传统代码辅助工具在多会话管理和资源消耗方面存在不足",
+          "现有工具的定制能力有限，难以满足复杂或个性化的开发需求",
+          "部分 AI 编码代理启动慢且占用大量内存，不利于高效开发",
+          "缺乏统一的跨平台支持，影响用户体验和工具普及"
+        ],
+        "use_cases": [
+          "开发者在终端环境中使用 AI 助手进行代码生成和调试",
+          "需要同时管理多个编程任务或项目的多会话场景",
+          "希望通过自定义代理行为提升编码效率和质量",
+          "资源受限环境下运行高效的 AI 编码代理"
+        ],
+        "audience": [
+          "软件开发人员，尤其是喜欢使用命令行工具的程序员",
+          "需要多任务并行处理的开发团队或个人",
+          "对 AI 编码代理性能和资源消耗有较高要求的用户",
+          "希望通过开源工具定制和扩展编码辅助功能的技术人员"
+        ],
+        "differentiators": [
+          "基于 Rust 实现，兼顾性能和安全性",
+          "内存使用显著低于同类 AI 编码代理工具，支持大规模多会话",
+          "支持本地嵌入功能以降低资源消耗（可关闭以节省内存）",
+          "提供丰富的安装方式和跨平台支持，方便用户快速上手"
+        ],
+        "quick_start": [
+          "macOS 和 Linux 用户可通过 curl 脚本一键安装：curl -fsSL https://jcode.sh/install | bash",
+          "Windows 11 用户可通过 PowerShell 脚本安装：irm https://jcode.sh/install.ps1 | iex",
+          "安装后可访问官方文档和网站获取详细使用指南和配置说明",
+          "支持多种提供者设置和源码构建，满足不同用户需求"
+        ],
+        "maturity": "项目自 2026 年初创建以来持续活跃，拥有超过 11000 颗星和 1200 多个分支，社区活跃，定期发布新版本，具备较高的稳定性和成熟度。",
+        "limitations": [
+          "当前仍存在 128 个开放问题，部分功能和兼容性可能需要改进",
+          "多会话模式下内存占用虽优于多数竞品，但开启本地嵌入时内存使用显著增加",
+          "文档和社区支持主要以英文为主，可能对非英语用户有一定门槛",
+          "功能细节和扩展性依赖用户自行配置，初学者可能需要一定学习成本"
+        ],
+        "potential": [
+          "通过持续优化性能和资源管理，进一步提升多会话支持能力",
+          "扩展更多 AI 模型和编码语言支持，增强工具适用范围",
+          "增强用户界面和交互体验，降低使用门槛",
+          "构建更完善的插件生态，促进社区贡献和功能扩展"
+        ]
+      },
+      {
+        "full_name": "diegosouzapw/OmniRoute",
+        "tagline": "Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax.",
+        "overview": "OmniRoute 是一个开源的 AI 网关项目，提供统一的接口访问超过290个 AI 服务提供商和500多个模型，其中90多个提供免费额度。它支持多种知名模型和工具，如 Claude Code、Codex、Cursor、Cline 和 Copilot，具备自动配额感知和自动回退功能，采用 RTK 和 Caveman 压缩技术节省大量令牌消耗。项目由500多名贡献者共同维护，采用 MIT 许可证，使用 TypeScript 开发，活跃度高，拥有较多的星标和分叉。",
+        "core_features": [
+          "统一的单一端点访问290多个AI服务提供商和500多个模型",
+          "自动配额感知和自动回退机制，确保服务稳定性",
+          "RTK与Caveman压缩技术，节省15%至95%的令牌消耗，平均约89%",
+          "支持桌面应用和渐进式网页应用（PWA）"
+        ],
+        "problems": [
+          "多AI服务提供商的SDK和速率限制管理复杂",
+          "难以准确统计和利用多个免费额度",
+          "令牌消耗高，容易触及API调用限制",
+          "缺乏统一的接口和自动故障切换机制"
+        ],
+        "use_cases": [
+          "开发者需要统一访问多种AI模型和服务",
+          "希望最大化利用免费额度以降低成本",
+          "构建需要高可用AI服务的应用，避免单点故障",
+          "需要节省API调用令牌以延长使用周期"
+        ],
+        "audience": [
+          "AI开发者和工程师",
+          "产品经理和创业者关注成本和服务稳定性",
+          "需要集成多种AI模型的应用开发团队",
+          "对AI服务调用效率和费用敏感的用户"
+        ],
+        "differentiators": [
+          "覆盖290多个AI提供商和500多个模型，免费额度透明且实时展示",
+          "集成多种压缩技术显著降低令牌消耗",
+          "自动配额感知和自动回退功能提升服务稳定性",
+          "活跃社区支持，500多名贡献者参与维护"
+        ],
+        "quick_start": "通过npm安装omniroute包，或使用Docker镜像快速部署。访问https://omniroute.online获取详细文档和仪表盘，支持CLI和多种客户端集成。",
+        "maturity": "项目活跃，拥有29000+星标，3800+分叉，持续更新，社区活跃，支持多平台部署，具备较高的稳定性和功能完善度。",
+        "limitations": [
+          "免费额度依赖第三方提供商，可能随时变动",
+          "部分提供商因服务条款限制可能无法使用",
+          "当前文档和界面主要以英文为主，非英语用户可能有一定门槛",
+          "令牌节省效果依赖具体使用场景和模型调用方式"
+        ],
+        "potential": [
+          "进一步扩展支持更多AI模型和服务提供商",
+          "优化压缩算法提升令牌节省效率",
+          "增强多语言支持和本地化文档",
+          "开发更多集成工具和插件，提升用户体验"
+        ]
+      },
+      {
+        "full_name": "agegr/pi-web",
+        "tagline": "Web UI for the pi coding agent",
+        "overview": "Pi Web 是 pi coding agent 的本地 Web 界面，读取本地 pi 会话文件，提供浏览会话、实时聊天、模型配置、技能管理和项目文件预览的浏览器工作空间。",
+        "core_features": [
+          "按项目浏览历史 pi 会话，无需查找终端历史或会话路径",
+          "支持从早期消息继续或分叉会话，安全尝试不同方向",
+          "通过侧边栏切换 Git 工作树，新的会话和文件浏览器跟随所选分支",
+          "聊天窗口旁边浏览项目文件，支持源码、文档、图片、音频和 PDF 预览"
+        ],
+        "problems": [
+          "终端中查找和管理 pi 会话历史不便",
+          "命令行配置模型和技能较为复杂",
+          "缺少直观的多分支会话管理和分叉功能",
+          "项目文件与会话内容无法在同一界面高效浏览"
+        ],
+        "use_cases": [
+          "开发者通过浏览器界面管理和回顾 pi agent 的历史会话",
+          "在多分支项目中切换工作树并同步会话和文件视图",
+          "实时与 pi agent 交互，调整模型配置和技能开关",
+          "在聊天过程中预览项目相关文件，提升开发效率"
+        ],
+        "audience": [
+          "使用 pi coding agent 进行代码生成和交互的开发者",
+          "需要图形界面管理会话和模型配置的技术人员",
+          "关注多分支项目管理和会话分叉的团队成员",
+          "希望集成文件浏览与聊天功能的产品经理"
+        ],
+        "differentiators": [
+          "直接读取本地 pi agent 会话文件，无需额外同步",
+          "集成 Git 工作树切换，支持多分支会话管理",
+          "提供丰富的文件预览支持，包括音频和 PDF",
+          "通过 Web UI 管理模型、API 密钥和技能，减少命令行操作"
+        ],
+        "quick_start": "使用 npx 运行最新版本：npx @agegr/pi-web@latest，或全局安装后运行 pi-web，默认访问 http://localhost:30141。支持自定义端口和主机名，支持环境变量配置代理和启动参数。",
+        "maturity": "项目活跃，最近更新时间为2026年7月，拥有2640颗星和352个分支，存在49个开放问题，具备较为完善的功能和社区基础。",
+        "limitations": [
+          "仅支持读取本地 pi agent 的默认或指定目录下的会话文件",
+          "文件浏览和预览范围限制在选定项目目录及会话中出现的工作目录",
+          "分叉会话创建新文件，编辑分支仅限同一会话文件内部，可能影响复杂会话管理",
+          "依赖环境变量配置 HTTP 代理，可能对部分网络环境配置有要求"
+        ],
+        "potential": [
+          "增强多用户协作功能，支持远程会话同步和共享",
+          "扩展支持更多文件类型和更丰富的预览交互",
+          "集成更多模型和技能市场，提升模型管理灵活性",
+          "优化 UI 体验，支持移动端访问和操作"
+        ]
+      },
+      {
+        "full_name": "HKUDS/DeepTutor",
+        "tagline": "DeepTutor: Lifelong Personalized Tutoring.",
+        "overview": "DeepTutor 是一个基于 Python 的开源项目，旨在提供终身个性化辅导服务。它利用大型语言模型和多智能体系统技术，支持交互式学习和知识库管理，帮助用户实现个性化的学习体验。",
+        "core_features": [
+          "支持多语言界面，包括英语、简体中文、日语、西班牙语、法语、阿拉伯语、俄语、印地语、葡萄牙语、泰语和波兰语。",
+          "集成多种大型语言模型和多智能体系统，支持知识库构建、问答和交互式学习。",
+          "提供命令行工具（CLI）以便用户快速启动和管理学习代理。",
+          "支持丰富的插件和生态系统扩展，如代码块主题化、数学动画和多模态文档解析。"
+        ],
+        "problems": [
+          "传统在线教育缺乏个性化和持续跟踪学习进度的能力。",
+          "现有辅导系统难以结合最新的人工智能技术实现动态交互和知识更新。",
+          "多语言和多模态学习资源整合不足，限制了全球用户的使用体验。",
+          "知识库管理和错误文档处理机制不完善，影响学习内容的准确性和完整性。"
+        ],
+        "use_cases": [
+          "为学生提供个性化的学习辅导和知识问答服务。",
+          "教育机构利用该系统构建智能辅导平台，提升教学质量和效率。",
+          "研究人员使用该平台进行人工智能辅助教育的相关研究和实验。",
+          "开发者通过命令行工具快速集成和定制智能学习代理。"
+        ],
+        "audience": [
+          "教育技术开发者和研究人员，关注AI在教育中的应用。",
+          "学生和终身学习者，寻求个性化和互动式学习体验。",
+          "教育机构和培训组织，想要搭建智能辅导系统。",
+          "开源社区成员，愿意贡献代码和改进项目功能。"
+        ],
+        "differentiators": [
+          "结合多智能体系统和大型语言模型，实现动态且个性化的辅导体验。",
+          "支持多语言和多模态内容，覆盖广泛的用户群体和学习材料。",
+          "活跃的社区支持和频繁的版本更新，保证项目的持续发展和稳定性。",
+          "提供丰富的命令行工具和插件生态，方便用户定制和扩展功能。"
+        ],
+        "quick_start": "用户可以通过安装 Python 3.11+ 环境，克隆仓库后运行命令行工具快速启动 DeepTutor。详细的安装和使用说明可参考官方文档 https://deeptutor.info 。",
+        "maturity": "项目已发布多个版本，最新版本为 v1.5.4，拥有近三万颗星和三千九百个分支，活跃度高，社区活跃，持续维护中。",
+        "limitations": [
+          "目前主要基于 Python，可能对非 Python 用户有一定门槛。",
+          "依赖大型语言模型和云服务，可能存在使用成本和隐私问题。",
+          "多语言支持虽广泛，但具体语言的内容丰富度和质量可能不均衡。",
+          "部分高级功能依赖最新的硬件和软件环境，可能限制部分用户使用。"
+        ],
+        "potential": [
+          "随着大型语言模型和多智能体技术的发展，DeepTutor 有望提供更精准和个性化的教学服务。",
+          "可扩展到更多教育场景，如企业培训、技能认证和在线考试辅导。",
+          "通过社区贡献和生态系统建设，项目功能将更加丰富和完善。",
+          "结合多模态数据处理，支持视频、音频等多种教学资源，提升学习体验。"
+        ]
+      },
+      {
+        "full_name": "MoonshotAI/kimi-cli",
+        "tagline": "Kimi Code CLI is your next CLI agent.",
+        "overview": "Kimi CLI 是一个基于终端的 AI 代理，旨在辅助软件开发任务和终端操作。它支持代码阅读与编辑、执行 shell 命令、网页搜索与抓取，并能自主规划和调整执行过程中的操作。项目使用 Python 开发，采用 Apache-2.0 许可证，活跃度较高，拥有较多的用户关注和贡献。",
+        "core_features": [
+          "支持切换到 shell 命令模式，允许用户直接在 Kimi CLI 内执行 shell 命令（部分内置命令如 cd 尚未支持）。",
+          "提供 Visual Studio Code 扩展，方便在 VS Code 中集成使用 Kimi CLI。",
+          "支持 Agent Client Protocol (ACP)，可与任何兼容 ACP 的编辑器或 IDE 集成，如 Zed 和 JetBrains 系列。",
+          "支持 Zsh 集成，通过 zsh-kimi-cli 插件增强 shell 体验。"
+        ],
+        "problems": [
+          "传统终端操作和代码编辑效率较低，缺乏智能辅助。",
+          "多编辑器和 IDE 之间缺少统一的 AI 代理集成方案。",
+          "终端内执行复杂任务时，用户需要频繁切换环境，降低工作流连贯性。",
+          "现有 shell 命令支持不完整，部分内置命令尚未实现。"
+        ],
+        "use_cases": [
+          "开发者在终端内通过 AI 代理辅助完成代码编辑和调试任务。",
+          "在 VS Code 或其他 ACP 兼容 IDE 中集成 Kimi CLI，实现智能代码辅助。",
+          "通过 Zsh 插件增强日常 shell 使用体验，提升命令行效率。",
+          "利用 MCP 协议连接多种模型上下文服务器，实现多模型协同工作。"
+        ],
+        "audience": [
+          "软件开发者，尤其是喜欢在终端环境中工作的程序员。",
+          "使用 VS Code、JetBrains 或 Zed 等现代 IDE 的开发者。",
+          "对 AI 辅助编程和智能终端操作感兴趣的技术人员。",
+          "希望通过多模型上下文协议扩展 AI 能力的开发团队。"
+        ],
+        "differentiators": [
+          "集成多种开发环境支持，包括 VS Code 扩展和 ACP 协议，覆盖主流编辑器和 IDE。",
+          "支持多种交互模式，既能作为 AI 编码助手，也能作为带 AI 功能的 shell 使用。",
+          "支持 MCP（Model Context Protocol），方便连接和管理多种 AI 模型上下文服务器。",
+          "提供 Zsh 插件，增强传统 shell 的智能交互能力。"
+        ],
+        "quick_start": "访问官方文档 https://moonshotai.github.io/kimi-cli/en/guides/getting-started.html，按照说明安装 Python 包并启动 Kimi CLI。可通过 Ctrl-X 切换到 shell 命令模式。也可安装 VS Code 扩展或配置 ACP 客户端集成。",
+        "maturity": "项目活跃，拥有超过一万颗星和一千多次分叉，持续更新中。当前版本已支持多平台集成和多种功能，但部分功能如内置 shell 命令支持尚不完整。项目正逐步向 Kimi Code CLI 迁移，旧版本将逐步停止维护。",
+        "limitations": [
+          "内置 shell 命令支持不完整，部分常用命令如 cd 尚未实现。",
+          "项目正处于迁移阶段，未来将逐步停止旧版本维护，可能影响现有用户。",
+          "依赖 Python 环境，部分功能需要额外配置和插件支持，使用门槛较高。",
+          "文档和社区支持主要以英文为主，中文文档虽有但可能不够全面。"
+        ],
+        "potential": [
+          "通过完善内置 shell 命令支持，提升终端操作的完整性和用户体验。",
+          "加强与更多 IDE 和编辑器的集成，扩大用户基础和应用场景。",
+          "利用 MCP 协议扩展多模型协同能力，增强 AI 代理的智能水平。",
+          "发展更丰富的插件生态和社区支持，促进项目长期可持续发展。"
+        ]
+      },
+      {
+        "full_name": "earendil-works/pi",
+        "tagline": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+        "overview": "Pi 是一个用 TypeScript 开发的 AI 代理工具包，提供统一的多供应商大型语言模型（LLM）API、代理运行时、终端用户界面库以及交互式编码代理命令行工具。项目包含多个子包，支持工具调用、状态管理和多种 LLM 提供商（如 OpenAI、Anthropic、Google 等）的集成。该项目活跃且拥有较多星标和分叉，采用 MIT 许可证。",
+        "core_features": [
+          "统一的多供应商大型语言模型 API，支持 OpenAI、Anthropic、Google 等",
+          "代理运行时，支持工具调用和状态管理",
+          "交互式编码代理命令行界面（CLI）",
+          "终端用户界面库，支持差异渲染"
+        ],
+        "problems": [
+          "缺乏内置权限系统，默认运行权限与启动进程用户相同，存在安全隔离风险",
+          "需要用户自行通过容器化或沙箱技术实现权限和资源访问控制",
+          "多供应商 LLM 集成复杂，需统一接口管理",
+          "开源项目对新贡献者的 issue 和 PR 默认自动关闭，可能影响社区贡献积极性"
+        ],
+        "use_cases": [
+          "构建基于多供应商 LLM 的智能代理应用",
+          "开发交互式编码助手，提升编程效率",
+          "在终端环境中使用 AI 代理进行自动化任务和工具调用",
+          "集成 AI 代理到聊天自动化和工作流系统（如 Slack）"
+        ],
+        "audience": [
+          "AI 代理和大型语言模型开发者",
+          "需要多供应商 LLM 统一接口的技术团队",
+          "希望使用交互式编码代理的开发者",
+          "关注终端用户界面和自动化工具集成的技术人员"
+        ],
+        "differentiators": [
+          "支持多家主流 LLM 提供商，提供统一访问接口",
+          "包含完整的代理运行时，支持工具调用和状态管理",
+          "提供交互式编码代理 CLI，方便开发者使用",
+          "注重供应链安全，严格锁定依赖版本和生命周期脚本"
+        ],
+        "quick_start": "通过 npm 安装依赖后，运行构建脚本生成所有包，使用交互式编码代理 CLI 或其他子包提供的功能。官方提供构建独立二进制文件的脚本，支持离线模型数据构建。详细步骤见项目 README 和官方文档。",
+        "maturity": "项目活跃，拥有超过7.7万星标和近1万分叉，定期更新，包含完整测试和代码质量检查流程。采用严格的依赖管理和供应链安全措施。文档完善，提供多种使用和开发指导，社区活跃度较高。",
+        "limitations": [
+          "无内置权限控制，安全隔离需用户自行实现",
+          "对新贡献者的自动关闭机制可能限制社区扩展",
+          "依赖外部 LLM 服务，使用时需管理 API 访问和费用",
+          "部分功能依赖于外部模型数据和网络访问"
+        ],
+        "potential": [
+          "通过扩展支持更多 LLM 提供商和工具集成，提升适用范围",
+          "增强安全隔离机制，内置权限管理和沙箱支持",
+          "优化交互式编码代理，支持更多编程语言和开发场景",
+          "构建更丰富的终端用户界面和自动化工作流集成"
+        ]
+      }
+    ]
+  }
+}
