@@ -1,0 +1,589 @@
+{
+  "date": "2026-08-08",
+  "repositories": [
+    {
+      "full_name": "zhaoxuya520/reverse-skill",
+      "html_url": "https://github.com/zhaoxuya520/reverse-skill",
+      "description": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
+      "homepage": "",
+      "language": "PowerShell",
+      "stars": 20604,
+      "forks": 2841,
+      "open_issues": 15,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-05-13T14:37:57Z",
+      "updated_at": "2026-08-08T03:26:52Z",
+      "pushed_at": "2026-08-07T17:59:16Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"reverse-skill.png\" alt=\"reverse-skill\" width=\"140\" />\n</p>\n\n<h1 align=\"center\">reverse-skill</h1>\n<h3 align=\"center\">Cybersecurity Skills Router · 逆向技能路由包</h3>\n\n<p align=\"center\"><em style=\"font-family: Georgia, serif; font-size: 1.2em; color: #777;\">Navigate the dark waters, sail against the stream.</em></p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/zhaoxuya520/reverse-skill/releases/tag/v1.0.0\"><img src=\"https://img.shields.io/badge/release-v1.0.0-blue\" alt=\"release\"></a>\n  <a href=\"https://github.com/zhaoxuya520/reverse-skill/stargazers\"><img src=\"https://img.shields.io/github/stars/zhaoxuya520/reverse-skill?style=flat&logo=github\" alt=\"stars\"></a>\n  <a href=\"https://github.com/zhaoxuya520/reverse-skill/forks\"><img src=\"https://img.shields.io/github/forks/zhaoxuya520/reverse-skill?style=flat&logo=github\" alt=\"forks\"></a>\n  <a href=\"https://github.com/zhaoxuya520/reverse-skill/issues\"><img src=\"https://img.shields.io/github/issues/zhaoxuya520/reverse-skill?style=flat&logo=github\" alt=\"issues\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-green\" alt=\"license\"></a>\n  <a href=\"CHANGELOG.md\"><img src=\"https://img.shields.io/badge/changelog-Keep%20a%20Changelog-orange\" alt=\"changelog\"></a>\n</p>\n\n<p align=\"center\">\n<a href=\"https://trendshift.io/repositories/43969?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-43969\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/43969\" alt=\"zhaoxuya520%2Freverse-skill | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://trendshift.io/repositories/43969?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-43969\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/43969/daily\" alt=\"zhaoxuya520%2Freverse-skill | Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<br/>\n<p align=\"center\">\n  <a href=\"#about\">About</a> ·\n  <a href=\"#getting-started\">Getting Started</a> ·\n  <a href=\"#usage\">Usage</a> ·\n  <a href=\"skills/MASTER-ROUTING.md\">Fast route</a> ·\n  <a href=\"skills/routing.md\">Routing</a> ·\n  <a href=\"skills/ops/\">Ops contracts</a> ·\n  <a href=\"README_AI.md\">AI Bootstrap</a> ·\n  <a href=\"#sponsors\">Sponsors</a> ·\n  <a href=\"#contributing\">Contributing</a>\n</p>\n\n<p align=\"center\">\n  🌐 <a href=\"README_zh.md\">中文</a>\n</p>\n\n<br/>\n\n<a id=\"about\"></a>\n\n## About\n\n> **If you are an AI Agent, jump to [README_AI.md](README_AI.md) and follow the instructions strictly.**\n\nWhen an AI agent (Claude Code, Codex CLI, Cursor, etc.) encounters an APK, a binary, frontend JS encryption, a CTF challenge, or a pentesting target, this package routes it to the right methodology, checks available tools, and executes a repeatable workflow instead of guessing commands.\n\n```\nUser task\n  → RULES.md\n  → MASTER-ROUTING / master-route.ps1 (PRIMARY)\n  → case-init / scope.md (auth + network_profile; no target ACT until ready)\n  → Scenario skill → tools / MCP / scripts\n  → timeline + Evidence→Finding→Path → report + field-journal\n```\n\n**Why this exists:**\n- AI agents don't know whether to use jadx, apktool, Frida, IDA, or BurpSuite for a given task\n- APK, ELF, JS, PCAP, and CTF tasks each need different playbooks\n- Tools, MCP servers, and scripts are scattered across machines\n- The same mistakes get repeated because experience isn't reused\n\nPRIMARY ladder: [skills/MASTER-ROUTING.md](skills/MASTER-ROUTING.md) · Full matrix: [skills/routing.md](skills/routing.md) · Ops: [skills/ops/](skills/ops/)\n\n<br/>\n\n<div align=\"center\">\n  <a href=\"https://afterglow.watch\"><img src=\"https://afterglow.watch/badge/zhaoxuya520/reverse-skill\" alt=\"star velocity\"></a>\n</div>\n\n<br/>\n\n<p align=\"right\">(<a href=\"#about\">back to top</a>)</p>\n\n### Built With\n\n<p align=\"left\">\n  <img src=\"https://skillicons.dev/icons?i=py,nodejs,powershell,bash,java,docker,git&theme=light\" /><br/>\n  <code>IDA Pro</code> · <code>radare2</code> · <code>Ghidra</code>\n</p>\n\n<p align=\"right\">(<a href=\"#about\">back to top</a>)</p>\n\n<a id=\"getting-started\"></a>\n\n## Getting Started\n\n### Prerequisites\n\n- **Java / JDK** — for jadx and apktool\n- **Node.js 22.12+** — for JS toolchain and MCP servers\n- **Python 3.x** — for Frida and helper scripts\n- **A code AI client** — Claude Code, Codex CLI, Cursor, etc.\n\n### Installation\n\n```\ngit clone https://github.com/zhaoxuya520/reverse-skill.git\n```\n\nThen refresh the tool index per platform:\n\n| Platform | Command |\n|----------|---------|\n| Windows | `powershell -File skills/scripts/refresh-tool-index.ps1` |\n| Linux / macOS | `bash skills/scripts/refresh-tool-index.sh` |\n| Kali Linux | `bash kali/scripts/refresh-tool-index.sh` |\n\nCheck [skills/tool-index.md](skills/tool-index.md) to see detected tools.\n\nPlatform-specific docs:\n- **Kali Linux** → [kali/README-kali.md](kali/README-kali.md)\n- **Ubuntu/Debian** → [docs/platforms/linux.md](docs/platforms/linux.md)\n- **macOS** → [docs/platforms/macos.md](docs/platforms/macos.md)\n\n<p align=\"right\">(<a href=\"#getting-started\">back to top</a>)</p>\n\n<a id=\"usage\"></a>\n\n## Usage\n\n### Supported scenarios\n\n| Scenario | Entry |\n|----------|-------|\n| APK / Android analysis | `skills/apk-reverse/` |\n| iOS / mobile | `skills/mobile-reverse/` |\n| Binary reverse (exe/dll/so/elf) | `skills/ida-reverse/` / `skills/radare2/` |\n| .NET / C# | `skills/dotnet-reverse/` |\n| Frontend JS / encrypted params | `skills/js-reverse/` |\n| DSL VM / custom JS opcode VM | `skills/reverse-engineering/dsl-vm-reverse/` |\n| HTTP capture / request replay | anything-analyzer, Reqable MCP + `js-reverse/` |\n| Malware / YARA | `skills/malware-analysis/` |\n| Penetration testing / scanning | `skills/pentest-tools/` |\n| Attack chain / red-team orchestration | `skills/attack-chain/` |\n| CTF competition | `CTF-Sandbox-Orchestrator/` (40+ sub-skills) |\n| Firmware / IoT | `skills/firmware-pentest/` |\n| Patch diff / N-day | `skills/patch-diff-exploit/` |\n| Pwn / exploit development | `skills/pwn-chain/` |\n| EDR bypass | `skills/edr-bypass-re/` |\n| API / GraphQL | `skills/api-security/` |\n| Supply chain / SBOM | `skills/supply-chain-security/` |\n| LLM / AI security | `skills/llm-security/` |\n| OLLVM deobfuscation | `skills/reverse-engineering/references/ollvm-deobfuscation.md` |\n| Diagrams / reports | `skills/diagram-generator/` / `skills/docs-generator/` |\n\n### Key files\n\n| File | Purpose |\n|------|---------|\n| [README_AI.md](README_AI.md) | AI agent bootstrap and configuration |\n| [RULES.md](RULES.md) | Global routing rules (scope gate before ACT) |\n| [skills/MASTER-ROUTING.md](skills/MASTER-ROUTING.md) | PRIMARY fast ladder |\n| [skills/routing.md](skills/routing.md) | Task → skill routing matrix |\n| [skills/SKILL.md](skills/SKILL.md) | Master entry point |\n| [skills/tool-index.md](skills/tool-index.md) | Local tool status (auto-generated) |\n| [skills/scripts/master-route.ps1](skills/scripts/master-route.ps1) | One-shot PRIMARY triage |\n| [skills/scripts/case-init.ps1](skills/scripts/case-init.ps1) | Case dir: scope / timeline / workitems |\n| [skills/ops/](skills/ops/) | Scope, Evidence chain, roles, timeline (skill-router form) |\n\n### Repository layout\n\n```\n.\n├── README.md / README_zh.md / README_AI.md\n├── RULES.md / RULES_zh.md\n├── skills/\n│   ├── MASTER-ROUTING.md / SKILL.md / routing.md\n│   ├── ops/                   # ops contracts\n│   ├── scripts/               # master-route, case-init, bootstrap, verify\n│   ├── field-journal/\n│   ├── apk-reverse/ mobile-reverse/ js-reverse/ dotnet-reverse/\n│   ├── ida-reverse/ radare2/ reverse-engineering/ malware-analysis/\n│   ├── pentest-tools/ attack-chain/ pwn-chain/ firmware-pentest/\n│   ├── api-security/ supply-chain-security/ llm-security/\n│   └── ...\n├── CTF-Sandbox-Orchestrator/\n├── docs/\n├── kali/                      # see kali/README-kali.md\n└── work/                      # local cases (gitignored)\n```\n\n<p align=\"right\">(<a href=\"#usage\">back to top</a>)</p>\n\n<a id=\"sponsors\"></a>\n\n## Sponsors\n<a href=\"https://www.atlascloud.ai/?ref=W3Q77C\"><img src=\"https://www.atlascloud.ai/oss-program/powered-by-atlas-cloud.svg\" alt=\"Powered by Atlas Cloud\" height=\"28\" /></a>\n\nFor sponsorship or business inquiries:\n\n<p align=\"center\">\n  <a href=\"mailto:24781737@qq.com?subject=%5BSponsorship%5D%20reverse-skill\">\n    <img src=\"https://img.shields.io/badge/Email%20us-24781737%40qq.com-0A66C2?style=for-the-badge&logo=maildotru&logoColor=white\" alt=\"Email us — 24781737@qq.com\" />\n  </a>\n</p>\n\n<p align=\"right\">(<a href=\"#sponsors\">back to top</a>)</p>\n\n<a id=\"contributing\"></a>\n\n## Contributing\n\nContributions are welcome! Fork the repo, create a feature branch, and open a PR.\n\n1. Fork the Project\n2. `git checkout -b feature/AmazingFeature`\n3. `git commit -m 'Add some AmazingFeature'`\n4. `git push origin feature/AmazingFeature`\n5. Open a Pull Request\n\n### Contributors\n\n<a href=\"https://github.com/zhaoxuya520/reverse-skill/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=zhaoxuya520/reverse-skill\" alt=\"contributors\" />\n</a>\n\n<p align=\"right\">(<a href=\"#contributing\">back to top</a>)</p>\n\n<a id=\"license\"></a>\n\n## License\n\nThis project (`reverse-skill`) is primarily licensed under the **MIT License** (see [LICENSE](LICENSE)).\n\n**Submodule and third-party dependencies:**\n- **CTF-Sandbox-Orchestrator/**: **GNU GPLv3**\n- **Pentest Swarm AI**: Original project is **AGPL-3.0**. This repo only invokes it via CLI or MCP and does not include its source code\n- Other tools (jadx, frida, nmap, burpsuite-mcp, etc.) are subject to their respective official licenses\n\n<p align=\"right\">(<a href=\"#license\">back to top</a>)</p>\n\n<a id=\"acknowledgments\"></a>\n\n## Acknowledgments\n\nThanks to all open-source tool authors. This project integrates tools across reverse engineering, penetration testing, CTF, and security analysis — every tool is the fruit of community effort.\n\nSpecial thanks to the OLLVM deobfuscation ecosystem contributors and everyone who submitt",
+      "rank": 1,
+      "weekly_stars": 10400
+    },
+    {
+      "full_name": "microsoft/AI-For-Beginners",
+      "html_url": "https://github.com/microsoft/AI-For-Beginners",
+      "description": "12 Weeks, 24 Lessons, AI for All!",
+      "homepage": "",
+      "language": "Jupyter Notebook",
+      "stars": 63238,
+      "forks": 12258,
+      "open_issues": 25,
+      "topics": [
+        "ai",
+        "artificial-intelligence",
+        "cnn",
+        "computer-vision",
+        "deep-learning",
+        "gan",
+        "machine-learning",
+        "microsoft-for-beginners",
+        "nlp",
+        "rnn"
+      ],
+      "license": "MIT",
+      "created_at": "2021-03-03T16:27:36Z",
+      "updated_at": "2026-08-08T03:29:30Z",
+      "pushed_at": "2026-07-21T11:11:48Z",
+      "archived": false,
+      "readme": "[![GitHub license](https://img.shields.io/github/license/microsoft/AI-For-Beginners.svg)](https://github.com/microsoft/AI-For-Beginners/blob/main/LICENSE)\n[![GitHub contributors](https://img.shields.io/github/contributors/microsoft/AI-For-Beginners.svg)](https://GitHub.com/microsoft/AI-For-Beginners/graphs/contributors/)\n[![GitHub issues](https://img.shields.io/github/issues/microsoft/AI-For-Beginners.svg)](https://GitHub.com/microsoft/AI-For-Beginners/issues/)\n[![GitHub pull-requests](https://img.shields.io/github/issues-pr/microsoft/AI-For-Beginners.svg)](https://GitHub.com/microsoft/AI-For-Beginners/pulls/)\n[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)\n\n[![GitHub watchers](https://img.shields.io/github/watchers/microsoft/AI-For-Beginners.svg?style=social&label=Watch)](https://GitHub.com/microsoft/AI-For-Beginners/watchers/)\n[![GitHub forks](https://img.shields.io/github/forks/microsoft/AI-For-Beginners.svg?style=social&label=Fork)](https://GitHub.com/microsoft/AI-For-Beginners/network/)\n[![GitHub stars](https://img.shields.io/github/stars/microsoft/AI-For-Beginners.svg?style=social&label=Star)](https://GitHub.com/microsoft/AI-For-Beginners/stargazers/)\n[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/microsoft/ai-for-beginners/HEAD)\n[![Gitter](https://badges.gitter.im/Microsoft/ai-for-beginners.svg)](https://gitter.im/Microsoft/ai-for-beginners?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)\n\n[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)\n\n# Artificial Intelligence for Beginners - A Curriculum\n\n|![Sketchnote by @girlie_mac https://twitter.com/girlie_mac](https://github.com/microsoft/AI-For-Beginners/raw/main/lessons/sketchnotes/ai-overview.png)|\n|:---:|\n| AI For Beginners - _Sketchnote by [@girlie_mac](https://twitter.com/girlie_mac)_ |\n\nExplore the world of **Artificial Intelligence** (AI) with our 12-week, 24-lesson curriculum!  It includes practical lessons, quizzes, and labs. The curriculum is beginner-friendly and covers tools like TensorFlow and PyTorch, as well as ethics in AI\n\n\n### 🌐 Multi-Language Support\n\n#### Supported via GitHub Action (Automated & Always Up-to-Date)\n\n<!-- CO-OP TRANSLATOR LANGUAGES TABLE START -->\n[Arabic](./translations/ar/README.md) | [Bengali](./translations/bn/README.md) | [Bulgarian](./translations/bg/README.md) | [Burmese (Myanmar)](./translations/my/README.md) | [Chinese (Simplified)](./translations/zh-CN/README.md) | [Chinese (Traditional, Hong Kong)](./translations/zh-HK/README.md) | [Chinese (Traditional, Macau)](./translations/zh-MO/README.md) | [Chinese (Traditional, Taiwan)](./translations/zh-TW/README.md) | [Croatian](./translations/hr/README.md) | [Czech](./translations/cs/README.md) | [Danish](./translations/da/README.md) | [Dutch](./translations/nl/README.md) | [Estonian](./translations/et/README.md) | [Finnish](./translations/fi/README.md) | [French](./translations/fr/README.md) | [German](./translations/de/README.md) | [Greek](./translations/el/README.md) | [Hebrew](./translations/he/README.md) | [Hindi](./translations/hi/README.md) | [Hungarian](./translations/hu/README.md) | [Indonesian](./translations/id/README.md) | [Italian](./translations/it/README.md) | [Japanese](./translations/ja/README.md) | [Kannada](./translations/kn/README.md) | [Khmer](./translations/km/README.md) | [Korean](./translations/ko/README.md) | [Lithuanian](./translations/lt/README.md) | [Malay](./translations/ms/README.md) | [Malayalam](./translations/ml/README.md) | [Marathi](./translations/mr/README.md) | [Nepali](./translations/ne/README.md) | [Nigerian Pidgin](./translations/pcm/README.md) | [Norwegian](./translations/no/README.md) | [Persian (Farsi)](./translations/fa/README.md) | [Polish](./translations/pl/README.md) | [Portuguese (Brazil)](./translations/pt-BR/README.md) | [Portuguese (Portugal)](./translations/pt-PT/README.md) | [Punjabi (Gurmukhi)](./translations/pa/README.md) | [Romanian](./translations/ro/README.md) | [Russian](./translations/ru/README.md) | [Serbian (Cyrillic)](./translations/sr/README.md) | [Slovak](./translations/sk/README.md) | [Slovenian](./translations/sl/README.md) | [Spanish](./translations/es/README.md) | [Swahili](./translations/sw/README.md) | [Swedish](./translations/sv/README.md) | [Tagalog (Filipino)](./translations/tl/README.md) | [Tamil](./translations/ta/README.md) | [Telugu](./translations/te/README.md) | [Thai](./translations/th/README.md) | [Turkish](./translations/tr/README.md) | [Ukrainian](./translations/uk/README.md) | [Urdu](./translations/ur/README.md) | [Vietnamese](./translations/vi/README.md)\n\n> **Prefer to Clone Locally?**\n>\n> This repository includes 50+ language translations which significantly increases the download size. To clone without translations, use sparse checkout:\n>\n> **Bash / macOS / Linux:**\n> ```bash\n> git clone --filter=blob:none --sparse https://github.com/microsoft/AI-For-Beginners.git\n> cd AI-For-Beginners\n> git sparse-checkout set --no-cone '/*' '!translations' '!translated_images'\n> ```\n>\n> **CMD (Windows):**\n> ```cmd\n> git clone --filter=blob:none --sparse https://github.com/microsoft/AI-For-Beginners.git\n> cd AI-For-Beginners\n> git sparse-checkout set --no-cone \"/*\" \"!translations\" \"!translated_images\"\n> ```\n>\n> This gives you everything you need to complete the course with a much faster download.\n<!-- CO-OP TRANSLATOR LANGUAGES TABLE END -->\n\n**If you wish to have additional translations languages supported are listed [here](https://github.com/Azure/co-op-translator/blob/main/getting_started/supported-languages.md)**\n\n## Join the Community\n[![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)\n\n## What you will learn\n\n**[Mindmap of the Course](http://soshnikov.com/courses/ai-for-beginners/mindmap.html)**\n\nIn this curriculum, you will learn:\n\n* Different approaches to Artificial Intelligence, including the \"good old\" symbolic approach with **Knowledge Representation** and reasoning ([GOFAI](https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence)).\n* **Neural Networks** and **Deep Learning**, which are at the core of modern AI. We will illustrate the concepts behind these important topics using code in two of the most popular frameworks - [TensorFlow](http://Tensorflow.org) and [PyTorch](http://pytorch.org).\n* **Neural Architectures** for working with images and text. We will cover recent models but may be a bit lacking in the state-of-the-art.\n* Less popular AI approaches, such as **Genetic Algorithms** and **Multi-Agent Systems**.\n\nWhat we will not cover in this curriculum:\n\n> [Find all additional resources for this course in our Microsoft Learn collection](https://learn.microsoft.com/en-us/collections/7w28iy2xrqzdj0?WT.mc_id=academic-77998-bethanycheum)\n\n* Business cases of using **AI in Business**. Consider taking [Introduction to AI for business users](https://docs.microsoft.com/learn/paths/introduction-ai-for-business-users/?WT.mc_id=academic-77998-bethanycheum) learning path on Microsoft Learn, or [AI Business School](https://www.microsoft.com/ai/ai-business-school/?WT.mc_id=academic-77998-bethanycheum), developed in cooperation with [INSEAD](https://www.insead.edu/).\n* **Classic Machine Learning**, which is well described in our [Machine Learning for Beginners Curriculum](http://github.com/Microsoft/ML-for-Beginners).\n* Practical AI applications built using **[Cognitive Services](https://azure.microsoft.com/services/cognitive-services/?WT.mc_id=academic-77998-bethanycheum)**. For this, we recommend that you start with modules Microsoft Learn for [vision](https://docs.microsoft.com/learn/paths/create-computer-vision-solutions-azure-cognitive-services/?WT.mc_id=academic-77998-bethanycheum), [natural language processing](https://docs.microsoft.com/learn/paths/explore-natural-language-processing/?WT.mc_id=academic-77998-bethanycheum), **[Generative AI with Azure OpenAI Service](https://learn.microsoft.com/en-us/training/paths/develop-ai-solutions-azure-openai/?WT.mc_id=academic-77998-bethanycheum)** and others.\n* Specific ML **Cloud Frameworks**, such as [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/?WT.mc_id=academic-77998-bethanycheum), [Microsoft Fabric](https://learn.microsoft.com/en-us/training/paths/get-started-fabric/?WT.mc_id=academic-77998-bethanycheum), or [Azure Databricks](https://docs.microsoft.com/learn/paths/data-engineer-azure-databricks?WT.mc_id=academic-77998-bethanycheum). Consider using [Build and operate machine learning solutions with Azure Machine Learning](https://docs.microsoft.com/learn/paths/build-ai-solutions-with-azure-ml-service/?WT.mc_id=academic-77998-bethanycheum) and [Build and Operate Machine Learning Solutions with Azure Databricks](https://docs.microsoft.com/learn/paths/build-operate-machine-learning-solutions-azure-databricks/?WT.mc_id=academic-77998-bethanycheum) learning paths.\n* **Conversational AI** and **Chat Bots**. There is a separate [Create conversational AI solutions](https://docs.microsoft.com/learn/paths/create-conversational-ai-solutions/?WT.mc_id=academic-77998-bethanycheum) learning path, and you can also refer to [this blog post](https://soshnikov.com/azure/hello-bot-conversational-ai-on-microsoft-platform/) for more detail.\n* **Deep Mathematics** behind deep learning. For this, we would recommend [Deep Learning](https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618) by Ian Goodfellow, Yoshua Bengio and Aaron Courville, which is also available online at [https://www.deeplearningbook.org/](https://www.deeplearningbook.org/).\n\nFor a gentle introduction to _AI in the Cloud_ topics you may consider taking the [Get started with artificial intelligence on Azure](https://docs.microsoft.com/learn/paths/get-started-with-artificial-intelligence-on-azure/?WT.mc_i",
+      "rank": 2,
+      "weekly_stars": 8224
+    },
+    {
+      "full_name": "TencentCloud/TencentDB-Agent-Memory",
+      "html_url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 17573,
+      "forks": 1573,
+      "open_issues": 552,
+      "topics": [
+        "agent",
+        "ai-agent",
+        "embedding",
+        "llm",
+        "local-first",
+        "long-term-memory",
+        "memory",
+        "openclaw-plugin",
+        "vector-search"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2026-04-07T06:34:26Z",
+      "updated_at": "2026-08-08T03:28:37Z",
+      "pushed_at": "2026-08-06T12:07:09Z",
+      "archived": false,
+      "readme": "\n<div align=\"center\">\n\n<img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" />\n\n### Agents remember. Humans innovate.\n\n<a href=\"https://trendshift.io/repositories/29310?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-29310\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB-Agent-Memory | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n[![npm](https://img.shields.io/npm/v/@tencentdb-agent-memory/memory-tencentdb?color=blue)](https://www.npmjs.com/package/@tencentdb-agent-memory/memory-tencentdb)\n[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)\n[![Node](https://img.shields.io/badge/node-%3E=22.16-brightgreen)](https://nodejs.org/)\n[![OpenClaw](https://img.shields.io/badge/OpenClaw-%3E=2026.3.13-orange)](https://github.com/openclaw/openclaw)\n[![Hermes](https://img.shields.io/badge/Hermes-Gateway-7B61FF)](https://hermes-agent.nousresearch.com/docs/)\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/dJQM6mKMF)\n\n[Installation](#installation) · [What is it?](#what-is-tencentdb-agent-memory) · [Team Play](#one-play-style-build-a-growing-agent-team-for-a-one-person-company) · [Technical Implementation](#technical-implementation) · [Benchmark](#benchmark)\n\n[**English**](./README.md) · [简体中文](./README_CN.md)\n\n</div>\n\n---\n\n> **Latest:** Team Memory Beta is evolving quickly — install it and start exploring in minutes.\n\n<td>\n   <video src=\"https://github.com/user-attachments/assets/efb1a808-1f86-4cfe-802c-f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline></video>\n</td>\n\n# Installation\n\nStart all three services in one go (`memory-core` + `memory-hub` + `proxy`):\n\n```bash\ngit clone https://github.com/Tencent/TencentDB-Agent-Memory.git\ncd TencentDB-Agent-Memory/deploy/global-images\ncp .env.example .env\n$EDITOR .env       # Fill in two sets of LLM parameters (memory group + proxy group)\n./start-all.sh     # Launch everything with one command; when finished, it prints a one-liner you can paste directly into Claude\n```\n\nOpen the panel: [http://localhost:8125](http://localhost:8125).\n\nComplete installation documentation (standalone Memory Hub deployment, Proxy + Claude Code / CodeBuddy usage, stop and cleanup, port reference, etc.) is available in [**INSTALL.md**](./INSTALL.md) (中文: [INSTALL_CN.md](./INSTALL_CN.md)).\n\n### Migrating data from an older version\n\nIf you're already on an older release (v1.x / v0.x) and want to bring your existing data over to v2.0.0+, we provide a migration tool:\n\nSee [**Data Migration Tool (v2 → v3)**](./MemoryCore/scripts/migrate-v2-to-v3/README.md) for full usage and flags. New installations can skip this.\n\n# What is TencentDB Agent Memory?\n\nWe started from a practical question: **How do you reduce repetitive work when using Agents?**\n\nIf project context has already been explained, it shouldn't need to be repeated in a new session. If documents have already been read, every Agent shouldn't have to start again from page one. A workflow that already works shouldn't have to be rediscovered next time.\n\nMemory here means more than just \"remembering conversations.\" **Any information that helps the next Agent avoid reinventing the wheel should be saved, organized, and reused.**\n\n```text\nExisting information → Reusable memory assets → Fewer turns → Less rework → More stable results and higher efficiency\n```\n\n### Let experience accumulate, flow, and pass on to the next Agent\n\n**Memory Hub** for Agent teams closes the loop across the entire experience lifecycle: work produces assets, assets circulate through the team, and new members can load the team's save file on day one.\n\n1. **Automatic asset extraction**: Extract Chat Memory and Skills from conversations and tasks; convert documents and code into Wiki and CodeGraph; then manage, review, and route them consistently.\n2. **Portable & multi-Agent compatible**: Memory assets are decoupled from Agent frameworks — they can move across frameworks and be shared and maintained by multiple Agents and team members.\n3. **Cold-start friendly**: Import existing documents, codebases, and Agent conversation sessions. New Agent teams can start from existing experience instead of learning from scratch.\n\n### 🧠 A brain that remembers people and context\n\n- **Chat Memory** retains preferences, facts, decisions, and interaction history.\n- Each Agent automatically gets its own memory when created — no need to re-introduce yourself next time.\n- L0 Conversation → L1 Atom → L2 Scenario → L3 Persona — raw conversations are distilled layer by layer.\n\n<img width=\"\" src=\"assets/images/chat_memory.cn.png\" alt=\"image.png\" />\n\n> \"Don't refactor the old auth module — mobile is still using it.\" — Context this costly shouldn't depend on humans repeating it every time.\n\n### ⚡ A Skill library that accumulates expertise\n\n- After completing complex work, Agents can extract and manage reusable Skills from conversations and tool calls, and import them into the context of a designated Agent when needed.\n- A Skill isn't just a prompt snippet; it has versions, resource files, trigger boundaries, execution steps, and validation rules.\n- Personal Skills are private by default; after review, they can be shared with the team and assigned to other Agents.\n\n<img width=\"\" src=\"assets/images/skill.cn.png\" alt=\"image.png\" />\n\n> Troubleshooting, code review, release checklists — learn it once, and the whole team can use it.\n\n### 📖 A knowledge map that reads both docs and code\n\n- **Wiki** turns product docs, design specs, and ops runbooks into structured pages with a link graph. (Inspired by Karpathy's LLM knowledge base.)\n\n<img src=\"./assets/images/wiki.cn.png\" alt=\"image.png\" />\n\n- **CodeGraph** indexes code symbols, files, call relationships, and impact paths.\n<img width=\"\" src=\"assets/images/codegraph.cn.png\" alt=\"image.png\" />\n\n- Agents can search, read, inspect callers/callees, and perform impact analysis before modifying code.\n\n> Wiki keeps Agents from reading every file list before getting to work. CodeGraph doesn't just tell them \"the code is here\" — it tells them \"changing this might affect those.\"\n\n### 🛡️ A team memory panel controlled by humans\n\n- Create teams and Agents in Memory Hub; review, share, and equip memory assets.\n- Manage ownership, versions, status, visibility, usage counts, and Agent bindings in one place.\n- `private` belongs strictly to the Owner; `team` is visible to all team members; `restricted` grants precise access via User / Role / Agent ACLs.\n- Two role layers: **global System Admin** manages users and teams (creating teams, adding members) and can also use Wiki, CodeGraph, Skill, and other asset management features; **Team-level roles** include Admin (team manager) and Member (regular member), responsible for asset collaboration and access control within a team. Asset ownership is tracked via Owner — the Owner automatically has management permissions for their assets.\n\n<img width=\"\" src=\"assets/images/asset.cn.png\" alt=\"image.png\" />\n\n\n## Cold Start: Load the Save File, Then Get to Work\n\nMost Agents' first task is re-learning your project. TencentDB Agent Memory turns the learning cost you've already paid into a save file:\n\n<img alt=\"Cold Start: import codebase, docs, and history into Memory Hub\" src=\"assets/images/flowchart3.png\" />\n\nSpecifically, these existing assets can be imported directly and processed automatically in the panel:\n\n- **Codebases**: Import existing repositories — **CodeGraph** automatically indexes symbols, files, call relationships, and impact paths.\n- **Documents & files**: Import relevant docs and files — **Wiki** automatically generates structured pages with a link graph.\n- **Conversation sessions**: Import past Agent conversation sessions — **Skills and Chat Memory** are automatically extracted as reusable assets.\n\n> Stop retraining every Agent. Give it the save file.\n\n## One Play Style: Build a Growing Agent Team for a One-Person Company\n\nOpen Memory Hub and create a team:\n\n```text\nTiny but Serious Inc.\n├── 👤 You · Set goals / Make decisions\n├── 🔭 Scout · Research / Find opportunities\n├── 🛠 Builder · Write code / Build products\n├── 🧪 Reviewer · Test / Find issues\n└── 🧠 Agent Memory · Preserve the team's experience\n```\n\nYou're not opening four disconnected chat windows — you're assembling a squad with different roles that can inherit the team's accumulated experience.\n\n### Recruit first, then equip\n\n```text\n🔭 Scout\n   ├── User interview Chat Memory\n   ├── Market research Wiki\n   └── Competitive analysis Skill\n\n🛠 Builder\n   ├── Product Wiki\n   ├── Project CodeGraph\n   └── Feature Delivery Skill\n\n🧪 Reviewer\n   ├── Historical incident Chat Memory\n   ├── Project CodeGraph\n   └── Release Checklist Skill\n```\n\nDifferent roles, different loadouts. Less noise — give each Agent the memory assets it actually needs to get work done.\n\n**The company can be tiny. Experience can compound forever.**\n\n## Memory Assets, Not a Chat Log Warehouse\n\nRAG answers \"what can be found?\" Team Memory also answers \"who can use it, which version is valid, and which Agent should receive it.\"\n\n| | Chat History | Standard RAG | TencentDB Agent Memory |\n| :--- | :---: | :---: | :---: |\n| Cross-session user understanding | △ | △ | ✅ Chat Memory |\n| Distilled executable experience | — | — | ✅ Skill |\n| Document structure & relationships | — | △ Chunk retrieval | ✅ Wiki + Link Graph |\n| Code call graphs & impact scope | — | △ Text match | ✅ CodeGraph |\n| Ownership / Version / Status | — | — | ✅ |\n| Team sharing & Agent loadout | — | — | ✅ |\n| Private / Team / ACL | — | △ | ✅ |\n\n## Memory Hub Is Not a Display Board — It's a Control Panel\n\n| Play Style | What you do in the Hub |\n| :--- | :--- |\n| **Team Up** | Create teams, add people and Agents, define sharing boundaries |\n| **Asset Library** | Browse, search, review, and manage Chat Memory, Ski",
+      "rank": 3,
+      "weekly_stars": 7501
+    },
+    {
+      "full_name": "usekaneo/kaneo",
+      "html_url": "https://github.com/usekaneo/kaneo",
+      "description": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.",
+      "homepage": "https://kaneo.app/",
+      "language": "TypeScript",
+      "stars": 7633,
+      "forks": 610,
+      "open_issues": 46,
+      "topics": [
+        "hacktoberfest",
+        "hono",
+        "issue-management",
+        "issue-tracker",
+        "jira-alternative",
+        "kanban",
+        "linear-alternative",
+        "project-management",
+        "react",
+        "self-hosted",
+        "typescript"
+      ],
+      "license": "MIT",
+      "created_at": "2024-12-31T08:25:09Z",
+      "updated_at": "2026-08-08T03:22:14Z",
+      "pushed_at": "2026-08-08T03:19:59Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <a href=\"https://kaneo.app\">\n    <img src=\"https://assets.kaneo.app/logo-text.png\" alt=\"Kaneo's logo\" width=\"450\" />\n  </a>\n</p>\n\n<div align=\"center\">\n\n[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)\n[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/usekaneo/kaneo/ci.yml?branch=main)](https://github.com/usekaneo/kaneo/actions)\n[![Discord](https://img.shields.io/discord/1326250681530843178?color=7389D8&label=&logo=discord&logoColor=ffffff)](https://discord.gg/rU4tSyhXXU)\n[![Sponsors](https://img.shields.io/github/sponsors/andrejsshell)](https://github.com/sponsors/andrejsshell)\n\n</div>\n\n<div align=\"center\">\n  <h3>\n    <a href=\"https://kaneo.app/docs/core\">Quick Start</a>\n    <span> | </span>\n    <a href=\"https://kaneo.app\">Website</a>\n    <span> | </span>\n    <a href=\"https://cloud.kaneo.app\">Cloud</a>\n    <span> | </span>\n    <a href=\"https://discord.gg/rU4tSyhXXU\">Discord</a>\n  </h3>\n</div>\n\n\n<p align=\"center\">\n  <img src=\"https://assets.kaneo.app/readme.png\" alt=\"Kaneo Dashboard\" />\n</p>\n\n## Why Kaneo?\n\nAfter years of using bloated, overcomplicated project management platforms that distracted from actual work, we built Kaneo to be different.\n\nThe problem with most tools isn't that they lack features, it's that they have **too many**. Every notification, every unnecessary button, every complex workflow pulls your team away from what matters: **building great products**.\n\nWe believe the best tools are **invisible**. They should amplify your team's natural workflow, not force you to adapt to theirs. Kaneo is built on the principle that **less is more**: every feature exists because it solves a real problem, not because it looks impressive in a demo.\n\n**What makes it different:**\n- **Clean interface** that focuses on your work, not the tool\n- **Self-hosted** so your data stays yours\n- **Actually fast** because we care about performance\n- **Open source** with a permissive MIT license\n\nLearn more about Kaneo's features and capabilities in our [documentation](https://kaneo.app/docs/core).\n\n## Sponsors\n\nKaneo is open source. If you find it useful, consider [sponsoring the project](https://github.com/sponsors/andrejsshell) to help support ongoing development.\n\n<!-- sponsors --><a href=\"https://github.com/danielsada\"><img src=\"https:&#x2F;&#x2F;github.com&#x2F;danielsada.png\" width=\"60px\" alt=\"User avatar: Daniel Sada\" /></a><a href=\"https://github.com/randoneering\"><img src=\"https:&#x2F;&#x2F;github.com&#x2F;randoneering.png\" width=\"60px\" alt=\"User avatar: (justin)randoneering\" /></a><a href=\"https://github.com/floreabogdan\"><img src=\"https:&#x2F;&#x2F;github.com&#x2F;floreabogdan.png\" width=\"60px\" alt=\"User avatar: Bogdan FLOREA\" /></a><a href=\"https://github.com/meruw\"><img src=\"https:&#x2F;&#x2F;github.com&#x2F;meruw.png\" width=\"60px\" alt=\"User avatar: meri\" /></a><!-- sponsors -->\n\n## Getting Started\n\n### One-Click Deployment with drim\n\nFor straightforward deployments, use [drim](https://github.com/usekaneo/drim) - a CLI tool that handles everything for you:\n\n```bash\ncurl -fsSL https://assets.kaneo.app/install.sh | sh\ndrim setup\n```\n\nThat's it. Your Kaneo instance will be running with automatic HTTPS, database setup, and all services configured.\n\nPerfect for quick deployments and production setups where you want things to just work.\n\n### Quick Start with Docker Compose\n\nThe fastest way to try Kaneo is with Docker Compose. This sets up Kaneo and PostgreSQL with a single Kaneo container:\n\n```yaml\nservices:\n  postgres:\n    image: postgres:16-alpine\n    env_file:\n      - .env\n    ports:\n      - \"5432:5432\"\n    volumes:\n      - postgres_data:/var/lib/postgresql/data\n    restart: unless-stopped\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -U kaneo -d kaneo\"]\n      interval: 10s\n      timeout: 5s\n      retries: 5\n\n  kaneo:\n    image: ghcr.io/usekaneo/kaneo:latest\n    ports:\n      - \"5173:5173\"\n    env_file:\n      - .env\n    depends_on:\n      postgres:\n        condition: service_healthy\n    restart: unless-stopped\n\nvolumes:\n  postgres_data:\n```\n\nSave this as `compose.yml`, copy `.env.sample` to `.env`, uncomment `KANEO_CLIENT_URL=http://localhost:5173`, and set `POSTGRES_PASSWORD=<password>` and `AUTH_SECRET=<output of openssl rand -hex 32>`, run `docker compose up -d`, and open [http://localhost:5173](http://localhost:5173).\n\nIn Docker Compose, the bundled Kaneo container reaches PostgreSQL at the service hostname `postgres`.\nIf you run the API on your host instead of inside Compose, use `localhost` or set `DATABASE_URL` explicitly.\n\n> **Important:** See our [full documentation](https://kaneo.app/docs/core) for detailed setup instructions, environment variable configuration, and troubleshooting guides.\n\n### Development Setup\n\nFor development, see our [Environment Setup Guide](ENVIRONMENT_SETUP.md) for detailed instructions on configuring environment variables and troubleshooting common issues like CORS problems.\n\n### Configuration\n\nKaneo requires several environment variables to be configured. The Docker Compose setup above handles the database automatically, but you'll need to configure environment variables for the API and web services.\n\nFor complete configuration instructions, including all required environment variables, database setup for non-Docker deployments, and advanced settings, see the [documentation](https://kaneo.app/docs/core). Advanced deployments can still use the separate `ghcr.io/usekaneo/api` and `ghcr.io/usekaneo/web` images.\n\n## Kubernetes Deployment\n\nIf you're running Kubernetes, we provide a comprehensive Helm chart. Check out the [Helm chart documentation](./charts/kaneo/README.md) for detailed installation instructions, production configuration examples, TLS setup, and more.\n\n## Development\n\nWant to hack on Kaneo? See our [Environment Setup Guide](ENVIRONMENT_SETUP.md) for detailed instructions on configuring environment variables and troubleshooting common issues like CORS problems.\n\nQuick start:\n```bash\n# Clone and install dependencies\ngit clone https://github.com/usekaneo/kaneo.git\ncd kaneo\npnpm install\n\n# Create a .env file in the root with required environment variables\n# See ENVIRONMENT_SETUP.md for detailed instructions\n\n# Start development servers\npnpm dev\n```\n\nFor contributing guidelines, code structure, and development best practices, check out our [contributing guide](CONTRIBUTING.md) and [documentation](https://kaneo.app/docs/core).\n\n## MCP Server\n\nKaneo has an official [MCP (Model Context Protocol) server](https://kaneo.app/docs/core/integrations/mcp), so AI tools like Claude, Cursor, and other MCP clients can manage your tasks, projects, and labels. Every instance ships a built-in HTTP MCP endpoint at `/api/mcp`, and for stdio clients there is the official [@kaneo/mcp](https://www.npmjs.com/package/@kaneo/mcp) package on npm (`npx -y @kaneo/mcp`).\n\n## Community\n\n- **[Discord](https://discord.gg/rU4tSyhXXU)** - Chat with users and contributors\n- **[GitHub Issues](https://github.com/usekaneo/kaneo/issues)** - Bug reports and feature requests\n- **[Documentation](https://kaneo.app/docs/core)** - Detailed guides, API docs, and tutorials\n\n## Contributing\n\nWe're always looking for help, whether that's:\n- Reporting bugs or suggesting features\n- Improving documentation\n- Contributing code\n- Helping other users on Discord\n\nCheck out [CONTRIBUTING.md](CONTRIBUTING.md) for the details on how to get involved.\n\n## License\n\nMIT License - see [LICENSE](LICENSE) for details.\n\n---\n\n<div align=\"center\">\n  <img src=\"https://repobeats.axiom.co/api/embed/3e8367ec2b2350e4fc48662df33c81dac657b833.svg\" alt=\"Repobeats analytics image\" />\n</div>\n\n<p align=\"center\">\n  Built with ❤️ by the Kaneo team and <a href=\"#contributors\">contributors</a>\n</p>\n",
+      "rank": 4,
+      "weekly_stars": 2925
+    },
+    {
+      "full_name": "lyogavin/airllm",
+      "html_url": "https://github.com/lyogavin/airllm",
+      "description": "AirLLM 70B inference with single 4GB GPU",
+      "homepage": "",
+      "language": "Jupyter Notebook",
+      "stars": 29929,
+      "forks": 3191,
+      "open_issues": 133,
+      "topics": [
+        "chinese-llm",
+        "chinese-nlp",
+        "finetune",
+        "generative-ai",
+        "instruct-gpt",
+        "instruction-set",
+        "llama",
+        "llm",
+        "lora",
+        "open-models",
+        "open-source",
+        "open-source-models",
+        "qlora"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2023-06-12T16:28:41Z",
+      "updated_at": "2026-08-08T03:25:16Z",
+      "pushed_at": "2026-08-06T08:40:04Z",
+      "archived": false,
+      "readme": "![airllm_logo](https://github.com/lyogavin/airllm/blob/main/assets/airllm_logo_sm.png?v=3&raw=true)\n\n[**Quickstart**](#quickstart) | \n[**Configurations**](#configurations) | \n[**MacOS**](#macos) | \n[**Example notebooks**](#example-python-notebook) | \n[**FAQ**](#faq)\n\n**AirLLM** dramatically reduces inference memory usage, letting 70B large language models run on a single 4GB GPU card — without quantization, distillation, or pruning. You can even run **405B Llama 3.1** on **8GB**, **DeepSeek-V3 (671B)** on **~12GB**, and **Kimi K3 (2.8T)** — the largest open-source model released to date — on **under 4GB**, because sparse MoE models stream one expert at a time rather than a whole layer.\n\n<a href=\"https://github.com/lyogavin/airllm/stargazers\">![GitHub Repo stars](https://img.shields.io/github/stars/lyogavin/airllm?style=social)</a>\n[![Downloads](https://static.pepy.tech/personalized-badge/airllm?period=total&units=international_system&left_color=grey&right_color=blue&left_text=downloads)](https://pepy.tech/project/airllm)\n\n[![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://github.com/LianjiaTech/BELLE/blob/main/LICENSE)\n[![Generic badge](https://img.shields.io/badge/wechat-Anima-brightgreen?logo=wechat)](https://static.aicompose.cn/static/wecom_barcode.png?t=1671918938)\n[![Discord](https://img.shields.io/discord/1175437549783760896?logo=discord&color=7289da\n)](https://discord.gg/2xffU5sn)\n[![PyPI - AirLLM](https://img.shields.io/pypi/format/airllm?logo=pypi&color=3571a3)\n](https://pypi.org/project/airllm/)\n[![Website](https://img.shields.io/website?up_message=blog&url=https%3A%2F%2Fmedium.com%2F%40lyo.gavin&logo=medium&color=black)](https://medium.com/@lyo.gavin)\n[![Website](https://img.shields.io/badge/Gavin_Li-Blog-blue)](https://gavinliblog.com)\n[![Support me on Patreon](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dgavinli%26type%3Dpatrons&style=flat)](https://patreon.com/gavinli)\n[![GitHub Sponsors](https://img.shields.io/github/sponsors/lyogavin?logo=GitHub&color=lightgray)](https://github.com/sponsors/lyogavin)\n\n## AI Agents Recommendation:\n\n* [Best AI Game Sprite Generator](https://godmodeai.co)\n\n* [Best AI Facial Expression Editor](https://crazyfaceai.com)\n\n* [Bloome — build & run AI agent teams in the cloud, zero setup](https://bloome.im/app?ref=G6BYnov0&utm_medium=github&utm_source=lyogavin-airllm-ivor-202606)\n\n## Updates\n[2026/07] **Kimi K3 (2.8T)** support: the largest open-source model runs on a single card in **3.72GB** of VRAM, measured end to end on one RTX 6000 Ada. Per-expert streaming loads only the experts a token actually routes to. K3 brings three requirements of its own: `pip install compressed-tensors flash-attn` (its model code mandates flash attention regardless of what you request), a CUDA 12 build of torch, since no prebuilt flash-attn wheel exists for CUDA 13 yet, and `transformers` 4.56.x, as its remote code does not load on 5.x.\n\n[2026/06] **v3.0**: FP8 model support + the latest models. Run **DeepSeek-V3 (671B) on ~12GB** and **Qwen3-235B on ~3GB**, plus Qwen3, Llama 3.x/4, DeepSeek V2/V3, Phi-4, Gemma and more — all through a single `AutoModel`.\n\n[2024/08/20] v2.11.0: Support Qwen2.5\n\n[2024/08/18] v2.10.1 Support CPU inference. Support non sharded models. Thanks @NavodPeiris for the great work! \n\n[2024/07/30] Support Llama3.1 **405B** ([example notebook](https://colab.research.google.com/github/lyogavin/airllm/blob/main/air_llm/examples/run_llama3.1_405B.ipynb)). Support **8bit/4bit quantization**.\n\n[2024/04/20] AirLLM supports Llama3 natively already. Run Llama3 70B on 4GB single GPU.\n\n[2023/12/25] v2.8.2: Support MacOS running 70B large language models.\n\n[2023/12/20] v2.7: Support AirLLMMixtral. \n\n[2023/12/20] v2.6: Added AutoModel, automatically detect model type, no need to provide model class to initialize model.\n\n[2023/12/18] v2.5: added prefetching to overlap the model loading and compute. 10% speed improvement.\n\n[2023/12/03] added support of **ChatGLM**, **QWen**, **Baichuan**, **Mistral**, **InternLM**!\n\n[2023/12/02] added support for safetensors. Now support all top 10 models in open llm leaderboard.\n\n[2023/12/01] airllm 2.0. Support compressions: **3x run time speed up!**\n\n[2023/11/20] airllm Initial version!\n\n## Star History\n\n<a href=\"https://star-history.com/#lyogavin/airllm&Timeline\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/star-history-dark.png\">\n    <img alt=\"Star History Chart\" src=\"assets/star-history.png\">\n  </picture>\n</a>\n\n## Table of Contents\n\n* [Quick start](#quickstart)\n* [Model Compression](#model-compression---3x-inference-speed-up)\n* [Configurations](#configurations)\n* [Run on MacOS](#macos)\n* [Example notebooks](#example-python-notebook)\n* [Supported Models](#supported-models)\n* [Acknowledgement](#acknowledgement)\n* [FAQ](#faq)\n\n## Quickstart\n\n### 1. Install package\n\nFirst, install the airllm pip package.\n\n```bash\npip install airllm\n```\n\n### 2. Inference\n\nThen, initialize AirLLMLlama2, pass in the huggingface repo ID of the model being used, or the local path, and inference can be performed similar to a regular transformer model.\n\n(*You can also specify the path to save the splitted layered model through **layer_shards_saving_path** when init AirLLMLlama2.*\n\n```python\nfrom airllm import AutoModel\n\nMAX_LENGTH = 128\n# just pass a hugging face repo id — works with almost any popular model:\nmodel = AutoModel.from_pretrained(\"Qwen/Qwen3-32B\")\n\n# go bigger with the exact same one line:\n#model = AutoModel.from_pretrained(\"Qwen/Qwen3-235B-A22B\")     # 235B, runs in ~3GB\n#model = AutoModel.from_pretrained(\"deepseek-ai/DeepSeek-V3\")  # 671B, runs in ~12GB\n\n# or use a model's local path...\n#model = AutoModel.from_pretrained(\"/home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen3-32B/snapshots/...\")\n\ninput_text = [\n        'What is the capital of United States?',\n        #'I like',\n    ]\n\ninput_tokens = model.tokenizer(input_text,\n    return_tensors=\"pt\", \n    return_attention_mask=False, \n    truncation=True, \n    max_length=MAX_LENGTH, \n    padding=False)\n           \ngeneration_output = model.generate(\n    input_tokens['input_ids'].cuda(), \n    max_new_tokens=20,\n    use_cache=True,\n    return_dict_in_generate=True)\n\noutput = model.tokenizer.decode(generation_output.sequences[0])\n\nprint(output)\n\n```\n \n \nNote: During inference, the original model will first be decomposed and saved layer-wise. Please ensure there is sufficient disk space in the huggingface cache directory.\n \n\n## Model Compression - 3x Inference Speed Up!\n\nWe just added model compression based on block-wise quantization-based model compression. Which can further **speed up the inference speed** for up to **3x** , with **almost ignorable accuracy loss!** (see more performance evaluation and why we use block-wise quantization in [this paper](https://arxiv.org/abs/2212.09720))\n\n![speed_improvement](https://github.com/lyogavin/airllm/blob/main/assets/airllm2_time_improvement.png?v=2&raw=true)\n\n#### How to enable model compression speed up:\n\n* Step 1. make sure you have [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) installed by `pip install -U bitsandbytes `\n* Step 2. make sure airllm verion later than 2.0.0: `pip install -U airllm` \n* Step 3. when initialize the model, passing the argument compression ('4bit' or '8bit'):\n\n```python\nmodel = AutoModel.from_pretrained(\"garage-bAInd/Platypus2-70B-instruct\",\n                     compression='4bit' # specify '8bit' for 8-bit block-wise quantization \n                    )\n```\n\n#### What are the differences between model compression and quantization?\n\nQuantization normally needs to quantize both weights and activations to really speed things up. Which makes it harder to maintain accuracy and avoid the impact of outliers in all kinds of inputs.\n\nWhile in our case the bottleneck is mainly at the disk loading, we only need to make the model loading size smaller. So, we get to only quantize the weights' part, which is easier to ensure the accuracy.\n\n## Configurations\n \nWhen initialize the model, we support the following configurations:\n\n* **compression**: supported options: 4bit, 8bit for 4-bit or 8-bit block-wise quantization, or by default None for no compression\n* **profiling_mode**: supported options: True to output time consumptions or by default False\n* **layer_shards_saving_path**: optionally another path to save the splitted model\n* **hf_token**: huggingface token can be provided here if downloading gated models like: *meta-llama/Llama-2-7b-hf*\n* **prefetching**: prefetching to overlap the model loading and compute. By default, turned on. For now, only AirLLMLlama2 supports this.\n* **delete_original**: if you don't have too much disk space, you can set delete_original to true to delete the original downloaded hugging face model, only keep the transformed one to save half of the disk space. \n\n## MacOS\n\nJust install airllm and run the code the same as on linux. See more in [Quick Start](#quickstart).\n\n* make sure you installed [mlx](https://github.com/ml-explore/mlx?tab=readme-ov-file#installation) and torch\n* you probably need to install python native see more [here](https://stackoverflow.com/a/65432861/21230266)\n* only [Apple silicon](https://support.apple.com/en-us/HT211814) is supported\n\nExample [python notebook] (https://github.com/lyogavin/airllm/blob/main/air_llm/examples/run_on_macos.ipynb)\n\n\n## Example Python Notebook\n\nExample colabs here:\n\n<a target=\"_blank\" href=\"https://colab.research.google.com/github/lyogavin/airllm/blob/main/air_llm/examples/run_all_types_of_models.ipynb\">\n  <img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/>\n</a>\n\n#### example of other models (ChatGLM, QWen, Baichuan, Mistral, etc):\n\n<details>\n\n\n* ChatGLM:\n\n```python\nfrom airllm import AutoModel\nMAX_LENGTH = 128\nmodel = AutoModel.from_pretrained(\"THUDM/chatglm3-6b-base\")\ninput_text = ['What",
+      "rank": 5,
+      "weekly_stars": 5521
+    },
+    {
+      "full_name": "esengine/DeepSeek-Reasonix",
+      "html_url": "https://github.com/esengine/DeepSeek-Reasonix",
+      "description": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
+      "homepage": "http://reasonix.io/",
+      "language": "Go",
+      "stars": 32927,
+      "forks": 2123,
+      "open_issues": 943,
+      "topics": [
+        "agent",
+        "agent-framework",
+        "ai-agent",
+        "ai-coding",
+        "cli",
+        "coding-agent",
+        "deepseek",
+        "developer-tools",
+        "ink",
+        "llm",
+        "prompt-caching",
+        "r1",
+        "terminal",
+        "tool-use",
+        "tui",
+        "typescript"
+      ],
+      "license": "MIT",
+      "created_at": "2026-04-21T08:27:02Z",
+      "updated_at": "2026-08-08T03:28:09Z",
+      "pushed_at": "2026-08-08T03:27:52Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"docs/logo.svg\" alt=\"Reasonix\" width=\"640\"/>\n</p>\n\n<p align=\"center\">\n  <strong>English</strong>\n  &nbsp;·&nbsp;\n  <a href=\"./README.zh-CN.md\">简体中文</a>\n  &nbsp;·&nbsp;\n  <a href=\"./docs/GUIDE.md\">Guide</a>\n  &nbsp;·&nbsp;\n  <a href=\"./docs/ACP.md\">ACP</a>\n  &nbsp;·&nbsp;\n  <a href=\"./docs/EXTENSIONS.md\">Extensions</a>\n  &nbsp;·&nbsp;\n  <a href=\"./docs/SPEC.md\">Spec</a>\n  &nbsp;·&nbsp;\n  <a href=\"https://esengine.github.io/DeepSeek-Reasonix/\">Website</a>\n  &nbsp;·&nbsp;\n  <strong><a href=\"https://discord.gg/XF78rEME2D\">Discord</a></strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/reasonix\"><img src=\"https://img.shields.io/npm/v/reasonix.svg?style=flat-square&color=cb3837&labelColor=161b22&logo=npm&logoColor=white\" alt=\"npm version\"/></a>\n  <a href=\"https://github.com/esengine/DeepSeek-Reasonix/actions/workflows/ci.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/esengine/DeepSeek-Reasonix/ci.yml?style=flat-square&label=ci&labelColor=161b22&logo=githubactions&logoColor=white\" alt=\"CI\"/></a>\n  <a href=\"./LICENSE\"><img src=\"https://img.shields.io/npm/l/reasonix.svg?style=flat-square&color=8b949e&labelColor=161b22\" alt=\"license\"/></a>\n  <a href=\"https://www.npmjs.com/package/reasonix\"><img src=\"https://img.shields.io/npm/dm/reasonix.svg?style=flat-square&color=3fb950&labelColor=161b22&label=downloads\" alt=\"downloads\"/></a>\n  <a href=\"https://github.com/esengine/DeepSeek-Reasonix/stargazers\"><img src=\"https://img.shields.io/github/stars/esengine/DeepSeek-Reasonix.svg?style=flat-square&color=dbab09&labelColor=161b22&logo=github&logoColor=white\" alt=\"GitHub stars\"/></a>\n  <a href=\"https://atomgit.com/esengine/DeepSeek-Reasonix\"><img src=\"https://atomgit.com/esengine/DeepSeek-Reasonix/star/badge.svg\" alt=\"AtomGit stars\"/></a>\n  <a href=\"https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors\"><img src=\"https://img.shields.io/github/contributors/esengine/DeepSeek-Reasonix.svg?style=flat-square&color=bc8cff&labelColor=161b22&logo=github&logoColor=white\" alt=\"contributors\"/></a>\n  <a href=\"https://github.com/esengine/DeepSeek-Reasonix/discussions\"><img src=\"https://img.shields.io/github/discussions/esengine/DeepSeek-Reasonix.svg?style=flat-square&color=58a6ff&labelColor=161b22&logo=github&logoColor=white\" alt=\"Discussions\"/></a>\n  <a href=\"https://discord.gg/XF78rEME2D\"><img src=\"https://img.shields.io/badge/discord-join-5865F2.svg?style=flat-square&labelColor=161b22&logo=discord&logoColor=white\" alt=\"Discord\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/27020?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-27020\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/27020/monthly?language=Go\" alt=\"esengine/DeepSeek-Reasonix | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://trendshift.io/repositories/27020?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-27020\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/27020\" alt=\"esengine/DeepSeek-Reasonix | Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<br/>\n\n<h3 align=\"center\">A DeepSeek-native AI coding agent for your terminal.</h3>\n<p align=\"center\">A config- and plugin-driven harness — a single static Go binary, tuned around DeepSeek's prefix cache so token costs stay low across long sessions.</p>\n\n<br/>\n\n> [!IMPORTANT]\n> **Community · 加入社区** — bilingual Discord for setup help (`#help` / `#求助`), workflow showcases, and feature ideas. → **<https://discord.gg/XF78rEME2D>**\n\n<br/>\n\n## Features\n\n- **Config-driven.** Providers, the agent, enabled tools, and plugins are all\n  declared in `reasonix.toml`. No hardcoded models.\n- **Multi-model & composable.** DeepSeek ships as a preset; any\n  OpenAI-compatible endpoint is a config entry, not new code. Optionally run\n  two models together (executor + planner) in separate, cache-stable sessions.\n- **Plugin-driven.** MCP servers contribute tools, prompts, and resources;\n  Extension Protocol v1 sidecars can also intercept runtime events, contribute\n  Providers and structured UI, and ship versioned plugin packages.\n- **Cache-aware context maintenance.** Startup injects a small stable environment\n  summary, stale tool output is snipped/pruned before summary compaction, and the\n  built-in tool schema contract is documented for regression review.\n- **Zero-friction distribution.** `CGO_ENABLED=0` single binary; cross-compile\n  to six targets with one command. The result is a fully self-contained static\n  binary — nothing to install on the target machine beyond the binary itself.\n\n## Install\n\nChoose the path that matches how you want to use Reasonix. The CLI/TUI,\ndesktop app, and VS Code extension all use the same local Reasonix engine.\n\n### Path A: CLI / TUI\n\nInstall the native binary through npm on any supported platform, or use\nHomebrew on macOS:\n\n```sh\nnpm i -g reasonix                  # any OS; pulls the prebuilt native binary\nbrew install esengine/reasonix/reasonix   # macOS\n```\n\nPrebuilt archives (`darwin|linux|windows × amd64|arm64`) and `SHA256SUMS` are on\nevery [GitHub release](https://github.com/esengine/DeepSeek-Reasonix/releases).\n\n### Path B: Desktop app\n\nUse the [official download page](https://reasonix.io/?download=desktop#start)\nfor the latest desktop build.\n\n| Platform | Package | Architecture |\n| --- | --- | --- |\n| macOS | Universal `.dmg` or `.zip` | Apple Silicon / Intel |\n| Windows | Installer `.exe` or portable `.zip` | x64 / ARM64 |\n| Linux | `.deb` or `.tar.gz` | x64 |\n\nWindows installers are code-signed through [SignPath.io](https://signpath.io/)\nwith a free certificate provided by the [SignPath Foundation](https://signpath.org/).\n\n### Path C: VS Code extension\n\nComplete Path A first. The extension does not bundle the CLI; it starts your\nlocal `reasonix acp` backend and adds native chat, editor context, tool-call\napprovals, model selection, and workspace sessions.\n\n- **VS Code:** [install from Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SivanLiu.reasonix-agent)\n- **VSCodium / Eclipse Theia:** [install from Open VSX Registry](https://open-vsx.org/extension/SivanLiu/reasonix-agent)\n- **Extension ID:** `SivanLiu.reasonix-agent` · [source and usage guide](https://github.com/SivanCola/reasonix-vscode)\n\n### Path D: Build from source\n\n```sh\ngit clone https://github.com/esengine/DeepSeek-Reasonix.git\ncd DeepSeek-Reasonix\nmake build      # -> bin/reasonix(.exe)\nmake cross      # -> dist/ (darwin|linux|windows × amd64|arm64)\n```\n\n## Quick start\n\n### CLI / TUI\n\nThese commands are for the CLI/TUI installed through Path A:\n\n```sh\nreasonix setup                      # configure a provider and model\nreasonix                            # start an interactive session\nreasonix run \"implement the TODOs in main.go\"\n```\n\nIn an interactive session, run `/init` when you want Reasonix to create project\ninstructions.\n\n### Desktop app\n\nDownload the installer for your platform from the\n[official download page](https://reasonix.io/?download=desktop#start), install\nand launch Reasonix, then configure a provider and model in the app. The CLI\ncommands above are not required for the desktop app.\n\nFor advanced CLI usage and configuration, see the **[CLI reference](./docs/CLI.md)**,\n**[Guide](./docs/GUIDE.md)**, and\n**[configuration paths](./docs/CONFIG_PATHS.md)**.\n\n## Documentation\n\n- **Getting started:** [Guide](./docs/GUIDE.md) · [CLI reference](./docs/CLI.md) ·\n  [Configuration paths](./docs/CONFIG_PATHS.md) · [ACP editor integration](./docs/ACP.md)\n- **Features & troubleshooting:** [Subagent profiles](./docs/SUBAGENT_PROFILES.md) ·\n  [Context Engine v2](./docs/SESSION_MEMORY_RETRIEVAL.md) ·\n  [Capability diagnostics](./docs/CAPABILITY_DIAGNOSTICS.md) ·\n  [Recovery and updates](./docs/RECOVERY.md) · [Bot guide](./docs/BOT_GUIDE.md) ·\n  [Checkpoints & rewind](./docs/CHECKPOINTS.md)\n- **Engineering & migration:** [Spec](./docs/SPEC.md) ·\n  [Task contracts & pause policy](./docs/TASK_CONTRACT.md) ·\n  [Tool contract](./docs/TOOL_CONTRACT.md) · [Migrating from 0.x](./docs/MIGRATING.md)\n- **Extension development:** [Extensions](./docs/EXTENSIONS.md) ·\n  [Plugin packages and Manifest v1](./docs/PLUGIN_PACKAGES.md) ·\n  [Extension Protocol](./docs/EXTENSION_PROTOCOL.md) ·\n  [Go SDK and starter](./sdk/go/README.md)\n\n## Star History\n\n<a href=\"https://www.star-history.com/?repos=esengine%2FDeepSeek-Reasonix&type=date&legend=top-left\">\n <picture>\n   <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/star-history/assets/star-history/star-history-dark.svg\" />\n   <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/star-history/assets/star-history/star-history-light.svg\" />\n   <img alt=\"Star History Chart\" src=\"https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/star-history/assets/star-history/star-history-light.svg\" />\n </picture>\n</a>\n\n<br/>\n\n## Acknowledgments\n\nA small list of folks whose work has shaped Reasonix the most — the current top\n20 contributors by commit count. The full contributor graph is on\n[GitHub](https://github.com/esengine/DeepSeek-Reasonix/graphs/contributors?all=1).\n\n<!-- reasonix-top-contributors:start -->\n| Contributor | Contributor | Contributor | Contributor |\n| --- | --- | --- | --- |\n| [**SivanCola**](https://github.com/SivanCola) | [**esengine**](https://github.com/esengine) | [**ttmouse**](https://github.com/ttmouse) | [**lifu963**](https://github.com/lifu963) |\n| **reasonix** (anonymous) | [**HUQIANTAO**](https://github.com/HUQIANTAO) | [**GTC2080**](https://github.com/GTC2080) | [**light-front-theory**](https://github.com/light-front-theory) |\n| **merge-order-check** (anonymous) | [**Li-Charles-One**](https://github.com/Li-Charles-One) | [**eghrhegpe**](https://gi",
+      "rank": 6,
+      "weekly_stars": 4739
+    },
+    {
+      "full_name": "virgiliojr94/book-to-skill",
+      "html_url": "https://github.com/virgiliojr94/book-to-skill",
+      "description": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+      "homepage": "",
+      "language": "Python",
+      "stars": 18385,
+      "forks": 1976,
+      "open_issues": 18,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-05-01T02:09:39Z",
+      "updated_at": "2026-08-08T03:29:47Z",
+      "pushed_at": "2026-08-07T15:34:15Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"docs/assets/banner.webp\" alt=\"Booklin, the book-to-skill wizard, holding an open book whose pages scatter into sparkles that settle into an ordered grid\" width=\"100%\">\n</p>\n\n<h1 align=\"center\">book-to-skill</h1>\n\n<p align=\"center\">\n  <strong>Turn any technical book, document folder, or collection of sources into a unified agent skill — ready to study, reference, and use while you work in GitHub Copilot CLI, Amp, or Claude Code.</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/virgiliojr94/book-to-skill/releases\"><img src=\"https://img.shields.io/github/v/release/virgiliojr94/book-to-skill?style=for-the-badge&color=blueviolet\" alt=\"Latest release\"></a>\n  <img src=\"https://img.shields.io/badge/Agent_Skills-Open_Standard-blueviolet?style=for-the-badge\" alt=\"Agent Skills standard\">\n  <img src=\"https://img.shields.io/badge/PDF%20%E2%80%A2%20EPUB%20%E2%80%A2%20DOCX%20%E2%80%A2%20MD%20%E2%80%A2%20HTML%20%E2%80%A2%20RTF%20%E2%80%A2%20MOBI-supported-green?style=for-the-badge\" alt=\"Formats supported\">\n  <img src=\"https://img.shields.io/badge/License-MIT-blue?style=for-the-badge\" alt=\"MIT License\">\n  <a href=\"https://github.com/sponsors/virgiliojr94\"><img src=\"https://img.shields.io/github/sponsors/virgiliojr94?style=for-the-badge&color=ea4aaa&logo=githubsponsors&logoColor=white\" alt=\"Sponsor\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/27038?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-27038\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/27038\" alt=\"virgiliojr94%2Fbook-to-skill | Trendshift\" width=\"250\" height=\"55\"/></a>\n  <a href=\"https://trendshift.io/repositories/27038?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-27038\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/27038/daily?language=Python\" alt=\"virgiliojr94%2Fbook-to-skill | Trendshift (daily, Python)\" width=\"250\" height=\"55\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#-why\">Why</a> ·\n  <a href=\"#-what-it-generates\">What it generates</a> ·\n  <a href=\"#-beyond-books\">Beyond books</a> ·\n  <a href=\"docs/how-it-works.md\">How it works</a> ·\n  <a href=\"docs/usage.md\">Usage</a> ·\n  <a href=\"docs/install.md\">Install</a> ·\n  <a href=\"docs/faq.md\">FAQ</a> ·\n  <a href=\"docs/performance.md\">Performance</a> ·\n  <a href=\"docs/architecture.md\">Architecture</a> ·\n  <a href=\"CHANGELOG.md\">Changelog</a>\n</p>\n\n<p align=\"center\">\n  <strong>24×–51× fewer tokens than dumping the book into context</strong> to answer one question, measured on real books (<a href=\"docs/performance.md#the-discovery-loop-tax\">how it's measured</a>).\n</p>\n\n**How it works, in 3 steps:**\n\n1. **Point** it at a file, folder, or glob — `/book-to-skill ./my-book.pdf`\n2. **It distills** the book into a skill — frameworks, decision rules, anti-patterns, and per-chapter files. Structure, not a summary.\n3. **Your agent loads it on demand** — ask `/my-book replication` and it reads the right chapter and answers from the real content, no hallucination.\n\n---\n\n## 🤔 Why\n\n<img align=\"right\" width=\"200\" src=\"docs/assets/booklin.png\" alt=\"Booklin — the book-to-skill mascot, a purple wizard holding a book\">\n\nYou buy a great technical book. You read it once. Three months later you can't remember chapter 7 existed.\n\nThe usual workarounds don't help:\n- 📄 \"Let me just search the PDF\" → you get a list of pages, not answers\n- 🧠 \"I'll ask the agent about this book\" → it either hallucinates or says it doesn't have the content\n- 📝 \"I'll take notes as I read\" → you end up with a 200-line doc you never open again\n\n**book-to-skill solves this by turning the book into a structured skill your agent loads on demand.**\n\nOnce installed, you just type `/your-book-slug replication` and the agent reads the right chapter and answers from the actual content. No hallucination. No digging through PDFs. The book becomes part of your workflow.\n\nWorks with any host that supports the open [Agent Skills](https://github.com/agentskills/agentskills) standard — GitHub Copilot CLI, Amp, and Claude Code all read the same `SKILL.md` format.\n\n---\n\n## 📦 What it generates\n\nRunning `/book-to-skill your-book.pdf` (or a folder, glob, or list of files) creates a full skill in your agent's skills directory (`~/.copilot/skills/<slug>/` for Copilot CLI, `~/.agents/skills/<slug>/` for Amp or cross-agent, `~/.claude/skills/<slug>/` for Claude Code):\n\n| File | Purpose | Size |\n|------|---------|------|\n| `SKILL.md` | Core mental models + chapter index | ~4,000 tokens |\n| `chapters/ch01-*.md` … | One file per chapter, loaded on-demand | ~1,000 tokens each |\n| `glossary.md` | Every key term, alphabetically sorted with chapter refs | ~1,500 tokens |\n| `patterns.md` | All techniques, algorithms, and design patterns | ~2,000 tokens |\n| `cheatsheet.md` | Decision tables and quick-reference rules | ~1,000 tokens |\n\n**Chapter files are loaded on-demand** — they don't count against the skill budget until you ask about that topic.\n\n---\n\n## 🏢 Beyond books\n\nThe name says \"book\", but the input is any structured prose. The same extraction works on knowledge you own and re-read constantly:\n\n- **Internal documentation** — architecture decision records, runbooks, onboarding guides. Fold a whole `docs/` folder into one skill and ask it while you code.\n- **Brand & design systems** — voice guidelines, tone-of-voice docs, component principles. Turn a brand book into a skill your team queries instead of skimming a 60-page PDF.\n- **Research clusters** — a stack of papers plus your own notes, merged into a single unified skill and updated as new material lands (see [Update / fold-in](#-usage)).\n- **Specs & standards** — RFCs, API contracts, compliance docs you reference but never memorize.\n\nIf you re-open a document often enough to wish you'd memorized it, it's a candidate.\n\n---\n\n\n## 🧾 The Discovery Loop Tax\n\nA PDF-reading agent doesn't just read — it *navigates*: it re-fetches the ToC, backtracks, and re-processes all of it on every turn. book-to-skill pays that structuring cost **once**, at conversion, so queries stay proportional to the answer — **24×–51× fewer tokens** than dumping the book into context, measured on real books.\n\n📊 **Full methodology, numbers, and per-book tables → [docs/performance.md](docs/performance.md#the-discovery-loop-tax)**\n\n---\n\n## ⚙️ How it works\n\nTwo halves: a deterministic Python **extractor** (document → clean text + metadata) and a spec-driven **generator** (your agent follows `SKILL.md` to turn that into a structured skill). On-demand chapter files keep the loaded skill small.\n\n🔧 **Full walkthrough (Steps 0–10, extraction modes, token budgets) → [docs/how-it-works.md](docs/how-it-works.md)**\n\n---\n\n## 🚀 Usage\n\n`/book-to-skill <path|folder|glob> [skill-name]` — plus analyze-only, generate-from-analysis, and update/fold-in modes.\n\n▶️ **All modes and examples → [docs/usage.md](docs/usage.md)**\n\n---\n\n## 📥 Install\n\n```bash\n# Agent skill (registers /book-to-skill) — clone into your skills folder:\ngit clone https://github.com/virgiliojr94/book-to-skill.git ~/.claude/skills/book-to-skill\n# (Copilot CLI: ~/.copilot/skills/ · Amp/cross-agent: ~/.agents/skills/)\n```\n\n📥 **All hosts, optional extractors, and the standalone CLI → [docs/install.md](docs/install.md)**\n\n---\n\n## ❓ FAQ\n\nCommon questions — \"why not just dump the PDF?\", cost, privacy, non-book inputs, multi-file books.\n\n❓ **Answers → [docs/faq.md](docs/faq.md)**\n\n---\n\n<details>\n<summary>🔧 <strong>Requirements</strong></summary>\n\n\nThe extractor tries tools in order per format and uses the first available. If nothing is installed, it tells you which command to run. Plain text, Markdown, reStructuredText and AsciiDoc need no extra deps.\n\n> **Check your setup in one command:** `python3 scripts/extract.py --check` prints which extractors are installed for every format and the exact command to install anything missing — no file needed.\n\n**PDF — choose by book type:**\n\n| Book type | Tool | Install | Speed |\n|-----------|------|---------|-------|\n| Text-heavy (prose, few tables) | `pdftotext` (poppler) | `sudo apt install poppler-utils` | ⚡ instant |\n| Text-heavy fallback | `pypdf` | `pip3 install pypdf` | ⚡ instant |\n| Text-heavy fallback | `pdfminer.six` | `pip3 install pdfminer.six` | ⚡ instant |\n| **Technical (code, tables, formulas)** | **`docling`** | `pip3 install docling` | ~1.5s/page |\n\n> Before extraction begins, the skill asks you whether the book is **technical** or **text-heavy** and picks the right tool automatically. Docling preserves markdown tables and code blocks; pdftotext is faster for prose-only books.\n\n**EPUB:**\n\n| Tool | Install | Quality |\n|------|---------|---------|\n| `ebooklib` + `beautifulsoup4` | `pip3 install ebooklib beautifulsoup4` | ⭐⭐⭐ Best |\n| stdlib `zipfile` | built-in — no install needed | ⭐⭐ Always available |\n\n**Other formats:**\n\n| Format | Tool | Install |\n|--------|------|---------|\n| DOCX | `python-docx` (fallback: stdlib ZIP/XML) | `pip3 install python-docx` |\n| HTML | `beautifulsoup4` (fallback: stdlib `html.parser`) | `pip3 install beautifulsoup4` |\n| RTF | `striprtf` (fallback: regex) | `pip3 install striprtf` |\n| MOBI / AZW / AZW3 | Calibre `ebook-convert` (external app, not pip) | https://calibre-ebook.com/download |\n| TXT / Markdown / reStructuredText / AsciiDoc | built-in | — |\n\n---\n\n\n</details>\n\n<details>\n<summary>📁 <strong>Repository structure</strong></summary>\n\n\n```\nbook-to-skill/\n├── SKILL.md              # Skill definition + step-by-step instructions (the generator spec)\n├── scripts/\n│   ├── extract.py        # Thin entrypoint wrapper\n│   └── extractor/        # Modular extraction package\n│       ├── config.py     # Extensions, paths, dependency constants\n│       ├── dependencies.py  # optional-dep probing + --check\n│       ├── exceptions.py # ExtractionError (per-source failures, batch-safe)\n│       ├── uti",
+      "rank": 7,
+      "weekly_stars": 3957
+    },
+    {
+      "full_name": "block/buzz",
+      "html_url": "https://github.com/block/buzz",
+      "description": "A hive mind communication platform",
+      "homepage": "",
+      "language": "Rust",
+      "stars": 25014,
+      "forks": 2912,
+      "open_issues": 2240,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2026-03-06T21:00:56Z",
+      "updated_at": "2026-08-08T03:29:27Z",
+      "pushed_at": "2026-08-08T00:22:17Z",
+      "archived": false,
+      "readme": "<h1 align=\"center\">Buzz 🐝</h1>\n\n<p align=\"center\">\n  <strong>A workspace where humans and agents build together, on a relay you own.</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"VISION.md\">Vision</a> ·\n  <a href=\"VISION_SOVEREIGN.md\">Sovereign</a> ·\n  <a href=\"VISION_PROJECTS.md\">Forge</a> ·\n  <a href=\"VISION_AGENT.md\">Agents</a> ·\n  <a href=\"ARCHITECTURE.md\">Architecture</a> ·\n  <a href=\"RELEASING.md\">Releasing</a> ·\n  <a href=\"LICENSE\">Apache 2.0</a>\n</p>\n\n<p align=\"center\">\n  <img src=\"docs/assets/screenshots/channel-thread.png\" alt=\"A Buzz project channel where people and an agent coordinate on a release plan\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <sub><em>People and agents building together in the same room.</em></sub>\n</p>\n\n---\n\n## What is this, really?\n\nBuzz is a self-hostable workspace where humans and AI agents share the same rooms.\n\nA Buzz **community** is the workspace a user reaches by URL. In the single-relay\nsetup that ships today, the relay URL selects exactly one community. A hosted\noperator can serve many communities behind many domains or subdomains, but the\nclient-facing rule stays the same: the URL is authoritative for the workspace,\nand all tenant-observable state under that URL is community-local.\n\nIt's a Nostr relay: every message, reaction, workflow step, review approval, and git event is a signed event in one log. Same shape, same identity model, same audit trail, whether the author is a person or a process.\n\nIn practice it feels like a team workspace. Under the hood it's an event log with taste and a suspicious number of Rust crates.\n\nYes, it's another AI-adjacent developer tool. We're sorry. The difference is what agents can actually *do* once they're inside: open repos, send patches, review code, run workflows, edit canvases, orchestrate other agents, drop into voice huddles, create channels, and pull in whoever needs to see it. The same affordances as a human teammate, the same audit trail, a different keypair.\n\n---\n\n## Stuff you do in Buzz\n\n- **Ask the project a question and get an answer with receipts.** Agents search six months of history and post the threads, not vibes.\n- **Let an agent triage a bug without giving it the keys to the kingdom.** Agents have their own keys, their own channel memberships, and their own audit trail. Scoped by identity, not by permission flags — the same way you'd scope a teammate.\n- **Turn a feature branch into a room** where patches, CI, review, and the merge decision live together — so the channel becomes the record of why the code exists.\n- **Search the conversation, the patch, the workflow run, and the approval in one place** — because they're all the same kind of event.\n- **Let an agent run the workspace, not just talk in it.** Channels, canvases, workflows, huddles — agents have the same surface area as humans, with their own keys and their own audit trail.\n\n---\n\n## A look inside\n\n<table>\n  <tr>\n    <td width=\"50%\" valign=\"top\">\n      <img src=\"docs/assets/screenshots/channel-agents.png\" alt=\"People and agents collaborating in a Buzz engineering channel and reacting with emoji\" width=\"100%\"><br>\n      <sub><strong>Agents are members, not bots.</strong> Add an agent to a channel the same way you add a person.</sub>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <img src=\"docs/assets/screenshots/create-channel.png\" alt=\"The Add a channel dialog with search, filters, and channels to join or create\" width=\"100%\"><br>\n      <sub><strong>Spin up a room in seconds.</strong> Name it, describe it, make it private.</sub>\n    </td>\n  </tr>\n  <tr>\n    <td colspan=\"2\" valign=\"top\">\n      <img src=\"docs/assets/screenshots/media-comments.png\" alt=\"A video playing in Buzz with frame-anchored comments in a side panel\" width=\"100%\"><br>\n      <sub><strong>Media you can talk about.</strong> Leave comments pinned to specific frames.</sub>\n    </td>\n  </tr>\n</table>\n\n---\n\n## Why Buzz is better\n\nOne community. One identity model. One event log. Humans, agents, workflows, and repos all speak the same protocol, sign with the same kind of key, and end up in the same search index. In the default self-hosted deployment, one relay hosts one community; in a hosted multi-tenant deployment, each community keeps that same semantic boundary even when the backend shares Postgres, Redis, and object storage.\n\nThe bet is that one community can do what teams currently fake with chat, forges, bots, CI dashboards, release tools, search indexes, and a pile of glue code. Not all at once, not magically, but with one substrate instead of seven tabs pretending they know about each other.\n\nAgents are part of the room, not haunted cron jobs.\n\n---\n\n## Three little stories\n\n**Incident memory.** It's 2am. You type *\"have we seen this error before?\"* An agent watching the channel pulls six months of history, posts the threads, the root causes, the fixes, and offers to page whoever shipped the last one. The whole exchange — question, answer, evidence — stays in the channel.\n\n**Branch as room.** You open a feature branch. A channel appears. Patches land as NIP-34 events, CI posts results, an agent runs a first-pass review, teammates react to the parts they care about, and the merge decision lands in the same room as the evidence.\n\n**A release that writes itself.** A workflow fires on a tag. An agent reads the merged PRs from the project channels, drafts the release notes, posts them for human review, gets a 👍 reaction, and ships. Every step signed. Every step searchable.\n\n---\n\n## Works today · Being wired up · Strong opinions, pending code\n\n| ✅ Works today | 🚧 Being wired up | 💭 Strong opinions, pending code |\n|---|---|---|\n| Relay, channels, threads, DMs, canvases, media, search, audit log | Mobile clients (iOS + Android, Flutter) | Web-of-trust reputation across relays |\n| Desktop app (Tauri + React) | Workflow approval gates (infra exists, glue still drying) | Push notifications |\n| `buzz-cli` (agent-first, JSON in / JSON out) + ACP harness (Goose, Codex, Claude Code) | Huddle lifecycle events | Culture features |\n| YAML workflows: message / reaction / schedule / webhook triggers | | |\n| Git events (NIP-34: patches, repo announcements, status) | | |\n| Git hosting backend | | |\n\n<sub>Please do not plan your compliance program around the 💭 column yet. The <a href=\"VISION.md\">VISION docs</a> are the long version of what we think this becomes.</sub>\n\n---\n\n## Getting started\n\nNew to Buzz? Pick the path that matches you.\n\n### I just want to try the app\n\nGrab a packaged build from the [latest release](https://github.com/block/buzz/releases/latest):\n\n| Platform | File |\n|---|---|\n| macOS (Apple Silicon) | `Buzz_<version>_aarch64.dmg` |\n| macOS (Intel) | `Buzz_<version>_x64.dmg` |\n| Linux (x86_64) | `Buzz_<version>_amd64.AppImage` or `Buzz_<version>_amd64.deb` |\n| Windows (x64) | `Buzz_<version>_x64-setup_alpha-unsigned.exe` |\n\nOn a Mac, check the Apple menu > About This Mac: \"Chip: Apple …\" means Apple Silicon; \"Processor: Intel …\" means Intel.\n\nThe Windows build is not code-signed, so SmartScreen may show \"Windows protected your PC\" on first launch. If available, click **More info**, then **Run anyway**.\n\n\nBy default the app connects to `ws://localhost:3000`. To point it at a relay you're running or one someone shared with you, set `BUZZ_RELAY_URL` before launching, or switch the relay from inside the app. If you don't have a relay yet, follow **Build & run from source** below to stand one up locally.\n\n### I want my own hosted relay\n\nTo run a relay for your team without managing servers, you can deploy one to Railway in a click:\n\n[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/buzz-relay-block)\n\nSee [here](https://engineering.block.xyz/blog/run-your-own-buzz-relay) for details.\n\n### I work at Block\n\nDon't build from source, and don't use the OSS release — use the internal build. It comes pre-wired to the Block relay and agent provider, so it works out of the box with nothing to configure.\n\nDownload the latest build from [`squareup/buzz-releases` releases](https://github.com/squareup/buzz-releases/releases/latest) and install it.\n\n### I want to build & run from source\n\nSee **Quick start** below — this is the developer / self-host path.\n\n---\n\n## Quick start\n\nYou'll need [Docker](https://docs.docker.com/get-docker/) and [Hermit](https://cashapp.github.io/hermit/) (or Rust 1.88+, Node 24+, pnpm 10+, `just`).\n\n**Once:**\n```bash\ngit clone https://github.com/block/buzz.git && cd buzz\n. ./bin/activate-hermit   # pinned toolchain (tools auto-download on first use)\njust setup && just build\n```\n\n`just setup` runs `just bootstrap` automatically — it copies `.env.example` to `.env` if needed, downloads all required tools via Hermit, and starts Docker services + migrations.\n\n**Every day:**\n```bash\n. ./bin/activate-hermit\njust dev   # starts the relay + desktop app together\n```\n\nRelay on `ws://localhost:3000`. Desktop app pops up. You're in.\n\nFor a split-terminal workflow (relay logs separate from Vite output), use `just relay` in one terminal and `just desktop-dev` in another.\n\nWant a single-node / VPS relay instead of the local-dev stack? Use the production Compose bundle in [`deploy/compose/`](deploy/compose/README.md) (`docker compose` + Postgres, Redis, MinIO, optional Caddy/TLS). The root [`docker-compose.yml`](docker-compose.yml) is for day-to-day development only.\n\nFor agents, set `BUZZ_PRIVATE_KEY` and use [`buzz-cli`](crates/buzz-cli) — JSON in, JSON out, designed for LLM tool calls.\n\n---\n\n## Windows prerequisites\n\nThe agent shell tool runs commands under bash. On macOS and Linux that's already there; on Windows you need to bring it.\n\nInstall [Git for Windows](https://git-scm.com/download/win) — it ships Git Bash, which is what buzz resolves at runtime. Once it's installed, everything works the same as on other platforms.\n\nIf you'd rather point buzz at a different bash-compatible shell, set `BUZZ_SHELL` to its path (e.g. `BUZZ_SHELL=C:\\path\\to\\bash.exe`). The agen",
+      "rank": 8,
+      "weekly_stars": 5746
+    },
+    {
+      "full_name": "paperswithbacktest/awesome-systematic-trading",
+      "html_url": "https://github.com/paperswithbacktest/awesome-systematic-trading",
+      "description": "A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.",
+      "homepage": "https://paperswithbacktest.com",
+      "language": "Python",
+      "stars": 12964,
+      "forks": 1575,
+      "open_issues": 56,
+      "topics": [
+        "algorithmic-trading",
+        "algotrading",
+        "alpha",
+        "arbitrage-bot",
+        "awesome",
+        "awesome-list",
+        "book",
+        "finance",
+        "futures",
+        "futures-historical-data",
+        "futures-market",
+        "futuresmarkets",
+        "paper",
+        "quant",
+        "quantitative-finance",
+        "quantitative-trading",
+        "trading-algorithms",
+        "trading-bot",
+        "trading-strategies"
+      ],
+      "license": "未声明",
+      "created_at": "2022-02-05T20:48:52Z",
+      "updated_at": "2026-08-08T03:16:30Z",
+      "pushed_at": "2025-01-22T07:49:32Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n  <img src=\"static/images/awesome-systematic-trading.jpeg\" height=200 alt=\"\"/>\n  <h1>Awesome Systematic Trading</h1>\n</div>\n<div align=center><img src=\"https://awesome.re/badge.svg\" /></div>\n\n[希望阅读中文版？点我](./README_zh.md)\n\nWe are collecting a list of resources papers, softwares, books, articles for finding, developing, and running systematic trading (quantitative trading) strategies.\n\n<!-- omit in toc -->\n### What will you find here?\n\n- [97 libraries and packages](#libraries-and-packages) for research and live trading\n- [40+ strategies](#strategies) described by institutionals and academics\n- [55 books](#books) for beginners and professionals\n- [23 videos](#videos) and interviews\n- And also some [blogs](#blogs) and [courses](#courses)\n\n<div align=\"center\" style=\"margin-bottom: 50px; margin-top: 50px;\">\n  <div style=\"border: 2px solid #007bff; border-radius: 10px; padding: 20px; margin-bottom: 20px;\">\n    <h2>📈 Interested in trading strategies implemented in Python?</h2>\n    <p>Visit our comprehensive collection at <a href=\"https://paperswithbacktest.com\" target=\"_blank\">paperswithbacktest.com</a> for exclusive content!</p>\n  </div>\n</div>\n\n\n<details>\n<summary>Click here to see the full table of content</summary>\n\n- [Libraries and packages](#libraries-and-packages)\n  - [Backtesting and Live Trading](#backtesting-and-live-trading)\n    - [General - Event Driven Frameworks](#general---event-driven-frameworks)\n    - [General - Vector Based Frameworks](#general---vector-based-frameworks)\n    - [Cryptocurrencies](#cryptocurrencies)\n  - [Trading bots](#trading-bots)\n  - [Analytics](#analytics)\n    - [Indicators](#indicators)\n    - [Metrics computation](#metrics-computation)\n    - [Optimization](#optimization)\n    - [Pricing](#pricing)\n    - [Risk](#risk)\n  - [Broker APIs](#broker-apis)\n  - [Data Sources](#data-sources)\n    - [General](#general)\n    - [Cryptocurrencies](#cryptocurrencies-1)\n  - [Data Science](#data-science)\n  - [Databases](#databases)\n  - [Graph Computation](#graph-computation)\n  - [Machine Learning](#machine-learning)\n  - [TimeSeries Analysis](#timeseries-analysis)\n  - [Visualization](#visualization)\n- [Strategies](#strategies)\n  - [Bonds, commodities, currencies, equities](#bonds-commodities-currencies-equities)\n  - [Bonds, commodities, equities, REITs](#bonds-commodities-equities-reits)\n  - [Bonds, equities](#bonds-equities)\n  - [Bonds, equities, REITs](#bonds-equities-reits)\n  - [Commodities](#commodities)\n  - [Cryptos](#cryptos)\n  - [Currencies](#currencies)\n  - [Equities](#equities)\n- [Books](#books)\n  - [Beginner](#beginner)\n  - [Biography](#biography)\n  - [Coding](#coding)\n  - [Crypto](#crypto)\n  - [General](#general-1)\n  - [High Frequency Trading](#high-frequency-trading)\n  - [Machine Learning](#machine-learning-1)\n- [Videos](#videos)\n- [Blogs](#blogs)\n- [Courses](#courses)\n</details>\n\n<!-- omit in toc -->\n> ### How can I help?\n> You can help by submitting an issue with suggestions and by sharing on Twitter:\n>\n> [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20free%20and%20comprehensive%20list%20of%20papers%2C%20libraries%2C%20books%2C%20blogs%2C%20tutorials%20for%20quantitative%20traders.&url=https://github.com/paperswithbacktest/awesome-systematic-trading)\n\n\n# Libraries and packages\n\n*List of **97 libraries and packages** implementing trading bots, backtesters, indicators, pricers, etc. Each library is categorized by its programming language and ordered by descending populatrity (number of stars).*\n\n\n## Backtesting and Live Trading\n\n### General - Event Driven Frameworks\n\n\n| Repository | Description | Stars | Made with |\n|------------|-------------|-------|-----------|\n| [vnpy](https://github.com/vnpy/vnpy) | Python-based open source quantitative trading system development framework, officially released in January 2015, has grown step by step into a full-featured quantitative trading platform | ![GitHub stars](https://badgen.net/github/stars/vnpy/vnpy) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [zipline](https://github.com/quantopian/zipline) | Zipline is a Pythonic algorithmic trading library. It is an event-driven system for backtesting. | ![GitHub stars](https://badgen.net/github/stars/quantopian/zipline) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [backtrader](https://github.com/mementum/backtrader) | Event driven Python Backtesting library for trading strategies | ![GitHub stars](https://badgen.net/github/stars/mementum/backtrader) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [QUANTAXIS](https://github.com/QUANTAXIS/QUANTAXIS) | QUANTAXIS 支持任务调度 分布式部署的 股票/期货/期权/港股/虚拟货币 数据/回测/模拟/交易/可视化/多账户 纯本地量化解决方案 | ![GitHub stars](https://badgen.net/github/stars/QUANTAXIS/QUANTAXIS) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [QuantConnect](https://github.com/QuantConnect/Lean) | Lean Algorithmic Trading Engine by QuantConnect (Python, C#) | ![GitHub stars](https://badgen.net/github/stars/QuantConnect/Lean) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [Rqalpha](https://github.com/ricequant/rqalpha) | A extendable, replaceable Python algorithmic backtest && trading framework supporting multiple securities | ![GitHub stars](https://badgen.net/github/stars/ricequant/rqalpha) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [finmarketpy](https://github.com/cuemacro/finmarketpy) | Python library for backtesting trading strategies & analyzing financial markets (formerly pythalesians) | ![GitHub stars](https://badgen.net/github/stars/cuemacro/finmarketpy) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [backtesting.py](https://github.com/kernc/backtesting.py) | Backtesting.py is a Python framework for inferring viability of trading strategies on historical (past) data. Improved upon the vision of Backtrader, and by all means surpassingly comparable to other accessible alternatives, Backtesting.py is lightweight, fast, user-friendly, intuitive, interactive, intelligent and, hopefully, future-proof. | ![GitHub stars](https://badgen.net/github/stars/kernc/backtesting.py) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [zvt](https://github.com/zvtvz/zvt) | Modular quant framework | ![GitHub stars](https://badgen.net/github/stars/zvtvz/zvt) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [WonderTrader](https://github.com/wondertrader/wondertrader) | WonderTrader——量化研发交易一站式框架  | ![GitHub stars](https://badgen.net/github/stars/wondertrader/wondertrader) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [nautilus_trader](https://github.com/nautechsystems/nautilus_trader) | A high-performance algorithmic trading platform and event-driven backtester | ![GitHub stars](https://badgen.net/github/stars/nautechsystems/nautilus_trader) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [PandoraTrader](https://github.com/pegasusTrader/PandoraTrader) | High-frequency quantitative trading platform based on c++ development, supporting multiple trading APIs and cross-platform | ![GitHub stars](https://badgen.net/github/stars/pegasusTrader/PandoraTrader) | ![made-with-c++](https://img.shields.io/badge/Made%20with-c++-1f425f.svg) |\n| [HFTBacktest](https://github.com/nkaz001/hftbacktest) | Highly precise backtest on HFT data in Python+Numba | ![GitHub stars](https://badgen.net/github/stars/nkaz001/hftbacktest) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [aat](https://github.com/AsyncAlgoTrading/aat) | An asynchronous, event-driven framework for writing algorithmic trading strategies in python with optional acceleration in C++. It is designed to be modular and extensible, with support for a wide variety of instruments and strategies, live trading across (and between) multiple exchanges. | ![GitHub stars](https://badgen.net/github/stars/AsyncAlgoTrading/aat) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [sdoosa-algo-trade-python](https://github.com/sreenivasdoosa/sdoosa-algo-trade-python) | This project is mainly for newbies into algo trading who are interested in learning to code their own trading algo using python interpreter. | ![GitHub stars](https://badgen.net/github/stars/sreenivasdoosa/sdoosa-algo-trade-python) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [lumibot](https://github.com/Lumiwealth/lumibot) | A very simple yet useful backtesting and sample based live trading framework (a bit slow to run...) | ![GitHub stars](https://badgen.net/github/stars/Lumiwealth/lumibot) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [quanttrader](https://github.com/letianzj/quanttrader) | Backtest and live trading in Python. Event based. Similar to backtesting.py. | ![GitHub stars](https://badgen.net/github/stars/letianzj/quanttrader) | ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg) |\n| [gobacktest](https://github.com/gobacktest/gobacktest) | A Go implementation of event-driven backtesting framework | ![GitHub stars](https://badgen.net/github/stars/gobacktest/gobacktest) | ![made-with-go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg) |\n| [FlashFunk](https://github.com/HFQR/FlashFunk) | High Performance Runtime in Rust | ![GitHub stars](https://badgen.net/github/stars/HFQR/FlashFunk) | ![made-with-rust](https://img.shields.io/badge/Made%20with-Rust-1f425f.svg) |\n\n\n### General - Vector Based Frameworks\n\n| Repository | Description | Stars | Made with |\n|------------|-------------|-------|-----------|\n| [vectorbt](https://github.c",
+      "rank": 9,
+      "weekly_stars": 1433
+    },
+    {
+      "full_name": "different-ai/openwork",
+      "html_url": "https://github.com/different-ai/openwork",
+      "description": "The open-source alternative to Claude Cowork (powered by opencode)",
+      "homepage": "https://openworklabs.com",
+      "language": "TypeScript",
+      "stars": 21469,
+      "forks": 2101,
+      "open_issues": 297,
+      "topics": [],
+      "license": "NOASSERTION",
+      "created_at": "2026-01-14T01:39:31Z",
+      "updated_at": "2026-08-08T03:29:07Z",
+      "pushed_at": "2026-08-07T17:52:23Z",
+      "archived": false,
+      "readme": "# OpenWork\n\nOpenWork is a free, open-source desktop app made for sharing AI workflows. It is an open-source alternative to Claude Cowork and Codex for macOS, Windows, and Linux.\n\nAdd one OpenWork MCP to Codex, Claude Code, Cursor, or another compatible agent and reuse the same skills, MCPs, and connected services across your tools, teammates, and machines. Create something once, share it with coworkers or friends, or keep it for yourself.\n\nThe desktop app is there when you want a dedicated workspace, but it is not required. You can use OpenWork from the agent you already have. For larger organizations, the admin interface lets you publish capabilities, manage access, and configure shared or per-user connections.\n\n[**Download OpenWork**](https://openworklabs.com/download)\n\n<img width=\"1481\" height=\"842\" alt=\"OpenWork desktop app\" src=\"https://github.com/user-attachments/assets/66a8dd9b-5260-488c-957d-e54331e78c1c\" />\n\n## Install with your AI agent\n\nAlready use an AI agent? Copy this prompt and paste it into Claude Code, Cursor, Codex, ChatGPT, or any agent that can run commands on your computer.\n\n```text\nInstall OpenWork on my computer, set up my first workspace, and open it ready to use. Follow the steps in https://openworklabs.com/start.md?v=hero\n```\n\n1. Installs OpenWork\n2. Creates your workspace\n3. Opens it ready to run\n\n## Use OpenWork from any agent\n\nThe OpenWork MCP brings your assigned skills, plugins, MCP connections, Google Workspace, and Microsoft 365 capabilities into any compatible agent.\n\nIt exposes two tools: `search_capabilities` finds what you can use, and `execute_capability` runs it. After adding the MCP, your client opens a browser so you can sign in and choose your OpenWork organization.\n\n### Codex\n\n```bash\ncodex mcp add openwork --url https://api.openworklabs.com/mcp/agent\n```\n\n### Claude Code\n\n```bash\nclaude mcp add --transport http openwork https://api.openworklabs.com/mcp/agent\n```\n\n### OpenCode\n\nAdd this to `opencode.json`:\n\n```json\n{\n  \"mcp\": {\n    \"openwork\": {\n      \"type\": \"remote\",\n      \"enabled\": true,\n      \"url\": \"https://api.openworklabs.com/mcp/agent\",\n      \"oauth\": {}\n    }\n  }\n}\n```\n\n### Any MCP client\n\nUse this remote MCP server URL:\n\n```text\nhttps://api.openworklabs.com/mcp/agent\n```\n\n## OpenWork Den\n\nOpenWork Den is the control plane for managing OpenWork across a team or organization.\n\n- Provision inference at scale and control which members and teams can use each model provider.\n- Invite teammates, create teams, and manage access from one place.\n- Set desktop policies, restrict local model access, and control which app versions your organization can use.\n- Publish skills and plugins through marketplaces, then assign them to the organization, a team, or specific people.\n- Import Anthropic-compatible plugins and make their supported skills and remote MCPs available through the OpenWork MCP.\n\n<img width=\"1546\" height=\"915\" alt=\"OpenWork Den organization control plane\" src=\"https://github.com/user-attachments/assets/033dbbfe-5661-4f7c-869c-46278406d6cc\" />\n\n## Documentation\n\n[Read the OpenWork docs.](https://openworklabs.com/docs)\n\n## Local development\n\nFor one checkout, keep using `pnpm dev`; with no extra environment variables it reuses the existing shared dev profile.\n\nTo run multiple git worktrees at once, use:\n\n```bash\npnpm dev:worktree\n```\n\nThat sets `OPENWORK_DEV_PROFILE=auto`, derives a stable profile name from the worktree path, lets Electron choose a free CDP port, and asks Vite for a free dev-server port. You can also choose a named profile, for example `OPENWORK_DEV_PROFILE=my-feature OPENWORK_ELECTRON_REMOTE_DEBUG_PORT=0 PORT=0 pnpm dev`.\n\n`dev:worktree` also defaults `OPENWORK_ELECTRON_USE_MOCK_KEYCHAIN=1`. A brand-new profile has no stored credentials, so on macOS the real keychain prompts as soon as Chromium persists an authenticated cookie, and that modal blocks Electron's main loop until it is dismissed. Set `OPENWORK_ELECTRON_USE_MOCK_KEYCHAIN=0` if you specifically want the system keychain in an isolated profile.\n\nDev startup prints a banner like `[openwork] dev profile=... cdp=http://127.0.0.1:9223`; use it to find the profile directory and pass the CDP URL to local tooling.\n\nIf a second instance cannot get the profile lock it now says so and exits, instead of lingering with an open CDP port and no window.\n",
+      "rank": 10,
+      "weekly_stars": 2367
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 52,813 个新增 Star，zhaoxuya520/reverse-skill、microsoft/AI-For-Beginners、TencentCloud/TencentDB-Agent-Memory 位居前三。主要开发语言集中在 TypeScript、Jupyter Notebook、Python。头部项目体现的方向包括：Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端；12 Weeks, 24 Lessons, AI for All!；TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.。",
+    "top_picks": [
+      "zhaoxuya520/reverse-skill",
+      "microsoft/AI-For-Beginners",
+      "TencentCloud/TencentDB-Agent-Memory"
+    ],
+    "projects": [
+      {
+        "full_name": "zhaoxuya520/reverse-skill",
+        "tagline": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
+        "overview": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端 主要语言为 PowerShell，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base  Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
+          "主要技术栈：PowerShell"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 PowerShell 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 20,604 Stars、2,841 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "microsoft/AI-For-Beginners",
+        "tagline": "12 Weeks, 24 Lessons, AI for All!",
+        "overview": "12 Weeks, 24 Lessons, AI for All! 主要语言为 Jupyter Notebook，公开主题包括：ai、artificial-intelligence、cnn、computer-vision。",
+        "core_features": [
+          "12 Weeks, 24 Lessons, AI for All!",
+          "主要技术栈：Jupyter Notebook"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、artificial-intelligence、cnn、computer-vision 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Jupyter Notebook 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 63,238 Stars、12,258 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "TencentCloud/TencentDB-Agent-Memory",
+        "tagline": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+        "overview": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks. 主要语言为 TypeScript，公开主题包括：agent、ai-agent、embedding、llm。",
+        "core_features": [
+          "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent、ai-agent、embedding、llm 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 17,573 Stars、1,573 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：NOASSERTION；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "usekaneo/kaneo",
+        "tagline": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.",
+        "overview": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you. 主要语言为 TypeScript，公开主题包括：hacktoberfest、hono、issue-management、issue-tracker。",
+        "core_features": [
+          "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 hacktoberfest、hono、issue-management、issue-tracker 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 7,633 Stars、610 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "lyogavin/airllm",
+        "tagline": "AirLLM 70B inference with single 4GB GPU",
+        "overview": "AirLLM 70B inference with single 4GB GPU 主要语言为 Jupyter Notebook，公开主题包括：chinese-llm、chinese-nlp、finetune、generative-ai。",
+        "core_features": [
+          "AirLLM 70B inference with single 4GB GPU",
+          "主要技术栈：Jupyter Notebook"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 chinese-llm、chinese-nlp、finetune、generative-ai 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Jupyter Notebook 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 29,929 Stars、3,191 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "esengine/DeepSeek-Reasonix",
+        "tagline": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
+        "overview": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running. 主要语言为 Go，公开主题包括：agent、agent-framework、ai-agent、ai-coding。",
+        "core_features": [
+          "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
+          "主要技术栈：Go"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent、agent-framework、ai-agent、ai-coding 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Go 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 32,927 Stars、2,123 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "virgiliojr94/book-to-skill",
+        "tagline": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+        "overview": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work. 主要语言为 Python，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 18,385 Stars、1,976 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "block/buzz",
+        "tagline": "A hive mind communication platform",
+        "overview": "A hive mind communication platform 主要语言为 Rust，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "A hive mind communication platform",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 25,014 Stars、2,912 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "paperswithbacktest/awesome-systematic-trading",
+        "tagline": "A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.",
+        "overview": "A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading. 主要语言为 Python，公开主题包括：algorithmic-trading、algotrading、alpha、arbitrage-bot。",
+        "core_features": [
+          "A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 algorithmic-trading、algotrading、alpha、arbitrage-bot 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 12,964 Stars、1,575 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：未声明；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "different-ai/openwork",
+        "tagline": "The open-source alternative to Claude Cowork (powered by opencode)",
+        "overview": "The open-source alternative to Claude Cowork (powered by opencode) 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "The open-source alternative to Claude Cowork (powered by opencode)",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 21,469 Stars、2,101 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：NOASSERTION；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
