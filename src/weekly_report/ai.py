@@ -83,13 +83,60 @@ def _trend_summary(repositories: list[dict[str, object]], projects: list[dict]) 
     )
 
 
-def analyze(repositories: list[dict[str, object]], token: str, model: str, endpoint: str) -> dict:
+def _analyze_strict(repositories: list[dict[str, object]], token: str, model: str, endpoint: str) -> dict:
     if not token:
         raise RuntimeError("缺少 GITHUB_TOKEN，无法调用 GitHub Models")
     projects = []
     for index, repo in enumerate(repositories, 1):
         print(f"正在通过 GitHub Models 分析 {index}/{len(repositories)}：{repo['full_name']}")
         projects.append(_request_analysis(repo, token, model, endpoint))
+    return {
+        "trend_summary": _trend_summary(repositories, projects),
+        "top_picks": [repo["full_name"] for repo in repositories[:3]],
+        "projects": projects,
+    }
+
+
+def _fallback_analysis(repo: dict[str, object]) -> dict:
+    """Build a complete report item when the optional model service is unavailable."""
+    full_name = str(repo["full_name"])
+    description = str(repo.get("description") or "仓库未提供项目简介。")
+    language = str(repo.get("language") or "未知")
+    license_name = str(repo.get("license") or "未声明")
+    topics = [str(topic) for topic in repo.get("topics", []) if topic]
+    topic_text = "、".join(topics[:4]) if topics else "未设置主题标签"
+    stars = int(repo.get("stars", 0))
+    forks = int(repo.get("forks", 0))
+    archived = bool(repo.get("archived"))
+    return {
+        "full_name": full_name,
+        "tagline": description,
+        "overview": f"{description} 主要语言为 {language}，公开主题包括：{topic_text}。",
+        "core_features": [description, f"主要技术栈：{language}"],
+        "problems": ["具体解决的问题请结合仓库 README 与文档核实。"],
+        "use_cases": [f"适合关注 {topic_text} 的开发者进一步评估。"],
+        "audience": [f"使用或评估 {language} 项目的开发者。"],
+        "differentiators": [f"当前公开热度为 {stars:,} Stars、{forks:,} Forks。"],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "已归档" if archived else "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [f"许可证：{license_name}；使用前请核对适用范围。", "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"],
+        "potential": ["进入 GitHub Trending 周榜，近期社区关注度较高。"],
+    }
+
+
+def analyze(repositories: list[dict[str, object]], token: str, model: str, endpoint: str) -> dict:
+    projects = []
+    model_available = bool(token)
+    for index, repo in enumerate(repositories, 1):
+        if model_available:
+            print(f"正在通过 GitHub Models 分析 {index}/{len(repositories)}：{repo['full_name']}")
+            try:
+                projects.append(_request_analysis(repo, token, model, endpoint))
+                continue
+            except (RuntimeError, KeyError, ValueError) as error:
+                model_available = False
+                print(f"GitHub Models 不可用，改用公开元数据生成本期报告：{error}")
+        projects.append(_fallback_analysis(repo))
     return {
         "trend_summary": _trend_summary(repositories, projects),
         "top_picks": [repo["full_name"] for repo in repositories[:3]],

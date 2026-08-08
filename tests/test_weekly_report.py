@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 from weekly_report.github import TrendingParser
-from weekly_report.ai import _trend_summary
+from weekly_report.ai import _fallback_analysis, _trend_summary, analyze
 from weekly_report.render import write_outputs
 
 
@@ -59,6 +59,22 @@ class AnalysisTests(unittest.TestCase):
         self.assertIn("250", summary)
         self.assertIn("acme/one", summary)
         self.assertIn("Python", summary)
+
+    def test_fallback_analysis_has_complete_render_fields(self):
+        repo = {
+            "full_name": "acme/tool", "description": "A useful tool", "language": "Python",
+            "license": "MIT", "topics": ["automation"], "stars": 100, "forks": 10,
+        }
+        item = _fallback_analysis(repo)
+        self.assertEqual("acme/tool", item["full_name"])
+        fields = ("core_features", "problems", "use_cases", "audience", "differentiators", "limitations", "potential")
+        for field in fields:
+            self.assertIsInstance(item[field], list)
+
+    def test_analyze_without_token_uses_fallback(self):
+        repo = {"full_name": "acme/tool", "weekly_stars": 5, "language": "Python"}
+        result = analyze([repo], token="", model="unused", endpoint="unused")
+        self.assertEqual("acme/tool", result["projects"][0]["full_name"])
 
 
 if __name__ == "__main__":
