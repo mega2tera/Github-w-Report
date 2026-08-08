@@ -6,6 +6,7 @@ from pathlib import Path
 
 from weekly_report.github import TrendingParser
 from weekly_report.ai import _fallback_analysis, _trend_summary, analyze
+from weekly_report.curated import CURATED_ANALYSES
 from weekly_report.render import write_outputs
 
 
@@ -75,6 +76,18 @@ class AnalysisTests(unittest.TestCase):
         repo = {"full_name": "acme/tool", "weekly_stars": 5, "language": "Python"}
         result = analyze([repo], token="", model="unused", endpoint="unused")
         self.assertEqual("acme/tool", result["projects"][0]["full_name"])
+
+    def test_curated_projects_are_complete_and_not_placeholders(self):
+        self.assertEqual(10, len(CURATED_ANALYSES))
+        fields = ("core_features", "problems", "use_cases", "audience", "differentiators", "limitations", "potential")
+        for name, item in CURATED_ANALYSES.items():
+            self.assertEqual(name, item["full_name"])
+            self.assertGreater(len(item["overview"]), 60)
+            for field in fields:
+                self.assertTrue(item[field])
+            text = str(item)
+            self.assertNotIn("请结合仓库 README", text)
+            self.assertNotIn("进一步评估", text)
 
 
 if __name__ == "__main__":
