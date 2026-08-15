@@ -1,0 +1,594 @@
+{
+  "date": "2026-08-15",
+  "repositories": [
+    {
+      "full_name": "PrimeIntellect-ai/prime-agent",
+      "html_url": "https://github.com/PrimeIntellect-ai/prime-agent",
+      "description": "A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 15947,
+      "forks": 1707,
+      "open_issues": 224,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-05-08T01:42:41Z",
+      "updated_at": "2026-08-15T02:05:47Z",
+      "pushed_at": "2026-08-15T02:01:21Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <a href=\"https://primeintellect.ai\">\n    <picture>\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/user-attachments/assets/40c36e38-c5bd-4c5a-9cb3-f7b902cd155d\">\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/user-attachments/assets/6414bc9b-126b-41ca-9307-9e982430cde8\">\n      <img alt=\"Prime Intellect\" src=\"https://github.com/user-attachments/assets/6414bc9b-126b-41ca-9307-9e982430cde8\" width=\"312\" style=\"max-width: 100%;\">\n    </picture>\n  </a>\n</p>\n\n<h3 align=\"center\">\nPrime Agent: A Self-Improving RLM Agent\n</h3>\n\n<p align=\"center\">\n  <a href=\"packages/coding-agent/docs/index.md\">Documentation</a> &bull;\n  <a href=\"https://github.com/PrimeIntellect-ai/verifiers\">Verifiers</a> &bull;\n  <a href=\"https://github.com/PrimeIntellect-ai/prime-rl\">PRIME-RL</a> &bull;\n  <a href=\"https://github.com/badlogic/pi-mono\">pi-mono</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/PrimeIntellect-ai/prime-agent/actions/workflows/ci.yml\">\n    <img src=\"https://github.com/PrimeIntellect-ai/prime-agent/actions/workflows/ci.yml/badge.svg\" alt=\"CI\" />\n  </a>\n  <a href=\"https://github.com/PrimeIntellect-ai/prime-agent/actions/workflows/build-binaries.yml\">\n    <img src=\"https://github.com/PrimeIntellect-ai/prime-agent/actions/workflows/build-binaries.yml/badge.svg\" alt=\"Build Binaries\" />\n  </a>\n</p>\n\nPrime Agent is an open-source coding and research agent for general and long-running work. It is designed around two core abstractions:\n\n- The **[Recursive Language Model (RLM)](https://www.primeintellect.ai/blog/rlm)** treats context as variables (*prompt-as-a-variable*) and tools like recursive subagents as function calls (*programmatic tool /sub-agent calling*) inside a persistent REPL.\n- The **[Continual Harness](https://arxiv.org/abs/2605.09998)** stores supplemental prompts, memories, skill descriptions, and reusable subagent specifications as durable state that Prime Agent can refine through small, evidence-backed updates, local to the session by default.\n\nPrime Agent combines a persistent Python control environment with durable harness state, so useful working context and reusable operating patterns can outlive a single chat window.\n\n- **Everything is programmatic:** persistent IPython is the built-in model tool; file operations, shell commands, tool use, subagents, and context management happen through code.\n- **Subagents are built in:** `rlm(...)` spawns real child agents for parallel or background work and returns their results programmatically.\n- **The harness can improve:** `/refine` reviews the current trajectory and can apply small, evidence-backed updates to supplemental harness state. It never rewrites the immutable base system prompt, and recorded snapshots support rollback.\n- **Skills are executable:** skills are importable Python packages, and the built-in skill creator can turn recurring workflows into project or personal skills.\n- **Sessions run in the background:** daemon-backed agents keep running when the terminal disconnects and can be reattached later.\n- **Agents communicate directly:** running agents can exchange messages and orchestrate one another without routing everything through the user.\n- **Long tasks keep moving:** automatic compaction, persistent goals, heartbeats, schedules, autonomous mode, and retained subagents preserve progress across turns and terminal sessions.\n\n## Getting Started\n\nInstall the latest stable release on macOS or Linux:\n\n```bash\ncurl -fsSL https://app.primeintellect.ai/prime-agent/install.sh | sh\n```\n\nThe installer downloads a versioned release, verifies its SHA-256 checksum, installs the `prime-agent` command, and can prepare the IPython runtime used by the agent.\n\nStart Prime Agent from the repository or directory you want it to work in:\n\n```bash\ncd /path/to/project\nprime-agent\n```\n\nOn first launch, run `/login` to choose a subscription or API-key provider. Prime Agent works in the current directory and can run commands and modify files there. Use a disposable clone, clean worktree, or another checkpoint you can inspect and restore.\n\n> [!WARNING]\n> Prime Agent executes model-generated Python and project commands with your user permissions. Its worker and kernel processes improve lifecycle isolation and recovery; they are **not** a security sandbox. Review changes and use trusted repositories, instructions, skills, and extensions only. Run untrusted code or instructions in an external sandbox or restricted environment.\n\nUseful commands:\n\n```bash\nprime-agent agents                   # Browse running, idle, and saved sessions\nprime-agent attach <agent>           # Reattach to a running session\nprime-agent --resume [path|id]       # Browse sessions or resume one directly\nprime-agent status                   # Inspect background service state\nprime-agent doctor [--fix]           # Inspect or repair background services\nprime-agent update [--force]         # Update Prime Agent\nprime-agent shutdown [--force]       # Stop every agent, worker, and background service\n```\n\n## Built for Long-Running Work\nPrime Agent is built for long-running work, especially for evaluations in research. These features are available in the TUI, and when run autonomously.\n\n- **Continual Harness:** `/refine` can persist focused, reviewable lessons as supplemental prompts, memories, reusable skill descriptions, or subagent specifications, with recorded refinement history. It does not replace packaging and reviewing new executable skills.\n- **Direct agent-to-agent communication:** running agents and retained subagents can discover one another, exchange messages, and steer active work.\n- **Daemon-backed continuity:** active sessions, IPython state, schedules, and subagents keep running when the terminal detaches and can be reattached later.\n- **Heartbeats and schedules:** `/heartbeat`, `rlm_heartbeat`, and `prime-agent schedule` can re-enter a session periodically or at a specific time.\n- **Persistent goals:** `/goal` keeps an objective and its progress active across turns until it is completed, paused, or cleared.\n- **Bounded autonomous mode:** `/autonomous` continues within configured turn, token, and time budgets and can run user-defined quality gates. A passed gate checks only what that gate verifies; reaching a limit does not imply task success.\n\n## Documentation\n\n- [Quickstart](packages/coding-agent/docs/quickstart.md) — install, authenticate, and run a first session\n- [Usage and CLI reference](packages/coding-agent/docs/usage.md) — commands, sessions, autonomous limits, and output modes\n- [Long-running and background agents](packages/coding-agent/docs/long-running-agents.md) — detach and reattach, goals, heartbeats, and schedules\n- [RLM programming model](packages/coding-agent/docs/rlm.md) — persistent IPython, subagents, skills, and the trust model\n- [JSON mode](packages/coding-agent/docs/json.md) and [RPC mode](packages/coding-agent/docs/rpc.md) — headless automation and integrations\n- [Skills](packages/coding-agent/docs/skills.md) — install and create reusable capabilities\n- [Provider setup](packages/coding-agent/docs/providers.md) — subscription and API-key providers\n- [Architecture overview](packages/coding-agent/docs/architecture.md) — daemon, worker, kernel, and persistence boundaries\n- [Development](packages/coding-agent/docs/development.md) — build and run from source\n\n## Contributing\n\nStart with a GitHub Discussion for [general questions](https://github.com/PrimeIntellect-ai/prime-agent/discussions/categories/general), [bug reports](https://github.com/PrimeIntellect-ai/prime-agent/discussions/categories/bug-reports), and [feature requests](https://github.com/PrimeIntellect-ai/prime-agent/discussions/categories/feature-requests). Maintainers promote accepted work into Issues, and pull requests are reviewed from maintainers and vouched contributors.\n\nRead the [contribution guidelines](CONTRIBUTING.md) for the full process. Report security vulnerabilities privately by following the [security policy](SECURITY.md).\n\n## Acknowledgements\n\nOur agent and TUI is built on top of [`pi`](https://github.com/earendil-works/pi). We thank the authors of `pi` for their valuable work.\n\n## License\n\nPrime Agent is fully open source and released under the [MIT License](LICENSE).\n",
+      "rank": 1,
+      "weekly_stars": 10739
+    },
+    {
+      "full_name": "semantica-agi/semantica",
+      "html_url": "https://github.com/semantica-agi/semantica",
+      "description": "Graph-Native Infrastructure for Context and Accountable AI Systems",
+      "homepage": "https://getsemantica.ai",
+      "language": "Python",
+      "stars": 7547,
+      "forks": 783,
+      "open_issues": 60,
+      "topics": [
+        "agent-memory",
+        "ai",
+        "ai-governance",
+        "ai-infrastructure",
+        "artificial-intelligence",
+        "context-engineering",
+        "context-graphs",
+        "data-engineering",
+        "decision-intelligence",
+        "developer-tools",
+        "explainable-ai",
+        "generative-ai",
+        "graph-rag",
+        "knowledge-graph",
+        "llm",
+        "ontology",
+        "provenance",
+        "python",
+        "reasoning",
+        "semantic-search"
+      ],
+      "license": "MIT",
+      "created_at": "2025-06-25T10:41:00Z",
+      "updated_at": "2026-08-15T02:18:04Z",
+      "pushed_at": "2026-08-14T19:38:14Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n<img src=\"Semantica Logo.png\" alt=\"Semantica\" width=\"420\"/>\n\n<a href=\"https://trendshift.io/repositories/18986?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-18986\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/18986\" alt=\"semantica-agi%2Fsemantica | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n### Graph-Native Infrastructure for Context and Accountable AI Systems\n\n#### *The Open Source Palantir for AI Agents*\n\n> Ingest your enterprise data, extract what matters, build a Context Graph and knowledge graph (KG), and run graph analytics and causal reasoning over all of it, with full decision provenance baked in. Explainable, traceable, and trustworthy by design.\n\n**Decision Intelligence &nbsp;·&nbsp; Context Management &nbsp;·&nbsp; Deterministic Reasoning &nbsp;·&nbsp; Ontology Management &nbsp;·&nbsp; Knowledge Modeling &nbsp;·&nbsp; End-to-End Traceability**\n\n**Open Source &nbsp;·&nbsp; Self-Hostable &nbsp;·&nbsp; Auditable &nbsp;·&nbsp; Governed &nbsp;·&nbsp; Zero Vendor Lock-In**\n\n**Polyglot Graph Storage &nbsp;·&nbsp; RDF & LPG Support &nbsp;·&nbsp; W3C Standards &nbsp;·&nbsp; Interoperable**\n\n#### Built for High-Stakes, Regulated Domains\n\n[![GitHub Stars](https://img.shields.io/github/stars/semantica-agi/semantica?style=flat-square&color=FFD700&logo=github&logoColor=white&label=Stars)](https://github.com/semantica-agi/semantica) [![GitHub Forks](https://img.shields.io/github/forks/semantica-agi/semantica?style=flat-square&color=6E40C9&logo=github&logoColor=white&label=Forks)](https://github.com/semantica-agi/semantica/network/members) [![Contributors](https://img.shields.io/github/contributors/semantica-agi/semantica?style=flat-square&color=2EA043&logo=github&logoColor=white)](https://github.com/semantica-agi/semantica/graphs/contributors) [![PyPI](https://img.shields.io/pypi/v/semantica.svg?style=flat-square&color=0066CC&logo=pypi&logoColor=white)](https://pypi.org/project/semantica/) [![Total Downloads](https://static.pepy.tech/badge/semantica?style=flat-square)](https://pepy.tech/project/semantica) [![Python 3.8+](https://img.shields.io/badge/python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT) [![CI](https://img.shields.io/github/actions/workflow/status/semantica-agi/semantica/ci.yml?style=flat-square&label=CI)](https://github.com/semantica-agi/semantica/actions) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/semantica-agi/semantica)\n\n[![Website](https://img.shields.io/badge/Website-getsemantica.ai-000000?style=flat-square&logo=googlechrome&logoColor=white)](https://getsemantica.ai/) [![Docs](https://img.shields.io/badge/Docs-docs.getsemantica.ai-0099FF?style=flat-square&logo=readthedocs&logoColor=white)](https://docs.getsemantica.ai/) [![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/sV34vps5hH) [![Twitter/X](https://img.shields.io/badge/Follow-%40BuildSemantica-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/BuildSemantica) [![YouTube](https://img.shields.io/badge/YouTube-Watch%20Demos-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=QfnNZg4-dZA) [![Changelog](https://img.shields.io/badge/Changelog-View-6E40C9?style=flat-square&logo=keepachangelog&logoColor=white)](CHANGELOG.md)\n\n```bash\npip install semantica\n```\n\n</div>\n\n---\n\n<div align=\"center\">\n\n<a href=\"https://www.youtube.com/watch?v=QfnNZg4-dZA\" target=\"_blank\">\n<img\n  src=\"docs/assets/img/semantica-knowledge-explorer-demo.gif\"\n  alt=\"Semantica Knowledge Explorer: live graph, decisions, entity resolution, ontology hub\"\n  width=\"900\"\n/>\n</a>\n\n*Knowledge Explorer · Context Graphs · Reasoning Engine · Decision Intelligence · Ontology Hub*\n\n**[▶ Watch the full platform walkthrough](https://www.youtube.com/watch?v=QfnNZg4-dZA)**\n\n</div>\n\n---\n\nMost AI agents act without a trail. They store embeddings, not meaning: context that can't be explained, decisions that can't be audited. In lending, that gap is a compliance exposure, not an inconvenience: an underwriting agent's approval has to survive a regulator's \"why\" months later.\n\nSemantica sits underneath your LLM, vector store, and agent framework as a deterministic infrastructure layer: no LLM required for graph construction, reasoning, or provenance.\n\n**Who it's for:**\n\n- **AI/ML platform teams** shipping agents that make consequential decisions and need structured, queryable context built from fragmented raw data, not just a vector index\n- **Data platform teams on Databricks or Snowflake** who need to turn tables already sitting in Unity Catalog or a Snowflake warehouse into a governed, lineage-tracked knowledge graph, without exporting that data to a third-party SaaS first\n- **Compliance, risk, and audit teams** who need a straight answer to \"why did the AI do that?\" in a format a regulator will actually accept\n- **Regulated enterprises** (finance, healthcare, legal, government, defense) that can't ship a black box, and can't send their data to someone else's SaaS to get one\n- **Platform and infra engineers** who want the KG, reasoning, and provenance stack self-hosted and swappable, not locked to one vendor's backend\n- **Data and knowledge engineers** building a KG from messy, multi-source data: entities and relationships get extracted, conflicting or contradictory facts are flagged instead of silently overwritten, and duplicates are merged before they turn into noise\n\n**[Quick Start](#quick-start)** &nbsp;·&nbsp; **[Architecture](#architecture)** &nbsp;·&nbsp; **[What You Get](#what-semantica-gives-you)** &nbsp;·&nbsp; **[Why Semantica](#why-semantica)** &nbsp;·&nbsp; **[Decision Intelligence](#decision-intelligence)** &nbsp;·&nbsp; **[Context Graphs](#context-graphs)** &nbsp;·&nbsp; **[Recipe: Audit Trail](#recipe-audit-trail-for-a-regulated-decision)** &nbsp;·&nbsp; **[Module Reference](#module-reference)** &nbsp;·&nbsp; **[Integrations](#integrations)** &nbsp;·&nbsp; **[CLI](#cli)** &nbsp;·&nbsp; **[Performance](#performance)** &nbsp;·&nbsp; **[Install](#installation)**\n\n---\n\n## What Semantica Gives You\n\n- **Context Graphs:** A structured, queryable graph of everything your agent knows, decides, and reasons about\n- **Decision Intelligence:** Every decision is a first-class object: traceable, searchable by precedent, and causally linked\n- **AI Governance & Ontology:** SHACL constraints, conflict detection, compliance rules, OWL generation, and SKOS vocabulary management with a visual editor\n- **Full Auditability:** W3C PROV-O provenance on every fact, with audit trails exportable to JSON, CSV, or RDF\n- **Deterministic Reasoning:** Forward chaining, Rete network, Datalog, and SPARQL with fully explainable paths, not black boxes\n- **Knowledge Pipeline:** Multi-source ingestion, entity-aware chunking, NER/relation/event extraction, and knowledge graph construction, with semantic deduplication and provenance-preserving merges throughout\n- **Enterprise Data Platforms:** Native connectors for Databricks (Unity Catalog + Delta Lake, PAT/OAuth M2M auth, catalog/schema/table/lineage introspection) and Snowflake (warehouse/database/schema, key-pair and OAuth auth), so tables already living in your lakehouse or warehouse become graph nodes with provenance, not another export/import hop\n- **Graph Analytics:** Centrality, community detection, link prediction, and shortest-path queries over the graph you just built\n- **Polyglot Graph Storage:** Native RDF (embedded Oxigraph, Blazegraph, Apache Jena, Eclipse RDF4J via SPARQL) and Labeled Property Graphs (Neo4j, FalkorDB, Apache AGE, AWS Neptune via Cypher), plus vector stores, all swappable without touching your code\n- **Visualization:** Explore any graph, ontology, or timeline in an interactive browser workbench\n- **Drop-in Integrations:** Native Agno support, a full-featured MCP server, a comprehensive CLI, a REST API, and plugins across major editors\n\n---\n\n## Why Semantica\n\n| | Vector DB + RAG | Plain LLM Memory | **Semantica** |\n| --- | --- | --- | --- |\n| **Recall method** | Embedding similarity | Token window | Graph traversal + semantic search |\n| **Decision history** | Not stored | Not stored | First-class queryable objects |\n| **Provenance** | None | None | W3C PROV-O, source-linked |\n| **Reasoning** | None | Black box | Forward chain, Rete, Datalog, SPARQL |\n| **Conflict detection** | Silent overwrite | Silent overwrite | Detected, flagged, resolved |\n| **Time travel** | No | No | Point-in-time graph snapshots |\n| **Compliance export** | None | None | PROV-O, SHACL, OWL, RDF |\n| **Policy enforcement** | None | None | Built-in rule engine + SHACL |\n| **Entity resolution** | No | No | Blocking + semantic deduplication |\n| **Multi-agent context** | Separate per agent | Separate per agent | Single shared intelligence layer |\n\nSemantica complements your existing stack rather than replacing it. Keep your LLM, vector store, and agent framework exactly as they are; Semantica adds the decision records, causal reasoning, provenance, ontology governance, conflict detection, and audit trails on top. The reasoning engines, KG construction, and provenance layer are fully deterministic; no LLM is required to use them.\n\n---\n\n## Quick Start\n\n```bash\npip install semantica\n```\n\n```python\nfrom semantica.context import ContextGraph\n\ngraph = ContextGraph(advanced_analytics=True)\n\n# Every agent decision becomes a queryable, auditable knowledge node\ndecision_id = graph.record_decision(\n    category=\"vendor_selection\",\n    scenario=\"Choose cloud provider for HIPAA workload\",\n    reasoning=\"AWS offers BAA, mature HIPAA tooling, and existing team expertise\",\n    outcome=\"selected_aws\",\n    confidence=0.93,\n)\n\n# Ask \"why did this happen?\" an",
+      "rank": 2,
+      "weekly_stars": 5135
+    },
+    {
+      "full_name": "google/skills",
+      "html_url": "https://github.com/google/skills",
+      "description": "Agent Skills for Google products and technologies",
+      "homepage": "",
+      "language": "Python",
+      "stars": 18204,
+      "forks": 1437,
+      "open_issues": 31,
+      "topics": [
+        "google",
+        "googlecloud",
+        "skills"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-03-31T19:02:20Z",
+      "updated_at": "2026-08-15T02:08:32Z",
+      "pushed_at": "2026-08-14T19:19:17Z",
+      "archived": false,
+      "readme": "# Agent Skills\n\n[![Install via skills.sh](https://img.shields.io/badge/skills.sh-install-green)](https://skills.sh/google/skills)\n\nThis repository contains [Agent Skills](https://agentskills.io/home) for Google\nproducts and technologies, including [Google Cloud](https://cloud.google.com).\n\n> [!NOTE]\n> This repository is under active development.\n\n## Installation\n\n```bash\nnpx skills add google/skills\n```\n\nFrom the `npx install` command, you can select the specific skills from this\nrepo to install.\n\n## Available Skills\n\n<!-- BEGIN SKILLS -->\n- **Getting started with Google Cloud**\n  - [**Authenticating to Google Cloud**](./skills/cloud/google-cloud-recipe-auth)\n  - [**Google Cloud Recipe: Foundation Builder**](./skills/cloud/google-cloud-recipe-foundation-builder)\n  - [**Onboarding to Google Cloud**](./skills/cloud/google-cloud-recipe-onboarding)\n- **Multi-product solution skills**\n  - [**Google Cloud solution-architecture workflow**](./skills/cloud/google-cloud-solution-architecture)\n  - [**Agentic analytics across cloud providers and data types**](./skills/cloud/google-cloud-solution-agentic-analytics-spark-knowledge-catalog)\n  - [**Borderless open data lakehouse agentic AI system**](./skills/cloud/google-cloud-solution-agentic-ai-borderless-data-lakehouse)\n  - [**Build and deploy AI agents on Google Cloud**](./skills/cloud/google-cloud-solution-build-deploy-agents)\n  - [**Data science workflow with AI agents solution**](./skills/cloud/google-cloud-solution-agentic-ai-data-science-workflow)\n  - [**Live bidirectional multimodal streaming agentic AI solution**](./skills/cloud/google-cloud-solution-agentic-ai-bidirectional-streaming)\n  - [**Migrate AI Workloads to GKE Inference**](./skills/cloud/google-cloud-solution-guided-gke-ai-migration)\n  - [**RAG for enterprise search using GKE and AlloyDB**](./skills/cloud/google-cloud-solution-rag-enterprise-search-gke-sqldb)\n  - [**Secure n-tier serverless web application with strict private application tiers**](./skills/cloud/google-cloud-solution-n-tier-serverless-web-app)\n- **AI/ML**\n  - [**Agent Platform Alert Configuration**](./skills/cloud/agent-platform-alert-configuration)\n  - [**Agent Platform Endpoint Management**](./skills/cloud/agent-platform-endpoint-management)\n  - [**Agent Platform Eval Flywheel Skill**](./skills/cloud/agent-platform-eval-flywheel)\n  - [**Agent Platform GenAI Inference Skill**](./skills/cloud/agent-platform-inference)\n  - [**Agent Platform Model Garden Deploy Skill**](./skills/cloud/agent-platform-deploy)\n  - [**Agent Platform Model Registry Management**](./skills/cloud/agent-platform-model-registry)\n  - [**Agent Platform Model Tuning**](./skills/cloud/agent-platform-tuning)\n  - [**Agent Platform Prompt Management**](./skills/cloud/agent-platform-prompt-management)\n  - [**Agent Platform RAG Engine Management**](./skills/cloud/agent-platform-rag-engine-management)\n  - [**Agent Platform Troubleshooting**](./skills/cloud/agent-platform-troubleshooting)\n  - [**Agent Platform Tuning Management**](./skills/cloud/agent-platform-tuning-management)\n  - [**BigQuery AI & ML**](./skills/cloud/bigquery-ai-ml)\n  - [**Gemini API in Agent Platform**](./skills/cloud/gemini-api)\n  - [**Gemini Enterprise Agent Platform - Managed Agents API Skill**](./skills/cloud/gemini-agents-api)\n  - [**Gemini Interactions API Skill**](./skills/cloud/gemini-interactions-api)\n  - [**LiveAPI Service Skill**](./skills/cloud/gemini-live-api)\n  - [**Migrating from Gemini API in AI Studio to Agent Platform**](./skills/cloud/agent-platform-migrate-from-ai-studio)\n  - [**Skill Registry**](./skills/cloud/agent-platform-skill-registry)\n- **Infrastructure**\n  - [**Custom Infrastructure Design and Deployment Skill**](./skills/cloud/design-deploy)\n  - [**Deployment Troubleshooting Skill**](./skills/cloud/design-deploy/references/infra-deployment-debugging)\n  - [**GKE AI/ML Inference**](./skills/cloud/gke-inference)\n  - [**GKE App Onboarding**](./skills/cloud/gke-app-onboarding)\n  - [**GKE Backup & Disaster Recovery**](./skills/cloud/gke-backup-dr)\n  - [**GKE Basics & Critical Gotchas**](./skills/cloud/gke-basics)\n  - [**GKE Batch & HPC Workloads**](./skills/cloud/gke-batch-hpc)\n  - [**GKE Cluster Autoscaler**](./skills/cloud/gke-cluster-autoscaler)\n  - [**GKE Cluster Creation**](./skills/cloud/gke-cluster-creation)\n  - [**GKE ComputeClasses**](./skills/cloud/gke-compute-classes)\n  - [**GKE Golden Path Configuration**](./skills/cloud/gke-golden-path)\n  - [**GKE JobSet Interruption Troubleshooting**](./skills/cloud/gke-ai-troubleshooting-jobset-interruption)\n  - [**GKE Manifest Generation Skill**](./skills/cloud/gke-manifest-generation)\n  - [**GKE Multi-Tenancy**](./skills/cloud/gke-multitenancy)\n  - [**GKE Networking**](./skills/cloud/gke-networking)\n  - [**GKE Productionize Skill**](./skills/cloud/gke-productionize)\n  - [**GKE Reliability**](./skills/cloud/gke-reliability)\n  - [**GKE Service Networking Skill**](./skills/cloud/gke-service-networking)\n  - [**GKE Storage**](./skills/cloud/gke-storage)\n  - [**GKE TPU Dynamic Slices Monitoring & Management**](./skills/cloud/gke-tpu-dynamic-slices-monitoring)\n  - [**GKE Upgrades & Maintenance**](./skills/cloud/gke-upgrades)\n  - [**GKE Workload Scaling**](./skills/cloud/gke-workload-scaling)\n  - [**GKE Workload Troubleshooting Skill**](./skills/cloud/gke-workload-troubleshooting)\n  - [**Google Cloud Filestore Autoscale**](./skills/cloud/google-cloud-filestore-autoscale)\n  - [**Google Cloud global external Application Load Balancer Configuration Skill**](./skills/cloud/google-cloud-global-frontend-configuration)\n  - [**Google Cloud Networking Observability Expert**](./skills/cloud/google-cloud-networking-observability)\n  - [**Google Cloud Storage Basics**](./skills/cloud/google-cloud-storage-basics)\n  - [**Simplified GCP Modular Terraform Architect Skill**](./skills/cloud/design-deploy/references/design)\n- **Databases and analytics**\n  - [**AlloyDB Basics**](./skills/cloud/alloydb-basics)\n  - [**BigFrames (BigQuery DataFrame) basics**](./skills/cloud/bigquery-bigframes)\n  - [**BigQuery Asset Impact Analysis**](./skills/cloud/datalineage-bigquery-asset-impact-analysis)\n  - [**BigQuery Basics**](./skills/cloud/bigquery-basics)\n  - [**Bigtable Basics**](./skills/cloud/bigtable-basics)\n  - [**Cloud SQL Basics**](./skills/cloud/cloud-sql-basics)\n  - [**Data Lineage Summary**](./skills/cloud/datalineage-summary)\n  - [**GCP Managed Airflow DAG Authoring Guide**](./skills/cloud/managed-airflow-dag-authoring)\n  - [**Managed Service for Apache Airflow (formerly Cloud Composer) Migration Guide**](./skills/cloud/managed-airflow-migrations)\n  - [**Spanner Basics**](./skills/cloud/spanner-basics)\n- **Developer tools**\n  - [**Developer Device Platform**](./skills/cloud/developer-device-platform-basics)\n  - [**gcloud CLI Skill for AI Agents**](./skills/cloud/gcloud)\n  - [**Google Agents CLI Onboarding**](./skills/cloud/google-agents-cli-onboarding)\n- **Management tools**\n  - [**Cloud Monitoring Chart Generation Skill (`cloud-monitoring-chart-generation`)**](./skills/cloud/cloud-monitoring-chart-generation)\n  - [**Cloud Monitoring ListTimeSeries Request Generator**](./skills/cloud/cloud-monitoring-list-time-series-request)\n  - [**Configuring Cloud Logging**](./skills/cloud/cloud-logging-configuration-basics)\n  - [**Configuring Cross-Project Logging**](./skills/cloud/cloud-logging-cross-project-configuration)\n  - [**Generate Logging Query Language queries**](./skills/cloud/cloud-logging-query-generation)\n  - [**GKE Cost Analysis**](./skills/cloud/gke-cost-analysis)\n  - [**GKE Cost Optimization**](./skills/cloud/gke-cost-optimization)\n  - [**GKE Observability**](./skills/cloud/gke-observability)\n  - [**GKE TPU Metrics Monitoring Guide**](./skills/cloud/gke-tpu-metrics-monitoring)\n  - [**Handle Disruption on GPUs and TPUs Troubleshooting**](./skills/cloud/gke-ai-troubleshooting-handle-disruption-gpu-tpu)\n  - [**Metric Selection (Service Query & Local Keyword Filtering)**](./skills/cloud/cloud-monitoring-metric-selection)\n  - [**SLO Alert Configuration Setup Wizard**](./skills/cloud/google-cloud-slo-alert-configuration)\n  - [**TPU Connection Failure and VBAR OOM Troubleshooting**](./skills/cloud/gke-ai-troubleshooting-tpu-vbar-oom)\n  - [**Workload Manager Basics**](./skills/cloud/workload-manager-basics)\n- **Well-Architected Framework**\n  - [**Google Cloud Well-Architected Framework skill for the Cost Optimization pillar**](./skills/cloud/google-cloud-waf-cost-optimization)\n  - [**Google Cloud Well-Architected Framework skill for the Operational Excellence pillar**](./skills/cloud/google-cloud-waf-operational-excellence)\n  - [**Google Cloud Well-Architected Framework skill for the Performance Optimization pillar**](./skills/cloud/google-cloud-waf-performance-optimization)\n  - [**Google Cloud Well-Architected Framework skill for the Reliability pillar**](./skills/cloud/google-cloud-waf-reliability)\n  - [**Google Cloud Well-Architected Framework skill for the Security pillar**](./skills/cloud/google-cloud-waf-security)\n  - [**Google Cloud Well-Architected Framework skill for the Sustainability pillar**](./skills/cloud/google-cloud-waf-sustainability)\n- **Security and identity**\n  - [**GKE Platform Security**](./skills/cloud/gke-platform-security)\n  - [**GKE Workload Security**](./skills/cloud/gke-workload-security)\n  - [**SecOps Detection Coverage Skill**](./skills/cloud/detection-engineering-coverage-evaluation)\n- **Web and app hosting**\n  - [**Cloud Run Basics**](./skills/cloud/cloud-run-basics)\n  - [**Firebase Basics**](./skills/cloud/firebase-basics)\n- **Advertising**\n  - [**AI Migration Agent Instructions for the Google Mobile Ads SDK**](./skills/ads/google-mobile-ads-android-migrate-to-next-gen)\n  - [**Data Manager API Audience Ingestion**](./skills/ads/data-manager-api-audience-ingestion)\n  - [**Data Manager API Event Ingestion**](./skills/ads/data-manager-api-event-ingestion)\n  - [**Data Manager API Setup**](./skills/ads/data-manager-api-setup)\n  - [**Googl",
+      "rank": 3,
+      "weekly_stars": 2186
+    },
+    {
+      "full_name": "denoland/celld",
+      "html_url": "https://github.com/denoland/celld",
+      "description": "self-hosted, distributed Durable Objects",
+      "homepage": "https://celld.dev",
+      "language": "Rust",
+      "stars": 3561,
+      "forks": 117,
+      "open_issues": 8,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2025-04-25T12:27:48Z",
+      "updated_at": "2026-08-15T02:15:40Z",
+      "pushed_at": "2026-08-14T17:11:35Z",
+      "archived": false,
+      "readme": "# celld\n\nSelf-hosted, distributed **Durable Objects**.\n\ncelld is an open-source daemon that runs Cloudflare Workers and Durable\nObjects on your own machines. Each object is its own SQLite database.\ncelld addresses an object by name and replicates it to a bucket that you\nown. The bucket can be S3-compatible or Google Cloud Storage. The nodes\ncoordinate through that bucket alone, with no control plane and no\nconsensus. Because every object is its own small database,\napplications shard by construction — the contention and blast-radius failures\nof one shared database are designed out, not managed. A cell that no node\nholds is inactive, and an inactive cell costs nearly nothing. Learn more at\n[celld.dev](https://celld.dev) or read the\n[documentation](https://celld.dev/docs).\n\n## How it works\n\nEvery `celld` node embeds V8 and executes Wrangler bundles. The fleet shares\none bucket, which contains deployments, cell state, and small ownership\nrecords. The bucket can be S3-compatible or Google Cloud Storage. Object-storage compare-and-swap ensures that exactly one node owns a\ncell at a time, without a membership protocol, failure detector, or consensus\nservice.\n\ncelld continuously replicates each cell's SQLite database to the bucket.\nWhen a cell moves, or when an inactive cell activates, its new owner restores\nthat database and resumes execution. The bucket is the durable source of\ntruth; nodes are replaceable.\n\n## Install\n\nThe installer downloads the `celld` binary (provenance is verifiable with\n`gh attestation verify`):\n\n```sh\ncurl -fsSL https://celld.dev/install.sh | sh\n```\n\nPut `~/.local/bin` on your `PATH` if the installer asks you to.\n\nWorker projects deployed with `celld deploy` need\n[esbuild](https://esbuild.github.io) on `PATH`; asset-only projects do not.\n\nThe installer keeps each release under `~/.local/lib/celld/releases` and points\none symlink at the current one. To remove celld, delete the symlink and the\nreleases:\n\n```sh\nrm `which celld` && rm -rf ~/.local/lib/celld\n```\n\n## Container\n\nThe release image contains the `celld` binary and is published for Linux\nx86-64 and ARM64:\n\n```sh\ndocker run --rm ghcr.io/denoland/celld --version\n```\n\nPersist the runtime's local state and pass the standard AWS credential\nenvironment through:\n\n```sh\ndocker volume create celld-state\ndocker run --rm --network host \\\n  -e AWS_ACCESS_KEY_ID \\\n  -e AWS_SECRET_ACCESS_KEY \\\n  -e AWS_SESSION_TOKEN \\\n  -e CELLD_WATCH=/var/lib/celld/state \\\n  -v celld-state:/var/lib/celld \\\n  ghcr.io/denoland/celld \\\n  --bucket s3://my-cells-bucket \\\n  --endpoint https://ACCOUNT.r2.cloudflarestorage.com \\\n  --region auto \\\n  --listen 0.0.0.0:8080 \\\n  --internal-listen 10.0.0.12:8081 \\\n  --advertise node-a.internal:8081\n```\n\nDrop `--endpoint` and `--region` for AWS S3. Expose port 8080 through the load\nbalancer, and keep port 8081 on the private network.\n\n## Run it\n\ncelld uses the standard AWS credential chain. Deploy to an S3-compatible\nbucket, then start celld against the same bucket:\n\n```sh\ncelld deploy . \\\n  --bucket s3://my-cells-bucket\n\ncelld \\\n  --bucket s3://my-cells-bucket \\\n  --listen 0.0.0.0:8080 \\\n  --internal-listen 10.0.0.12:8081 \\\n  --advertise 10.0.0.12:8081\n```\n\nUse `--endpoint` for another S3-compatible service and `--region` when it\ncannot be inferred. A `gs://` bucket selects Google Cloud Storage. celld then\nuses the Cloud Storage XML API with generation preconditions. Authentication\nuses Application Default Credentials. celld rejects an S3 `--endpoint` for a\n`gs://` bucket, and it ignores the storage region:\n\n```sh\ncelld deploy . --bucket gs://my-cells-bucket\ncelld --bucket gs://my-cells-bucket --listen 0.0.0.0:8080 \\\n  --internal-listen 10.0.0.12:8081 --advertise 10.0.0.12:8081\n```\n\nA fleet runs one application, and every node loads its\nlatest successfully committed deployment from `deploy/current.json`. Run\n`celld --help` for the complete command line.\nDeployment objects use the documented types in `crates/celld/protocol.rs`. `celld\ndeploy` invokes `esbuild` from `PATH` for Worker code, accepts the supported\nWrangler config subset—including co-deployed or asset-only static\nassets—and writes those objects directly. Every node discovers owners and\npeers from bucket leases; there is no account or join service.\n\nPeer HTTP and the operator API use the internal listener. Put every advertised\naddress on a trusted private network or an encrypted overlay such as WireGuard\nor Tailscale. Do not publish the internal port. celld rejects a literal public\nIP unless you supply `--unsafe-public-advertise`. An explicit advertised\naddress requires an explicit internal-listener address. celld cannot verify a\nhostname or a translated port, so you must route the advertised address to the\ninternal listener. The first current node creates `fleet/peer-auth.json` in the\nbucket. All peer requests are\nprotocol-versioned, body-bound, HMAC-authenticated, clock-bounded, and\nreplay-protected with that fleet secret. Treat access to the bucket and its\ncredentials as fleet administrator access.\n\n## Operate a fleet\n\n`celld diagnose` enumerates every node lease by default, then performs a signed\ndirect probe of each live peer:\n\n```sh\ncelld diagnose --bucket s3://my-cells-bucket\n```\n\nThe report keeps checking after an individual failure and distinguishes\nexpired records, malformed or unsafe advertise addresses, unreachable peers,\nand incompatible protocols. It also prints each node's coarse resident-cell,\nWebSocket, RSS, CPU, file-descriptor, pressure, and shedding sample. Pass one\nor more `--peer NODE_ID` options to restrict the check.\n\nSet a hard resident-cell limit on each loaded node:\n\n```sh\nCELLD_MAX_RESIDENT_CELLS=1000 \\\ncelld --bucket s3://my-cells-bucket --listen 0.0.0.0:8080 \\\n  --internal-listen 10.0.0.12:8081 --advertise node-a.internal:8081\n```\n\ncelld enables a memory threshold at 80% of the available memory by default. Set\n`CELLD_MAX_RSS_MB` to change the threshold, or set it to `0` to disable memory\npressure shedding. celld measures the memory that the cells hold, and not the\nresident set size of the process. The two differ, because the memory allocator\nkeeps some freed pages instead of returning them to the operating system.\nShedding a cell cannot return those pages, so a threshold on the resident set\nsize holds a node in pressure after the node gives every cell back. The `/state`\nroute reports both numbers.\n\ncelld also applies an absolute cap to the resident set size of the process. The\ncap is 95% of the available memory. It protects the node when the allocator\nholds memory that shedding cannot return, because the operating system stops a\nprocess that uses more memory than the machine has. The node logs a warning when\nthis cap applies.\n\nThe cap is a share of the machine, and celld does not derive it from the\nthreshold. A `CELLD_MAX_RSS_MB` at or above 95% of the available memory therefore reaches\nthe cap. The cap is then the effective limit. The node decides on its resident\nset size, and celld reports this at startup. `CELLD_MAX_RSS_MB=0`\ndisables the threshold and the cap together. When celld cannot read the size of\nthe available memory, it applies a cap of 125% of an explicit threshold.\n\nUnder pressure, celld durably replicates and fences the least-recently used idle\ncells. It then publishes the cells as unowned without resetting their epochs.\nThose cells become inactive, and celld refuses to reacquire new unowned cells.\n\nEach limit releases separately. The threshold releases when the memory in use\nfalls to 80% of the threshold. The cap releases when the resident set size falls\nto 80% of the cap. A crossing of one limit therefore does not hold the node\nagainst the other.\n\nA spare receives no assignment. It acquires a released cell through the same\nbucket protocol when normal traffic reaches it. celld does not shed a cell with\nactive work or a live host WebSocket.\n\n## Contributions\n\nPull requests are disabled. Coding agents make it too easy to send a large,\nlow-context change that costs maintainers more time than it saves. Thoughtful\ncontributions are welcome; please understand the code, keep the patch focused,\nand respect the review time you are asking for.\n\nSend a `git format-patch` attachment to [ry@deno.com](mailto:ry@deno.com).\n\nContributor License Agreement: By emailing a patch, you certify that you have\nthe right to submit it and assign to Deno Land Inc. all rights in the patch\nthat you can assign. Where a right cannot be assigned, you grant Deno Land\nInc. a perpetual, irrevocable,\nworldwide, royalty-free, transferable, sublicensable license to use, modify,\ncombine, relicense, redistribute, or publish the patch, in whole or in part,\nwith or without attribution.\n\n## License\n\n[Apache-2.0](LICENSE)\n\nSee the [limitations](docs/limitations.md) and\n[security](docs/security.md) pages before operating a public fleet.\n",
+      "rank": 4,
+      "weekly_stars": 1549
+    },
+    {
+      "full_name": "vitali87/code-graph-rag",
+      "html_url": "https://github.com/vitali87/code-graph-rag",
+      "description": "The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
+      "homepage": "https://code-graph-rag.com",
+      "language": "Python",
+      "stars": 4296,
+      "forks": 591,
+      "open_issues": 55,
+      "topics": [
+        "ai",
+        "ast",
+        "claude-code",
+        "code-analysis",
+        "code-understanding",
+        "codebase-search",
+        "developer-tools",
+        "graph-database",
+        "knowledge-graph",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "memgraph",
+        "monorepo",
+        "multi-language",
+        "python",
+        "rag",
+        "retrieval-augmented-generation",
+        "semantic-search",
+        "tree-sitter"
+      ],
+      "license": "MIT",
+      "created_at": "2025-06-16T14:31:57Z",
+      "updated_at": "2026-08-15T01:44:44Z",
+      "pushed_at": "2026-08-15T00:44:14Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/logo-dark-any.png\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"assets/logo-light-any.png\">\n    <img src=\"assets/logo-light-any.png\" alt=\"Code-Graph-RAG Logo\" width=\"480\">\n  </picture>\n\n  <p>\n    <a href=\"https://trendshift.io/repositories/99619\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/99619\" alt=\"vitali87/code-graph-rag | Trendshift\" width=\"250\" height=\"55\"/></a>\n  </p>\n\n  <p>\n  <!-- Badges below are commented out while the GitHub account is suspended. Restore them when the account is reinstated.\n       Stars/Forks: shields.io hits GitHub's API (returns \"repo not found\" for suspended accounts).\n       gitcgr: indexes from GitHub (shows \"not indexed\" while unavailable).\n       MseeP.ai: badge PNG ignores inline height on Bitbucket and renders as a full-size tile.\n  <a href=\"https://github.com/vitali87/code-graph-rag/stargazers\">\n    <img src=\"https://img.shields.io/github/stars/vitali87/code-graph-rag?style=social\" alt=\"GitHub stars\" />\n  </a>\n  <a href=\"https://github.com/vitali87/code-graph-rag/network/members\">\n    <img src=\"https://img.shields.io/github/forks/vitali87/code-graph-rag?style=social\" alt=\"GitHub forks\" />\n  </a>\n  -->\n  <a href=\"https://github.com/vitali87/code-graph-rag/actions/workflows/ci.yml\">\n    <img src=\"https://img.shields.io/github/actions/workflow/status/vitali87/code-graph-rag/ci.yml?branch=main\" alt=\"CI\" />\n  </a>\n  <a href=\"https://codecov.io/gh/vitali87/code-graph-rag\">\n    <img src=\"https://codecov.io/gh/vitali87/code-graph-rag/graph/badge.svg\" alt=\"Codecov\" />\n  </a>\n  <a href=\"https://sonarcloud.io/summary/overall?id=vitali87_code-graph-rag\">\n    <img src=\"https://sonarcloud.io/api/project_badges/measure?project=vitali87_code-graph-rag&metric=alert_status\" alt=\"Quality Gate Status\" />\n  </a>\n  <!--\n  <a href=\"https://mseep.ai/app/vitali87-code-graph-rag\">\n    <img src=\"https://mseep.net/pr/vitali87-code-graph-rag-badge.png\" alt=\"MseeP.ai Security Assessment\" height=\"20\" />\n  </a>\n  -->\n  <a href=\"https://code-graph-rag.com\">\n    <img src=\"https://img.shields.io/badge/Enterprise-Support%20%26%20Services-6366f1\" alt=\"Enterprise Support\" />\n  </a>\n  <a href=\"https://pypi.org/project/code-graph-rag/\">\n    <img src=\"https://img.shields.io/pypi/v/code-graph-rag\" alt=\"PyPI Version\" />\n  </a>\n  <a href=\"https://pepy.tech/projects/code-graph-rag\">\n    <img src=\"https://static.pepy.tech/personalized-badge/code-graph-rag?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads\" alt=\"PyPI Downloads\" />\n  </a>\n  <a href=\"https://skillsllm.com/security-check/DHsMGRb1Ysys\">\n    <img src=\"https://skillsllm.com/security-check/badge.svg?owner=vitali87&repo=code-graph-rag\" alt=\"SkillsLLM Security Check\" />\n  </a>\n  <a href=\"https://scorecard.dev/viewer/?uri=github.com/vitali87/code-graph-rag\">\n    <img src=\"https://api.scorecard.dev/projects/github.com/vitali87/code-graph-rag/badge\" alt=\"OpenSSF Scorecard\" />\n  </a>\n  <a href=\"https://www.bestpractices.dev/projects/13757\">\n    <img src=\"https://www.bestpractices.dev/projects/13757/badge\" alt=\"OpenSSF Best Practices\" />\n  </a>\n  <!--\n  <a href=\"https://gitcgr.com/vitali87/code-graph-rag\">\n    <img src=\"https://gitcgr.com/badge/vitali87/code-graph-rag.svg\" alt=\"gitcgr\" />\n  </a>\n  -->\n</p>\n</div>\n\n# Code-Graph-RAG\n\nCode-Graph-RAG parses a multi-language codebase with Tree-sitter, builds a knowledge graph of its structure in Memgraph, and lets you query, edit, and optimise that code in plain English. It works across a monorepo of mixed languages under one unified graph schema.\n\n<p align=\"center\">\n  <img src=\"./assets/demo.gif\" alt=\"demo\">\n</p>\n\n## Latest News 🔥\n\n<!-- SECTION:latest_news -->\n- **Runtime Call Tracing**: A dynamic tracer runs your code (typically the test suite) and merges the calls that actually happened into the graph as `CALLS` edges (flagged where static analysis missed them), so dispatch through interfaces, virtual methods, function pointers, reflection, and framework routing becomes visible. Convert a run from Python, the JVM, Node.js, .NET, PHP, Lua, Dart, or Go with `cgr trace`.\n- **Ruby Support**: Ruby joins the graph through a new pluggable ast-grep tier that adds a language from a single YAML pattern file, emitting `Module`, `Function`, and `Class` nodes plus import edges without a hand-written parser.\n- **Structural Search & Replace**: Find and rewrite code by AST pattern with ast-grep, exposed as agent tools so you can match and transform structure across the whole codebase instead of relying on text or regex.\n<!-- /SECTION:latest_news -->\n\nSee [NEWS.md](NEWS.md) for the full history.\n\n## What It Does\n\nPoint Code-Graph-RAG at a repository and it reads every source file, extracts functions, classes, methods, modules, and the relationships between them, and stores the result as an interconnected graph. Once the graph exists you can:\n\n- Ask questions about the codebase in natural language and get answers grounded in the real structure.\n- Retrieve the actual source of any function, class, or method by name or by intent.\n- Edit code through the agent with AST-based surgical patching and a diff preview before anything changes.\n- Optimise code against language best practices or your own coding standards.\n- Find dead code by walking call and reference edges from entry points.\n- Search and rewrite structurally by AST pattern with ast-grep.\n\n## How It Works\n\nThe system has two components:\n\n1. **Multi-language parser.** A Tree-sitter based parser reads the codebase and ingests functions, classes, methods, modules, and their relationships into Memgraph under a single language-agnostic schema.\n2. **RAG system** (`codebase_rag/`). An interactive CLI that turns natural language into Cypher queries, retrieves matching code, and drives AI-powered editing and optimisation.\n\n```\nSource Code -> Tree-sitter Parser -> AST Analysis -> Memgraph Knowledge Graph\n                                                             |\nUser Query -> AI Model (Cypher Gen) -> Cypher Query -> Graph Results -> Response\n```\n\nSee the [Architecture Overview](docs/architecture/overview.md) and [Graph Schema](docs/architecture/graph-schema.md) for the full picture.\n\n## Supported Languages\n\nPython, TypeScript, TSX, JavaScript, Rust, Go, Java, C, C++, C#, PHP, Lua, and Dart are fully supported. Scala is in development, and Ruby has structural support (modules, functions, classes, and imports) through the pluggable ast-grep tier. See the [Language Support](docs/architecture/language-support.md) matrix for per-language capabilities.\n\n## Installation\n\n`cgr` is published to PyPI. Install it system-wide with the `treesitter-full` (all languages) and `semantic` (vector search) extras:\n\n```bash\n# with uv (recommended)\nuv tool install \"code-graph-rag[treesitter-full,semantic]\"\n\n# or with pipx\npipx install \"code-graph-rag[treesitter-full,semantic]\"\n```\n\nYou also need Docker (for Memgraph), `cmake`, and `ripgrep`. Full prerequisites, source installs, and environment setup are in the [Installation](docs/getting-started/installation.md) guide.\n\n## Quick Start\n\n```bash\n# Start the packaged Memgraph + Qdrant stack (no compose file needed)\ncgr daemon up\n\n# Parse a repository into the graph, then query it\ncgr start --repo-path /path/to/repo --update-graph\ncgr start --repo-path /path/to/repo\n```\n\nRepeat the first command for each repository you want indexed; the graph is\nshared, and syncing one project leaves the others alone. To start over from an\nempty graph, add `--clean` — it deletes **every** project in the shared graph,\nnot just this one, and asks for confirmation first when other\nprojects would be destroyed.\n\nThe [Quick Start](docs/getting-started/quickstart.md) guide walks through parsing, querying, and exporting in five minutes.\n\n## MCP Server\n\nCode-Graph-RAG runs as an [MCP](https://modelcontextprotocol.io) server so Claude Code and other MCP clients can query and edit your codebase directly. See the [MCP Server](docs/guide/mcp-server.md) guide for setup.\n\n## Documentation\n\n**Getting Started**\n- [Installation](docs/getting-started/installation.md)\n- [Quick Start](docs/getting-started/quickstart.md)\n- [Configuration](docs/getting-started/configuration.md)\n\n**User Guide**\n- [CLI Reference](docs/guide/cli-reference.md)\n- [Interactive Querying](docs/guide/interactive-querying.md)\n- [Code Optimisation](docs/guide/code-optimization.md)\n- [Dead Code Detection](docs/guide/dead-code.md)\n- [Graph Export](docs/guide/graph-export.md)\n- [Real-Time Updates](docs/guide/realtime-updates.md)\n- [MCP Server](docs/guide/mcp-server.md)\n\n**Architecture**\n- [Overview](docs/architecture/overview.md)\n- [Graph Schema](docs/architecture/graph-schema.md)\n- [Language Support](docs/architecture/language-support.md)\n- [Data-Flow Edges](docs/architecture/data-flow-edges.md)\n\n**Python SDK**\n- [Overview](docs/sdk/overview.md)\n- [Graph Loader](docs/sdk/graph-loader.md)\n- [Cypher Generator](docs/sdk/cypher-generator.md)\n- [Semantic Search](docs/sdk/semantic-search.md)\n\n**Advanced**\n- [Adding Languages](docs/advanced/adding-languages.md)\n- [Ignore Patterns](docs/advanced/ignore-patterns.md)\n- [Building Binaries](docs/advanced/building-binaries.md)\n- [Troubleshooting](docs/advanced/troubleshooting.md)\n\n## Enterprise Services\n\nCode-Graph-RAG is open source and free to use. For organisations that need more, we offer **fully managed cloud-hosted solutions** and **on-premise deployments**:\n\n- **Cloud-Hosted Deployment**: Managed cloud infrastructure for both the graph database and the AI agent connection. Zero infrastructure overhead, so we handle scaling, updates, and availability while your team focuses on building.\n- **On-Premise & Air-Gapped Deployment**: Deploy Code-Graph-RAG entirely within your own environment, including air-gapped networks. Full data sovereignty for regulated industries and security-sensiti",
+      "rank": 5,
+      "weekly_stars": 1718
+    },
+    {
+      "full_name": "megadose/holehe",
+      "html_url": "https://github.com/megadose/holehe",
+      "description": "holehe allows you to check if the mail is used on different sites like twitter, instagram and will retrieve information on sites with the forgotten password function.",
+      "homepage": "",
+      "language": "Python",
+      "stars": 12869,
+      "forks": 1717,
+      "open_issues": 101,
+      "topics": [
+        "ebay",
+        "email",
+        "emails",
+        "information-gathering",
+        "instagram",
+        "open-source-intelligence",
+        "osint",
+        "osint-python",
+        "osint-tools",
+        "pypi",
+        "python",
+        "social-network",
+        "tellonym",
+        "trio",
+        "twitter"
+      ],
+      "license": "GPL-3.0",
+      "created_at": "2020-06-25T23:03:02Z",
+      "updated_at": "2026-08-15T02:17:51Z",
+      "pushed_at": "2024-09-10T20:24:32Z",
+      "archived": false,
+      "readme": "# **Holehe OSINT - Email to Registered Accounts**\n👋 Hi there! For any professional inquiries or collaborations, please reach out to me at:\nmegadose@protonmail.com\n\n📧 Preferably, use your professional email for correspondence. Let's keep it short and sweet, and all in English!\n\n![](https://files.catbox.moe/5we2ya.png)\n![PyPI](https://img.shields.io/pypi/v/holehe) ![PyPI - Week](https://img.shields.io/pypi/dw/holehe) ![PyPI - Downloads](https://static.pepy.tech/badge/holehe) ![PyPI - License](https://img.shields.io/pypi/l/holehe)\n\n# [Holehe Online Version](https://osint.industries/)\n\n## **Summary**\n\n*Efficiently finding registered accounts from emails.*\n\nHolehe checks if an email is attached to an account on sites like twitter, instagram, imgur and more than 120 others.\n\n+ Retrieves information using the forgotten password function.\n+ **[Does not alert the target email.](https://github.com/megadose/holehe/issues/12)**\n+ Runs on [Python 3](https://www.python.org/downloads/release/python-370/).\n## 🛠️ Installation\n\n### With PyPI\n\n```pip3 install holehe```\n\n### With Github\n\n```bash\ngit clone https://github.com/megadose/holehe.git\ncd holehe/\npython3 setup.py install\n```\n\n### With Docker\n\n```bash\ndocker build . -t my-holehe-image\ndocker run my-holehe-image holehe test@gmail.com\n```\n\n## Quick Start\n\nHolehe can be run from the CLI and rapidly embedded within existing python applications.\n### 📚 CLI Example\n\n```bash\nholehe test@gmail.com\n```\n### 📈 Python Example\n\n```python\nimport trio\nimport httpx\n\nfrom holehe.modules.social_media.snapchat import snapchat\n\n\nasync def main():\n    email = \"test@gmail.com\"\n    out = []\n    client = httpx.AsyncClient()\n\n    await snapchat(email, client, out)\n\n    print(out)\n    await client.aclose()\n\ntrio.run(main)\n```\n![](https://github.com/megadose/gif-demo/raw/master/holehe-demo.gif)\n## Module Output\n\nFor each module, data is returned in a standard dictionary with the following json-equivalent format :\n```json\n{\n  \"name\": \"example\",\n  \"rateLimit\": false,\n  \"exists\": true,\n  \"emailrecovery\": \"ex****e@gmail.com\",\n  \"phoneNumber\": \"0*******78\",\n  \"others\": null\n}\n```\n\n- rateLitmit : Lets you know if you've been rate-limited.\n- exists : If an account exists for the email on that service.\n- emailrecovery : Sometimes partially obfuscated recovery emails are returned.\n- phoneNumber : Sometimes partially obfuscated recovery phone numbers are returned.\n- others : Any extra info.\n\n\nRate limit? Change your IP.\n\n\n## Maltego Transform : [Holehe Maltego](https://github.com/megadose/holehe-maltego)\n\n## Thank you to :\n\n- [navlys](https://twitter.com/navlys_/)\n- [Chris](https://twitter.com/chris_kirsch)\n- [socialscan](https://pypi.org/project/socialscan/)\n- [UhOh365](https://github.com/Raikia/UhOh365)\n- [soxoj](https://github.com/soxoj)\n- [mxrch](https://github.com/mxrch) (and for the logo)\n- [novitae](https://github.com/novitae)\n\n## Donations\n\nFor BTC Donations : 1FHDM49QfZX6pJmhjLE5tB2K6CaTLMZpXZ\n\n## 📝 License\n\n[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.fr.html)\n\nBuilt for educational purposes only.\n\n## Modules\n| Name                | Domain                                 | Method            | Frequent Rate Limit |\n| ------------------- | -------------------------------------- | ----------------- | ------------------- |\n| aboutme             | about.me                               | register          | ✘               |\n| adobe               | adobe.com                              | password recovery | ✘               |\n| amazon              | amazon.com                             | login             | ✘               |\n| amocrm              | amocrm.com                             | register          | ✘               |\n| anydo               | any.do                                 | login             | ✔               |\n| archive             | archive.org                            | register          | ✘               |\n| armurerieauxerre    | armurerie-auxerre.com                  | register          | ✘               |\n| atlassian           | atlassian.com                          | register          | ✘               |\n| axonaut             | axonaut.com                            | register          | ✘               |\n| babeshows           | babeshows.co.uk                        | register          | ✘               |\n| badeggsonline       | badeggsonline.com                      | register          | ✘               |\n| biosmods            | bios-mods.com                          | register          | ✘               |\n| biotechnologyforums | biotechnologyforums.com                | register          | ✘               |\n| bitmoji             | bitmoji.com                            | login             | ✘               |\n| blablacar           | blablacar.com                          | register          | ✔               |\n| blackworldforum     | blackworldforum.com                    | register          | ✔               |\n| blip                | blip.fm                                | register          | ✔               |\n| blitzortung         | forum.blitzortung.org                  | register          | ✘               |\n| bluegrassrivals     | bluegrassrivals.com                    | register          | ✘               |\n| bodybuilding        | bodybuilding.com                       | register          | ✘               |\n| buymeacoffee        | buymeacoffee.com                       | register          | ✔               |\n| cambridgemt         | discussion.cambridge-mt.com            | register          | ✘               |\n| caringbridge        | caringbridge.org                       | register          | ✘               |\n| chinaphonearena     | chinaphonearena.com                    | register          | ✘               |\n| clashfarmer         | clashfarmer.com                        | register          | ✔               |\n| codecademy          | codecademy.com                         | register          | ✔               |\n| codeigniter         | forum.codeigniter.com                  | register          | ✘               |\n| codepen             | codepen.io                             | register          | ✘               |\n| coroflot            | coroflot.com                           | register          | ✘               |\n| cpaelites           | cpaelites.com                          | register          | ✘               |\n| cpahero             | cpahero.com                            | register          | ✘               |\n| cracked_to          | cracked.to                             | register          | ✔               |\n| crevado             | crevado.com                            | register          | ✔               |\n| deliveroo           | deliveroo.com                          | register          | ✔               |\n| demonforums         | demonforums.net                        | register          | ✔               |\n| devrant             | devrant.com                            | register          | ✘               |\n| diigo               | diigo.com                              | register          | ✘               |\n| discord             | discord.com                            | register          | ✘               |\n| docker              | docker.com                             | register          | ✘               |\n| dominosfr           | dominos.fr                             | register          | ✔               |\n| ebay                | ebay.com                               | login             | ✔               |\n| ello                | ello.co                                | register          | ✘               |\n| envato              | envato.com                             | register          | ✘               |\n| eventbrite          | eventbrite.com                         | login             | ✘               |\n| evernote            | evernote.com                           | login             | ✘               |\n| fanpop              | fanpop.com                             | register          | ✘               |\n| firefox             | firefox.com                            | register          | ✘               |\n| flickr              | flickr.com                             | login             | ✘               |\n| freelancer          | freelancer.com                         | register          | ✘               |\n| freiberg            | drachenhort.user.stunet.tu-freiberg.de | register          | ✘               |\n| garmin              | garmin.com                             | register          | ✔               |\n| github              | github.com                             | register          | ✘               |\n| google              | google.com                             | register          | ✔               |\n| gravatar            | gravatar.com                           | other             | ✘               |\n| hubspot             | hubspot.com                            | login             | ✘               |\n| imgur               | imgur.com                              | register          | ✔               |\n| insightly           | insightly.com                          | login             | ✘               |\n| instagram           | instagram.com                          | register          | ✔               |\n| issuu               | issuu.com                              | register          | ✘               |\n| koditv              | forum.kodi.tv                          | register          | ✘               |\n| komoot              | komoot.com                             | register          | ✔               |\n| laposte             | laposte.fr                             | register          | ✘               |\n| lastfm              | last.fm                                | register          | ✘               |\n| lastpass            | lastpass.com                           | register          | ✘               |\n| mail_ru             | mail.ru                                | password recovery | ✘       ",
+      "rank": 6,
+      "weekly_stars": 671
+    },
+    {
+      "full_name": "NVIDIA-NeMo/Switchyard",
+      "html_url": "https://github.com/NVIDIA-NeMo/Switchyard",
+      "description": "Switchyard lets LLM applications route traffic across models and providers while preserving native OpenAI and Anthropic API compatibility - enabling flexible model selection, benchmarking, and cost/performance optimization.",
+      "homepage": "",
+      "language": "Rust",
+      "stars": 1473,
+      "forks": 131,
+      "open_issues": 84,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2026-05-19T19:06:33Z",
+      "updated_at": "2026-08-15T02:09:57Z",
+      "pushed_at": "2026-08-14T22:34:53Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"assets/logo.png\" alt=\"Switchyard\" width=\"800\">\n</p>\n\n# Switchyard\n\nSwitchyard is a Rust proxy and library for LLM traffic. It routes requests\nacross providers, translates between OpenAI and Anthropic APIs, records\noperational metrics, and provides typed, composable routing algorithms.\n\n**Why Switchyard?** Point a coding agent such as Claude Code or Codex at an\nopen-source model. Switchyard translates between the OpenAI Chat, Anthropic\nMessages, and OpenAI Responses formats, so the agent keeps speaking its native\nAPI while the request is served by vLLM, NVIDIA NIM, Ollama, or any\nOpenAI-compatible endpoint. The same proxy can spread traffic across several\nmodels for A/B benchmarking, apply signal-driven stage routing, or run a custom\nalgorithm you write yourself.\n\n## Features\n\n- **Protocol Translation**: convert between OpenAI Chat, Anthropic Messages, and OpenAI Responses formats\n- **Multi-Backend Routing**: random routing, LLM-as-classifier routing, signal-driven stage-router, or your own algorithm\n- **Operational Metrics**: Prometheus metrics cover requests, errors, latency, tokens, and routing overhead\n\n## Maturity\n\nSwitchyard is pre-alpha software that is evolving rapidly. The API and algorithms are expected to change significantly before we reach v1.0.\n\n> [!WARNING]\n> Experimental software. Not for production use.\n\n## Quick Start\n\nChoose the launcher path to run Claude Code, Codex CLI, or OpenClaw through\nSwitchyard. Choose the server path to run Switchyard as a standalone proxy.\nChoose the library path to embed routing in your own Rust application.\n\n### Launcher Path\n\nInstall [`uv`](https://docs.astral.sh/uv/getting-started/installation/) if it is\nnot already available, then install the published Switchyard tool:\n\n```bash\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nsource \"$HOME/.local/bin/env\"\nuv tool install --python 3.10 \"nemo-switchyard[cli]\"\n```\n\nThe coding agent you launch must also be installed and on your `PATH`. This does\nnot install the standalone `switchyard-server` binary; use the Server Path for\nthat.\n\nSet an OpenRouter key and launch against the packaged deployment:\n\n```bash\nexport OPENROUTER_API_KEY=\"your-openrouter-key\"  # pragma: allowlist secret\nswitchyard launch claude --model switchyard\nswitchyard launch codex --model switchyard\nswitchyard launch openclaw --model switchyard\n```\n\nTo use your own native TOML deployment, pass its route ID and configuration:\n\n```bash\nswitchyard launch claude --model my-route --config routes.toml\n```\n\n### Server Path\n\nUse this path to install and run the standalone Rust proxy. Install\n[Rust with Cargo](https://rust-lang.org/tools/install/), then install the\npublished binary:\n\n```bash\ncargo install --locked switchyard-server\nswitchyard-server --help\n```\n\nCargo builds the release binary and installs it into `~/.cargo/bin` by default.\n\nCreate `routes.toml` using the\n[Getting Started guide](docs/getting_started.md#server-path), then validate it\nand start the server:\n\n```bash\nexport OPENROUTER_API_KEY=\"your-openrouter-key\"  # pragma: allowlist secret\nswitchyard-server --config routes.toml --dry-run\nswitchyard-server --config routes.toml --host 127.0.0.1 --port 4000\n```\n\nVerify the proxy in another terminal:\n\n```bash\ncurl http://localhost:4000/health\n```\n\nFor a complete configuration and a test request, follow\n[Getting Started](docs/getting_started.md).\n\n### Library Path\n\n`switchyard-libsy` embeds the routing algorithms in your own Rust application.\nIt never calls a model itself: an algorithm decides which target to use and\nhands every model call back to you, so it drops into an existing proxy, gateway,\nor agent runtime without owning an HTTP stack. Pair it with\n`switchyard-llm-client` when you want the calls made for you.\n\n```toml\n[dependencies]\nswitchyard-libsy = { git = \"https://github.com/NVIDIA-NeMo/Switchyard.git\" }\nswitchyard-protocol = { git = \"https://github.com/NVIDIA-NeMo/Switchyard.git\" }\n```\n\nSee [Getting Started](docs/getting_started.md#library-path) for setup and the\nalgorithm list, or the [`switchyard-libsy`](crates/libsy/README.md) crate docs.\n\n## Routing Strategies\n\n| Strategy | Use it when | Route `type` |\n|---|---|---|\n| [LLM Classifier](docs/routing_algorithms/llm_classifier_routing.md) | Request content should decide whether a turn needs the weak or strong tier. | `llm_classifier` |\n| [Stage Router](docs/routing_algorithms/stage_router_routing.md) | Signals already in the conversation, such as tool results and errors, should route most turns without an extra model call. | `stage_router` |\n| [Escalation Router](docs/routing_algorithms/escalation_router_routing.md) | Every turn runs on the weak tier first, and a judge reads that answer to decide whether to send the same request to the strong tier. | `llm_classifier` with `mode = \"escalation\"` |\n| [Random](docs/routing_algorithms/random_routing.md) | You need a fixed traffic split for A/B tests, baselines, or cost experiments. | `random` |\n\nA `passthrough` route registers one target under one model ID with no routing\ndecision. See the [Routing Overview](docs/routing_algorithms/overview.md) for\nthe common route shape and self-hosted targets.\n\n## Architecture\n\n```mermaid\nflowchart LR\n    clients[\"Clients\"]\n    switchyard[\"Switchyard<br/>routing · translation · fallback\"]\n    backends[\"Model backends\"]\n\n    clients -->|\"OpenAI / Anthropic API\"| switchyard\n    switchyard -->|\"provider-native format\"| backends\n```\n\nClients keep their native OpenAI or Anthropic API format. Switchyard picks a\nconfigured backend, forwards the request in that backend's own format, and\ntranslates the response back into the shape the client expects. The server\naccepts OpenAI Chat Completions, OpenAI Responses, and Anthropic Messages. Each\nconfigured LLM client selects one upstream format.\n\n## Documentation\n\n- **[Getting Started](docs/getting_started.md)**: complete launcher and standalone server walkthroughs\n- **[Core Concepts](docs/core_concepts.md)**: LLM clients, targets, routes, model IDs, and routing algorithms\n- **[Routing Overview](docs/routing_algorithms/overview.md)**: choose and configure a routing algorithm\n- **[`switchyard-server`](crates/switchyard-server/README.md)**: server configuration, routing algorithms, and metrics\n- **[`switchyard-libsy`](crates/libsy/README.md)**: embed routing algorithms in a Rust application\n- **[`switchyard-protocol`](crates/protocol/README.md)**: provider-neutral request, response, and streaming types\n- **[`switchyard-translation`](crates/switchyard-translation/README.md)**: request, response, and stream translation\n\n## Community\n\n- **Issues**: [GitHub Issues](https://github.com/NVIDIA-NeMo/Switchyard/issues)\n- **Code of Conduct**: [Code of Conduct](CODE_OF_CONDUCT.md)\n\n## License\n\n[Apache 2.0 License](LICENSE). Copyright NVIDIA Corporation.\n",
+      "rank": 7,
+      "weekly_stars": 1195
+    },
+    {
+      "full_name": "cloudflare/computer",
+      "html_url": "https://github.com/cloudflare/computer",
+      "description": "Give your agent a computer 👾",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 8141,
+      "forks": 447,
+      "open_issues": 13,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-06-05T10:38:15Z",
+      "updated_at": "2026-08-15T01:52:59Z",
+      "pushed_at": "2026-08-14T14:18:16Z",
+      "archived": false,
+      "readme": "# Cloudflare Computer\n\nCloudflare Computer is a virtual filesystem that lives inside a\nDurable Object. The Durable Object holds the authoritative state in\nSQLite and exposes one pluggable execution surface through\n`workspace.runtime`. Three backends ship today:\n\n- **Container** projects the SQLite state into a sandbox container as\n  a real FUSE mount. A sandbox-side daemon (`computerd`) mounts the state\n  as a filesystem and syncs changes back over a capnweb RPC channel.\n  Full Linux userland, real binaries, real network.\n- **Isolate shell** runs [just-bash](https://github.com/vercel-labs/just-bash)\n  in a Dynamic Worker. It reaches the authoritative Workspace over\n  Workers RPC, so there is no second store or sync round trip.\n- **Isolate JavaScript** runs an ECMAScript module in a fresh Dynamic\n  Worker with structured input/results, durable relative imports,\n  configured libraries, Workspace-backed `node:fs/promises`, and trusted `ws:git` and\n  `ws:artifacts` modules.\n\nA Workspace may register multiple backends under stable IDs.\n`workspace.runtime.exec(source, { backend })` is the single execution\nentry point; the selected backend defines whether `source` is a shell\ncommand or an ECMAScript module. Backends connect lazily on first use.\n\nWorkspace can also be constructed without a backend at all, giving\ncallers the filesystem on its own.\n\n> [!IMPORTANT]\n> **PREVIEW ONLY** This package is provided as a preview for feedback only.\n> APIs are unstable and the design is subject to change.\n>\n> Suitable for experiments, exploration and prototypes. It is NOT suitable\n> for production use at this time.\n>\n> The specification under [`docs/`](docs/) is forward-looking — read it for\n> intent, not as description of the code today.\n\n## Using it\n\nIf you want to build on Cloudflare Computer, install\n[`@cloudflare/computer`](packages/computer/README.md) and follow that\npackage's README — it has the installation steps, the entrypoint map,\nand worked examples of the `fs` and `runtime` surfaces.\n\nTo contribute feedback, see [`CONTRIBUTING.md`](CONTRIBUTING.md).\nApproved collaborators should follow [`COLLABORATORS.md`](COLLABORATORS.md)\nfor setup, build, and test instructions.\n\n## Examples\n\nThe [`examples/`](examples) directory holds runnable consumers of the\npublic surface. Each is a Worker workspace with its own README.\n\n- [`examples/container`](examples/container) — runs `computerd` inside a\n  container, mounts a workspace, and talks to a Durable Object over\n  capnweb. A `write` / `read` / `exec` HTTP surface.\n- [`examples/worker-shell`](examples/worker-shell) — same HTTP surface as the\n  container example, but the shell runs [just-bash](https://github.com/vercel-labs/just-bash)\n  in a Dynamic Worker loaded through `env.LOADER`. No container.\n- [`examples/worker-javascript`](examples/worker-javascript) — mirrors\n  `worker-shell`, but `exec` evaluates an ECMAScript module in a Dynamic\n  Worker instead of running a shell command.\n- [`examples/egress`](examples/egress) — sends one URL through the container,\n  Worker shell, and Worker JavaScript backends with matching `none`, `all`, or\n  custom egress policies.\n- [`examples/mcp`](examples/mcp) — a Computer MCP example:\n  one Code Mode `code` tool backed by a durable workspace, a Worker shell,\n  and a full Linux container.\n- [`examples/think`](examples/think) — a [`@cloudflare/think`](https://www.npmjs.com/package/@cloudflare/think)\n  chat agent that uses the workspace as its working directory, reachable\n  from a terminal.\n- [`examples/think-compare-runtimes`](examples/think-compare-runtimes) —\n  a web UI that runs the same agent task against the container and\n  worker runtimes side by side.\n- [`examples/tutorial`](examples/tutorial) — a step-by-step build: one\n  endpoint, one agent that writes a markdown recipe card on the host and\n  runs `pandoc` on it in the container to produce a PDF.\n- [`examples/artifacts`](examples/artifacts) — generates a Worker project\n  in a workspace and publishes it to Cloudflare Artifacts as a\n  clone-ready repo.\n- [`examples/assets`](examples/assets) — turns a prompt into an image with\n  Workers AI, writes it to the workspace, and returns a shareable link\n  through `@cloudflare/computer/assets`.\n\n## Repository layout\n\nThe repo is a small monorepo. Each package has its own README with\npackage-specific status and usage notes.\n\n- [`packages/dofs`](packages/dofs/README.md) (`@cloudflare/dofs`) —\n  Durable Object SQLite-backed virtual filesystem, sync protocol\n  building blocks, and a `@platformatic/vfs` provider for Node.\n- [`packages/rpc`](packages/rpc/README.md)\n  (`@cloudflare/computer-rpc`) — capnweb wire types and\n  server/client helpers shared between the Durable Object and `computerd`.\n- [`packages/computerd`](packages/computerd/README.md)\n  (`@cloudflare/computerd`) — the `computerd` daemon: a FUSE mount plus\n  HTTP/WebSocket RPC server that runs inside the sandbox container.\n- [`packages/computer`](packages/computer/README.md)\n  (`@cloudflare/computer`) — the top-level Computer package\n  consumed by Durable Objects. Work in progress.\n- [`packages/computer-computerd-linux-x64`](packages/computer-computerd-linux-x64/README.md)\n  — private Docker image context for the prebuilt `computerd` linux-x64\n  binary. The image, not an npm package, is the release artifact.\n\n## Performance\n\ncomputerd's FUSE mount beats real disk on metadata-heavy work and\ntrails it on large sequential I/O. See\n[`docs/19_performance.md`](docs/19_performance.md) for the full `fs-bench`\nnumbers, a `cloudflare/sandbox-sdk` `npm install` comparison, and how\nto reproduce them.\n\n## Documentation\n\n- [`docs/`](docs/README.md) — design specification. Forward-looking;\n  treat as intent.\n- [`docs/19_performance.md`](docs/19_performance.md) — filesystem benchmarks.\n\n## Contributing\n\nWe accept bug reports, fix proposals, feature requests, and design\nproposals through issues and discussions. We do not accept unsolicited\npull requests. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the public\ncontribution paths.\n\nApproved collaborators should follow\n[`COLLABORATORS.md`](COLLABORATORS.md) for setup, formatting, testing,\ncommit message, and pull request conventions.\n\nIf you're working in this repo as an agent, start with\n[`AGENTS.md`](AGENTS.md) and the skills under\n[`.agents/skills/`](.agents/skills/).\n\n## License\n\nMIT. See [`LICENSE`](LICENSE).\n",
+      "rank": 8,
+      "weekly_stars": 2856
+    },
+    {
+      "full_name": "addyosmani/agent-skills",
+      "html_url": "https://github.com/addyosmani/agent-skills",
+      "description": "Production-grade engineering skills for AI coding agents.",
+      "homepage": "https://skills.addy.ie",
+      "language": "JavaScript",
+      "stars": 87299,
+      "forks": 9365,
+      "open_issues": 103,
+      "topics": [
+        "agent-skills",
+        "antigravity",
+        "claude-code",
+        "codex",
+        "cursor",
+        "skills"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-15T20:20:26Z",
+      "updated_at": "2026-08-15T02:16:40Z",
+      "pushed_at": "2026-08-14T18:51:33Z",
+      "archived": false,
+      "readme": "# Agent Skills\n\n**Production-grade engineering skills for AI coding agents.**\n\nSkills encode the workflows, quality gates, and best practices that senior engineers use when building software. These ones are packaged so AI agents follow them consistently across every phase of development.\n\n<a href=\"https://trendshift.io/repositories/25200\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/25200\" alt=\"addyosmani%2Fagent-skills | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n![Addy's Agent Skills](https://addyosmani.com/assets/images/addys-agent-skills.jpg)\n\n```\n  DEFINE          PLAN           BUILD          VERIFY         REVIEW          SHIP\n ┌──────┐      ┌──────┐      ┌──────┐      ┌──────┐      ┌──────┐      ┌──────┐\n │ Idea │ ───▶ │ Spec │ ───▶ │ Code │ ───▶ │ Test │ ───▶ │  QA  │ ───▶ │  Go  │\n │Refine│      │  PRD │      │ Impl │      │Debug │      │ Gate │      │ Live │\n └──────┘      └──────┘      └──────┘      └──────┘      └──────┘      └──────┘\n  /spec          /plan          /build        /test         /review       /ship\n```\n\n---\n\n## Commands\n\n8 slash commands that map to the development lifecycle. Each one activates the right skills automatically.\n\n| What you're doing | Command | Key principle |\n|-------------------|---------|---------------|\n| Define what to build | `/spec` | Spec before code |\n| Plan how to build it | `/plan` | Small, atomic tasks |\n| Build incrementally | `/build` | One slice at a time |\n| Prove it works | `/test` | Tests are proof |\n| Review before merge | `/review` | Improve code health |\n| Audit web performance | `/webperf` | Measure before you optimize |\n| Simplify the code | `/code-simplify` | Clarity over cleverness |\n| Ship to production | `/ship` | Faster is safer |\n\nWant fewer manual steps once the spec exists? **`/build auto`** generates the plan and implements every task in a single approved pass — you approve the plan once, then it runs autonomously. It removes the human stepping *between* tasks, not the verification: every task is still test-driven and committed individually, and it pauses on failures or risky steps.\n\nSkills also activate automatically based on what you're doing — designing an API triggers `api-and-interface-design`, building UI triggers `frontend-ui-engineering`, and so on.\n\n---\n\n## Quick Start\n\n**Fastest path — any agent, one command.** The open [skills CLI](https://github.com/vercel-labs/skills) installs into 70+ agents (Claude Code, Cursor, Codex, Copilot, Cline, and more):\n\n```bash\nnpx skills add addyosmani/agent-skills            # install all 24 skills\nnpx skills add addyosmani/agent-skills --list     # browse before installing\n```\n\nOr grab individual skills:\n\n```bash\nnpx skills add addyosmani/agent-skills --skill code-review-and-quality   # five-axis review before merge\nnpx skills add addyosmani/agent-skills --skill interview-me              # requirements interrogation, one question at a time\nnpx skills add addyosmani/agent-skills --skill test-driven-development   # red-green-refactor, enforced\n```\n\n> **Installing one skill?** A per-skill `npx` install copies only\n> `skills/<name>/`, not the repo-level `references/` directory. The skill still\n> works, but paths to supplementary shared checklists are unavailable. Use a\n> whole-repo integration, clone the repository, or copy the needed checklist into\n> a `references/` directory inside the installed skill. This portability gap is\n> tracked in [#361](https://github.com/addyosmani/agent-skills/issues/361).\n\nPrefer a native integration? Pick your tool below.\n\n<details>\n<summary><b>Claude Code (recommended)</b></summary>\n\n**Marketplace install:**\n\n```\n/plugin marketplace add addyosmani/agent-skills\n/plugin install agent-skills@addy-agent-skills\n```\n\n> **SSH errors?** The marketplace clones repos via SSH. If you don't have SSH keys set up on GitHub, either [add your SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or use the full HTTPS URL to force HTTPS cloning during the marketplace-add step:\n> ```bash\n> /plugin marketplace add https://github.com/addyosmani/agent-skills.git\n> /plugin install agent-skills@addy-agent-skills\n> ```\n>\n> If `/plugin install` still fails with `git@github.com: Permission denied (publickey)` on Windows or macOS, the recommended workaround is to configure Git once to rewrite GitHub SSH URLs to HTTPS for subprocess clones:\n> ```bash\n> git config --global url.\"https://github.com/\".insteadOf git@github.com:\n> ```\n\n**Local / development:**\n\n```bash\ngit clone https://github.com/addyosmani/agent-skills.git\nclaude --plugin-dir /path/to/agent-skills\n```\n\n</details>\n\n<details>\n<summary><b>Cursor</b></summary>\n\nPut workflow skills under `.cursor/skills/` (sync from `agent-skills/skills/`) and short policies in `.cursor/rules/*.mdc` — do not paste full skills into rules. See [docs/cursor-setup.md](docs/cursor-setup.md).\n\n</details>\n\n<details>\n<summary><b>Antigravity CLI</b></summary>\n\nInstall as a native plugin for skills, subagents, and slash commands. See [docs/antigravity-setup.md](docs/antigravity-setup.md).\n\n**Install from the repo:**\n\n```bash\nagy plugin install https://github.com/addyosmani/agent-skills.git\n```\n\n**Install from a local clone:**\n\n```bash\ngit clone https://github.com/addyosmani/agent-skills.git\nagy plugin install ./agent-skills\n```\n\n</details>\n\n<details>\n<summary><b>Gemini CLI</b></summary>\n\nInstall as native skills for auto-discovery, or add to `GEMINI.md` for persistent context. See [docs/gemini-cli-setup.md](docs/gemini-cli-setup.md).\n\n**Install from the repo:**\n\n```bash\ngemini skills install https://github.com/addyosmani/agent-skills.git --path skills\n```\n\n**Install from a local clone:**\n\n```bash\ngemini skills install ./agent-skills/skills/\n```\n\n</details>\n\n<details>\n<summary><b>Windsurf</b></summary>\n\nAdd skill contents to your Windsurf rules configuration. See [docs/windsurf-setup.md](docs/windsurf-setup.md).\n\n</details>\n\n<details>\n<summary><b>OpenCode</b></summary>\n\nUses agent-driven skill execution via AGENTS.md and the `skill` tool.\n\nSee [docs/opencode-setup.md](docs/opencode-setup.md).\n\n</details>\n\n<details>\n<summary><b>GitHub Copilot</b></summary>\n\nUse agent definitions from `agents/` as Copilot personas and skill content in `.github/copilot-instructions.md`. See [docs/copilot-setup.md](docs/copilot-setup.md).\n\n</details>\n\n<details>\n  <summary><b>Kiro IDE & CLI </b></summary>\n  Skills for Kiro reside under \".kiro/skills/\" and can be stored under Project or Global level. Kiro also supports Agents.md. See Kiro docs at https://kiro.dev/docs/skills/\n</details>\n\n<details>\n<summary><b>Codex</b></summary>\n\nInstall as a native Codex plugin (Codex CLI v0.122+):\n\n```bash\ncodex plugin marketplace add addyosmani/agent-skills\ncodex plugin add agent-skills@agent-skills\n```\n\nThe first command registers the marketplace; the second installs the plugin. Codex reads the root `skills/` directory directly through `.codex-plugin/plugin.json`. Once installed, invoke skills in chat using `@` (e.g., `@spec-driven-development`). See [docs/codex-setup.md](docs/codex-setup.md) for local installation and troubleshooting.\n\n</details>\n\n<details>\n<summary><b>Command Code</b></summary>\n\nInstall natively with the built-in `cmd skills` command. Command Code clones the repo, discovers every `SKILL.md`, and installs into `.commandcode/skills/`:\n\n```bash\ncmd skills add addyosmani/agent-skills            # pick skills to install (project)\ncmd skills add addyosmani/agent-skills --global   # install for all projects (~/.commandcode/skills/)\ncmd skills add addyosmani/agent-skills -s spec-driven-development  # install a specific skill\n```\n\nInstalled skills show up in the TUI slash menu, e.g. `/spec-driven-development`. See [docs/commandcode-setup.md](docs/commandcode-setup.md).\n\n</details>\n\n<details>\n<summary><b>Other Agents</b></summary>\n\nSkills are plain Markdown - they work with any agent that accepts system prompts or instruction files. See [docs/getting-started.md](docs/getting-started.md).\n\n</details>\n\n\n\n---\n\n## Adoption\n\nAlready installed? How you roll the pack out depends on your codebase. The **[Adoption Guide](docs/adoption-guide.md)** covers two paths: the full lifecycle from day one for a greenfield project, or an incremental, verification-first rollout for an established codebase.\n\n---\n\n## All 24 Skills\n\nThe commands above are entry points. The pack includes 24 skills total — 23 lifecycle skills plus the `using-agent-skills` meta-skill. Each skill is a structured workflow with steps, verification gates, and anti-rationalization tables. You can also reference any skill directly.\n\n### Meta - Discover which skill applies\n\n| Skill | What It Does | Use When |\n|-------|-------------|----------|\n| [using-agent-skills](skills/using-agent-skills/SKILL.md) | Maps incoming work to the right skill workflow and defines shared operating rules | Starting a session or deciding which skill applies |\n\n### Define - Clarify what to build\n\n| Skill | What It Does | Use When |\n|-------|-------------|----------|\n| [interview-me](skills/interview-me/SKILL.md) | One-question-at-a-time interview that extracts what the user actually wants instead of what they think they should want, until ~95% confidence | The ask is underspecified, or the user invokes \"interview me\" / \"grill me\" |\n| [idea-refine](skills/idea-refine/SKILL.md) | Structured divergent/convergent thinking to turn vague ideas into concrete proposals | You have a rough concept that needs exploration |\n| [spec-driven-development](skills/spec-driven-development/SKILL.md) | Write a PRD covering objectives, commands, structure, code style, testing, and boundaries before any code | Starting a new project, feature, or significant change |\n\n### Plan - Break it down\n\n| Skill | What It Does | Use When |\n|-------|-------------|----------|\n| [planning-and-task-breakdown](skills/planning-and-task-breakdown/SKILL.md) | Decompose s",
+      "rank": 9,
+      "weekly_stars": 3845
+    },
+    {
+      "full_name": "TencentCloud/TencentDB-Agent-Memory",
+      "html_url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 21720,
+      "forks": 1988,
+      "open_issues": 575,
+      "topics": [
+        "agent",
+        "ai-agent",
+        "embedding",
+        "llm",
+        "local-first",
+        "long-term-memory",
+        "memory",
+        "openclaw-plugin",
+        "vector-search"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2026-04-07T06:34:26Z",
+      "updated_at": "2026-08-15T02:17:25Z",
+      "pushed_at": "2026-08-14T12:12:31Z",
+      "archived": false,
+      "readme": "\n<div align=\"center\">\n\n<img src=\"./assets/images/logo.png\" alt=\"TencentDB Agent Memory\" width=\"880\" />\n\n### Agents remember. Humans innovate.\n\n<a href=\"https://trendshift.io/repositories/29310?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-29310\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/29310\" alt=\"TencentCloud%2FTencentDB-Agent-Memory | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n[![npm](https://img.shields.io/npm/v/@tencentdb-agent-memory/memory-tencentdb?color=blue)](https://www.npmjs.com/package/@tencentdb-agent-memory/memory-tencentdb)\n[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)\n[![Node](https://img.shields.io/badge/node-%3E=22.16-brightgreen)](https://nodejs.org/)\n[![OpenClaw](https://img.shields.io/badge/OpenClaw-%3E=2026.3.13-orange)](https://github.com/openclaw/openclaw)\n[![Hermes](https://img.shields.io/badge/Hermes-Gateway-7B61FF)](https://hermes-agent.nousresearch.com/docs/)\n[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/dJQM6mKMF)\n\n[Installation](#installation) · [What is it?](#what-is-tencentdb-agent-memory) · [Team Play](#one-play-style-build-a-growing-agent-team-for-a-one-person-company) · [Technical Implementation](#technical-implementation) · [Benchmark](#benchmark) · [Roadmap](#roadmap)\n\n[**English**](./README.md) · [简体中文](./README_CN.md)\n\n</div>\n\n---\n\n> **Latest:** Team Memory Beta is evolving quickly — install it and start exploring in minutes.\n\n<td>\n   <video src=\"https://github.com/user-attachments/assets/efb1a808-1f86-4cfe-802c-f7453f7ca938\" width=\"100%\" controls autoplay loop muted playsinline></video>\n</td>\n\n# Installation\n\nStart all three services in one go (`memory-core` + `memory-hub` + `proxy`):\n\n```bash\ngit clone https://github.com/Tencent/TencentDB-Agent-Memory.git\ncd TencentDB-Agent-Memory/deploy/global-images\ncp .env.example .env\n$EDITOR .env       # Fill in two sets of LLM parameters (memory group + proxy group)\n./start-all.sh     # Launch everything with one command; when finished, it prints a one-liner you can paste directly into Claude\n```\n\nOpen the panel: [http://localhost:8125](http://localhost:8125).\n\nComplete installation documentation (standalone Memory Hub deployment, Proxy + Claude Code / CodeBuddy usage, stop and cleanup, port reference, etc.) is available in [**INSTALL.md**](./INSTALL.md) (中文: [INSTALL_CN.md](./INSTALL_CN.md)).\n\n### Migrating data from an older version\n\nIf you're already on an older release (v1.x / v0.x) and want to bring your existing data over to v2.0.0+, we provide a migration tool:\n\nSee [**Data Migration Tool (v2 → v3)**](./MemoryCore/scripts/migrate-v2-to-v3/README.md) for full usage and flags. New installations can skip this.\n\n# What is TencentDB Agent Memory?\n\nWe started from a practical question: **How do you reduce repetitive work when using Agents?**\n\nIf project context has already been explained, it shouldn't need to be repeated in a new session. If documents have already been read, every Agent shouldn't have to start again from page one. A workflow that already works shouldn't have to be rediscovered next time.\n\nMemory here means more than just \"remembering conversations.\" **Any information that helps the next Agent avoid reinventing the wheel should be saved, organized, and reused.**\n\n```text\nExisting information → Reusable memory assets → Fewer turns → Less rework → More stable results and higher efficiency\n```\n\n### Let experience accumulate, flow, and pass on to the next Agent\n\n**Memory Hub** for Agent teams closes the loop across the entire experience lifecycle: work produces assets, assets circulate through the team, and new members can load the team's save file on day one.\n\n1. **Automatic asset extraction**: Extract Chat Memory and Skills from conversations and tasks; convert documents and code into Wiki and CodeGraph; then manage, review, and route them consistently.\n2. **Portable & multi-Agent compatible**: Memory assets are decoupled from Agent frameworks — they can move across frameworks and be shared and maintained by multiple Agents and team members.\n3. **Cold-start friendly**: Import existing documents, codebases, and Agent conversation sessions. New Agent teams can start from existing experience instead of learning from scratch.\n\n### 🧠 A brain that remembers people and context\n\n- **Chat Memory** retains preferences, facts, decisions, and interaction history.\n- Each Agent automatically gets its own memory when created — no need to re-introduce yourself next time.\n- L0 Conversation → L1 Atom → L2 Scenario → L3 Persona — raw conversations are distilled layer by layer.\n\n<img width=\"\" src=\"assets/images/chat_memory.cn.png\" alt=\"image.png\" />\n\n> \"Don't refactor the old auth module — mobile is still using it.\" — Context this costly shouldn't depend on humans repeating it every time.\n\n### ⚡ A Skill library that accumulates expertise\n\n- After completing complex work, Agents can extract and manage reusable Skills from conversations and tool calls, and import them into the context of a designated Agent when needed.\n- A Skill isn't just a prompt snippet; it has versions, resource files, trigger boundaries, execution steps, and validation rules.\n- Personal Skills are private by default; after review, they can be shared with the team and assigned to other Agents.\n\n<img width=\"\" src=\"assets/images/skill.cn.png\" alt=\"image.png\" />\n\n> Troubleshooting, code review, release checklists — learn it once, and the whole team can use it.\n\n### 📖 A knowledge map that reads both docs and code\n\n- **Wiki** turns product docs, design specs, and ops runbooks into structured pages with a link graph. (Inspired by Karpathy's LLM knowledge base.)\n\n<img src=\"./assets/images/wiki.cn.png\" alt=\"image.png\" />\n\n- **CodeGraph** indexes code symbols, files, call relationships, and impact paths.\n<img width=\"\" src=\"assets/images/codegraph.cn.png\" alt=\"image.png\" />\n\n- Agents can search, read, inspect callers/callees, and perform impact analysis before modifying code.\n\n> Wiki keeps Agents from reading every file list before getting to work. CodeGraph doesn't just tell them \"the code is here\" — it tells them \"changing this might affect those.\"\n\n### 🛡️ A team memory panel controlled by humans\n\n- Create teams and Agents in Memory Hub; review, share, and equip memory assets.\n- Manage ownership, versions, status, visibility, usage counts, and Agent bindings in one place.\n- `private` belongs strictly to the Owner; `team` is visible to all team members; `restricted` grants precise access via User / Role / Agent ACLs.\n- Two role layers: **global System Admin** manages users and teams (creating teams, adding members) and can also use Wiki, CodeGraph, Skill, and other asset management features; **Team-level roles** include Admin (team manager) and Member (regular member), responsible for asset collaboration and access control within a team. Asset ownership is tracked via Owner — the Owner automatically has management permissions for their assets.\n\n<img width=\"\" src=\"assets/images/asset.cn.png\" alt=\"image.png\" />\n\n\n## Cold Start: Load the Save File, Then Get to Work\n\nMost Agents' first task is re-learning your project. TencentDB Agent Memory turns the learning cost you've already paid into a save file:\n\n<img alt=\"Cold Start: import codebase, docs, and history into Memory Hub\" src=\"assets/images/flowchart3.png\" />\n\nSpecifically, these existing assets can be imported directly and processed automatically in the panel:\n\n- **Codebases**: Import existing repositories — **CodeGraph** automatically indexes symbols, files, call relationships, and impact paths.\n- **Documents & files**: Import relevant docs and files — **Wiki** automatically generates structured pages with a link graph.\n- **Conversation sessions**: Import past Agent conversation sessions — **Skills and Chat Memory** are automatically extracted as reusable assets.\n\n> Stop retraining every Agent. Give it the save file.\n\n## One Play Style: Build a Growing Agent Team for a One-Person Company\n\nOpen Memory Hub and create a team:\n\n```text\nTiny but Serious Inc.\n├── 👤 You · Set goals / Make decisions\n├── 🔭 Scout · Research / Find opportunities\n├── 🛠 Builder · Write code / Build products\n├── 🧪 Reviewer · Test / Find issues\n└── 🧠 Agent Memory · Preserve the team's experience\n```\n\nYou're not opening four disconnected chat windows — you're assembling a squad with different roles that can inherit the team's accumulated experience.\n\n### Recruit first, then equip\n\n```text\n🔭 Scout\n   ├── User interview Chat Memory\n   ├── Market research Wiki\n   └── Competitive analysis Skill\n\n🛠 Builder\n   ├── Product Wiki\n   ├── Project CodeGraph\n   └── Feature Delivery Skill\n\n🧪 Reviewer\n   ├── Historical incident Chat Memory\n   ├── Project CodeGraph\n   └── Release Checklist Skill\n```\n\nDifferent roles, different loadouts. Less noise — give each Agent the memory assets it actually needs to get work done.\n\n**The company can be tiny. Experience can compound forever.**\n\n## Memory Assets, Not a Chat Log Warehouse\n\nRAG answers \"what can be found?\" Team Memory also answers \"who can use it, which version is valid, and which Agent should receive it.\"\n\n| | Chat History | Standard RAG | TencentDB Agent Memory |\n| :--- | :---: | :---: | :---: |\n| Cross-session user understanding | △ | △ | ✅ Chat Memory |\n| Distilled executable experience | — | — | ✅ Skill |\n| Document structure & relationships | — | △ Chunk retrieval | ✅ Wiki + Link Graph |\n| Code call graphs & impact scope | — | △ Text match | ✅ CodeGraph |\n| Ownership / Version / Status | — | — | ✅ |\n| Team sharing & Agent loadout | — | — | ✅ |\n| Private / Team / ACL | — | △ | ✅ |\n\n## Memory Hub Is Not a Display Board — It's a Control Panel\n\n| Play Style | What you do in the Hub |\n| :--- | :--- |\n| **Team Up** | Create teams, add people and Agents, define sharing boundaries |\n| **Asset Library** | Browse, search, review, and m",
+      "rank": 10,
+      "weekly_stars": 4423
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 34,317 个新增 Star，PrimeIntellect-ai/prime-agent、semantica-agi/semantica、google/skills 位居前三。主要开发语言集中在 Python、TypeScript、Rust。头部项目体现的方向包括：A self-improving RLM agent for coding workflows and long-running autonomous tasks.；Graph-Native Infrastructure for Context and Accountable AI Systems；Agent Skills for Google products and technologies。",
+    "top_picks": [
+      "PrimeIntellect-ai/prime-agent",
+      "semantica-agi/semantica",
+      "google/skills"
+    ],
+    "projects": [
+      {
+        "full_name": "PrimeIntellect-ai/prime-agent",
+        "tagline": "A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+        "overview": "A self-improving RLM agent for coding workflows and long-running autonomous tasks. 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 15,947 Stars、1,707 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "semantica-agi/semantica",
+        "tagline": "Graph-Native Infrastructure for Context and Accountable AI Systems",
+        "overview": "Graph-Native Infrastructure for Context and Accountable AI Systems 主要语言为 Python，公开主题包括：agent-memory、ai、ai-governance、ai-infrastructure。",
+        "core_features": [
+          "Graph-Native Infrastructure for Context and Accountable AI Systems",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-memory、ai、ai-governance、ai-infrastructure 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 7,547 Stars、783 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "google/skills",
+        "tagline": "Agent Skills for Google products and technologies",
+        "overview": "Agent Skills for Google products and technologies 主要语言为 Python，公开主题包括：google、googlecloud、skills。",
+        "core_features": [
+          "Agent Skills for Google products and technologies",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 google、googlecloud、skills 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 18,204 Stars、1,437 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "denoland/celld",
+        "tagline": "self-hosted, distributed Durable Objects",
+        "overview": "self-hosted, distributed Durable Objects 主要语言为 Rust，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "self-hosted, distributed Durable Objects",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 3,561 Stars、117 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "vitali87/code-graph-rag",
+        "tagline": "The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
+        "overview": "The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs 主要语言为 Python，公开主题包括：ai、ast、claude-code、code-analysis。",
+        "core_features": [
+          "The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、ast、claude-code、code-analysis 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 4,296 Stars、591 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "megadose/holehe",
+        "tagline": "holehe allows you to check if the mail is used on different sites like twitter, instagram and will retrieve information on sites with the forgotten password function.",
+        "overview": "holehe allows you to check if the mail is used on different sites like twitter, instagram and will retrieve information on sites with the forgotten password function. 主要语言为 Python，公开主题包括：ebay、email、emails、information-gathering。",
+        "core_features": [
+          "holehe allows you to check if the mail is used on different sites like twitter, instagram and will retrieve information on sites with the forgotten password function.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ebay、email、emails、information-gathering 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 12,869 Stars、1,717 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：GPL-3.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "NVIDIA-NeMo/Switchyard",
+        "tagline": "Switchyard lets LLM applications route traffic across models and providers while preserving native OpenAI and Anthropic API compatibility - enabling flexible model selection, benchmarking, and cost/performance optimization.",
+        "overview": "Switchyard lets LLM applications route traffic across models and providers while preserving native OpenAI and Anthropic API compatibility - enabling flexible model selection, benchmarking, and cost/performance optimization. 主要语言为 Rust，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Switchyard lets LLM applications route traffic across models and providers while preserving native OpenAI and Anthropic API compatibility - enabling flexible model selection, benchmarking, and cost/performance optimization.",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 1,473 Stars、131 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "cloudflare/computer",
+        "tagline": "Give your agent a computer 👾",
+        "overview": "Give your agent a computer 👾 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Give your agent a computer 👾",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 8,141 Stars、447 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "addyosmani/agent-skills",
+        "tagline": "Production-grade engineering skills for AI coding agents.",
+        "overview": "Production-grade engineering skills for AI coding agents. 主要语言为 JavaScript，公开主题包括：agent-skills、antigravity、claude-code、codex。",
+        "core_features": [
+          "Production-grade engineering skills for AI coding agents.",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、antigravity、claude-code、codex 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 87,299 Stars、9,365 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "tagline": "面向 Agent 团队的记忆中枢，把对话、文档和代码加工成可治理、可共享、可装配的记忆资产。",
+        "overview": "系统将信息分成 Chat Memory、Skill、Wiki 和 CodeGraph 四类资产：对话被逐层提炼为事实、场景和长期画像；成功工作流可沉淀为带版本和验证规则的技能；文档转为带链接图的 Wiki；代码转为符号、调用关系和影响路径。团队可按 private、team、restricted 和 agent 范围控制资产并绑定给不同代理。",
+        "core_features": [
+          "L0 原始对话到 L3 Persona 的分层记忆，以及 BM25、向量检索和 RRF 组合召回。",
+          "从对话与工具调用提取技能，管理版本、资源、触发边界、执行步骤和验证规则。",
+          "构建文档 Wiki 与代码 CodeGraph，支持调用关系和修改影响分析。",
+          "提供团队、角色、所有者、ACL、资产审核和 Agent 装配面板。"
+        ],
+        "problems": [
+          "解决换会话或换代理后反复解释项目背景、偏好和历史决策的问题。",
+          "解决多个代理重复阅读同一批文档和代码、重复探索已验证流程的问题。",
+          "补足普通 RAG 缺少资产版本、所有权、共享边界和按代理装配的问题。"
+        ],
+        "use_cases": [
+          "为编码代理保存架构决策、历史事故、代码调用图和发布检查技能。",
+          "给研究、开发、测试等不同角色装配不同的团队知识与工作流。",
+          "导入旧对话、现有文档和代码库，让新代理直接继承已有经验。"
+        ],
+        "audience": [
+          "同时使用多个 AI Agent 的研发团队和个人工作室。",
+          "需要长期记忆、知识治理及权限隔离的 Agent 平台开发者。"
+        ],
+        "differentiators": [
+          "管理的是可复用资产而非单纯聊天记录或向量分块。",
+          "同时覆盖对话、技能、文档关系和代码调用图，并允许跨代理框架迁移。"
+        ],
+        "quick_start": "使用 deploy/global-images 的一键脚本启动 memory-core、memory-hub 和 proxy，配置记忆组与代理组模型参数后在 8125 端口打开管理面板。",
+        "maturity": "Team Memory 仍处于快速演进的 Beta；已有完整服务、面板、SDK、迁移工具和基准，但路由自动化与部分仓库接入仍在完善。",
+        "limitations": [
+          "Wiki 和 CodeGraph 需要异步构建，导入后不能立即全部可用。",
+          "私有仓库与 SSH 凭据支持仍在完善，自动记忆路由尚未完全成熟。",
+          "部署包含多个服务并需要配置模型参数，运维复杂度高于轻量记忆库。"
+        ],
+        "potential": [
+          "可成为企业内部 Agent 的团队知识与技能控制平面。",
+          "适合将项目经验从个人会话提升为可审计、可授权、可迁移的组织资产。"
+        ],
+        "full_name": "TencentCloud/TencentDB-Agent-Memory"
+      }
+    ]
+  }
+}
