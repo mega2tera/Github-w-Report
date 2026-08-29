@@ -1,0 +1,574 @@
+{
+  "date": "2026-08-29",
+  "repositories": [
+    {
+      "full_name": "anthropics/claude-plugins-community",
+      "html_url": "https://github.com/anthropics/claude-plugins-community",
+      "description": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+      "homepage": "",
+      "language": "Python",
+      "stars": 2638,
+      "forks": 217,
+      "open_issues": 42,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2026-03-20T02:20:30Z",
+      "updated_at": "2026-08-29T07:50:11Z",
+      "pushed_at": "2026-08-25T20:01:46Z",
+      "archived": false,
+      "readme": "# Claude Plugins — Community\n\nCommunity-contributed plugins for [Claude Cowork](https://claude.com/product/cowork) and [Claude Code](https://claude.com/product/claude-code).\n\n## What this repo is\n\nA **read-only mirror** of the community plugin marketplace. The `.claude-plugin/marketplace.json` file here is the list of community plugins available to install. It is synced nightly from Anthropic's internal review pipeline.\n\nEvery plugin listed here has been submitted via [claude.ai](https://clau.de/plugin-directory-submission), passed automated security scanning, and been approved for distribution.\n\n## Using this marketplace\n\n### Claude Cowork\n\nInstall plugins from [claude.com/plugins](https://claude.com/plugins/).\n\n### Claude Code\n\n```bash\nclaude plugin marketplace add anthropics/claude-plugins-community\nclaude plugin install <plugin-name>@claude-community\n```\n\n## Submitting a plugin\n\nSubmit via **[clau.de/plugin-directory-submission](https://clau.de/plugin-directory-submission)**. Pull requests opened directly against this repo are closed automatically — all changes flow from the internal review pipeline.\n\n## Related\n\n- [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) — Anthropic-maintained plugins\n- [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) — role-specific knowledge-work plugins\n",
+      "rank": 1,
+      "weekly_stars": 2207
+    },
+    {
+      "full_name": "freestylefly/awesome-gpt-image-2",
+      "html_url": "https://github.com/freestylefly/awesome-gpt-image-2",
+      "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+      "homepage": "https://gpt-image2.canghe.ai",
+      "language": "JavaScript",
+      "stars": 24514,
+      "forks": 2421,
+      "open_issues": 17,
+      "topics": [
+        "agents",
+        "ai-image-generation",
+        "chatgpt",
+        "dsh-plugin",
+        "gpt-image-2",
+        "image-prompts",
+        "prompt-as-code",
+        "prompt-engineering",
+        "skills",
+        "workflow-automation"
+      ],
+      "license": "MIT",
+      "created_at": "2026-04-25T09:19:13Z",
+      "updated_at": "2026-08-29T07:51:10Z",
+      "pushed_at": "2026-08-28T10:25:04Z",
+      "archived": false,
+      "readme": "<p align=\"center\"><img src=\"./data/images/banner.svg\" alt=\"GPT-Image2 Prompt System\" width=\"800\" /></p>\n\n<h3 align=\"center\">Prompt as Code | GPT-Image2 Industrial Prompt Engine & Template Library, 500+ Reverse-Engineered Cases, 20+ Industrial Templates</h3>\n\n<p align=\"center\">\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/stars/freestylefly/awesome-gpt-image-2?style=flat-square&color=rgb(25%2C%20121%2C%20255)\" alt=\"Stars\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/github/forks/freestylefly/awesome-gpt-image-2?style=flat-square&color=green\" alt=\"Forks\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/Cases-544-blueviolet?style=flat-square\" alt=\"Cases\"></a>\n  <a href=\"https://github.com/freestylefly/awesome-gpt-image-2\"><img src=\"https://img.shields.io/badge/100%25-Original_AI_Rewritten-green?style=flat-square\" alt=\"Original\"></a>\n  <a href=\"https://github.com/sponsors/freestylefly\"><img src=\"https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ff69b4?style=flat-square\" alt=\"Sponsor\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/28623?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-28623\">\n    <img src=\"https://trendshift.io/api/badge/repositories/28623\" alt=\"freestylefly/awesome-gpt-image-2 | Trendshift\" width=\"250\" height=\"55\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <strong>English</strong> | <a href=\"./README.zh-CN.md\">简体中文</a> | <a href=\"./README.ja.md\">日本語</a>\n</p>\n\n## 🌐 Visual Website\n\nUse the live site at [gpt-image2.canghe.ai](https://gpt-image2.canghe.ai/) to browse the gallery as a product experience: open large previews, copy full prompts, filter by style or scenario, test generation after Google sign-in, and jump back to the source case on GitHub.\n\n<p align=\"center\">\n  <a href=\"https://gpt-image2.canghe.ai/\">\n    <img src=\"data/images/site-preview.png\" alt=\"GPT-Image2 Gallery website preview\" width=\"900\">\n  </a>\n</p>\n\n## Community 交流群\n\nJoin the GPT-Image2 discussion group to exchange prompts, workflows, and creative ideas with other users. Visit the [community page](https://gpt-image2.canghe.ai/community) to join.\n\nFollow the WeChat official account **苍何** or scan the QR code below to receive project updates, new cases, and practical tutorials.\n\n<p align=\"center\">\n  <img src=\"src/assets/canghe-official-account.png\" alt=\"苍何 WeChat official account QR code and search card\" width=\"760\">\n</p>\n\n## ❤️ Sponsors\n\n> [Want to appear here?](data/images/sponsors/wechat-personal.jpg) Support the project through GitHub Sponsors, or search 苍何 on WeChat and send your product name plus a short sponsorship note.\n\n| Sponsor | Description |\n| ------- | ----------- |\n| <a href=\"https://apimart.ai/register?aff=oQgzUQ\"><img src=\"data/images/sponsors/apimart.jpg\" alt=\"APIMart\" width=\"240\"></a> | Thanks to APIMart for sponsoring this project! APIMart is a low-cost API platform for AI image & video generation — GPT-Image-2 from `$0.006/image`, 160+ images per dollar. One async API covers both image and video: submit a task, get an ID, fetch results via polling or callback. Batch tens of thousands of images without timeouts, switch models without changing code. Pay-as-you-go with no monthly fee — [sign up here](https://apimart.ai/register?aff=oQgzUQ) to get started. |\n| <a href=\"https://www.hiapi.ai/zh/register?aff=DzuH\"><img src=\"data/images/sponsors/hiapi.jpg\" alt=\"hiapi\" width=\"240\"></a> | Thanks to hiapi for sponsoring this project! hiapi is an AI image & video generation API platform — GPT-Image-2 (text-to-image, image edit, 1K–4K) alongside video models like Seedance, Kling and Wan, all through one unified async API: submit a task, get a `task_id`, fetch results by polling or callback, batch without timeouts, switch models without code changes. Every result is stored on hiapi's own CDN with **persistent storage**, so your image/video URLs stay available long-term and can be fetched anytime — no rushing to download and back them up yourself. Native Remote MCP and Agent Skills plug straight into Claude Code & Cursor. Chinese UI & docs, WeChat Pay, pay-as-you-go with no monthly fee — new users get $1 free credit (~50 images). [Sign up here](https://www.hiapi.ai/en/register?aff=DzuH&utm_source=github&utm_medium=sponsor&utm_campaign=awesome-gpt-image-2). |\n| <a href=\"https://www.packyapi.ai/register?aff=CV0c\"><img src=\"data/images/sponsors/packycode.png\" alt=\"PackyCode\" width=\"240\"></a> | Thanks to PackyCode for sponsoring this project! PackyCode is a stable, high-performance API relay provider for Claude Code, Codex, Gemini, and more. Automatic failover, smart routing, and unlimited concurrency help turn AI coding into a reliable productivity tool. [Register here](https://www.packyapi.ai/register?aff=CV0c) to get started. |\n| <a href=\"https://pptoken.cc/\"><img src=\"data/images/sponsors/pptoken.png\" alt=\"PPToken\" width=\"240\"></a> | Project sponsor. PPToken provides API relay and key distribution for ChatGPT, Claude, Gemini, and other mainstream AI models, with low-latency access, high availability, pay-as-you-go billing, and flexible subscription plans. |\n\n<a name=\"section-vision\"></a>\n\n## ⚡️ Project Vision\n\nAfter GPT-Image2 became widely available, AI image generation moved from \"can it make an image?\" to \"can it make stable, controllable, reusable images?\" This project turns scattered community examples into Prompt-as-Code assets that are easier for agents and automation workflows to reuse.\n\nThe core goal is simple: compress prose-style prompts into structured protocols. When you need batch generation, template systems, or production workflows, this structure is more valuable than a pile of isolated examples.\n\n- 🧱 Atomic schema: split subjects, lighting, materials, layout, and visual details into composable parts\n- ⚙️ Workflow friendly: designed for agents, scripts, and automation systems\n- 🧬 Structured control: improve controllability for layout, copy, and information hierarchy\n\n## 📖 Quick Links\n\n- [Full case gallery](docs/gallery.md)\n- [Gallery Part 1: cases 1-165](docs/gallery-part-1.md)\n- [Gallery Part 2: cases 166-544](docs/gallery-part-2.md)\n- [Industrial prompt templates and pitfalls guide](docs/templates.md)\n- [Agent skill: GPT-Image2 Style Library](agents/skills/gpt-image-2-style-library/SKILL.md)\n- [MIT License](LICENSE)\n- [Full disclaimer](docs/disclaimer.md#section-disclaimer)\n\n## 🗂️ Category Overview\n\nStart with the case album to find a visual direction, then open the prompt template categories to turn that direction into reusable structure.\n\n### 🖼️ Case Album\n\n<table>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🧩 UI & Interfaces</strong><br><sub>73 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-ui\"><img src=\"data/images/category-covers/ui.jpg\" alt=\"UI and interfaces\" width=\"220\"></a><br>\n      <sub>Apps, websites, dashboards, social screenshots, and product interfaces.</sub><br>\n      <a href=\"docs/gallery.md#cat-ui\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📊 Charts & Infographics</strong><br><sub>53 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-infographic\"><img src=\"data/images/category-covers/infographic.jpg\" alt=\"Charts and infographics\" width=\"220\"></a><br>\n      <sub>Infographics, knowledge maps, technical explainers, and structured diagrams.</sub><br>\n      <a href=\"docs/gallery.md#cat-infographic\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📰 Posters & Typography</strong><br><sub>90 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-poster\"><img src=\"data/images/category-covers/poster.jpg\" alt=\"Posters and typography\" width=\"220\"></a><br>\n      <sub>Event posters, covers, type-driven visuals, and strong layout compositions.</sub><br>\n      <a href=\"docs/gallery.md#cat-poster\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🛍️ Products & E-commerce</strong><br><sub>42 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-product\"><img src=\"data/images/category-covers/product.jpg\" alt=\"Products and e-commerce\" width=\"220\"></a><br>\n      <sub>Product shots, detail pages, packaging, selling points, and ads.</sub><br>\n      <a href=\"docs/gallery.md#cat-product\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏷️ Brand & Logos</strong><br><sub>27 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-brand\"><img src=\"data/images/category-covers/brand.jpg\" alt=\"Brand and logos\" width=\"220\"></a><br>\n      <sub>Logos, identity systems, brand touchpoints, and campaign visuals.</sub><br>\n      <a href=\"docs/gallery.md#cat-brand\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🏛️ Architecture & Spaces</strong><br><sub>12 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-architecture\"><img src=\"data/images/category-covers/architecture.jpg\" alt=\"Architecture and spaces\" width=\"220\"></a><br>\n      <sub>Architecture renders, interiors, city maps, and spatial concepts.</sub><br>\n      <a href=\"docs/gallery.md#cat-architecture\"><strong>View Cases</strong></a>\n    </td>\n  </tr>\n  <tr>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>📷 Photography & Realism</strong><br><sub>78 cases</sub></p>\n      <a href=\"docs/gallery.md#cat-photo\"><img src=\"data/images/category-covers/photo.jpg\" alt=\"Photography and realism\" width=\"220\"></a><br>\n      <sub>Portraits, phone photography, film texture, and commercial photography.</sub><br>\n      <a href=\"docs/gallery.md#cat-photo\"><strong>View Cases</strong></a>\n    </td>\n    <td width=\"33%\" valign=\"top\" align=\"center\">\n      <p><strong>🎨 Illustration & Art</strong><br><sub>59 cases</sub",
+      "rank": 2,
+      "weekly_stars": 12877
+    },
+    {
+      "full_name": "basecamp/omarchy",
+      "html_url": "https://github.com/basecamp/omarchy",
+      "description": "Beautiful, Modern & Opinionated Linux",
+      "homepage": "https://omarchy.org",
+      "language": "Shell",
+      "stars": 33889,
+      "forks": 3499,
+      "open_issues": 2041,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2025-06-01T07:26:22Z",
+      "updated_at": "2026-08-29T07:51:08Z",
+      "pushed_at": "2026-08-29T07:33:31Z",
+      "archived": false,
+      "readme": "# Omarchy\n\nOmarchy is a beautiful, modern & opinionated Linux distribution by DHH.\n\nRead more at [omarchy.org](https://omarchy.org).\n\n## The Omarchy Manual\n\nThe manual lives in [`manual/`](manual/), which is its authoritative source. It's\nmirrored to [learn.omacom.io](https://learn.omacom.io/2/the-omarchy-manual), where\nits screenshots are also hosted.\n\n- [Welcome to Omarchy!](manual/01-welcome-to-omarchy.md)\n\n**The Basics**\n\n- [Getting Started](manual/02-getting-started.md)\n- [Coming From Mac or Windows](manual/03-coming-from-mac-or-windows.md)\n- [Navigation](manual/04-navigation.md)\n- [The top bar](manual/05-the-top-bar.md)\n- [Themes](manual/06-themes.md)\n- [Hotkeys](manual/07-hotkeys.md)\n- [Unified Clipboard & History](manual/08-unified-clipboard-history.md)\n- [Reminders](manual/09-reminders.md)\n- [Notices](manual/10-notices.md)\n- [Text Extraction & Dictation](manual/11-text-extraction-dictation.md)\n- [Screenshots & Recording](manual/12-screenshots-recording.md)\n- [Toggles, idle & screensaver](manual/13-toggles-idle-screensaver.md)\n- [Omarchy CLI](manual/14-omarchy-cli.md)\n\n**The Applications**\n\n- [Terminal](manual/15-terminal.md)\n- [Neovim](manual/16-neovim.md)\n- [AI](manual/17-ai.md)\n- [Development Tools](manual/18-development-tools.md)\n- [Shell Tools](manual/19-shell-tools.md)\n- [Shell Functions](manual/20-shell-functions.md)\n- [TUIs](manual/21-tuis.md)\n- [GUIs](manual/22-guis.md)\n- [Browsers](manual/23-browsers.md)\n- [Commercial apps/services](manual/24-commercial-apps-services.md)\n- [Web Apps](manual/25-web-apps.md)\n- [Gaming](manual/26-gaming.md)\n- [Filling out PDFs](manual/27-filling-out-pdfs.md)\n- [Windows VM](manual/28-windows-vm.md)\n- [Other Packages](manual/29-other-packages.md)\n\n**Configuration**\n\n- [Updates](manual/30-updates.md)\n- [Dotfiles](manual/31-dotfiles.md)\n- [Shell plugins](manual/32-shell-plugins.md)\n- [Monitors](manual/33-monitors.md)\n- [Keyboard, Mouse, Trackpad](manual/34-keyboard-mouse-trackpad.md)\n- [Networking](manual/35-networking.md)\n- [System sleep](manual/36-system-sleep.md)\n- [Hardware authentication](manual/37-hardware-authentication.md)\n- [Fonts](manual/38-fonts.md)\n- [Backgrounds](manual/39-backgrounds.md)\n- [Prompt](manual/40-prompt.md)\n- [Branding](manual/41-branding.md)\n- [Common tweaks](manual/42-common-tweaks.md)\n- [Making your own theme](manual/43-making-your-own-theme.md)\n\n**The Rest**\n\n- [Mac support](manual/44-mac-support.md)\n- [Troubleshooting](manual/45-troubleshooting.md)\n- [FAQ](manual/46-faq.md)\n- [System snapshots](manual/47-system-snapshots.md)\n- [Security](manual/48-security.md)\n- [Omarchy on...](manual/49-omarchy-on.md)\n- [Dual Boot Install](manual/50-dual-boot-install.md)\n- [Unattended Installs](manual/51-unattended-installs.md)\n\n## License\n\nOmarchy is released under the [MIT License](https://opensource.org/licenses/MIT).\n",
+      "rank": 3,
+      "weekly_stars": 5942
+    },
+    {
+      "full_name": "openai/codex",
+      "html_url": "https://github.com/openai/codex",
+      "description": "Lightweight coding agent that runs in your terminal",
+      "homepage": "",
+      "language": "Rust",
+      "stars": 119655,
+      "forks": 18279,
+      "open_issues": 14325,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2025-04-13T05:37:54Z",
+      "updated_at": "2026-08-29T07:50:27Z",
+      "pushed_at": "2026-08-29T06:06:43Z",
+      "archived": false,
+      "readme": "<p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer.\n<p align=\"center\">\n  <img src=\"https://github.com/openai/codex/blob/main/.github/codex-cli-splash.png\" alt=\"Codex CLI splash\" width=\"80%\" />\n</p>\n</br>\nIf you want Codex in your code editor (VS Code, Cursor, Windsurf), <a href=\"https://developers.openai.com/codex/ide\">install in your IDE.</a>\n</br>If you want the desktop app experience, run <code>codex app</code> or visit <a href=\"https://chatgpt.com/codex?app-landing-page=true\">the Codex App page</a>.\n</br>If you are looking for the <em>cloud-based agent</em> from OpenAI, <strong>Codex Web</strong>, go to <a href=\"https://chatgpt.com/codex\">chatgpt.com/codex</a>.</p>\n\n---\n\n## Quickstart\n\n### Installing and running Codex CLI\n\nRun the following on Mac or Linux to install Codex CLI:\n\n```shell\ncurl -fsSL https://chatgpt.com/codex/install.sh | sh\n```\n\nRun the following on Windows to install Codex CLI:\n\n```shell\npowershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n```\n\nThe standalone installers download from `https://releases.openai.com/codex` by default and fall back to GitHub Releases if a metadata or asset download is unavailable. To force GitHub Releases, set `CODEX_INSTALLER_USE_RELEASES_OPENAI_COM` to `false` (`0` and `no` are also accepted):\n\n```shell\ncurl -fsSL https://chatgpt.com/codex/install.sh | CODEX_INSTALLER_USE_RELEASES_OPENAI_COM=false sh\n```\n\n```powershell\n$env:CODEX_INSTALLER_USE_RELEASES_OPENAI_COM='false'; irm https://chatgpt.com/codex/install.ps1 | iex\n```\n\nCodex CLI can also be installed via the following package managers:\n\n```shell\n# Install using npm\nnpm install -g @openai/codex\n```\n\n```shell\n# Install using Homebrew\nbrew install --cask codex\n```\n\nThen simply run `codex` to get started.\n\n<details>\n<summary>You can also go to the <a href=\"https://github.com/openai/codex/releases/latest\">latest GitHub Release</a> and download the appropriate binary for your platform.</summary>\n\nEach GitHub Release contains many executables, but in practice, you likely want one of these:\n\n- macOS\n  - Apple Silicon/arm64: `codex-aarch64-apple-darwin.tar.gz`\n  - x86_64 (older Mac hardware): `codex-x86_64-apple-darwin.tar.gz`\n- Linux\n  - x86_64: `codex-x86_64-unknown-linux-musl.tar.gz`\n  - arm64: `codex-aarch64-unknown-linux-musl.tar.gz`\n\nEach archive contains a single entry with the platform baked into the name (e.g., `codex-x86_64-unknown-linux-musl`), so you likely want to rename it to `codex` after extracting it.\n\n</details>\n\n### Using Codex with your ChatGPT plan\n\nRun `codex` and select **Sign in with ChatGPT**. We recommend signing into your ChatGPT account to use Codex as part of your Plus, Pro, Business, Edu, or Enterprise plan. [Learn more about what's included in your ChatGPT plan](https://help.openai.com/en/articles/11369540-codex-in-chatgpt).\n\nYou can also use Codex with an API key, but this requires [additional setup](https://developers.openai.com/codex/auth#sign-in-with-an-api-key).\n\n## Docs\n\n- [**Codex Documentation**](https://developers.openai.com/codex)\n- [**Contributing**](./docs/contributing.md)\n- [**Installing & building**](./docs/install.md)\n- [**Open source fund**](./docs/open-source-fund.md)\n\nThis repository is licensed under the [Apache-2.0 License](LICENSE).\n",
+      "rank": 4,
+      "weekly_stars": 9109
+    },
+    {
+      "full_name": "tt-a1i/archify",
+      "html_url": "https://github.com/tt-a1i/archify",
+      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+      "homepage": "https://tt-a1i.github.io/archify/",
+      "language": "JavaScript",
+      "stars": 28597,
+      "forks": 1795,
+      "open_issues": 63,
+      "topics": [
+        "agent-skills",
+        "architecture-as-code",
+        "architecture-diagram",
+        "claude-skill",
+        "code-visualization",
+        "codex",
+        "coding-agents",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "diagrams",
+        "diagrams-as-code",
+        "dsh-plugin",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "software-architecture",
+        "system-design",
+        "text-to-diagram"
+      ],
+      "license": "MIT",
+      "created_at": "2026-04-15T05:27:37Z",
+      "updated_at": "2026-08-29T07:51:17Z",
+      "pushed_at": "2026-08-28T18:45:36Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <strong>English</strong> · <a href=\"./README_ZH.md\">简体中文</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/31352?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-31352\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/31352\" alt=\"Archify on Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n![Archify product preview](docs/assets/archify-readme-hero.png)\n\n# Archify\n\n**Turn a codebase or system description into a polished, interactive system map — directly in chat.**\n\nArchify is a Node.js rendering and validation system for Cursor, Claude Code, Codex CLI, and OpenCode. Agents produce typed JSON IR; Archify deterministically compiles it into HTML/SVG.\n\n- **Open it and present** — five diagram types, four presets, dark/light themes, built-in brand marks, and finite motion\n- **Review architecture changes before merge** — compare two validated snapshots as Before / Delta / After, with exact added, removed, changed, moved, and rerouted facts\n- **Every interaction stays grounded** — search nodes, optionally open revision-verified source, trace upstream/downstream authored reach and exact routes, compare roles, and play guided stories without inventing topology\n- **One file, ready to trust and share** — typed JSON IR and deterministic checks produce self-contained HTML plus PNG, SVG, WebM, and 1200×630 share cards\n\n![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)\n![Agent Skill](https://img.shields.io/badge/Agent-Skill-7C3AED?style=flat-square)\n![Development Version](https://img.shields.io/badge/version-2.16.0--dev.0-0891b2?style=flat-square)\n\n**Current development version:** `v2.16.0-dev.0`. See [Changelog](CHANGELOG.md#unreleased).\n\n**[Project page](https://tt-a1i.github.io/archify/)** · **[Scenario guide](https://tt-a1i.github.io/archify/guide.html)** · **[Proof Lab](https://tt-a1i.github.io/archify/gallery.html)**\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nUsing Cursor? Open the [agent-aware quick start](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) for exact global and project commands.\n\nThen ask your agent: `Use archify to map this repository's runtime architecture.`\n\n## ❤️ Sponsors\n\n<table>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://apinebula.ai/ref/wywnaATT\"><img src=\"docs/assets/sponsors/apinebula-archify.jpg\" alt=\"APINEBULA\" width=\"200\" /></a><br/><strong><a href=\"https://apinebula.ai/ref/wywnaATT\">APINEBULA</a></strong></td><td>APINEBULA sponsors Archify with one API for Claude, GPT, Gemini, and more. <a href=\"https://apinebula.ai/ref/wywnaATT\">Register through Archify</a> and use <strong><code>Archify</code></strong> for <strong>10% off</strong>.</td></tr>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://github.com/EverMind-AI/Raven\"><img src=\"docs/assets/sponsors/evermind-archify-raven.png\" alt=\"Archify × Raven\" width=\"200\" /></a><br/><strong><a href=\"https://github.com/EverMind-AI\">EverMind</a> · <a href=\"https://github.com/EverMind-AI/Raven\">Raven</a></strong></td><td>EverMind sponsors Archify and builds memory infrastructure for agents. Its <a href=\"https://github.com/EverMind-AI/Raven\"><strong>Raven</strong></a> harness supports Archify as a Skill for verified, interactive system maps.</td></tr>\n</table>\n\n> Want to sponsor Archify? [Contact us by email.](mailto:2801884530@qq.com)\n\n## See Archify in action\n\nThese are generated Archify artifacts, not product mockups. Click a frame to open its live, shareable state.\n\n<p align=\"center\">\n  <a href=\"https://tt-a1i.github.io/archify/gallery.html\"><img src=\"docs/assets/archify-live-proof.gif\" alt=\"Three verified Archify artifacts moving through Signal Flow, Blueprint, and Classic presets\" width=\"960\"/></a>\n  <br/>\n  <sub><strong>Three real generated artifacts.</strong> Signal Flow · Blueprint · Classic · <a href=\"https://tt-a1i.github.io/archify/gallery.html\">open the interactive Proof Lab ↗</a></sub>\n</p>\n\n| Guided story | Route probe | Semantic lens |\n|---|---|---|\n| [![Agent workflow playing one authored chapter](docs/assets/archify-demo-story.png)](https://tt-a1i.github.io/archify/gallery/artifacts/agent-tool-call.workflow.html?theme=dark&present=1&play=1#view=happy-path) | [![Cache-miss sequence showing the Web App to Postgres route](docs/assets/archify-demo-route.png)](https://tt-a1i.github.io/archify/gallery/artifacts/cache-miss.sequence.html?theme=dark&present=1#route=web~db) | [![Production architecture comparing backend and database roles](docs/assets/archify-demo-lens.png)](https://tt-a1i.github.io/archify/gallery/artifacts/production-deployment.architecture.html?theme=dark&present=1#lens=backend~database) |\n| Play one finite named chapter. | Inspect the shortest authored directed path. | Compare real traffic between semantic roles. |\n\nThe [Proof Lab](https://tt-a1i.github.io/archify/gallery.html) contains all 11 checked-in scenarios, their JSON sources, named views, and validation receipts.\n\n### A real repository, mapped from source\n\n[![MCO runtime architecture generated from the public mco-org/mco repository](docs/assets/mco-runtime-share-card.png)](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)\n\nArchify traced [`mco-org/mco`](https://github.com/mco-org/mco) at `9f1a1cf` and produced this checked map. **[Open it ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)** · [trace reach ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark#focus=router&reach=downstream) · [typed source](docs/cases/mco-runtime.architecture.json)\n\n## Preview\n\nSame diagram, two themes, one click to switch:\n\n| Dark | Light |\n|---|---|\n| ![Dark theme](docs/assets/archify-dark.png) | ![Light theme](docs/assets/archify-light.png) |\n\nThe Export menu copies PNG to the clipboard and downloads static or motion formats:\n\n![Export menu](docs/assets/archify-menu.png)\n\nUse **Copy Share Card** when you want a canonical 1200×630 image for a README, release, or social post.\n\nAfter tracing a route, **Export → Route Share Card** downloads that authored path as a 1200×630 PNG with the full diagram retained for context.\n\n![Route Share Card showing the exact Users to API Server path with the full architecture retained as context](docs/assets/archify-route-share-card.png)\n\nAfter tracing authored `Upstream` or `Downstream` reach, **Export → Reach Share Card** captures that exact reading without claiming runtime impact.\n\n![MCO downstream Reach Share Card showing authored relationships from Command Router](docs/assets/mco-runtime-reach-share-card.png)\n\nOpen [`examples/web-app.html`](examples/web-app.html) locally to try the complete viewer.\n\n## Quick start\n\n### 1. Install\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nFor an explicit, non-interactive Cursor install:\n\n```bash\nnpx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes\n```\n\nTo try without installing:\n\n```bash\nnpx skills use tt-a1i/archify@archify --agent codex\n```\n\n[DSH community opt-in](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@0.1.0`\n\nThe [agent switcher](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, and `opencode`. For Raven's manual ZIP install, extract [`archify.zip`](archify.zip) into `~/.raven/workspace/skills`; it yields `~/.raven/workspace/skills/archify`. Raven is not a switcher target.\n\n### 2. Ask for one bounded view\n\n```text\nAnalyze this repository, then use archify to create a high-level runtime architecture diagram.\nShow 8–12 core components, one primary path, external dependencies, and trust boundaries.\nPut supporting detail in cards instead of adding more edges.\n```\n\nFor a focused flow:\n\n```text\nUse archify to draw this login flow: Browser -> Web App -> API -> JWT validation ->\nRedis session lookup -> PostgreSQL fallback. Keep the cache-miss path secondary.\n```\n\n### 3. Refine in chat\n\nContinue with focused requests such as `add Redis`, `move auth to the left`, or `highlight the rollback path`. Archify keeps the typed source available for targeted iteration.\n\n## Choose the right diagram\n\n| Type | Best for | Include in your prompt |\n|---|---|---|\n| **Architecture** | Components, services, storage, boundaries | Scope, core components, primary path |\n| **Workflow** | CI/CD, approvals, tool calls, runbooks | Participants, order, branches, exceptions |\n| **Sequence** | API calls, cache fallback, auth, async traces | Callers, callees, returns, timing |\n| **Data Flow** | Pipelines, lineage, PII, consumers | Sources, transforms, stores, boundaries |\n| **Lifecycle** | States, retries, waits, terminal outcomes | States, events, retry and cancellation paths |\n\nFor a production deployment review, Architecture can optionally enable the\n`deployment-ownership` engineering profile. It fails closed when owners,\nsingle-region placement, private database scope, or named boundary crossings\nare missing. It is never enabled silently and validates authored facts—not live\ninfrastructure. See the [checked deployment proof](https://tt-a1i.github.io/archify/gallery.html#proof-deployment-ownership).\n\nFor design or PR review, Architecture Delta compares validated Before / Delta / After snapshots with a machine receipt. Select an exact authored change or play one finite Review—viewer-only, with no impact, risk, or merge-safety inference.\n\n`node archify/bin/archify.mjs compare architecture base.json head.json architecture-delta.html --json`\n\n[![Architecture Delta showing added, removed, changed, and moved authored facts](docs/assets/architecture-delta-proof.jpg)](examples/checkout-platform-delta.html)\n\nNot sure which one fits? Use the [interactive scenario guide](https://tt-a1i.github.io/archify/guide.html), or ask the zero-dependency CLI:\n\n```bash\nnode",
+      "rank": 5,
+      "weekly_stars": 11099
+    },
+    {
+      "full_name": "AprilNEA/OpenLogi",
+      "html_url": "https://github.com/AprilNEA/OpenLogi",
+      "description": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
+      "homepage": "https://openlogi.org",
+      "language": "Rust",
+      "stars": 17477,
+      "forks": 503,
+      "open_issues": 363,
+      "topics": [
+        "dpi",
+        "gpui",
+        "hid",
+        "hidpp",
+        "local-first",
+        "logitech",
+        "logitech-mouse",
+        "logitech-options",
+        "mouse-remapping",
+        "mx-master",
+        "privacy",
+        "rust",
+        "smartshift"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-05-24T10:10:36Z",
+      "updated_at": "2026-08-29T07:47:04Z",
+      "pushed_at": "2026-08-29T07:03:46Z",
+      "archived": false,
+      "readme": "> [!WARNING]\n> **OpenLogi is under active development** and not yet stable — features and config may still change. Give the repo a **Star** ⭐ and **Watch** 👀 it to get notified when a new release lands.\n\n<h4 align=\"right\"><strong>English</strong> | <a href=\"docs/README.zh-CN.md\">简体中文</a> | <a href=\"docs/README.ja.md\">日本語</a> | <a href=\"docs/README.de.md\">Deutsch</a> | <a href=\"docs/README.fr.md\">Français</a> | <a href=\"docs/README.ko.md\">한국어</a></h4>\n\n<p align=\"center\">\n    <img src=\"https://assets.openlogi.org/brand/openlogi-icon.png\" width=\"138\" alt=\"OpenLogi\"/>\n</p>\n\n<h1 align=\"center\">OpenLogi</h1>\n<p align=\"center\"><strong>⚡️ A native, local-first alternative to Logitech Options+, written in Rust 🦀<br/>Unlock the full capabilities of Logitech mice, keyboards, and webcams over HID++ and UVC</strong></p>\n\n<div align=\"center\">\n    <a href=\"https://twitter.com/AprilNEA\" target=\"_blank\">\n    <img alt=\"twitter\" src=\"https://img.shields.io/badge/follow-AprilNEA-green?style=social&logo=Twitter\"></a>\n    <a href=\"https://t.me/+VDtkR5OSAT04NzVh\" target=\"_blank\">\n    <img alt=\"telegram\" src=\"https://img.shields.io/badge/chat-telegram-blueviolet?style=flat&logo=Telegram\"></a>\n    <a href=\"https://github.com/AprilNEA/OpenLogi/releases\" target=\"_blank\">\n    <img alt=\"GitHub downloads\" src=\"https://img.shields.io/github/downloads/AprilNEA/OpenLogi/total.svg?style=flat\"></a>\n    <a href=\"https://github.com/AprilNEA/OpenLogi/commits\" target=\"_blank\">\n    <img alt=\"GitHub commit\" src=\"https://img.shields.io/github/commit-activity/m/AprilNEA/OpenLogi?style=flat\"></a>\n    <img alt=\"Hits\" src=\"https://hits.aprilnea.com/hits?url=https://github.com/aprilnea/openlogi\">\n</div>\n\n<p align=\"center\">\n    <a href=\"https://trendshift.io/repositories/42303\" target=\"_blank\">\n    <img src=\"https://trendshift.io/api/badge/repositories/42303\" alt=\"AprilNEA%2FOpenLogi | Trendshift\" width=\"250\" height=\"55\"/></a>\n    <a href=\"https://www.producthunt.com/products/openlogi?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-openlogi\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <picture>\n        <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=openlogi&amp;theme=dark&amp;period=daily\">\n        <source media=\"(prefers-color-scheme: light)\" srcset=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=openlogi&amp;theme=light&amp;period=daily\">\n        <img alt=\"OpenLogi - A local-first alternative to Logitech Options+ | Product Hunt\" width=\"250\" height=\"54\" src=\"https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=openlogi&amp;theme=light&amp;period=daily\">\n    </picture></a>\n</p>\n\n> **Fed up with Options+? Try OpenLogi.**\n\nRuns on macOS, Linux, and Windows.\n\n---\n\n## Beyond Options+\n\nThings OpenLogi does that Options+ won't:\n\n- **Stay light.** Native Rust + GPUI.\n- **Run on Linux.** Linux is a first-class platform in OpenLogi.\n- **Gestures on any button.** Give the gesture role to any physical button — or turn gestures off entirely.\n- **Plain-text config.** Everything is one TOML file you can sync between machines however you like.\n- **Script it.** A real CLI alongside the GUI.\n\n## Features\n\n- Devices connected over Logi Bolt receivers, Unifying receivers, Bluetooth, or a wired connection, with battery percentage and charge state\n- Button remapping via the OS input hook: a built-in action catalog plus custom keyboard shortcuts authored in the TOML config, including independent short/long-press actions and hold-until-release chords for push-to-talk¹\n- Per-application profile overlays that auto-switch on app focus (macOS + Windows; Linux on X11 / XWayland only)\n- Litra lights: power, brightness, and color temperature, with optional auto power that follows camera activity\n\n**Mouse**\n\n- Capture and remap the middle, mode-shift, and thumbwheel buttons (middle everywhere, the rest where the device exposes them)\n- Per-direction gesture bindings with live capture, on any capable button\n- Actions Ring: a cursor-centred, eight-slot overlay of actions (`ShowActionsRing`), with per-application layouts\n- DPI control with presets and Cycle / Set-preset actions (`0x2201`)\n- SmartShift wheel: mode toggle, sensitivity, and a permanent-ratchet panel (`0x2111`)\n- Per-device native scroll inversion (`0x2121`, supported devices)\n\n**Keyboard**\n\n- Global F-key remapping: the same action catalog as the mouse, plus power-user actions — typed text, key combos, multi-step workflows (macOS + Windows)\n- Static RGB lighting (`0x8070` / `0x8080`, supported devices)\n\n**Camera**\n\n- Any Logitech UVC webcam (Brio, StreamCam, the C920 series, …), plug and play\n- Live preview that opens the camera only while you watch — leaving it releases the camera entirely and the LED goes off\n- Image controls written straight to the UVC hardware — zoom, focus, exposure, brightness, contrast, saturation, sharpness, white balance, tint, anti-flicker, and low-light compensation, with auto-mode toggles for focus / exposure / white balance — so changes apply in Meet / Zoom / OBS and every other app using the camera\n- One-click profiles: built-in Default / Streaming / Video call plus custom snapshots; settings persist per camera and are written back to the hardware on the next view\n\n¹ Media key actions use D-Bus MPRIS on Linux; a handful of macOS-specific actions have no universal Linux equivalent and are no-ops. Windows maps platform actions to native equivalents where available.\n\n## Install\n\n> [!IMPORTANT]\n> Quit **Logi Options+** first: the two applications fight over HID++ access, and only one can own a given receiver at a time.\n\n### macOS\n\nRequires macOS 13 or later.\n\nDownload the signed, notarized `.dmg` from the [latest release](https://github.com/AprilNEA/OpenLogi/releases/latest) and drag `OpenLogi.app` to `/Applications`.\n\nOr install via [Homebrew](https://brew.sh):\n\n```sh\nbrew install --cask openlogi\n```\n\nThe official Homebrew cask is the default installation path. To explicitly\ntrack the latest GitHub release from `aprilnea/tap` instead:\n\n```sh\nbrew tap aprilnea/tap\nbrew install --cask aprilnea/tap/openlogi@latest\n```\n\n`openlogi@latest` is maintained by OpenLogi's release workflow and may update\nbefore the official cask autobump lands. Install either `openlogi` or\n`openlogi@latest`, not both.\n\n### Linux\n\nDownload the package for your distribution from the\n[latest release](https://github.com/AprilNEA/OpenLogi/releases/latest):\n\n```sh\n# Debian / Ubuntu\nsudo dpkg -i openlogi_*.deb\n\n# Fedora / RHEL\nsudo rpm -i openlogi-*.rpm\n\n# Arch Linux\nsudo pacman -U openlogi-*.pkg.tar.zst\n```\n\nPackages are published for both `x86_64`/`amd64` and `arm64`/`aarch64`.\nPre-built packages require GLIBC 2.35 or newer (Ubuntu 22.04 baseline).\n\nNixOS users can instead import the repository's module, which installs the\npackage and udev rules and starts the agent with the graphical session:\n\n```nix\n{\n  inputs.nixpkgs.url = \"github:NixOS/nixpkgs/nixos-unstable\";\n  inputs.openlogi = {\n    url = \"github:AprilNEA/OpenLogi\";\n    inputs.nixpkgs.follows = \"nixpkgs\";\n  };\n\n  outputs = { nixpkgs, openlogi, ... }: {\n    nixosConfigurations.my-host = nixpkgs.lib.nixosSystem {\n      system = \"x86_64-linux\"; # or aarch64-linux\n      modules = [\n        openlogi.nixosModules.default\n        { programs.openlogi.enable = true; }\n      ];\n    };\n  };\n}\n```\n\nAll Linux packages install udev rules that grant your user access to\n`/dev/hidraw*`, `/dev/uinput` and your Logitech mouse's `/dev/input/event*`\nnode without `sudo`. The NixOS module starts the agent automatically; after a\n`.deb`, `.rpm`, or `.pkg.tar.zst` installation, enable it for your user:\n\n```sh\nsystemctl --user enable --now openlogi-agent.service\n```\n\nSee [docs/INSTALL-linux.md](docs/INSTALL-linux.md) for complete NixOS options,\nmanual / source installs, and distros without systemd.\n\n### Windows\n\nSigned portable `.zip` archives and per-user `.msi` installers (x86_64 and\narm64) are attached to each release. Both ship the GUI (`OpenLogi.exe`)\ntogether with the background agent (`openlogi-agent.exe`), which owns all\ndevice I/O. Keep the two files side by side when using the portable zip, or\nthe GUI has nothing to connect to.\n\nWindows support has been validated end-to-end on Windows 11 with real\nhardware (a wired keyboard and a Unifying-receiver mouse), including\ninstall, in-place upgrade, and uninstall of the MSI. It is newer than the\nmacOS build, so if you hit a rough edge please\n[report it](https://github.com/AprilNEA/OpenLogi/issues). The agent shows a\nsystem-tray icon (Show Main Window / Quit) so the app stays reachable after\nthe main window is closed. To disable it on Windows, set\n`show_in_menu_bar = false` in the TOML `[app_settings]` block and restart the\nagent; the GUI toggle is currently macOS-only.\n\nTo build from source, see [DEVELOPMENT.md](docs/DEVELOPMENT.md).\n\n\n## Usage (CLI)\n\nSee [USAGE.md](docs/USAGE.md)\n\n## Configuration\n\nSee [CONFIGURATION.md](docs/CONFIGURATION.md)\n\n## Developing\n\nSee [DEVELOPMENT.md](docs/DEVELOPMENT.md)\n\n## Acknowledgments\n\n- **Windows, cameras, and i18n** by [@davidbudnick](https://github.com/davidbudnick) — keyboard RGB, Windows support, Logitech webcam support\n- **Linux port** by [@cserby](https://github.com/cserby) — Linux support\n- [Solaar](https://github.com/pwr-Solaar/Solaar) by [@pwr](https://github.com/pwr) — open-source HID++ implementation\n- [Mouser](https://github.com/TomBadash/Mouser) by [@TomBadash](https://github.com/TomBadash) — a local, account-free Options+ replacement\n\n## License\n\nThe code in this repository is dual-licensed under either of\n\n- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE))\n- MIT license ([LICENSE-MIT](LICENSE-MIT))\n\nat your option.\n\n### Third-party code\n\n`crates/openlogi-hidpp` is a vendored fork of [`hidpp`](https://crates.io/crates/hidpp)\nby [@lus](https://github.com/lus), licensed 0BSD.\n\n### Logo & brand assets\n\nThanks to",
+      "rank": 6,
+      "weekly_stars": 4825
+    },
+    {
+      "full_name": "apache/maka",
+      "html_url": "https://github.com/apache/maka",
+      "description": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 3932,
+      "forks": 366,
+      "open_issues": 337,
+      "topics": [
+        "agent-runtime",
+        "ai",
+        "ai-agent",
+        "apache",
+        "cli",
+        "desktop",
+        "electron",
+        "event-sourcing",
+        "incubator",
+        "llm",
+        "local-first",
+        "maka",
+        "tool-use",
+        "typescript"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-05-27T15:46:05Z",
+      "updated_at": "2026-08-29T07:35:23Z",
+      "pushed_at": "2026-08-29T07:50:18Z",
+      "archived": false,
+      "readme": "<!--\n  Licensed to the Apache Software Foundation (ASF) under one\n  or more contributor license agreements.  See the NOTICE file\n  distributed with this work for additional information\n  regarding copyright ownership.  The ASF licenses this file\n  to you under the Apache License, Version 2.0 (the\n  \"License\"); you may not use this file except in compliance\n  with the License.  You may obtain a copy of the License at\n\n      http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing,\n  software distributed under the License is distributed on an\n  \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n  KIND, either express or implied.  See the License for the\n  specific language governing permissions and limitations\n  under the License.\n-->\n\n<h1 align=\"center\">\n  <img src=\"apps/desktop/assets/app-icons/sky.png\" alt=\"Maka\" width=\"72\" valign=\"middle\" /> Apache Maka (Incubating)\n</h1>\n\n<p align=\"center\"><sub>Incubating at The Apache Software Foundation</sub></p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/apache/maka/stargazers\"><img src=\"https://img.shields.io/github/stars/apache/maka?style=flat&label=%E2%98%85&color=4C8DFF\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/apache/maka/releases\"><img src=\"https://img.shields.io/github/downloads/apache/maka/total?style=flat&label=downloads&color=4C8DFF\" alt=\"GitHub downloads\" /></a>\n  <a href=\"./LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-4C8DFF?style=flat\" alt=\"License: Apache 2.0\" /></a>\n  <img src=\"https://img.shields.io/badge/macOS-arm64-4C8DFF?style=flat&logo=apple&logoColor=white\" alt=\"macOS Apple Silicon\" />\n  <img src=\"https://img.shields.io/badge/Windows-preview-9BB8F0?style=flat&logo=windows&logoColor=white\" alt=\"Windows unsigned preview\" />\n  <img src=\"https://img.shields.io/badge/Linux-soon-D0D4DA?style=flat&logo=linux&logoColor=6B7280\" alt=\"Linux not yet supported\" />\n  <a href=\"https://deepwiki.com/apache/maka\"><img src=\"https://img.shields.io/badge/DeepWiki-third--party%20AI%20docs-9BB8F0?style=flat\" alt=\"DeepWiki: third-party AI-generated docs\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"./README.zh-CN.md\"><img src=\"https://img.shields.io/badge/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3-4C8DFF?style=flat\" alt=\"中文文档\" /></a>\n</p>\n\n<p align=\"center\">\n  <strong>A local-first Agent workspace built for real work.</strong><br/>\n  Maka inspects projects, runs tools under a sandbox boundary, and records\n  model messages and tool calls as recoverable execution facts — on your\n  machine, through one Runtime Host.\n</p>\n\n![Maka — Your work. Your agent.](./.github/assets/maka-hero.en.png)\n\n> [!NOTE]\n> Apache Maka (Incubating) is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator PMC. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision-making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF. [DISCLAIMER-WIP](./DISCLAIMER-WIP) records the issues the project is currently aware of.\n\n> [!IMPORTANT]\n> Maka is under active development. The macOS Apple Silicon desktop build is an early public release; data formats, CLI commands, and experimental capabilities may still change.\n\n## Why Maka\n\n- **Your machine, your data.** Sessions, settings, and run records stay local by default. You bring the model: a cloud API, a local model, or a compatible gateway.\n- **The record is kept.** Model messages, tool calls, tool results, and how a turn ended are written down. The UI and the next model call are views of that record, not the only copy.\n- **Shorter context is not deleted history.** Maka can omit old tool output from the next prompt without throwing away the saved evidence.\n- **One place runs the agent.** Desktop, the terminal, and Maka evaluation all go through Runtime Host. Eval only owns the experiment and its scores.\n\nRead [Maka Backend Architecture](./ARCHITECTURE.md) for the design.\n\n## Surfaces\n\n| Entry point | Best for | Current capability |\n|---|---|---|\n| **Desktop** | Daily interaction, file and Artifact workflows, model and permission setup | Electron + React with streaming sessions, tool timelines, branching, search, and recovery |\n| **TUI / CLI** | Using Maka in the current project directory or running one non-interactive Turn | `maka`, `maka run`; shares workspace and model connections with Desktop |\n| **Eval** | Reproducible benchmark experiments across Maka and external subjects | `maka eval run <spec> --out <directory>` |\n\n## Current capabilities\n\n### Agent Runtime\n\n- Multiple model connections, streaming output, thinking, usage, and clearer provider errors;\n- Built-in tools: `Read`, `Write`, `Edit`, `Bash`, `Glob`, `Grep`. Computer Use and catalog skills are optional and not on by default;\n- Tools that leave the sandbox must be approved; runs can be aborted; failures are classified;\n- A durable execution record, crash recovery, and optional resume of an interrupted turn.\n\n### Desktop workspace\n\n- Create, archive, search, rename, retry, regenerate, and branch sessions from a Turn;\n- Artifact lists and previews, workspace instructions, model settings, and sandbox settings;\n- Local memory and web search when configured;\n- Chat apps (IM bots) are experimental. See [IM onboarding](./docs/architecture/bot-onboarding-runtime.zh-CN.md).\n\n### Evaluation\n\n- Declarative multi-arm experiments expanded into task × repetition × subject cells;\n- Immutable per-cell attempts with targeted infrastructure replacement and earliest-valid selection;\n- A small result kernel for score, normalized usage, attributable cost, duration, status, failure reason, and artifacts;\n- Maka subjects execute only through Runtime Host; external subjects use generic external subject adapters.\n\n## Quick start\n\n### Releases and downloads\n\nApache Maka has not made an Apache release yet. Everything currently published from this repository or from a package registry was produced before or during incubation, is not an Apache Software Foundation release, and has not been reviewed or voted on by the Incubator PMC.\n\nOnce Apache releases exist, the official release is the source release published by the ASF and approved by the podling PPMC and the Incubator PMC. A package built from that source and distributed elsewhere, for example through a package registry or as a Desktop installer, is a convenience artifact rather than the release itself, and it is valid only when it is built from an approved source release. [`.github/ASF_SOURCE_RELEASE.md`](./.github/ASF_SOURCE_RELEASE.md) holds the candidate contract, signing path, and verification steps.\n\nUntil an approved source release exists, this README recommends no prebuilt download. Build and run Maka from source as described below. Desktop currently targets Apple Silicon Macs (`arm64`). Intel Macs and Linux are not supported yet. [Windows](docs/windows-support.md) is an unsigned preview, not a supported release tier.\n\n### Requirements\n\n- Node.js 22.19 or newer (CI uses Node.js 24);\n- npm (the lockfile and scripts use npm; the current `packageManager` is npm 11);\n- Git;\n- `ripgrep`, used by Runtime's `Grep` tool.\n\n### Start Desktop\n\n```sh\ngit clone https://github.com/apache/maka.git\ncd maka\nnpm ci\nnpm run dev\n```\n\n`npm run dev` starts the Desktop development environment with HMR. To build every workspace before starting Electron, use:\n\n```sh\nnpm run dev:full\n```\n\nIf dependencies were installed with `ELECTRON_SKIP_BINARY_DOWNLOAD=1`, install the Electron platform binary before starting:\n\n```sh\nnode node_modules/electron/install.js\n```\n\n### First run\n\nMaka does not bundle a shared model account. On first launch:\n\n1. Open `Settings → Models`;\n2. Add an API, local-model, or supported account connection;\n3. Test it and choose a default model;\n4. Return to the workspace and start a task.\n\nThe app distinguishes configured, send-ready, and experimental connection states. An account flow that is not wired into Runtime is not presented as a usable model.\n\n## Terminal entry points\n\nFor the public npm package, see the [CLI installation and usage guide](./packages/cli/README.md).\nThe commands below run the development CLI from a source checkout.\n\nBuild the workspaces first:\n\n```sh\nnpm run build\n```\n\nThen start the TUI or run one Turn:\n\n```sh\nnpm run cli:dev\nnpm run cli:dev -- run \"Summarize this repository and identify its most important risk\"\nnpm run cli:dev -- run --graph \"Implement two independent slices, integrate them, then review the result\"\nnpm run cli:dev -- --help\n```\n\nThe TUI also accepts `/graph on`, `/graph off`, and `/graph <task>`. Non-interactive\n`--graph` runs wait for the durable Graph to finish before printing the final\nsupervisor output. Graph implementation operators use isolated Git worktrees, so\nthe source project must be a clean Git worktree.\n\nThe repository CLI uses the same `Maka Dev` profile as a development Desktop build. The\nreleased `maka` binary continues to use the `Maka` profile; the two profiles are not copied or\nsynchronized automatically. Evaluation specs and adapters live in [`packages/eval`](./packages/eval).\n\n## Architecture\n\nThe backend spine is:\n\n```text\nDesktop / TUI / CLI → Runtime Host → SessionManager → AgentRun\n                                             ↓\n                         Model + Tool Runtime → Runtime Event Log\n                                             ↓\n                              Context / Session / UI projections\n\nExperiment → Cells → Attempts → Results\n                    ↓\n       Runtime Host executes Maka subjects\n```\n\nStart with [ARCHITECTURE.md](./ARCHITECTURE.md). It provides the system map, code boundaries, problem-oriented reading paths, and six bilingual deep dives.\n\n## Repository ",
+      "rank": 7,
+      "weekly_stars": 1918
+    },
+    {
+      "full_name": "tashfeenahmed/freellmapi",
+      "html_url": "https://github.com/tashfeenahmed/freellmapi",
+      "description": "7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.",
+      "homepage": "https://freellmapi.co",
+      "language": "TypeScript",
+      "stars": 21768,
+      "forks": 3076,
+      "open_issues": 67,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-04-21T13:38:59Z",
+      "updated_at": "2026-08-29T07:49:37Z",
+      "pushed_at": "2026-08-28T00:05:52Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n# FreeLLMAPI\n\n**7.4 billion tokens per month.  34 free LLM providers. 635 free model endpoints. One OpenAI-compatible endpoint.**\n\nAggregate free tiers from dozens of providers, plus custom OpenAI-compatible chat, embedding, image, and audio endpoints, behind a single `/v1` API. Keys are stored encrypted. A router picks the best available model for each request, falls over to the next provider when one is rate-limited, and tracks per-key usage so you stay under every free-tier cap.\n\n[![CI](https://github.com/tashfeenahmed/freellmapi/actions/workflows/ci.yml/badge.svg)](https://github.com/tashfeenahmed/freellmapi/actions/workflows/ci.yml)\n[![GitHub stars](https://img.shields.io/github/stars/tashfeenahmed/freellmapi?style=flat&logo=github&color=yellow)](https://github.com/tashfeenahmed/freellmapi/stargazers)\n[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)\n[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)\n[![Docker image](https://img.shields.io/badge/ghcr.io-freellmapi-2496ED?logo=docker&logoColor=white)](https://github.com/tashfeenahmed/freellmapi/pkgs/container/freellmapi)\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/tashfeenahmed/freellmapi)\n\n**[freellmapi.co](https://freellmapi.co/?utm_source=github&utm_medium=readme&utm_campaign=repository&utm_content=readme_top)** · browse the full catalog: 474 model families, 635 free endpoints\n\n**English** · [简体中文](docs/i18n/zh-CN/README.md)\n\n<p align=\"center\">\n  <a href=\"https://play.google.com/store/apps/details?id=co.freellmapi.app\"><img src=\"repo-assets/badges/play-store.svg\" height=\"60\" alt=\"Get it on Google Play\"></a>\n  <a href=\"https://github.com/tashfeenahmed/freellmapi/releases/latest\"><img src=\"repo-assets/badges/macos.svg\" height=\"60\" alt=\"Download for macOS\"></a>\n  <a href=\"https://github.com/tashfeenahmed/freellmapi/releases/latest\"><img src=\"repo-assets/badges/windows.svg\" height=\"60\" alt=\"Download for Windows\"></a>\n  <a href=\"docs/install.md#docker-compose\"><img src=\"repo-assets/badges/docker.svg\" height=\"60\" alt=\"Self-host with Docker\"></a>\n</p>\n\n![FreeLLMAPI dashboard — Models page with the monthly token budget](repo-assets/github-hero.png)\n\n\nYour router updates its own model catalog from a signed feed: new free models, quota changes, and compatibility fixes land without a `git pull`. Free installs get the monthly snapshot, so a model reaches them 30 days after it joins the live feed; premium routers get it the same day.\n**[Go live at freellmapi.co](https://freellmapi.co/?utm_source=github&utm_medium=readme&utm_campaign=premium&utm_content=readme_top#pricing)** ($19/yr, cancel anytime).\n\n</div>\n\n---\n\n## Contents\n\n- [Why this exists](#why-this-exists)\n- [Supported providers](#supported-providers)\n- [Compatible CLIs & coding agents](#compatible-clis--coding-agents)\n- [How it compares](#how-it-compares)\n- [Features](#features)\n- [Quick start](#quick-start)\n- [Desktop app](#desktop-app)\n- [Works with OpenAI-compatible clients](#works-with-openai-compatible-clients)\n- [Languages](#languages)\n- [Premium (live catalog)](#premium-live-catalog)\n- [Using the API](#using-the-api)\n- [Screenshots](#screenshots)\n- [How it works](#how-it-works)\n- [FAQ](#faq)\n- [Limitations](#limitations)\n- [Contributing](#contributing)\n- [Disclaimer](#disclaimer)\n\n**Guides:** [Install & deploy](docs/install.md) · [API reference](docs/api.md) · [Clients & coding agents](docs/clients.md) · [Prompt compression](docs/compression.md) · [Architecture & internals](docs/architecture.md) · [Documentation index](docs/README.md) · [Contributor guide](CONTRIBUTING.md)\n\n## Why this exists\n\nEvery serious AI lab now offers a free tier, a few million tokens a month, a few thousand requests a day. On its own each tier is a toy. Stacked together, they add up to roughly **7.4 billion tokens per month** of working inference capacity, across **474 model families / 635 provider endpoints** from small-and-fast to reasonably capable.\n\nThe problem is that stacking them by hand is painful: thirty-four different SDKs, thirty-four different rate limits, thirty-four places a request can fail. FreeLLMAPI collapses that into one OpenAI-compatible endpoint. Point any OpenAI client library at your local server, and it routes transparently across whichever providers you've added keys for.\n\nAnd the free-tier landscape shifts weekly: providers launch models, retire them, and change quotas without notice. FreeLLMAPI tracks all of that for you. The router pulls a signed model catalog from [freellmapi.co](https://freellmapi.co) on its own, so your install keeps up without a `git pull`. See [Premium (live catalog)](#premium-live-catalog) for how fast it keeps up.\n\n![The free tier, stacked — ~7.4B tokens of free inference per month across 34 providers](repo-assets/free-tier.png)\n\n## Supported providers\n\n<div align=\"center\">\n<table>\n<tr>\n<td align=\"center\" width=\"150\"><img src=\"repo-assets/providers/google.png\" width=\"44\" alt=\"Google\"><br/><b>Google</b></td>\n<td align=\"center\" width=\"150\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"repo-assets/providers/groq-dark.png\"><img src=\"repo-assets/providers/groq.png\" width=\"44\" alt=\"Groq\"></picture><br/><b>Groq</b></td>\n<td align=\"center\" width=\"150\"><img src=\"repo-assets/providers/cerebras.png\" width=\"44\" alt=\"Cerebras\"><br/><b>Cerebras</b></td>\n<td align=\"center\" width=\"150\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"repo-assets/providers/opencode-dark.png\"><img src=\"repo-assets/providers/opencode.png\" width=\"44\" alt=\"OpenCode Zen\"></picture><br/><b>OpenCode Zen</b></td>\n</tr>\n<tr>\n<td align=\"center\"><img src=\"repo-assets/providers/mistral.png\" width=\"44\" alt=\"Mistral\"><br/><b>Mistral</b></td>\n<td align=\"center\"><img src=\"repo-assets/providers/openrouter.png\" width=\"44\" alt=\"OpenRouter\"><br/><b>OpenRouter</b></td>\n<td align=\"center\"><img src=\"repo-assets/providers/cloudflare.png\" width=\"44\" alt=\"Cloudflare\"><br/><b>Cloudflare</b></td>\n<td align=\"center\"><img src=\"repo-assets/providers/cohere.png\" width=\"44\" alt=\"Cohere\"><br/><b>Cohere</b></td>\n</tr>\n<tr>\n<td align=\"center\"><img src=\"repo-assets/providers/zhipu.png\" width=\"44\" alt=\"Z.ai (Zhipu)\"><br/><b>Z.ai (Zhipu)</b></td>\n<td align=\"center\"><img src=\"repo-assets/providers/nvidia.png\" width=\"44\" alt=\"NVIDIA\"><br/><b>NVIDIA</b></td>\n<td align=\"center\"><img src=\"repo-assets/providers/huggingface.png\" width=\"44\" alt=\"HuggingFace\"><br/><b>HuggingFace</b></td>\n</tr>\n<tr>\n<td align=\"center\"><a href=\"https://modelscope.cn\"><b>ModelScope</b><br/>Qwen3 · DeepSeek V4 · GLM-5 (needs Aliyun cn binding)</a></td>\n</tr>\n</table>\n\n<i>… and 22 more free providers</i>\n\n</div>\n\nPlus a **custom** provider — point chat, embedding, image, or audio models at any OpenAI-compatible endpoint (llama.cpp, LM Studio, vLLM, a local Ollama, or a remote gateway) from the Keys page.\n\nThe full, always-current list lives at **[freellmapi.co/models](https://freellmapi.co/models.html)** with per-model rate limits, context windows, and free-token budgets.\n\n## Compatible CLIs & coding agents\n\n<div align=\"center\">\n<table>\n<tr>\n<td align=\"center\" width=\"150\"><img src=\"repo-assets/agents/claude-code.png\" width=\"44\" alt=\"Claude Code\"><br/><b>Claude Code</b></td>\n<td align=\"center\" width=\"150\"><img src=\"repo-assets/agents/codex.png\" width=\"44\" alt=\"Codex CLI\"><br/><b>Codex CLI</b></td>\n<td align=\"center\" width=\"150\"><img src=\"repo-assets/agents/gemini-cli.png\" width=\"44\" alt=\"Gemini CLI\"><br/><b>Gemini CLI</b></td>\n<td align=\"center\" width=\"150\"><img src=\"repo-assets/agents/aider.png\" width=\"44\" alt=\"Aider\"><br/><b>Aider</b></td>\n</tr>\n<tr>\n<td align=\"center\"><img src=\"repo-assets/agents/cline.png\" width=\"44\" alt=\"Cline\"><br/><b>Cline</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/roo-code.png\" width=\"44\" alt=\"Roo Code\"><br/><b>Roo Code</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/continue.png\" width=\"44\" alt=\"Continue\"><br/><b>Continue</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/opencode.png\" width=\"44\" alt=\"OpenCode\"><br/><b>OpenCode</b></td>\n</tr>\n<tr>\n<td align=\"center\"><img src=\"repo-assets/agents/goose.png\" width=\"44\" alt=\"Goose\"><br/><b>Goose</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/qwen-code.png\" width=\"44\" alt=\"Qwen Code\"><br/><b>Qwen Code</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/kilo-code.png\" width=\"44\" alt=\"Kilo Code\"><br/><b>Kilo Code</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/crush.png\" width=\"44\" alt=\"Crush\"><br/><b>Crush</b></td>\n</tr>\n<tr>\n<td align=\"center\"><img src=\"repo-assets/agents/cursor.png\" width=\"44\" alt=\"Cursor\"><br/><b>Cursor</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/zed.png\" width=\"44\" alt=\"Zed\"><br/><b>Zed</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/jetbrains.png\" width=\"44\" alt=\"JetBrains AI\"><br/><b>JetBrains AI</b></td>\n<td align=\"center\"><img src=\"repo-assets/agents/deepseek-harness.png\" width=\"44\" alt=\"DeepSeek Harness\"><br/><b>DeepSeek Harness</b></td>\n</tr>\n</table>\n\n<i>… plus any OpenAI-compatible client, Anthropic SDK, Gemini SDK, or Ollama-capable app</i>\n\n</div>\n\nMost of these configure themselves with one command — `npx freellmapi setup-claude`, `setup-codex`, `setup-aider`, `setup-dsh` (DeepSeek Harness), and eleven more generators that fetch your live catalog, back up existing config, and never clobber what's already there. Claude Code and Codex also get zero-persistence launchers (`freellmapi launch`, `freellmapi launch-codex`) that inject credentials into the child process only. Zed and JetBrains AI connect through the opt-in [Ollama emulation](docs/clients.md#ollama-clients); Gemini CLI speaks its native wire on `/v1beta`.\n\nPer-tool recipes, the setup CLI reference, revocable URL tokens for headerless clients, and the MCP server all live in **[Clients & coding agents →](docs/clients.md)**\n\n## How it compares\n\n![Feature comparison against OpenRouter, LiteLLM, and Port",
+      "rank": 8,
+      "weekly_stars": 2162
+    },
+    {
+      "full_name": "modular/modular",
+      "html_url": "https://github.com/modular/modular",
+      "description": "The Modular Platform (includes MAX & Mojo)",
+      "homepage": "https://docs.modular.com/",
+      "language": "Mojo",
+      "stars": 29316,
+      "forks": 3122,
+      "open_issues": 1125,
+      "topics": [
+        "ai",
+        "language",
+        "machine-learning",
+        "max",
+        "modular",
+        "mojo",
+        "programming-language"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2023-04-28T22:17:24Z",
+      "updated_at": "2026-08-29T07:42:14Z",
+      "pushed_at": "2026-08-29T06:45:34Z",
+      "archived": false,
+      "readme": "<!-- rumdl-disable-file MD033 MD041 MD075 -->\n\n<div align=\"center\">\n    <img src=\"https://modular-assets.s3.us-east-1.amazonaws.com/images/modular-banner-github.png\">\n\n[About Modular] | [MAX docs] | [Mojo docs] | [Contributing]\n\n</div>\n\n---\n\n# Modular Platform\n\nThis repo hosts open-source components of the Modular Platform,\na unified platform for AI development and deployment,\nincluding the **MAX Framework**🧑‍🚀 and the **Mojo Language**🔥.\n\n## Get started\n\nTo get started with the Modular Platform and serve a model using the MAX\nframework, see\n[the MAX quickstart guide](https://max.modular.com/get-started).\n\nTo get started with the Mojo language, see\n[the Mojo quickstart guide](https://mojolang.org/docs/manual/quickstart/).\n\n## About the repo\n\nWe're constantly open-sourcing more of the Modular Platform and you can find\nall of it in here.\n\nThe main components include:\n\n- Mojo compiler: [/KGEN](KGEN)\n- Mojo standard library: [/mojo/stdlib](mojo/stdlib)\n- MAX accelerator library: [/max/kernels](/max/kernels)\n- MAX inference server: [/max/python/max/serve](/max/python/max/serve)\n  (OpenAI-compatible endpoint)\n- MAX model pipelines: [/max/python/max/pipelines](/max/python/max/pipelines)\n  (Python-based graphs)\n- Code examples: [/max/examples](/max/examples) +\n  [/mojo/examples](mojo/examples)\n\n## Contribute\n\nWe accept contributions to the [Mojo standard library](./mojo), [MAX\naccelerator library](./max/kernels), [MAX model\narchitectures](/max/python/max/pipelines/architectures), code examples, Mojo\ndocs, and more. We aren't accepting contributions to the Mojo compiler yet.\n\nFirst, please read the [Contribution Guide](./CONTRIBUTING.md), and then refer\nto the following documentation about how to develop in the repo:\n\n- [`/max/docs`](/max/docs): Docs for developers working in the MAX framework\n  codebase.\n- [`/mojo/stdlib/docs`](/mojo/stdlib/docs): Docs for developers working in the\n  Mojo standard library.\n\nWe also welcome your bug reports. If you have a bug, please [file an issue\nhere](https://github.com/modular/modular/issues/new/choose).\n\n## License\n\nThis repository and its contributions are licensed under the Apache License v2.0\nwith LLVM Exceptions. See [LICENSE](LICENSE).\n\nMAX usage and distribution are licensed under the\n[Modular Community License](https://www.modular.com/legal/community).\n\n### Third party licenses\n\nYou are entirely responsible for checking and validating the licenses of third\nparties (for example, Hugging Face) for related software and libraries that are\ndownloaded.\n\n## Community & Events\n\nGet help from community members, tune in for a community meeting, or join a\nlocal meetup.\n\n| Channel               | Link                                            |\n|-----------------------|-------------------------------------------------|\n| 💬 Discord            | [discord.gg/modular][discord]                   |\n| 💬 Forum              | [forum.modular.com][forum]                      |\n| 📅 Meetup Group       | [meetup.com/modular-meetup-group][meetup-group] |\n| 🎦 Community Meetings | [Upcoming community calls][public-com-meet-doc] |\n| 📺 YouTube            | [youtube.com/@modularinc][youtube]              |\n\n**Upcoming events** will be posted on our [Meetup page][meetup-group] and\n[Discord][discord]. Community meeting recordings will be posted on our\n[YouTube][youtube].\n\n## Thanks to our contributors\n\n<a href=\"https://github.com/modular/modular/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=modular/modular\" />\n</a>\n\n<!-- Link references -->\n\n<!-- Header navigation links -->\n[About Modular]: https://www.modular.com/\n[MAX docs]: https://max.modular.com/\n[Contributing]: ./CONTRIBUTING.md\n[Mojo docs]: https://mojolang.org/docs/\n\n<!-- Community & Events links -->\n[discord]: https://discord.gg/modular\n[forum]: https://forum.modular.com/\n[meetup-group]: https://www.meetup.com/modular-meetup-group/\n[youtube]: https://www.youtube.com/@modularinc\n[public-com-meet-doc]: https://modul.ar/community-meeting-doc\n",
+      "rank": 9,
+      "weekly_stars": 875
+    },
+    {
+      "full_name": "cursor/plugins",
+      "html_url": "https://github.com/cursor/plugins",
+      "description": "Cursor plugin specification and official plugins",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 6030,
+      "forks": 480,
+      "open_issues": 84,
+      "topics": [],
+      "license": "未声明",
+      "created_at": "2026-01-23T01:57:42Z",
+      "updated_at": "2026-08-29T07:44:02Z",
+      "pushed_at": "2026-08-28T17:12:06Z",
+      "archived": false,
+      "readme": "# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Cursor | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Cursor | Developer Tools | Internal team workflows for CI, code review, shipping, local automation, and verification. |\n| `thermos` | [Thermos](thermos/) | Cursor | Developer Tools | Thermo-nuclear branch review: deep security/correctness audits, harsh code-quality rubrics, parallel subagents, thermos orchestration, and optional merge-ready PR flows. |\n| `create-plugin` | [Create Plugin](create-plugin/) | Cursor | Developer Tools | Scaffold and validate new agent plugins. |\n| `ralph-loop` | [Ralph Loop](ralph-loop/) | Cursor | Developer Tools | Iterative self-referential AI loops using the Ralph Wiggum technique. |\n| `agent-compatibility` | [Agent Compatibility](agent-compatibility/) | Cursor | Developer Tools | CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality. |\n| `cli-for-agent` | [CLI for Agents](cli-for-agent/) | Cursor | Developer Tools | Patterns for designing CLIs that coding agents can run reliably: flags, help with examples, pipelines, errors, idempotency, dry-run. |\n| `pr-review-canvas` | [PR Review Canvas](pr-review-canvas/) | Cursor | Developer Tools | Render PR diffs as review canvases grouped by importance. |\n| `docs-canvas` | [Docs Canvas](docs-canvas/) | Cursor | Developer Tools | Render documentation as a navigable canvas. |\n| `cursor-sdk` | [Cursor SDK](cursor-sdk/) | Cursor | Developer Tools | Build apps, scripts, and automations with the TypeScript SDK. |\n| `orchestrate` | [Orchestrate](orchestrate/) | Cursor | Developer Tools | Fan large tasks out across parallel cloud agents with planners, workers, verifiers, and structured handoffs. |\n| `pstack` | [pstack](pstack/) | Lauren Tan | Developer Tools | if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence. |\n| `gmail` | [Gmail](third_party/gmail/) | Cursor | Productivity | Search, read, draft, and manage email. |\n| `google-drive` | [Google Drive](third_party/google-drive/) | Cursor | Productivity | Search, read, create, and share files. |\n| `google-calendar` | [Google Calendar](third_party/google-calendar/) | Cursor | Productivity | Search events and schedule meetings. |\n| `gong` | [Gong](third_party/gong/) | Cursor | Integrations | Pull account summaries, deal insights, and call briefs. |\n| `salesforce` | [Salesforce](third_party/salesforce/) | Cursor | Integrations | Query, create, and update records in your org. |\n| `playwright` | [Playwright](third_party/playwright/) | Cursor | Integrations | Navigate, click, screenshot, and test in a real browser. |\n| `github` | [GitHub](third_party/github/) | Cursor | Integrations | Manage repos, issues, pull requests, and Actions. |\n| `ashby` | [Ashby](third_party/ashby/) | Cursor | Integrations | Search candidates, prep interviews, and manage pipeline tasks. |\n| `hubspot` | [HubSpot](third_party/hubspot/) | Cursor | Integrations | Search and update contacts, companies, deals, and tickets. |\n| `intercom` | [Intercom](third_party/intercom/) | Cursor | Integrations | Search conversations, contacts, and Help Center articles. |\n| `zoom` | [Zoom](third_party/zoom/) | Cursor | Integrations | Search meetings, pull transcripts, and work with Zoom Docs. |\n| `x` | [X](third_party/x/) | Cursor | Integrations | Search posts, read timelines, pull trends, and manage bookmarks. |\n| `clay` | [Clay](third_party/clay/) | Cursor | Integrations | Enrich people and companies, run AI research agents. |\n| `circleback` | [Circleback](third_party/circleback/) | Cursor | Integrations | Search meetings, transcripts, action items, and emails. |\n| `docusign` | [Docusign](third_party/docusign/) | Cursor | Integrations | Manage envelopes, templates, workflows, and agreements. |\n| `navan` | [Navan](third_party/navan/) | Cursor | Integrations | Query expenses, travel bookings, policies, and cards. |\n| `profound` | [Profound](third_party/profound/) | Cursor | Integrations | Track AI visibility, sentiment, and citations. |\n| `juicebox` | [Juicebox](third_party/juicebox/) | Cursor | Integrations | Query recruiting analytics, shortlists, and sourcing agents. |\n| `outreach` | [Outreach](third_party/outreach/) | Cursor | Integrations | Search sequences, prospects, and Kaia meetings. |\n| `amplemarket` | [Amplemarket](third_party/amplemarket/) | Cursor | Integrations | Search people and companies, enrich leads, run sequences. |\n| `klaviyo` | [Klaviyo](third_party/klaviyo/) | Cursor | Integrations | Manage profiles, segments, campaigns, and flows. |\n| `customer-io` | [Customer.io](third_party/customer-io/) | Cursor | Integrations | Build campaigns, manage segments, and query people. |\n| `mailerlite` | [MailerLite](third_party/mailerlite/) | Cursor | Integrations | Manage subscribers, groups, campaigns, and automations. |\n| `brevo` | [Brevo](third_party/brevo/) | Cursor | Integrations | Manage contacts, email and SMS campaigns, and CRM deals. |\n| `typeform` | [Typeform](third_party/typeform/) | Cursor | Integrations | Build forms, analyze responses, and manage contacts. |\n| `jotform` | [Jotform](third_party/jotform/) | Cursor | Integrations | Create and edit forms, then read submissions. |\n| `semrush` | [Semrush](third_party/semrush/) | Cursor | Integrations | Research keywords, backlinks, traffic, and competitors. |\n| `ahrefs` | [Ahrefs](third_party/ahrefs/) | Cursor | Integrations | Research keywords, backlinks, rankings, and site health. |\n| `godaddy` | [GoDaddy](third_party/godaddy/) | Cursor | Integrations | Brainstorm domain names and check availability. |\n| `upwork` | [Upwork](third_party/upwork/) | Cursor | Integrations | Search talent, post jobs, and manage contracts. |\n| `workable` | [Workable](third_party/workable/) | Cursor | Integrations | Search candidates, move pipelines, and manage HR records. |\n| `brex` | [Brex](third_party/brex/) | Cursor | Integrations | Query expenses, receipts, bills, cards, and travel. |\n| `mercury` | [Mercury](third_party/mercury/) | Cursor | Integrations | Read balances, transactions, statements, and cards. |\n| `todoist` | [Todoist](third_party/todoist/) | Cursor | Integrations | Create, find, and complete tasks and projects. |\n| `calendly` | [Calendly](third_party/calendly/) | Cursor | Integrations | Check availability and book, cancel, or reschedule. |\n| `smartsheet` | [Smartsheet](third_party/smartsheet/) | Cursor | Integrations | Query and update sheets, rows, and workspaces. |\n| `wrike` | [Wrike](third_party/wrike/) | Cursor | Integrations | Search projects, create tasks, and post comments. |\n| `coda` | [Coda](third_party/coda/) | Cursor | Integrations | Search docs, read pages, and update tables. |\n| `guru` | [Guru](third_party/guru/) | Cursor | Integrations | Search company knowledge and draft verified answers. |\n| `fireflies` | [Fireflies](third_party/fireflies/) | Cursor | Integrations | Search meeting transcripts, summaries, and action items. |\n| `otter` | [Otter.ai](third_party/otter/) | Cursor | Integrations | Search meeting history and pull full transcripts. |\n| `fathom` | [Fathom](third_party/fathom/) | Cursor | Integrations | Search meetings and pull transcripts and summaries. |\n| `craft` | [Craft](third_party/craft/) | Cursor | Integrations | Search, create, and update documents and daily notes. |\n| `mem` | [Mem](third_party/mem/) | Cursor | Integrations | Capture, search, and organize notes and collections. |\n| `readwise` | [Readwise](third_party/readwise/) | Cursor | Integrations | Search highlights and Reader documents, save articles. |\n| `similarweb` | [Similarweb](third_party/similarweb/) | Cursor | Integrations | Analyze website traffic, audiences, and competitors. |\n| `xero` | [Xero](third_party/xero/) | Cursor | Integrations | Read and write invoices, contacts, reports, and payroll. |\nAuthor values match each plugin’s `plugin.json` `author.name` (Cursor lists `plugins@cursor.com` in the manifest).\n\n## Repository structure\n\nThis is a multi-plugin marketplace repository. The root `.cursor-plugin/marketplace.json` lists all plugins, and each plugin has its own manifest:\n\n```\nplugins/\n├── .cursor-plugin/\n│   └── marketplace.json       # Marketplace manifest (lists all plugins)\n├── plugin-name/\n│   ├── .cursor-plugin/\n│   │   └── plugin.json        # Per-plugin manifest\n│   ├── skills/                # Agent skills (SKILL.md with frontmatter)\n│   ├── rules/                 # Cursor rules (.mdc files)\n│   ├── mcp.json               # MCP server definitions\n│   ├── README.md\n│   ├── CHANGELOG.md\n│   └── LICENSE\n└── ...\n```\n\n## License\n\nMIT\n",
+      "rank": 10,
+      "weekly_stars": 1594
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 52,608 个新增 Star，anthropics/claude-plugins-community、freestylefly/awesome-gpt-image-2、basecamp/omarchy 位居前三。主要开发语言集中在 TypeScript、JavaScript、Rust。头部项目体现的方向包括：Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.；Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中；Beautiful, Modern & Opinionated Linux。",
+    "top_picks": [
+      "anthropics/claude-plugins-community",
+      "freestylefly/awesome-gpt-image-2",
+      "basecamp/omarchy"
+    ],
+    "projects": [
+      {
+        "full_name": "anthropics/claude-plugins-community",
+        "tagline": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+        "overview": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission. 主要语言为 Python，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 2,638 Stars、217 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "freestylefly/awesome-gpt-image-2",
+        "tagline": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+        "overview": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中 主要语言为 JavaScript，公开主题包括：agents、ai-image-generation、chatgpt、dsh-plugin。",
+        "core_features": [
+          "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agents、ai-image-generation、chatgpt、dsh-plugin 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 24,514 Stars、2,421 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "basecamp/omarchy",
+        "tagline": "Beautiful, Modern & Opinionated Linux",
+        "overview": "Beautiful, Modern & Opinionated Linux 主要语言为 Shell，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Beautiful, Modern & Opinionated Linux",
+          "主要技术栈：Shell"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Shell 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 33,889 Stars、3,499 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "openai/codex",
+        "tagline": "Lightweight coding agent that runs in your terminal",
+        "overview": "Lightweight coding agent that runs in your terminal 主要语言为 Rust，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Lightweight coding agent that runs in your terminal",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 119,655 Stars、18,279 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "tt-a1i/archify",
+        "tagline": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+        "overview": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export. 主要语言为 JavaScript，公开主题包括：agent-skills、architecture-as-code、architecture-diagram、claude-skill。",
+        "core_features": [
+          "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、architecture-as-code、architecture-diagram、claude-skill 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 28,597 Stars、1,795 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "AprilNEA/OpenLogi",
+        "tagline": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
+        "overview": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry. 主要语言为 Rust，公开主题包括：dpi、gpui、hid、hidpp。",
+        "core_features": [
+          "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 dpi、gpui、hid、hidpp 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 17,477 Stars、503 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "apache/maka",
+        "tagline": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+        "overview": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log. 主要语言为 TypeScript，公开主题包括：agent-runtime、ai、ai-agent、apache。",
+        "core_features": [
+          "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-runtime、ai、ai-agent、apache 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 3,932 Stars、366 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "tashfeenahmed/freellmapi",
+        "tagline": "7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.",
+        "overview": "7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only. 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 21,768 Stars、3,076 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "modular/modular",
+        "tagline": "The Modular Platform (includes MAX & Mojo)",
+        "overview": "The Modular Platform (includes MAX & Mojo) 主要语言为 Mojo，公开主题包括：ai、language、machine-learning、max。",
+        "core_features": [
+          "The Modular Platform (includes MAX & Mojo)",
+          "主要技术栈：Mojo"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、language、machine-learning、max 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Mojo 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 29,316 Stars、3,122 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：NOASSERTION；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "cursor/plugins",
+        "tagline": "Cursor plugin specification and official plugins",
+        "overview": "Cursor plugin specification and official plugins 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Cursor plugin specification and official plugins",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 6,030 Stars、480 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：未声明；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
