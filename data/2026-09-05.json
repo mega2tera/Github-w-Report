@@ -1,0 +1,591 @@
+{
+  "date": "2026-09-05",
+  "repositories": [
+    {
+      "full_name": "tt-a1i/archify",
+      "html_url": "https://github.com/tt-a1i/archify",
+      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+      "homepage": "https://tt-a1i.github.io/archify/",
+      "language": "JavaScript",
+      "stars": 48380,
+      "forks": 3127,
+      "open_issues": 113,
+      "topics": [
+        "agent-skills",
+        "architecture-as-code",
+        "architecture-diagram",
+        "claude-skill",
+        "code-visualization",
+        "codex",
+        "coding-agents",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "diagrams",
+        "diagrams-as-code",
+        "dsh-plugin",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "software-architecture",
+        "system-design",
+        "text-to-diagram"
+      ],
+      "license": "MIT",
+      "created_at": "2026-04-15T05:27:37Z",
+      "updated_at": "2026-09-05T05:43:40Z",
+      "pushed_at": "2026-09-05T04:19:21Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <strong>English</strong> · <a href=\"./README_ZH.md\">简体中文</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/31352?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-31352\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/31352\" alt=\"Archify on Trendshift\" width=\"250\" height=\"55\"/></a>\n</p>\n\n![Archify product preview](docs/assets/archify-readme-hero.png)\n\n# Archify\n\n**Turn a codebase or system description into a polished, interactive system map — directly in chat.**\n\nArchify is a Node.js rendering and validation system for Cursor, Claude Code, Codex CLI, and OpenCode. Agents produce typed JSON IR; Archify deterministically compiles it into HTML/SVG.\n\n- **Open it and present** — five diagram types, four presets, dark/light themes, built-in brand marks, and finite motion\n- **Review architecture changes before merge** — compare two validated snapshots as Before / Delta / After, with exact added, removed, changed, moved, and rerouted facts\n- **Every interaction stays grounded** — search nodes, optionally open revision-verified source, trace upstream/downstream authored reach and exact routes, compare roles, and play guided stories without inventing topology\n- **One file, ready to trust and share** — typed JSON IR and deterministic checks produce self-contained HTML plus PNG, SVG, WebM, and 1200×630 share cards\n\n![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)\n![Agent Skill](https://img.shields.io/badge/Agent-Skill-7C3AED?style=flat-square)\n![Development Version](https://img.shields.io/badge/version-2.17.0--dev.1-0891b2?style=flat-square)\n\n**Current development version:** `v2.17.0-dev.1`. See [Changelog](CHANGELOG.md#unreleased).\n\n**[Project page](https://tt-a1i.github.io/archify/)** · **[Scenario guide](https://tt-a1i.github.io/archify/guide.html)** · **[Proof Lab](https://tt-a1i.github.io/archify/gallery.html)**\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nUsing Cursor? Open the [agent-aware quick start](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) for exact global and project commands.\n\n**No repository is required:** describe the system in any agent chat.\n\n## ❤️ Sponsors\n\n<table>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://apinebula.ai/ref/wywnaATT\"><img src=\"docs/assets/sponsors/apinebula-archify.jpg\" alt=\"APINEBULA\" width=\"200\" /></a><br/><strong><a href=\"https://apinebula.ai/ref/wywnaATT\">APINEBULA</a></strong></td><td>APINEBULA sponsors Archify with one API for Claude, GPT, Gemini, and more. <a href=\"https://apinebula.ai/ref/wywnaATT\">Register through Archify</a> and use <strong><code>Archify</code></strong> for <strong>10% off</strong>.</td></tr>\n  <tr><td align=\"center\" width=\"240\"><a href=\"https://github.com/EverMind-AI/Raven\"><img src=\"docs/assets/sponsors/evermind-archify-raven.png\" alt=\"Archify × Raven\" width=\"200\" /></a><br/><strong><a href=\"https://github.com/EverMind-AI\">EverMind</a> · <a href=\"https://github.com/EverMind-AI/Raven\">Raven</a></strong></td><td>EverMind sponsors Archify and builds memory infrastructure for agents. Its <a href=\"https://github.com/EverMind-AI/Raven\"><strong>Raven</strong></a> harness supports Archify as a Skill for verified, interactive system maps.</td></tr>\n</table>\n\n> Want to sponsor Archify? [Contact us by email.](mailto:2801884530@qq.com)\n\n## See Archify in action\n\nThese are generated Archify artifacts, not product mockups. Click a frame to open its live, shareable state.\n\n<p align=\"center\">\n  <a href=\"https://tt-a1i.github.io/archify/gallery.html\"><img src=\"docs/assets/archify-live-proof.gif\" alt=\"Three verified Archify artifacts moving through Signal Flow, Blueprint, and Classic presets\" width=\"960\"/></a>\n  <br/>\n  <sub><strong>Three real generated artifacts.</strong> Signal Flow · Blueprint · Classic · <a href=\"https://tt-a1i.github.io/archify/gallery.html\">open the interactive Proof Lab ↗</a></sub>\n</p>\n\n| Guided story | Route probe | Semantic lens |\n|---|---|---|\n| [![Agent workflow playing one authored chapter](docs/assets/archify-demo-story.png)](https://tt-a1i.github.io/archify/gallery/artifacts/agent-tool-call.workflow.html?theme=dark&present=1&play=1#view=happy-path) | [![Cache-miss sequence showing the Web App to Postgres route](docs/assets/archify-demo-route.png)](https://tt-a1i.github.io/archify/gallery/artifacts/cache-miss.sequence.html?theme=dark&present=1#route=web~db) | [![Production architecture comparing backend and database roles](docs/assets/archify-demo-lens.png)](https://tt-a1i.github.io/archify/gallery/artifacts/production-deployment.architecture.html?theme=dark&present=1#lens=backend~database) |\n| Play one finite named chapter. | Inspect the shortest authored directed path. | Compare real traffic between semantic roles. |\n\nThe [Proof Lab](https://tt-a1i.github.io/archify/gallery.html) contains all 11 checked-in scenarios, their JSON sources, named views, and validation receipts.\n\n### A real repository, mapped from source\n\n[![MCO runtime architecture generated from the public mco-org/mco repository](docs/assets/mco-runtime-share-card.png)](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)\n\nArchify traced [`mco-org/mco`](https://github.com/mco-org/mco) at `9f1a1cf` and produced this checked map. **[Open it ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark&present=1#view=dispatch-path)** · [trace reach ↗](https://tt-a1i.github.io/archify/cases/mco-runtime.architecture.html?theme=dark#focus=router&reach=downstream) · [typed source](docs/cases/mco-runtime.architecture.json)\n\n## Preview\n\nSame diagram, two themes, one click to switch:\n\n| Dark | Light |\n|---|---|\n| ![Dark theme](docs/assets/archify-dark.png) | ![Light theme](docs/assets/archify-light.png) |\n\nThe Export menu copies PNG to the clipboard and downloads static or motion formats:\n\n![Export menu](docs/assets/archify-menu.png)\n\nUse **Copy Share Card** when you want a canonical 1200×630 image for a README, release, or social post.\n\nAfter tracing a route, **Export → Route Share Card** downloads that authored path as a 1200×630 PNG with the full diagram retained for context.\n\n![Route Share Card showing the exact Users to API Server path with the full architecture retained as context](docs/assets/archify-route-share-card.png)\n\nAfter tracing authored `Upstream` or `Downstream` reach, **Export → Reach Share Card** captures that exact reading without claiming runtime impact.\n\n![MCO downstream Reach Share Card showing authored relationships from Command Router](docs/assets/mco-runtime-reach-share-card.png)\n\nOpen [`examples/web-app.html`](examples/web-app.html) locally to try the complete viewer.\n\n## Quick start\n\n### 1. Install\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\nFor an explicit, non-interactive Cursor install:\n\n```bash\nnpx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes\n```\n\nTo try without installing:\n\n```bash\nnpx skills use tt-a1i/archify@archify --agent codex\n```\n\n[DSH community opt-in](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@0.1.0`\n\nThe [agent switcher](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, and `opencode`. For Raven's manual ZIP install, extract [`archify.zip`](archify.zip) into `~/.raven/workspace/skills`; it yields `~/.raven/workspace/skills/archify`. Raven is not a switcher target.\n\nArchify may GET the fixed stable manifest solely to show an optional reminder; it never downloads or installs updates. Successful checks wait about 72 hours (±20%); active use retries failures after 6, then 24 hours. The server sees normal HTTP metadata (IP and time), but receives no version, Agent, project data, prompts, account/device ID, or ETag. You decide whether and when to update. Set `ARCHIFY_UPDATE_CHECK_DISABLED=1` to disable networking and reminder-state writes.\n\n### 2. Start from a description — no repository required\n\n```text\nUse Archify to draw: Browser -> API -> Redis cache -> PostgreSQL fallback.\n```\n\nFor source evidence, open a repository and ask:\n\n```text\nAnalyze this repository, then use archify to create a high-level runtime architecture diagram.\nShow 8–12 core components, one primary path, external dependencies, and trust boundaries.\nPut supporting detail in cards instead of adding more edges.\n```\n\n### 3. Refine in chat\n\nContinue with focused requests such as `add Redis`, `move auth to the left`, or `highlight the rollback path`. Archify keeps the typed source available for targeted iteration.\n\n## Choose the right diagram\n\n| Type | Best for | Include in your prompt |\n|---|---|---|\n| **Architecture** | Components, services, storage, boundaries | Scope, core components, primary path |\n| **Workflow** | CI/CD, approvals, tool calls, runbooks | Participants, order, branches, exceptions |\n| **Sequence** | API calls, cache fallback, auth, async traces | Callers, callees, returns, timing |\n| **Data Flow** | Pipelines, lineage, PII, consumers | Sources, transforms, stores, boundaries |\n| **Lifecycle** | States, retries, waits, terminal outcomes | States, events, retry and cancellation paths |\n\nArchitecture's optional `deployment-ownership` profile fails closed when authored owners, region placement, private database scope, or named crossings are missing; it is never implicit and does not inspect live infrastructure. See the [checked deployment proof](https://tt-a1i.github.io/archify/gallery.html#proof-deployment-ownership).\n\nFor design or PR review, Architecture Delta compares validated Before / Delta / After snapshots with a machine receipt. Select an authored change or play one finite, viewer-only Review; it infers no impact, risk, or merge safety.\n\n`node archify/bin/archify.mjs compare architecture base.json head.json architecture-delta.html ",
+      "rank": 1,
+      "weekly_stars": 21896
+    },
+    {
+      "full_name": "THU-MAIC/OpenMAIC",
+      "html_url": "https://github.com/THU-MAIC/OpenMAIC",
+      "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 31596,
+      "forks": 5197,
+      "open_issues": 217,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-03-11T10:13:16Z",
+      "updated_at": "2026-09-05T05:42:28Z",
+      "pushed_at": "2026-09-04T19:17:32Z",
+      "archived": false,
+      "readme": "<!-- <p align=\"center\">\n  <img src=\"assets/logo-horizontal.png\" alt=\"OpenMAIC\" width=\"420\"/>\n</p> -->\n\n<p align=\"center\">\n  <img src=\"assets/banner.png\" alt=\"OpenMAIC Banner\" width=\"680\"/>\n</p>\n\n<p align=\"center\">\n  Get an immersive, multi-agent learning experience in just one click\n</p>\n\n<p align=\"center\">\n  <a href=\"https://lcn6dqn3m0yr.feishu.cn/wiki/CkQSwHFdzibQFvkGzwPcmUOfnXg\"><img src=\"https://img.shields.io/badge/%F0%9F%93%98%20User%20Guide-v1.0.0%20%C2%B7%20English-4F8EF7?style=for-the-badge\" alt=\"v1.0.0 User Guide (English)\"/></a>\n  &nbsp;&nbsp;\n  <a href=\"https://my.feishu.cn/wiki/UIfKw9Knti0LcKkTxDNcqlUrnzh\"><img src=\"https://img.shields.io/badge/%F0%9F%93%99%20%E4%BD%93%E9%AA%8C%E6%8C%87%E5%8D%97-v1.0.0%20%C2%B7%20%E4%B8%AD%E6%96%87-FF6B35?style=for-the-badge\" alt=\"v1.0.0 体验指南（中文）\"/></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://jcst.ict.ac.cn/en/article/doi/10.1007/s11390-025-6000-0\"><img src=\"https://img.shields.io/badge/Paper-JCST'26-blue?style=flat-square\" alt=\"Paper\"/></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-MIT-green.svg?style=flat-square\" alt=\"License: MIT\"/></a>\n  <a href=\"https://open.maic.chat/\"><img src=\"https://img.shields.io/badge/Demo-Live-brightgreen?style=flat-square\" alt=\"Live Demo\"/></a>\n  <a href=\"https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTHU-MAIC%2FOpenMAIC&envDescription=Configure%20at%20least%20one%20LLM%20provider%20API%20key%20(e.g.%20OPENAI_API_KEY%2C%20ANTHROPIC_API_KEY).%20All%20providers%20are%20optional.&envLink=https%3A%2F%2Fgithub.com%2FTHU-MAIC%2FOpenMAIC%2Fblob%2Fmain%2F.env.example&project-name=openmaic&framework=nextjs\"><img src=\"https://vercel.com/button\" alt=\"Deploy with Vercel\" height=\"20\"/></a>\n  <a href=\"#-agent-workbench-integration\"><img src=\"https://img.shields.io/badge/OpenClaw-Integration-F4511E?style=flat-square\" alt=\"OpenClaw Integration\"/></a>\n  <a href=\"#lemonade-local-ai\"><img src=\"https://img.shields.io/badge/Lemonade-Local_AI-FFD43B?style=flat-square\" alt=\"Lemonade Local AI\"/></a>\n  <a href=\"https://github.com/THU-MAIC/OpenMAIC/stargazers\"><img src=\"https://img.shields.io/github/stars/THU-MAIC/OpenMAIC?style=flat-square\" alt=\"Stars\"/></a>\n  <br/>\n  <a href=\"https://discord.gg/p8Pf2r3SaG\"><img src=\"https://img.shields.io/badge/Discord-Join_Community-5865F2?style=for-the-badge&logo=discord&logoColor=white\" alt=\"Discord\"/></a>\n  &nbsp;\n  <a href=\"community/feishu.md\"><img src=\"https://img.shields.io/badge/Feishu-Community-00D6B9?style=for-the-badge&logo=bytedance&logoColor=white\" alt=\"Feishu Community\"/></a>\n  <br/>\n  <img src=\"https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js\" alt=\"Next.js\"/>\n  <img src=\"https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white\" alt=\"React\"/>\n  <img src=\"https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white\" alt=\"TypeScript\"/>\n  <img src=\"https://img.shields.io/badge/LangGraph-1.1-purple?style=flat-square\" alt=\"LangGraph\"/>\n  <img src=\"https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white\" alt=\"Tailwind CSS\"/>\n</p>\n\n<p align=\"center\">\n  <a href=\"./README.md\">English</a> | <a href=\"./README-zh.md\">Simplified Chinese</a>\n  <br/>\n  <a href=\"https://open.maic.chat/\">Live Demo</a> · <a href=\"#-quick-start\">Quick Start</a> · <a href=\"#lemonade-local-ai\">Lemonade</a> · <a href=\"#funasr-local-asr\">FunASR</a> · <a href=\"#-features\">Features</a> · <a href=\"#-use-cases\">Use Cases</a> · <a href=\"#-agent-workbench-integration\">OpenClaw</a>\n</p>\n\n## 🎉 OpenMAIC v1.0.0 — Build courses with an agent\n\n**One prompt in, a whole course out — and now you can steer.** Released August 27, 2026, OpenMAIC v1.0.0 adds a **Pro workbench** alongside the classic one-click generator: chat with an agent that plans your curriculum, builds and revises every page, and works straight from your materials.\n\n- 🤖 **Agent workbench** — a chat-first workspace that plans, builds, and revises whole courses\n- 💾 **Durable sessions** — server-backed runs survive restarts; cancel, resume, and steer anytime\n- 📎 **Session materials** — upload documents, audio, and video, or pull from web search; the agent builds from them\n- 🧰 **Course tools + 20 built-in skills** — slides, quizzes, interactives, PBL, images, video, voices, `.pptx` import\n- 🔌 **Neutral by design** — bring your own models, media, search providers, and storage backend\n\nTake the full tour in [Features](#-features), then set it up with [Agent workbench and runtime](#optional-agent-workbench-and-runtime).\n\n\n## 🗞️ News\n\n- **2026-08-27** — **OpenMAIC v1.0.0:** an agent workbench, durable course-building sessions, reusable skills, session materials, provider-neutral server capabilities, and a pluggable persistence stack.\n- **2026-08-14** — [v0.3.2 released!](https://github.com/THU-MAIC/OpenMAIC/releases/tag/v0.3.2) Video export hardening (deterministic Quiz/PBL covers, fidelity polish, interactive HTML capture, CPU resource profiles); server-backed persistence completed (full document cutover, one-command Postgres stack, incremental saves) plus the asset registry; the `@openmaic/generation` package; four new locales; Amazon Bedrock, Atlas Cloud, and Claude search providers; FunASR ASR. See [changelog](CHANGELOG.md).\n- **2026-07-21** — [v0.3.1 released!](https://github.com/THU-MAIC/OpenMAIC/releases/tag/v0.3.1) One-click MP4 video export; server-backed runtime storage with a Postgres reference server; direct slide manipulation in the editor (drag, resize, rotate, multi-select); smarter \"Edit with AI\" (validated JSON Patch edits, multi-session history); expanded Document Parsing (multi-format upload, audio/video extraction, AliDocMind, MinerU); new providers (Azure OpenAI, SearXNG, ComfyUI) and the GPT-5.6 model family; action-level playback navigation; SSRF hardening. See [changelog](CHANGELOG.md).\n- **2026-06-28** — [v0.3.0 released!](https://github.com/THU-MAIC/OpenMAIC/releases/tag/v0.3.0) Project-Based Learning (PBL) v2 with classroom UI; \"Edit with AI\" Pro-mode editor agent; the `@openmaic/*` SDK family (DSL/renderer/importer) published to npm; optional per-stage model routing; new models (GLM-5.2, Kimi K2.7 Code, Qwen3.7 Plus/Max); a vocational-learning task engine; Korean (ko-KR) locale; and relicensing from AGPL-3.0 to MIT. See [changelog](CHANGELOG.md).\n- **2026-06-02** — [v0.2.2 released!](https://github.com/THU-MAIC/OpenMAIC/releases/tag/v0.2.2) MAIC Editor (v0) Pro Mode for editing generated slides; editable outline before generation; offline-ready classroom export; new search providers (Brave/Baidu/Bocha/MiniMax) and Azure STT; new models (Claude Opus 4.8, MiniMax M3, Gemini 3.5 Flash); Traditional Chinese (zh-TW) and Brazilian Portuguese (pt-BR) locales. See [changelog](CHANGELOG.md).\n- **2026-04-26** — [v0.2.1 released!](https://github.com/THU-MAIC/OpenMAIC/releases/tag/v0.2.1) Integrated [VoxCPM2](https://github.com/OpenBMB/VoxCPM) TTS with voice cloning and on-the-fly auto-generated voices; added per-model thinking config; added end-of-course completion page with persistent quiz state; added latest released models including DeepSeek-V4 / GPT-5.5 / GPT-Image-2 / Xiaomi MiMo / Hy3. See [changelog](CHANGELOG.md).\n- **2026-04-20** — **v0.2.0 released!** Deep Interactive Mode — 3D visualization, simulations, games, mind maps, and online programming for hands-on learning. See [features](#-features) for details.\n- **2026-04-14** — [v0.1.1 released!](https://github.com/THU-MAIC/OpenMAIC/releases/tag/v0.1.1) Automatic language inference, ACCESS_CODE authentication, classroom ZIP export/import, custom TTS/ASR providers, Ollama support, and more. See [changelog](CHANGELOG.md).\n- **2026-03-26** — [v0.1.0 released!](https://github.com/THU-MAIC/OpenMAIC/releases/tag/v0.1.0) Discussion TTS, immersive mode, keyboard shortcuts, whiteboard enhancements, new providers, and more. See [changelog](CHANGELOG.md).\n\n## 📖 Overview\n\n**OpenMAIC** (Open Multi-Agent Interactive Classroom) is an open-source AI platform that turns any topic or document into a rich, interactive classroom experience. Powered by multi-agent orchestration, it generates slides, quizzes, interactive simulations, and project-based learning activities — all delivered by AI teachers and AI classmates who can speak, draw on a whiteboard, and engage in real-time discussions with you. The built-in OpenMAIC Skill works with [OpenClaw](https://github.com/openclaw/openclaw) as well as agent workbenches such as Codex, DeepSeek, and WorkBuddy, so you can generate classrooms from messaging apps like Feishu, Slack, or Telegram, or right inside your IDE.\n\nhttps://github.com/user-attachments/assets/8f3f1e5f-1468-4e93-8054-afeeea683a61\n\n### Highlights\n\n- **One-click lesson generation** — Describe a topic or attach your materials; the AI builds a full lesson in minutes\n- **Multi-agent classroom** — AI teachers and peers lecture, discuss, and interact with you in real time\n- **Rich scene types** — Slides, quizzes, interactive HTML simulations, and project-based learning (PBL)\n- **Whiteboard & TTS** — Agents draw diagrams, write formulas, and explain out loud\n- **Export anywhere** — Download editable `.pptx` slides or interactive `.html` pages\n- **[Agent workbench integration](#-agent-workbench-integration)** — The OpenMAIC Skill supports OpenClaw, Codex, DeepSeek, WorkBuddy, and more — generate classrooms from Feishu, Slack, Telegram, 20+ messaging apps, or your IDE\n\n---\n\n> [!TIP]\n> ### <img src=\"https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/openclaw.png\" height=\"28\" align=\"top\"/> OpenMAIC Skill — Use OpenMAIC from your agent workbench, zero setup\n>\n> OpenMAIC ships a standard [SKILL.md](skills/openmaic/SKILL.md)-format skill package. Beyond [OpenClaw](https://github.com/openclaw/openclaw), it also works with agent workbenches such as Codex, DeepSeek, and WorkBuddy. With OpenClaw you can generate classrooms directly from Feishu, Slack, Di",
+      "rank": 2,
+      "weekly_stars": 10274
+    },
+    {
+      "full_name": "bilawalsidhu/gods-eye-view",
+      "html_url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+      "homepage": "https://maptheworld.ai/",
+      "language": "JavaScript",
+      "stars": 17621,
+      "forks": 3555,
+      "open_issues": 125,
+      "topics": [
+        "3d-globe",
+        "cesium",
+        "flight-tracking",
+        "geospatial",
+        "geospatial-intelligence",
+        "gis",
+        "osint",
+        "photogrammetry",
+        "satellite-tracking",
+        "spatial-intelligence",
+        "webgl",
+        "worldview"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2026-06-22T23:37:22Z",
+      "updated_at": "2026-09-05T05:43:40Z",
+      "pushed_at": "2026-09-05T02:22:06Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n# 🌐 God's Eye View\n\n### A spy-satellite simulator in your browser — then you realize the sources are public and the data is real.\n\nPhotorealistic 3D globe. Live aircraft, ships, satellites, earthquakes, traffic, and public cameras. Hands-free voice control powered by a realtime AI agent.\n\n*No place left behind.*\n\n![Orbital HUD, a tracked live globe, FLIR terrain — then OPEN SOURCED](docs/media/hero-open-source-reveal.gif)\n\n<a href=\"https://www.youtube.com/@bilawalsidhu\">\n  <img src=\"docs/media/youtube-popular-videos.png\" alt=\"The God's Eye View video series on YouTube\" width=\"100%\">\n</a>\n\n▶️ **From the project behind the viral God's Eye View series** *(formerly WorldView)* — [5M+ on YouTube](https://youtube.com/playlist?list=PL6qSg2I-7_koPbDnSMo0QeeHX_RknA2uv&si=nBGYMoHWQw41v93Q) · [25M+ across socials](https://www.google.com/search?q=god%27s+eye+view)\n\n[![Reached #1 on GitHub Trending](https://img.shields.io/badge/%231_GitHub_Trending-thank_you!-F0A63C?style=flat-square&logo=github)](https://x.com/bilawalsidhu/status/2093798887815348521)\n\n🏆 **Reached #1 on GitHub Trending, daily and weekly · August 2026**\n\n**[#8 Product of the Day](https://www.producthunt.com/products/god-s-eye-view?launch=god-s-eye-view)** · Hunted by Chris Messina, creator of the hashtag\n\n*“pretty cool”* — [Brendan Eich](https://x.com/BrendanEich/status/2094592096401490266) · Featured on **[Pinokio](https://pinokio.co/posts/01m1m4p9xxm3qw7dnnpj2wr93g)**\n\n⚡ **Start without API keys.** Install with [Pinokio](https://pinokio.co/apps/github-com-bilawalsidhu-gods-eye-view) or run locally from the terminal. Add optional keys inside the app. **[→ Quick Start](#-quick-start)**\n\n</div>\n\n---\n\n<div align=\"center\">\n\n**[Quick Start](#-quick-start) · [First Five Minutes](#-the-first-five-minutes) · [Talk to It](#-talk-to-it) · [What's Live](#-whats-on-the-globe) · [Under the Hood](#-under-the-hood) · [Keys & Costs](#-api-keys)**\n\n</div>\n\n---\n\n## 🌍 Why This Exists\n\nGod's Eye View brings public signals into one explorable globe. Track the world live. Talk to it. Break it. Extend it.\n\nFlight transponders, ship beacons, orbital elements, seismographs, and public cameras already tell us a lot about the world. God's Eye View puts them in the same place, so you can move between a global picture and an individual aircraft, ship, or street. It runs locally in your browser, with source code you can inspect and extend.\n\n> Half the magic is that it looks like a forbidden cockpit. The other half is that every line of code is inspectable.\n\nMost feeds are live or regularly refreshed. Traffic is simulated along real\nroads using aggregate location data. CCTV camera poses and rocket launch\ntrajectories are coarse estimates.\n\nStart with the included data sources, then add your own. Each layer is a separate module.\n\n---\n\n## 🎛️ What This Thing Does\n\n- **🛩️ Cockpit view:** Ride inside a tracked flight — the camera holds the terrain under you all the way down.\n- **📡 Contacts:** A 250 km roster of everything near your target — step through live aircraft and drop into any cockpit.\n- **🎯 Click-to-track anything:** Camera locks on, draws a fading trail, surfaces full metadata — and a tracked fire or vessel hands you off to the nearest live camera in one click.\n- **🖊️ Voice whiteboard:** Speak annotations onto the world — real boundary polygons, marks, and routes.\n- **🛫 3D hangar:** Real per-class aircraft models — 787, ATR-72, Citation, Bell 206, MQ-9 — and a tracked contact swaps from glyph to 3D model as you close in.\n- **🎨 Reskin reality:** GLSL sensor looks over the normal globe — CRT, NVG, FLIR/thermal, Noir, Snow.\n- **🟩 Detection overlay:** Screen-space bounding boxes and IDs on everything in view.\n- **🎖️ Military HUD:** Tactical heads-up display with intelligence-style telemetry.\n- **🌐 Global Context:** Stage the full situational picture with one switch — and get your exact view back when you leave.\n- **🎥 Scene director:** Capture cinematic camera tours for clips and demos.\n- **🔗 Share Links:** Camera, style, layers, and even one tracked target serialize into a URL — a live target is a handoff, not a bookmark.\n- **🏠 Reset Globe:** One control — or one sentence — back to the full Earth.\n\n---\n\n<div align=\"center\">\n\n[![YouTube video about the God's Eye View open source release](https://img.youtube.com/vi/GRJaKcXZS94/maxresdefault.jpg)](https://www.youtube.com/watch?v=GRJaKcXZS94)\n\n▶️ **[The full walkthrough of everything below, on YouTube](https://www.youtube.com/watch?v=GRJaKcXZS94)**\n\n</div>\n\n## ⚡ Quick Start\n\n**Start without an account or API keys.** Both paths open the same app with\nEsri satellite imagery and keyless terrain. OSM is the fallback if Esri is\nunreachable. Flights, military traffic, satellites, earthquakes, public\ncameras, radio, and launches are available without keys.\n\nFor photorealistic 3D, add a **Cesium ion token** for eligible personal,\nnon-commercial use, or a **Google Maps key** for the direct, metered route and\nin-app place search. Provider terms and quotas apply. Add keys through the\napp's **POWER UP** panel; [Keys & Costs](#-api-keys) explains the options.\n\n### Path 1 — One click, no terminal\n\n1. Install or update [Pinokio](https://desktop.pinokio.co/) to **8.2 or later**.\n2. Open [God's Eye View in Pinokio](https://pinokio.co/apps/github-com-bilawalsidhu-gods-eye-view).\n3. Click **Install**, then **Start**.\n\nAvailable on **Windows, macOS, and Linux**. The Pinokio maintainer reports\ncross-platform testing of the fixed installer. The launcher installs the\nlocked dependencies, finds a free local port, and opens the app.\n\n**Tried before and installation failed?** Update Pinokio and try again.\nVersion 8.2 fixes the launcher installation issue;\n[details from the Pinokio maintainer](https://pinokio.co/posts/01m1m4p9xxm3qw7dnnpj2wr93g).\n\n### Path 2 — Terminal / coding agent\n\nUse **Node.js 24.x (24.14.0 or later) or 26.x**. The setup doctor warns about\nNode 25, which is end-of-life.\n\n```bash\ngit clone https://github.com/bilawalsidhu/gods-eye-view.git\ncd gods-eye-view\nnpm ci\nnpm run doctor\nnpm run dev\n```\n\nOpen **`http://localhost:4173`**. Choose **Live Contacts**, **Space Missions**,\n**Environmental**, or **Explore Manually** from the first-run panel.\n\n<details>\n<summary>Startup performance</summary>\n\nA point-in-time M5/Chrome capture measured a median 1.86-second cold start.\nThis is a comparison baseline, not a guarantee for your machine or connection.\nSee [docs/PERFORMANCE.md](docs/PERFORMANCE.md).\n\n</details>\n\n**macOS shortcut:** `./scripts/dev-fresh.sh` clears the Vite cache and pulls any\nconfigured keys straight from the Keychain. It starts keyless too.\n\n### Then power it up — in the app, not in a file\n\nKeys are upgrades, not prerequisites. When you want one, click the **POWER UP**\nchip in the bottom-right corner: Provider Settings lists every supported key,\nwhat it switches on, and where to get it. Paste, hit **SAVE KEYS**, and the app\nrestarts itself with the new capability on. Once everything is configured the\nchip reads **POWERED UP** — and if a compact layout hides it, `?setup=1`\nreopens the same panel.\n\n- **Where keys land:** Pinokio → the app's ignored `pinokio/ENVIRONMENT`; a\n  terminal clone → the repo-root `.env`. Either file is made owner-only\n  *before* a secret is written into it. These are local plaintext files,\n  excluded from Git; the app uses your keys to contact the providers.\n- **Keys you already have stay yours:** values from your shell or the macOS\n  Keychain show as *configured externally* and are read-only to the panel.\n- **What to get first:** the free [Cesium ion](https://cesium.com/ion) token\n  (eligible personal, non-commercial use; current terms and quotas apply) for\n  photorealistic 3D and world terrain; a Google Maps key only for the\n  billing-enabled, metered route + place search; OpenAI when you want to talk\n  to the world. Full map, costs included, in [Keys & Costs](#-api-keys).\n\n<details>\n<summary>Older Pinokio versions and credential storage</summary>\n\nDo not enter credentials in Pinokio 8.0.40's native **Configure** panel: that\nrelease does not save this nested app file correctly, and it logs submitted\nvalues. Use **POWER UP → Provider Settings** inside GEV instead. The Pinokio\n8.2 announcement fixes installation; it does not establish that this separate\nConfigure issue is resolved. On macOS, the Keychain via\n`./scripts/dev-fresh.sh` remains the stronger storage option.\n\n</details>\n\nThe server binds to **localhost** on both paths, and Provider Settings answers\nrequests only from your machine. Browser-side keys (Google Maps, Cesium ion)\nmust be restricted at their providers — [SECURITY.md](SECURITY.md) shows how,\nand it carries the LAN-sharing rules alongside [Keys & Costs](#-api-keys).\n\n---\n\n## 🕐 The First Five Minutes\n\nChoose a first-run mission, or try these in order. The GIFs show Google Photorealistic 3D; your starting basemap depends on the keys you've added.\n\n1. **Light up the sky.** Take the **Live Contacts** mission (or turn on **Flights** yourself) — thousands of live aircraft, gliding on real telemetry, detection mesh already reading the scene. Click one: the camera locks on, a trail draws behind it, and its live telemetry card comes up.\n2. **Take the controls.** Hit **COCKPIT** on your tracked plane and ride it down, switching sensors mid-flight: NVG into Ironbow FLIR.\n\n![Riding with a live aircraft in cockpit view while switching sensor modes](docs/media/06-cockpit-ar.gif)\n\n3. **Drop into a busy airport.** Search one and descend to the taxiways with **3D** aircraft on — grounded contacts, taxi trails, the whole apron working in real time.\n\n![Moving from a full airport overhead down to close taxiway inspection with 3D flight models](docs/media/start-here/airport-ground-traffic-google-3d.gif)\n\n4. **Look through a public camera.** Turn on **CCTV** over Austin, London, or California. The feeds aren't webcam embeds — they project *into* the 3D city. Cycle coverage to **VIEWSHED** and eve",
+      "rank": 3,
+      "weekly_stars": 7314
+    },
+    {
+      "full_name": "Gitlawb/openclaude",
+      "html_url": "https://github.com/Gitlawb/openclaude",
+      "description": "runs anywhere. uses anything",
+      "homepage": "https://openclaude.gitlawb.com",
+      "language": "TypeScript",
+      "stars": 32605,
+      "forks": 9051,
+      "open_issues": 83,
+      "topics": [
+        "ai",
+        "ai-agent",
+        "ai-tools",
+        "cli",
+        "coding"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2026-04-01T03:15:49Z",
+      "updated_at": "2026-09-05T05:38:31Z",
+      "pushed_at": "2026-09-03T23:35:39Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n  <img src=\"docs/assets/openclaude-wordmark.png\" alt=\"OpenClaude — Open terminal for any LLM\" width=\"830\">\n\n  <p>\n    <a href=\"https://trendshift.io/repositories/25807?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-25807\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/25807/daily?language=TypeScript\" alt=\"Gitlawb%2Fopenclaude | Trendshift\" width=\"250\" height=\"55\"/></a>\n    <a href=\"https://trendshift.io/repositories/25807?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-25807\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/trendshift/repositories/25807/monthly?language=TypeScript\" alt=\"Gitlawb%2Fopenclaude | Trendshift\" width=\"250\" height=\"55\"/></a>\n    <a href=\"https://trendshift.io/repositories/25807?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-25807\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/25807\" alt=\"Gitlawb%2Fopenclaude | Trendshift\" width=\"250\" height=\"55\"/></a>\n  </p>\n</div>\n\nOpenClaude is an open-source coding-agent CLI for cloud and local model providers.\n\nUse OpenAI-compatible APIs, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, and other supported backends while keeping one terminal-first workflow: prompts, tools, agents, MCP, slash commands, and streaming output.\n\n[![PR Checks](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml/badge.svg?branch=main)](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml)\n[![Release](https://img.shields.io/github/v/tag/Gitlawb/openclaude?label=release&color=0ea5e9)](https://github.com/Gitlawb/openclaude/tags)\n[![npm downloads](https://img.shields.io/npm/dm/@gitlawb/openclaude)](https://www.npmjs.com/package/@gitlawb/openclaude)\n[![Discussions](https://img.shields.io/badge/discussions-open-7c3aed)](https://github.com/Gitlawb/openclaude/discussions)\n[![Discord](https://img.shields.io/badge/Discord-join-5865F2?logo=discord&logoColor=white)](https://discord.gg/k68zFR6AcB)\n[![X](https://img.shields.io/badge/X-@gitlawb-000000?logo=x&logoColor=white)](https://x.com/gitlawb)\n[![Security Policy](https://img.shields.io/badge/security-policy-0f766e)](SECURITY.md)\n[![License](https://img.shields.io/badge/license-MIT-2563eb)](LICENSE)\n\nOpenClaude is also mirrored to GitLawb:\n[gitlawb.com/node/repos/z6MkqDnb/openclaude](https://gitlawb.com/node/repos/z6MkqDnb/openclaude)\n\n[Quick Start](#quick-start) | [Setup Guides](#setup-guides) | [Providers](#supported-providers) | [Development](#development) | [VS Code Extension](#vs-code-extension) | [Partners](#partners) | [Community](#community)\n\n## Partners\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://gitlawb.com\">\n        <img src=\"https://gitlawb.com/logo.png\" alt=\"GitLawb logo\" width=\"72\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://bankr.bot\">\n        <img src=\"https://bankr.bot/favicon.svg\" alt=\"Bankr.bot logo\" width=\"72\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://atomic.chat/\">\n        <img src=\"docs/assets/atomic-chat-logo.png\" alt=\"Atomic Chat logo\" width=\"72\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://mimo.mi.com\">\n        <img src=\"https://mimo.xiaomi.com/mimo-v2-pro/assets/logo.svg\" alt=\"Xiaomi MiMo logo\" width=\"136\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://www.atlascloud.ai/\">\n        <img src=\"docs/assets/atlas-cloud-banner.png\" alt=\"Atlas Cloud logo\" width=\"136\">\n      </a>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://gitlawb.com\"><strong>GitLawb</strong></a></td>\n    <td align=\"center\"><a href=\"https://bankr.bot\"><strong>Bankr.bot</strong></a></td>\n    <td align=\"center\"><a href=\"https://atomic.chat/\"><strong>Atomic Chat</strong></a></td>\n    <td align=\"center\"><a href=\"https://mimo.mi.com\"><strong>Xiaomi MiMo</strong></a></td>\n    <td align=\"center\"><a href=\"https://www.atlascloud.ai/\"><strong>Atlas Cloud</strong></a></td>\n  </tr>\n  <tr>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://aimlapi.com/\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/aimlapi-logo-dark.svg\">\n          <img src=\"docs/assets/aimlapi-logo.svg\" alt=\"AI/ML API logo\" width=\"136\">\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://novita.ai/\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/novita-logo-dark.svg\">\n          <img src=\"docs/assets/novita-logo.svg\" alt=\"Novita AI logo\" width=\"136\">\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://www.apismart.ai\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/apismart-logo-dark.png\">\n          <img src=\"docs/assets/apismart-logo.png\" alt=\"ApiSmart logo\" width=\"120\">\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://concentrate.ai/\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/concentrate-logo-dark.svg\">\n          <img src=\"docs/assets/concentrate-logo.svg\" alt=\"Concentrate logo\" width=\"64\">\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\" width=\"150\" height=\"80\">\n      <a href=\"https://exa.ai/\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/exa-logo-dark.svg\">\n          <img src=\"docs/assets/exa-logo.svg\" alt=\"Exa logo\" width=\"110\">\n        </picture>\n      </a>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://aimlapi.com/\"><strong>AI/ML API</strong></a></td>\n    <td align=\"center\"><a href=\"https://novita.ai/\"><strong>Novita AI</strong></a></td>\n    <td align=\"center\"><a href=\"https://www.apismart.ai\"><strong>ApiSmart</strong></a></td>\n    <td align=\"center\"><a href=\"https://concentrate.ai/\"><strong>Concentrate</strong></a></td>\n    <td align=\"center\"><a href=\"https://exa.ai/\"><strong>Exa</strong></a></td>\n  </tr>\n</table>\n\n## Why OpenClaude\n\n- One CLI across cloud APIs and local model backends — no per-provider tooling\n- Guided provider setup and saved profiles with `/provider`\n- Coding-agent workflows in one place: bash, file tools, grep, glob, agents, tasks, MCP, and web tools\n- A bundled VS Code extension for launch integration and theme support\n- A pixel-art hero companion who fires an arrow every time you press Enter (really — see [Meet your buddy](#meet-your-buddy))\n\n## Quick Start\n\n### Install\n\nOpenClaude requires Node.js `>=22.0.0` for npm installs and runtime. Bun is\nonly needed for source builds and local development.\n\n```bash\nnpm install -g @gitlawb/openclaude@latest\n```\n\nIf you're on Arch Linux, you can install OpenClaude from the community-maintained [AUR package](https://aur.archlinux.org/packages/openclaude):\n```bash\nparu -S openclaude\n```\n\nIf the install later reports `ripgrep not found`, install ripgrep system-wide and confirm `rg --version` works in the same terminal before starting OpenClaude.\n\n**Verify / troubleshoot installed version:**\n\n```bash\nopenclaude --version\nnpm view @gitlawb/openclaude dist-tags\nnpm install -g @gitlawb/openclaude@latest\n```\n\n### Start\n\n```bash\nopenclaude\n```\n\nInside OpenClaude:\n\n- run `/provider` for guided provider setup and saved profiles\n- run `/onboard-github` for GitHub Models onboarding\n\n> **Note:** OpenClaude does not automatically load project `.env` files. We recommend using the `/provider` command for setup, which saves provider profiles and credentials in `.openclaude-profile.json`. If you prefer environment variables, export them explicitly or run `openclaude --provider-env-file .env` for provider/setup variables. Export runtime/debug knobs from your shell or launcher.\n\n### Resume or fork a conversation\n\nResume an existing conversation by session ID, or continue the most recent\nconversation in the current directory:\n\n```bash\nopenclaude --resume <session-id>\nopenclaude --continue\n```\n\nAdd `--fork-session` to branch the conversation history into a new session ID\ninstead of reusing the original transcript:\n\n```bash\nopenclaude --resume <session-id> --fork-session\nopenclaude --continue --fork-session\n```\n\nForking is conversation branching only. It does not create filesystem isolation,\ncopy your working tree, or create a git worktree branch.\n\n### Background sessions\n\nRun long non-interactive prompts detached from the current terminal:\n\n```bash\nopenclaude --bg \"fix failing tests\"\nopenclaude --bg --name auth-refactor \"refactor auth middleware\"\nopenclaude ps\nopenclaude logs auth-refactor\nopenclaude logs auth-refactor -f\nopenclaude kill auth-refactor\n```\n\nBackground sessions are local child processes. OpenClaude does not start a daemon\nor network service, and permission/provider/model/settings flags are passed to\nthe child process the same way they are for a foreground `--print` run. Session\nmetadata and logs are stored under the resolved OpenClaude config directory,\nusually `~/.openclaude/bg-sessions/`; `OPENCLAUDE_CONFIG_DIR` can point\nOpenClaude somewhere else. `CLAUDE_CONFIG_DIR` is ignored for OpenClaude\nbackground-session storage. Session names can be reused after older sessions\nreach a terminal state; use the session ID to inspect older logs with the same\nname. A naturally finished session is recorded as `exited` when its process\nreturns zero and `failed` when it returns nonzero or handles a termination\nsignal. `stale` remains the conservative result when the process disappears\nwithout an observed outcome; an explicit successful `openclaude kill` is\nrecorded as `killed`, and `killed` ta",
+      "rank": 4,
+      "weekly_stars": 1679
+    },
+    {
+      "full_name": "google-research/timesfm",
+      "html_url": "https://github.com/google-research/timesfm",
+      "description": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.",
+      "homepage": "https://research.google/blog/a-decoder-only-foundation-model-for-time-series-forecasting/",
+      "language": "Python",
+      "stars": 31117,
+      "forks": 2974,
+      "open_issues": 236,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2024-04-29T21:26:26Z",
+      "updated_at": "2026-09-05T05:39:57Z",
+      "pushed_at": "2026-09-04T23:47:31Z",
+      "archived": false,
+      "readme": "# TimesFM\n\nTimesFM (Time Series Foundation Model) is a pretrained time-series foundation\nmodel developed by Google Research for time-series forecasting.\n\n*   Paper:\n    [A decoder-only foundation model for time-series forecasting](https://arxiv.org/abs/2310.10688),\n    ICML 2024.\n*   <span style=\"color:red\">(NEW!)</span> TimesFM 3.0 Checkpoint:\n    [`google/timesfm-3.0-pytorch`](https://huggingface.co/google/timesfm-3.0-pytorch).\n*   Checkpoints (up to 2.5):\n    [TimesFM Hugging Face Collection](https://huggingface.co/collections/google/timesfm-release-66e4be5fdb56e960c1e482a6).\n*   [Google Research blog](https://research.google/blog/a-decoder-only-foundation-model-for-time-series-forecasting/)\n    (New blog post for TimesFM 3.0 coming soon!).\n*   TimesFM in Google 1P Products:\n    *   [BigQuery ML](https://cloud.google.com/bigquery/docs/timesfm-model):\n        Enterprise level SQL queries for scalability and reliability.\n    *   [Google Sheets](https://workspaceupdates.googleblog.com/2026/02/forecast-data-in-connected-sheets-BigQueryML-TimesFM.html):\n        For your daily spreadsheet.\n    *   [Vertex Model Garden](https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/timesfm):\n        Dockerized endpoint for agentic calling.\n\nThis open version is not an officially supported Google product.\n\n**Latest Model Version:** TimesFM 3.0\n\n**Archived Model Versions:**\n\n-   2.5: relevant code under `src/timesfm`.\n-   1.0 and 2.0: relevant code archived in the subdirectory `v1`. You can `pip\n    install timesfm==1.3.0` to install an older version of this package to load\n    them.\n\n--------------------------------------------------------------------------------\n\n## Update — August 2026\n\n**TimesFM 3.0 is out!**\n\nTimesFM 3.0 introduces native **multivariate time-series forecasting**, flexible\n**covariate support** (both past-only and past-and-future covariates), superior\nzero-shot generalist capabilities, and top performance across all three major\ntime-series foundation model benchmarks.\n\n### Key Highlights:\n\n-   **Native Multivariate & Univariate Forecasting with Covariates**: Seamlessly\n    forecast multi-channel multivariate series as well as individual univariate\n    series, with native support for past-only and past-and-future dynamic\n    covariates without per-task tuning.\n-   **Top Benchmark Performance**:\n    -   🥇 **fev-bench**: **Rank #1 overall** across 100 diverse real-world\n        forecasting tasks.\n    -   🥇 **TIME Benchmark**: **Rank #1 overall** across 50 domain datasets and\n        98 evaluation tasks.\n    -   🥇 **GIFT-Eval**: **Rank #1 among all foundation models**.\n\n### License notice for pretrained weights\n\n> **Important:** The TimesFM source code in this repository is licensed under\n> Apache-2.0, and model weights up to version 2.5 remain Apache-2.0. However,\n> for the time being, TimesFM 3.0 pretrained weights are distributed under the\n> separate `timesfm-non-commercial-license-v1.0` license and are restricted to\n> non-commercial, non-production use. Commercial or production use of the\n> default pretrained weights is **not permitted**.\n\n--------------------------------------------------------------------------------\n\n## Update - July 2, 2026\n\nUpdated PyPI to `timesfm=2.0.2`. See\n[Install](https://github.com/google-research/timesfm#from-pypi).\n\n## Update - Apr. 9, 2026\n\nAdded fine-tuning example using HuggingFace Transformers + PEFT (LoRA) — see\n[`timesfm-forecasting/examples/finetuning/`](timesfm-forecasting/examples/finetuning/).\nAlso added unit tests (`tests/`) and incorporated several community fixes.\n\nShoutout to [@kashif](https://github.com/kashif) and\n[@darkpowerxo](https://github.com/darkpowerxo).\n\n## Update - Mar. 19, 2026\n\nHuge shoutout to [@borealBytes](https://github.com/borealBytes) for adding the\nsupport for\n[AGENTS](https://github.com/google-research/timesfm/blob/master/AGENTS.md)!\nTimesFM\n[SKILL.md](https://github.com/google-research/timesfm/tree/master/timesfm-forecasting)\nis out.\n\n## Update - Oct. 29, 2025\n\nAdded back the covariate support through XReg for TimesFM 2.5.\n\n## Update - Sept. 15, 2025\n\nTimesFM 2.5 is out!\n\nComparing to TimesFM 2.0, this new 2.5 model:\n\n-   uses 200M parameters, down from 500M.\n-   supports up to 16k context length, up from 2048.\n-   supports continuous quantile forecast up to 1k horizon via an optional 30M\n    quantile head.\n-   gets rid of the `frequency` indicator.\n-   has a couple of new forecasting flags.\n\nSince the Sept. 2025 launch, the following improvements have been completed for\nTimesFM 2.5:\n\n1.  ✅ Flax version of the model for faster inference.\n2.  ✅ Covariate support via XReg (see Oct. 2025 update).\n3.  ✅ Documentation, examples, and agent skill (see `timesfm-forecasting/`).\n4.  ✅ Fine-tuning example with LoRA via HuggingFace Transformers + PEFT (see\n    `timesfm-forecasting/examples/finetuning/`).\n5.  ✅ Unit tests for core layers, configs, and utilities (see `tests/`).\n\n### Install\n\n#### From `PyPI`\n\n```shell\n# Install TimesFM with PyTorch\npip install timesfm[torch]\n```\n\n#### Local Install\n\n1.  Clone the repository:\n\n    ```shell\n    git clone https://github.com/google-research/timesfm.git\n    cd timesfm\n    ```\n\n2.  Create a virtual environment and install with PyTorch:\n\n    ```shell\n    # Using uv\n    uv venv\n    source .venv/bin/activate\n\n     # Install the package in editable mode with torch\n    uv pip install -e .[torch]\n    ```\n\n--------------------------------------------------------------------------------\n\n### Code Examples: TimesFM 3.0\n\n#### 1. Univariate Forecasting (Variable Lengths)\n\nPass a batch of 1D NumPy arrays of different context lengths to forecast\nunivariate time series:\n\n```python\nimport numpy as np\nfrom timesfm3 import TimesFM3Evaluator, ModelConfig\n\n# Initialize TimesFM 3.0\nconfig = ModelConfig(\n    checkpoint_path=\"google/timesfm-3.0-pytorch\",\n    per_core_batch_size=32,\n    device=\"cuda\"\n)\nforecaster = TimesFM3Evaluator(config)\n\n# Two univariate series of different lengths (100 and 72 steps)\nts1 = np.linspace(0, 1, 100).astype(np.float32)\nts2 = np.sin(np.linspace(0, 24, 72)).astype(np.float32)\n\n# Generate forecast (point predictions + 9 quantiles: 0.1 to 0.9)\noutputs = list(forecaster.predict_batch([ts1, ts2], horizon=12, return_quantiles=True, use_symmetric_averaging=False))\n\nprint(\"Series 1 forecast shape:\", outputs[0].forecast.shape)   # (12,)\nprint(\"Series 1 quantiles shape:\", outputs[0].quantiles.shape) # (12, 9)\n\nprint(\"Series 2 forecast shape:\", outputs[1].forecast.shape)   # (12,)\nprint(\"Series 2 quantiles shape:\", outputs[1].quantiles.shape) # (12, 9)\n```\n\n#### 2. Multivariate Forecasting with Covariates\n\nPass a 2D array of shape `(num_variates, context_length)` along with optional\npast-only and past-and-future covariates:\n\n```python\nimport numpy as np\nfrom timesfm3 import TimesFM3Evaluator, ModelConfig\n\n# Initialize TimesFM 3.0\nconfig = ModelConfig(\n    checkpoint_path=\"google/timesfm-3.0-pytorch\",\n    per_core_batch_size=16,\n    device=\"cuda\"\n)\nforecaster = TimesFM3Evaluator(config)\n\ncontext_len = 128\nhorizon = 24\n\n# 3 target variates across past context: (3, 128)\ntarget = np.random.randn(3, context_len).astype(np.float32)\n\n# 1 past-only covariate channel across past context: (1, 128)\npast_only_cov = np.random.randn(1, context_len).astype(np.float32)\n\n# 2 past-and-future covariate channels across context + horizon: (2, 152)\npast_future_cov = np.random.randn(2, context_len + horizon).astype(np.float32)\n\n# Generate joint forecast across all 3 target variates\noutputs = list(\n    forecaster.predict_batch(\n        contexts=[target],\n        horizon=horizon,\n        past_only_covariates=[past_only_cov],\n        past_future_covariates=[past_future_cov],\n        return_quantiles=True,\n        use_symmetric_averaging=False,\n    )\n)\n\nprint(\"Multivariate forecast shape:\", outputs[0].forecast.shape)   # (3, 24)\nprint(\"Multivariate quantiles shape:\", outputs[0].quantiles.shape) # (3, 24, 9)\n```\n",
+      "rank": 5,
+      "weekly_stars": 2653
+    },
+    {
+      "full_name": "jingyaogong/minimind",
+      "html_url": "https://github.com/jingyaogong/minimind",
+      "description": "🧠 Train a 64M-parameter LLM from scratch in just 2h!",
+      "homepage": "https://jingyaogong.github.io/minimind",
+      "language": "Python",
+      "stars": 58584,
+      "forks": 7615,
+      "open_issues": 60,
+      "topics": [
+        "artificial-intelligence",
+        "large-language-model"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2024-07-27T04:34:12Z",
+      "updated_at": "2026-09-05T05:42:46Z",
+      "pushed_at": "2026-09-04T14:16:47Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n![logo](./images/logo.png)\n\n</div>\n\n<div align=\"center\">\n\n![visitors](https://visitor-badge.laobi.icu/badge?page_id=jingyaogong/minimind)\n[![GitHub Repo stars](https://img.shields.io/github/stars/jingyaogong/minimind?style=social)](https://github.com/jingyaogong/minimind/stargazers)\n[![GitHub Code License](https://img.shields.io/github/license/jingyaogong/minimind)](LICENSE)\n[![GitHub last commit](https://img.shields.io/github/last-commit/jingyaogong/minimind)](https://github.com/jingyaogong/minimind/commits/master)\n[![GitHub pull request](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/jingyaogong/minimind/pulls)\n[![Collection](https://img.shields.io/badge/🤗-MiniMind%20%20Collection-blue)](https://huggingface.co/collections/jingyaogong/minimind-66caf8d999f5c7fa64f399e5)\n\n</div>\n\n<div align=\"center\">\n\n![GitHub Trend](https://trendshift.io/api/badge/repositories/12586)\n\n</div>\n\n<div align=\"center\">\n  <h3>\"大道至简\"</h3>\n</div>\n\n<div align=\"center\">\n\n中文 | [English](./README_en.md)\n\n</div>\n\n* 此开源项目旨在完全从 0 开始，仅用 3 块钱成本与 2 小时训练时间，即可训练出规模约为 64M 的超小语言模型 MiniMind。\n* MiniMind 系列极其轻量，主线最小版本体积约为 GPT-3 的 $\\frac{1}{2700}$，力求让普通个人 GPU 也能快速完成训练与复现。\n* 项目同时开源了大模型的极简结构与完整训练链路，覆盖 MoE、数据清洗、预训练（Pretrain）、监督微调（SFT）、LoRA、RLHF（DPO）、RLAIF（PPO / GRPO / CISPO）、Tool Use、Agentic RL、自适应思考与模型蒸馏等全过程代码。\n* MiniMind 同时拓展了视觉模态模型 [MiniMind-V](https://github.com/jingyaogong/minimind-v)、多模态 Omni 模型 [MiniMind-O](https://github.com/jingyaogong/minimind-o)、扩散语言模型（MiniMind-dLM）、线性模型（MiniMind-Linear），详见 [Discussion](https://github.com/jingyaogong/minimind/discussions)。\n* 项目所有核心算法代码均从 0 使用 PyTorch 原生实现，不依赖第三方库提供的高层抽象接口。\n* 这不仅是一个大语言模型全阶段开源复现项目，也是一套面向 LLM 入门与实践的教程。\n* 希望此项目能为更多人提供一个可复现、可理解、可扩展的起点，一起感受创造的乐趣，并推动更广泛 AI 社区的进步。\n\n> 注：本项目基于 Apache 2.0 协议开源，完全免费。“2 小时” 指 SFT 阶段在单张 NVIDIA 3090 上跑完 `1 epoch` 的实测耗时，“3 块钱” 指对应时段的 GPU 租用成本。\n\n---\n\n<div align=\"center\">\n\n![minimind-3](./images/minimind-3.gif)\n\n[🔗 在线体验](https://www.modelscope.cn/studios/gongjy/MiniMind) | [🔗 视频介绍](https://www.bilibili.com/video/BV12dHPeqE72)\n\n\n<div align=\"center\">\n  <table>\n    <tr>\n      <td align=\"center\">\n        <a href=\"https://huggingface.co/collections/jingyaogong/minimind\" style=\"text-decoration: none;\">\n          <img src=\"./images/with_huggingface.png\" alt=\"Hugging Face Logo\" style=\"vertical-align: middle; width: auto; max-width: 100%;\" />\n        </a>\n      </td>\n      <td align=\"center\">\n        <a href=\"https://www.modelscope.cn/profile/gongjy\" style=\"text-decoration: none;\">\n          <img src=\"./images/with_modelscope.png\" alt=\"ModelScope Logo\" style=\"vertical-align: middle; width: auto; max-width: 100%;\" />\n        </a>\n      </td>\n    </tr>\n  </table>\n</div>\n\n\n</div>\n\n---\n\n# 📌 项目介绍\n\n大语言模型（Large Language Model, LLM）的出现，引发了全球范围内对 AI 的空前关注。无论是 ChatGPT、DeepSeek 还是 Qwen，都以惊艳的效果让人真切感受到这场技术浪潮的冲击力。然而，动辄数百亿参数的模型规模，使得它们对个人设备而言不仅难以训练，甚至连部署都显得遥不可及。打开大模型的“黑盒子”，真正去理解其内部运作机制，本应是一件令人心潮澎湃的事。遗憾的是，绝大多数探索最终都止步于使用 LoRA 等技术对现有大模型做少量微调，学习一些新指令或特定任务。这更像是在教牛顿如何使用 21 世纪的智能手机——虽然有趣，却偏离了理解物理本质的初衷。\n\n与此同时，第三方的大模型框架与工具库，如 `transformers` / `trl` / `peft` 等，往往只暴露出高度抽象的接口。只需短短十几行代码，就可以完成“加载模型 + 加载数据集 + 推理 + 强化学习”的全流程训练。这种高效封装固然便利，却也在一定程度上把开发者与底层实现隔离开来，削弱了深入理解 LLM 核心代码的机会。我认为 “用乐高自己拼出一架飞机，远比坐在头等舱里飞行更让人兴奋”，然而更现实的问题是，互联网上充斥着大量付费课程和营销内容，用漏洞百出、一知半解的讲解包装所谓的 AI 教程。正因如此，本项目的初衷就是尽可能降低 LLM 的学习门槛，让每个人都能从理解每一行代码开始，从 0 开始亲手训练一个极小的语言模型。是的，从**零开始训练**，而不是仅仅停留在**推理**层面。最低只需不到 3 块钱的服务器成本，就能亲身体验从 0 到 1 构建一个语言模型的全过程。\n\n😊 一起感受创造的乐趣吧！\n\n---\n\n#### 🎉 本项目包含以下内容\n\n- 提供完整的 MiniMind-LLM 结构代码（Dense + MoE），当前主线结构对齐 `Qwen3 / Qwen3-MoE` 生态。\n- 提供 Tokenizer 与分词器训练代码，支持 `<tool_call>`、`<tool_response>`、`<think>` 等模板标记。\n- 覆盖 Pretrain、SFT、LoRA、RLHF-DPO、RLAIF（PPO / GRPO / CISPO）、Tool Use、Agentic RL、自适应思考与模型蒸馏等完整训练流程。\n- 提供全阶段开源数据，覆盖收集、蒸馏、清洗与去重后的高质量数据集。\n- 关键训练算法与核心模块均从 0 实现，不依赖第三方框架封装。\n- 兼容 `transformers`、`trl`、`peft` 等主流框架，以及 `llama.cpp`、`vllm`、`ollama` 等常用推理引擎与 `Llama-Factory` 等训练框架。\n- 支持单机单卡与单机多卡（DDP、DeepSpeed）训练，支持 wandb / swanlab 可视化与动态启停训练。\n- 支持在 C-Eval、C-MMLU、OpenBookQA 等第三方测评集上进行评测，并支持通过 YaRN 实现 RoPE 长文本外推。\n- 提供兼容 OpenAI API 协议的极简服务端，便于接入 FastGPT、Open-WebUI 等第三方 Chat UI，并支持 `reasoning_content`、`tool_calls`、`open_thinking`。\n- 提供基于 Streamlit 的极简聊天 WebUI，支持思考展示、工具选择与多轮 Tool Call。\n- 包含实验性拓展：离散扩散语言模型（[dLM](https://github.com/jingyaogong/minimind/discussions/618)）与线性注意力模型（[Linear Attention](https://github.com/jingyaogong/minimind/discussions/704)），均可基于主线 AR 模型进行续训。\n\n#### 🎉 已发布模型列表\n\n| 模型 | 参数量 | Release |\n|------|--------|---------|\n| minimind-3 | 64M | 2026.04.01 |\n| minimind-3-moe | 198M-A64M | 2026.04.01 |\n| minimind2-small | 26M | 2025.04.26 |\n| minimind2-moe | 145M | 2025.04.26 |\n| minimind2 | 104M | 2025.04.26 |\n| minimind-v1-small | 26M | 2024.08.28 |\n| minimind-v1-moe | 4×26M | 2024.09.17 |\n| minimind-v1 | 108M | 2024.09.01 |\n\n\n---\n\n#### 📝 更新日志\n\n<details> \n<summary> <b>🔥 2026-04-01</b> </summary>\n\n - 发布 `minimind-3` / `minimind-3-moe`：结构、Tokenizer、训练链路、推理接口与默认配置全面更新\n- 结构主线对齐 `Qwen3 / Qwen3-MoE` 生态：Dense 约 `64M`，MoE 约 `198M-A64M`，并移除了 shared expert 设计\n- 默认训练数据切换为 `pretrain_t2t(_mini).jsonl`、`sft_t2t(_mini).jsonl`、`rlaif.jsonl`、`agent_rl.jsonl` 与 `agent_rl_math.jsonl`\n- 移除独立 `train_reason.py`；思考能力统一由 `chat_template + <think>` 与 `open_thinking` 自适应开关控制\n- `toolcall` 能力已混入 `sft_t2t / sft_t2t_mini` 主线数据，默认 `full_sft` 即具备基础 Tool Call 能力；同时新增 `scripts/chat_api.py` 等推理示例\n- 新增原生 `Agentic RL` 训练脚本 `train_agent.py`，支持多轮 Tool-Use 场景下的 `GRPO / CISPO`\n- RLAIF / Agentic RL 训练流程完成 `rollout engine` 解耦，支持更灵活地切换生成后端\n- `serve_openai_api.py` 与 `web_demo.py` 新增 `reasoning_content` / `tool_calls` / `open_thinking` 支持\n- Tokenizer 基于 `BPE + ByteLevel` 更新，并新增工具调用与思考标记，预留 buffer token 便于后续扩展\n- 新增 LoRA 权重合并导出流程，可通过 `scripts/convert_model.py` 将基础模型与 LoRA 权重合并为新的完整模型权重\n- 结构图资源更新，README 大面积更新\n\n</details>\n\n<details> \n<summary> <b>2025-10-24</b> </summary>\n\n- 🔥 新增RLAIF训练算法：PPO、GRPO、SPO（从0原生实现）\n- 新增断点续训功能：支持训练自动恢复、跨GPU数量恢复、wandb记录连续性\n- 新增RLAIF数据集：rlaif-mini.jsonl（从SFT数据随机采样1万条）；简化DPO数据集，加入中文数据\n- 新增YaRN算法：支持RoPE长文本外推，提升长序列处理能力\n- Adaptive Thinking：Reason模型可选是否启用思考链\n- chat_template全面支持Tool Calling和Reasoning标签（`<tool_call>`、`<think>`等）\n- 新增RLAIF完整章节、训练曲线对比、算法原理折叠说明\n- [SwanLab](https://swanlab.cn/)替代WandB（国内访问友好，API完全兼容）\n- 规范化所有代码 & 修复一些已知bugs\n\n</details>\n\n<details> \n<summary> <b>2025-04-26</b> </summary>\n\n- 重要更新\n- 如有兼容性需要，可访问[🔗旧仓库内容🔗](https://github.com/jingyaogong/minimind/tree/7da201a944a90ed49daef8a0265c959288dff83a)。\n- MiniMind模型参数完全改名，对齐Transformers库模型（统一命名）。\n- generate方式重构，继承自GenerationMixin类。\n- 🔥支持llama.cpp、vllm、ollama等热门三方生态。\n- 规范代码和目录结构。\n- 改动词表`<s></s>`->`<|im_start|><|im_end|>`\n\n```text\n为兼容第三方推理框架llama.cpp、vllm，本次更新需付出一些可观代价。\n本次更新不再支持「直接」加载25-04-26以前的旧模型进行推理。\n由于Llama位置编码方式与minimind存在区别，导致映射Llama模型后QK值存在差异\nminimind2系列旧模型均经过权重映射+（微调训练）QKVO线性层校准恢复而来。\n本次更新后将放弃对`minimind-v1`全系列的维护，并在仓库中下线。\n```\n\n</details>\n\n<details>\n<summary> <b>More...</b> </summary>\n\n**2025-02-09**\n- 迎来发布以来重大更新，Release minimind2 Series。\n- 代码几乎全部重构，使用更简洁明了的统一结构。\n  如有旧代码的兼容性需要，可访问[🔗旧仓库内容🔗](https://github.com/jingyaogong/minimind/tree/6e9cd28ef9b34a0a10afbdf6f59e65cb6e628efb)。\n- 免去数据预处理步骤。统一数据集格式，更换为`jsonl`格式杜绝数据集下载混乱的问题。\n- minimind2系列效果相比MiniMind-V1显著提升。\n- 小问题：{kv-cache写法更标准、MoE的负载均衡loss被考虑等等}\n- 提供模型迁移到私有数据集的训练方案（医疗模型、自我认知样例）。\n- 精简预训练数据集，并大幅提升预训练数据质量，大幅缩短个人快速训练所需时间，单卡3090即可2小时复现！\n- 更新：LoRA微调脱离peft包装，从0实现LoRA过程；DPO算法从0使用PyTorch原生实现；模型白盒蒸馏原生实现。\n- minimind2-DeepSeek-R1系列蒸馏模型诞生！\n- minimind2具备一定的英文能力！\n- 更新minimind2与第三方模型的基于更多大模型榜单测试性能的结果。\n\n**2024-10-05**\n- 为MiniMind拓展了多模态能力之---视觉\n- 移步孪生项目[minimind-v](https://github.com/jingyaogong/minimind-v)查看详情！\n\n**2024-09-27**\n- 09-27更新pretrain数据集的预处理方式，为了保证文本完整性，放弃预处理成.bin训练的形式（轻微牺牲训练速度）。\n- 目前pretrain预处理后的文件命名为：pretrain_data.csv。\n- 删除了一些冗余的代码。\n\n**2024-09-17**\n- 更新minimind-v1-moe模型\n- 为了防止歧义，不再使用mistral_tokenizer分词，全部采用自定义的minimind_tokenizer作为分词器。\n\n**2024-09-01**\n- 更新minimind-v1 (108M)模型，采用minimind_tokenizer，预训练轮次3 + SFT轮次10，更充分训练，性能更强。\n- 项目已部署至ModelScope创空间，可以在此网站上体验：\n- [🔗ModelScope在线体验🔗](https://www.modelscope.cn/studios/gongjy/minimind)\n\n**2024-08-27**\n- 项目首次开源\n\n</details>\n\n---\n\n# 📌 快速开始\n\n<details>\n<summary>本人的软硬件配置（供参考）</summary>\n\n* CPU: Intel(R) Core(TM) i9-10980XE CPU @ 3.00GHz\n* RAM: 128 GB\n* GPU: NVIDIA GeForce RTX 3090 (24GB) * 8\n* Ubuntu==20.04\n* CUDA==12.2\n* Python==3.10.16\n* [requirements.txt](./requirements.txt)\n\n</details>\n\n## 第0步\n\n```bash\n# 克隆仓库、安装依赖\ngit clone --depth 1 https://github.com/jingyaogong/minimind\ncd minimind && pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple\n```\n\n## Ⅰ 🚀 模型推理\n\n### 1' 下载模型\n\n在项目根目录：\n```bash\n# 方式1\nmodelscope download --model gongjy/minimind-3 --local_dir ./minimind-3\n# 方式2\ngit clone https://huggingface.co/jingyaogong/minimind-3\n```\n\n### 2' CLI 推理\n\n```bash\n# 方式1：使用 Transformers 格式模型\npython eval_llm.py --load_from ./minimind-3\n# 方式2：基于 PyTorch 模型（确保./out目录下有对应权重）\npython eval_llm.py --load_from ./model --weight full_sft\n```\n\n### 3'（可选）WebUI\n\n```bash\n# 可能需要`python>=3.10`，安装 `pip install streamlit`\n# ⚠️ 须先将 transformers 格式模型文件夹复制到 ./scripts/ 目录下（例如：cp -r minimind-3 ./scripts/minimind-3），web_demo 脚本会自动扫描该目录下包含权重文件的子文件夹，如不存在则报错\ncd scripts && streamlit run web_demo.py\n```\n\n### 4'（可选）第三方推理框架\n\n```bash\n# ollama\nollama run jingyaogong/minimind-3\n# vllm\nvllm serve /path/to/model --served-model-name \"minimind\"\n```\n\n## Ⅱ 🛠️ 模型训练\n\n<details>\n<summary>注：提前确认 Torch 的可用后端</summary>\n\n```python\nimport torch\nprint(torch.cuda.is_available())\n```\n\n若你计划使用 CUDA 训练，建议先确认当前环境是否已正确识别 GPU。  \n若 `cuda` 不可用，也仍可根据自身设备选择 `CPU` 或 `MPS` 运行，但训练速度与兼容性会有非常大的差异。  \n如需安装或更换 PyTorch 版本，可参考 [torch_stable](https://download.pytorch.org/whl/torch_stable.html) 与[链接](https://blog.csdn.net/weixin_45456738/article/details/141029610?ops_request_misc=&request_id=&biz_id=102&utm_term=%E5%AE%89%E8%A3%85torch&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-2-141029610.nonecase&spm=1018.2226.3001.4187)\n\n</details>\n\n### 1' 下载数据\n\n从下文提供的[数据集下载链接](https://www.modelscope.cn/datasets/gongjy/minimind_dataset/files) 下载所需数据文件，并放入 `./dataset` 目录\n\n> 当前默认仅需下载 `pretrain_t2t_mini.jsonl` 与 `sft_t2t_mini.jsonl`，即可较快复现 `MiniMind Zero` 对话模型。\n如有更多需求，下文提供多种搭配方案，可根据自身任务目标与 GPU 资源灵活选择。\n\n### 2' 开始训练\n\n<details>\n<summary>💡 检查点",
+      "rank": 6,
+      "weekly_stars": 3390
+    },
+    {
+      "full_name": "K-Dense-AI/scientific-agent-skills",
+      "html_url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+      "homepage": "https://arxiv.org/abs/2609.00065",
+      "language": "Python",
+      "stars": 42691,
+      "forks": 3909,
+      "open_issues": 31,
+      "topics": [
+        "agent-skills",
+        "ai-scientist",
+        "bioinformatics",
+        "chemoinformatics",
+        "claude",
+        "claude-skills",
+        "claudecode",
+        "clinical-research",
+        "computational-biology",
+        "data-analysis",
+        "drug-discovery",
+        "genomics",
+        "materials-science",
+        "metabolomics",
+        "proteomics",
+        "scientific-computing",
+        "scientific-visualization"
+      ],
+      "license": "MIT",
+      "created_at": "2025-10-19T20:54:15Z",
+      "updated_at": "2026-09-05T05:38:51Z",
+      "pushed_at": "2026-09-02T16:25:37Z",
+      "archived": false,
+      "readme": "# Scientific Agent Skills\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)\n[![arXiv](https://img.shields.io/badge/arXiv-2609.00065-b31b1b.svg)](https://arxiv.org/abs/2609.00065)\n[![Version](https://img.shields.io/badge/Version-2.65.0-blue.svg)](pyproject.toml)\n[![Skills](https://img.shields.io/badge/Skills-163-brightgreen.svg)](#-whats-included)\n[![Databases](https://img.shields.io/badge/Databases-100%2B-orange.svg)](#-whats-included)\n[![Agent Skills](https://img.shields.io/badge/Standard-Agent_Skills-blueviolet.svg)](https://agentskills.io/)\n[![Agent Plugins](https://img.shields.io/badge/Standard-Agent_Plugins-0A7A72.svg)](https://agent-plugins.org/)\n[![Security Scan](https://github.com/K-Dense-AI/scientific-agent-skills/actions/workflows/security-scan.yml/badge.svg)](https://github.com/K-Dense-AI/scientific-agent-skills/actions/workflows/security-scan.yml)\n[![Skill Tests](https://github.com/K-Dense-AI/scientific-agent-skills/actions/workflows/skill-tests.yml/badge.svg)](https://github.com/K-Dense-AI/scientific-agent-skills/actions/workflows/skill-tests.yml)\n[![Works with](https://img.shields.io/badge/Works_with-Cursor_|_Claude_Code_|_Codex_|_Google_Antigravity-blue.svg)](#-getting-started)\n[![X](https://img.shields.io/badge/Follow_on_X-%40k__dense__ai-000000?logo=x)](https://x.com/k_dense_ai)\n[![LinkedIn](https://img.shields.io/badge/LinkedIn-K--Dense_Inc.-0A66C2?logo=linkedin)](https://www.linkedin.com/company/k-dense-inc)\n[![YouTube](https://img.shields.io/badge/YouTube-K--Dense_Inc.-FF0000?logo=youtube)](https://www.youtube.com/@K-Dense-Inc)\n[![Reddit](https://img.shields.io/badge/Reddit-u%2F--k--dense---FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/user/-k-dense-/)\n\n> **🔔 Claude Scientific Skills is now Scientific Agent Skills.** Same skills, broader compatibility — now works with any AI agent that supports the open [Agent Skills](https://agentskills.io/) standard, not just Claude.\n\n> **New: [K-Dense BYOK](https://github.com/K-Dense-AI/k-dense-byok)** — A free, open-source AI co-scientist that runs on your desktop, powered by Scientific Agent Skills. Bring your own API keys, pick from 40+ models, and get a full research workspace with web search, file handling, 100+ scientific databases, and access to all 163 skills in this repo. Your data stays on your computer, and you can optionally scale to cloud compute via [Modal](https://modal.com/) for heavy workloads. [Get started here.](https://github.com/K-Dense-AI/k-dense-byok)\n\n> **🎥 Webinar recording — [Getting Started with K-Dense BYOK](https://youtu.be/Du3BIE48DKc?si=9dPpETKSc2PeQbvU)**\n> A hands-on walkthrough of [K-Dense BYOK](https://github.com/K-Dense-AI/k-dense-byok), our free, open-source AI co-scientist that runs locally on your own machine and is powered by Scientific Agent Skills. We cover how to set it up, bring your own API keys, and run real research workflows with these skills. No prior technical experience needed. **[Watch the recording →](https://youtu.be/Du3BIE48DKc?si=9dPpETKSc2PeQbvU)**\n\n> **Stay up to date:** Follow K-Dense on [X](https://x.com/k_dense_ai), [LinkedIn](https://www.linkedin.com/company/k-dense-inc), [YouTube](https://www.youtube.com/@K-Dense-Inc), and [Reddit](https://www.reddit.com/user/-k-dense-/) for new skills, release announcements, walkthroughs, research workflow demos, and examples you can use with your own AI agent.\n\n> **📄 Paper:** Scientific Agent Skills is described in [*Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents*](https://arxiv.org/abs/2609.00065) (arXiv:2609.00065). If you use these skills in your research, please [cite the paper](#-citation).\n\nA comprehensive collection of **163 ready-to-use scientific and research skills** (covering cancer genomics, individual-level 1000 Genomes queries, hosted regulatory-sequence prediction, live pathogen-variant surveillance, analytical method validation, PK/PD modelling and dose selection, full-text biomedical and regulatory literature retrieval, drug-target binding, bounded biomedical knowledge graph search, molecular dynamics, RNA velocity, microbiome foundation models, geospatial science, time series forecasting, scientific ML resource discovery via Hugging Science, 78+ scientific databases, and more) for any AI agent that supports the open [Agent Skills](https://agentskills.io/) standard, created by [K-Dense](https://k-dense.ai). The repository is also a portable [Agent Plugins](https://agent-plugins.org/) package (`plugin.json` + `skills/`), so plugin-capable clients can load the whole collection as one plugin. Works with **Cursor, Claude Code, Codex, Google Antigravity, and more**. Transform your AI agent into a research assistant capable of executing complex multi-step scientific workflows across biology, chemistry, medicine, and beyond.\n\n> ⭐ **Help make AI for science easier to discover:** If Scientific Agent Skills saves you time, teaches your agent a workflow, or helps your lab move faster, please [star this repository](https://github.com/K-Dense-AI/scientific-agent-skills). A star is a public signal that these open, reusable research skills are worth maintaining: it helps scientists, engineers, and open-source contributors find the project, shows which agent-skill standards are gaining real adoption, and gives us a clear reason to keep expanding the collection for the community.\n\n---\n\nThese skills enable your AI agent to seamlessly work with specialized scientific libraries, databases, and tools across multiple scientific domains. While the agent can use any Python package or API on its own, these explicitly defined skills provide curated documentation and examples that make it significantly stronger and more reliable for the workflows below:\n- 🧬 Bioinformatics & Genomics - Sequence analysis, single-cell RNA-seq, gene regulatory networks, variant annotation, phylogenetic analysis\n- 🧪 Cheminformatics & Drug Discovery - Molecular property prediction, virtual screening, ADMET analysis, molecular docking, lead optimization\n- 🔬 Proteomics & Mass Spectrometry - LC-MS/MS processing, peptide identification, spectral matching, protein quantification\n- 🏥 Clinical Research & Evidence Workflows - Clinical trials, pharmacogenomics, variant evidence review, pharmacokinetic/pharmacodynamic modelling and dose-regimen evaluation, aggregate decision-support evaluation, source-bound draft report structures, and formatting of clinician-authored treatment decisions\n- 🧠 Healthcare AI & Biosignal Research - EHR and model research, physiological signal analysis, and retrospective validation—not patient-specific diagnosis, treatment, alarms, or deployment decisions\n- 🐭 Preclinical Research & Animal Welfare - Multivariate severity scoring and humane-endpoint forecasting for laboratory animal studies, for 3Rs/refinement analysis and EU Directive 2010/63/EU reporting—an aid to severity assessment, never a decision rule\n- 🖼️ Medical Imaging & Digital Pathology - Privacy-aware DICOM processing and research-only whole-slide image analysis, computational pathology, and radiology data workflows\n- 🤖 Machine Learning & AI - Deep learning, reinforcement learning, time series analysis, model interpretability, Bayesian methods\n- 🔮 Materials Science & Chemistry - Crystal structure analysis, phase diagrams, metabolic modeling, computational chemistry\n- 🌌 Physics & Astronomy - Astronomical data analysis, coordinate transformations, cosmological calculations, symbolic mathematics, physics computations\n- ⚙️ Engineering & Simulation - Discrete-event simulation, multi-objective optimization, metabolic engineering, systems modeling, process optimization\n- 📊 Data Analysis & Visualization - Statistical analysis, network analysis, time series, publication-quality figures, large-scale data processing, EDA\n- 🌍 Geospatial Science & Remote Sensing - Satellite imagery processing, GIS analysis, spatial statistics, terrain analysis, machine learning for Earth observation\n- 🧪 Laboratory Automation - Liquid handling protocols, lab equipment control, workflow automation, LIMS integration\n- 📚 Scientific Communication - Evidence-traceable writing, confidential authorized peer review, literature synthesis, document processing, macro-free PPTX posters, slides, schematics, and citation management\n- 🔬 Multi-omics & Systems Biology - Multi-modal data integration, pathway analysis, network biology, systems-level insights\n- 🧬 Protein Engineering & Design - Protein language models, structure prediction, sequence design, function annotation\n- 🧰 Agent Platforms & Infrastructure - Build on Pi with SDK, RPC, extensions, custom providers/models, packages, TUI components, and session tooling\n- 🎓 Research Methodology - Evidence-bounded candidate hypotheses, scientific brainstorming, critical thinking, grant writing, and qualitative low-stakes evaluation of scholarly works\n- ⚖️ Regulatory & Standards - Draft evidence-preparation artifacts for ISO management-system and laboratory standards, plus analytical method validation, verification, and transfer under ICH/USP/CLSI frameworks—prepared for qualified review, never a certification, accreditation, or method-release decision\n\n**Transform your AI coding agent into an 'AI Scientist' on your desktop!**\n\n> 🎬 **New to Scientific Agent Skills?** Watch our [Getting Started with Scientific Agent Skills](https://youtu.be/ZxbnDaD_FVg) video for a quick walkthrough.\n\n### 🎥 More tutorials\n\nRecorded walkthroughs of these skills on real research tasks, from the [K-Dense YouTube channel](https://www.youtube.com/@K-Dense-Inc):\n\n| Video | What it covers |\n|-------|----------------|\n| [Skills 101: Build Your Own Scientific Agent Skill](https://youtu.be/lVZbHiwzMEg) | Writing, testing, and packaging a new skill from scratch |\n| [Literature Review and Hypothesis Generation](https://youtu.be/wKJp8y4ZyiM) | Searching the literature and generating grounded hypotheses |\n| [Draft and Budget an Experimental Protocol](https://you",
+      "rank": 7,
+      "weekly_stars": 6898
+    },
+    {
+      "full_name": "Lakr233/vphone-cli",
+      "html_url": "https://github.com/Lakr233/vphone-cli",
+      "description": "",
+      "homepage": "",
+      "language": "Swift",
+      "stars": 10564,
+      "forks": 1356,
+      "open_issues": 23,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-02-26T11:29:08Z",
+      "updated_at": "2026-09-05T05:41:56Z",
+      "pushed_at": "2026-08-31T22:34:35Z",
+      "archived": false,
+      "readme": "<div align=\"right\"><strong><a href=\"./docs/README_ko.md\">🇰🇷한국어</a></strong> | <strong><a href=\"./docs/README_ja.md\">🇯🇵日本語</a></strong> | <strong><a href=\"./docs/README_zh.md\">🇨🇳中文</a></strong> | <strong>🇬🇧English</strong></div>\n\n# vphone-cli\n\nBoot a virtual iPhone via Apple's Virtualization.framework using PCC research VM infrastructure.\n\n![poc](./docs/demo.jpeg)\n\n## Prerequisites\n\n**Host:**\n\n- Apple Silicon\n- macOS 15+ (Sequoia)\n- Xcode + iOS SDK (cross-compiles the guest daemon)\n- [SIP/AMFI relaxation to allow private PV=3 entitlements with unsigned-binary](#sipamfi-relaxation)\n\n**Dependencies:**\n\n```bash\nbrew install python@3.13 aria2 wget gnu-tar openssl@3 ldid-procursus sshpass keystone cmake libusb ipsw zstd\n```\n\n## Install\n\n```bash\nbrew install zqxwce/tap/vphone-cli\n```\n\n## Build\n\n```bash\ngit clone --recurse-submodules https://github.com/Lakr233/vphone-cli.git\n\n./scripts/setup_tools.sh      # install deps, build toolchain submodules, create the Python venv\n./scripts/build.sh            # build + sign vphone-cli, bundle the .app, cross-compile vphoned\n\ncd .build/vphone-cli.app/Contents/MacOS/\nvphone-cli --help\n```\n\n## Quick Start\n\nOne command creates a VM end-to-end (download → patch → DFU restore → CFW install → first boot):\n\n```bash\nvphone-cli vm create myphone -V jb        # -V / --variant\n\nvphone-cli vm launch myphone\n```\n\n## Commands\n\n`vphone-cli vm create` runs the whole pipeline; the individual steps below let you drive it manually or re-run one stage.\n\n### Manage\n\n```bash\nvphone-cli vm list                         # list VMs (--json for scripting)\nvphone-cli vm info myphone                  # show one VM\nvphone-cli vm new myphone                   # create an empty bundle (cpu/mem/disk options)\nvphone-cli vm config myphone --cpu 8 --memory 8192\nvphone-cli vm clone myphone myphone-2       # fast APFS clone, fresh device identity\nvphone-cli vm export myphone --out myphone.tzst   # zstd fast by default (--max = xz -9); --out may be a dir (auto-names <vm>.tzst/.txz); skips restore dir + staging files\nvphone-cli vm import myphone.tzst --name restored\nvphone-cli vm rename myphone iphone16\nvphone-cli vm delete iphone16\n```\n\n### Build a VM manually (what `vm create` automates)\n\n```bash\nvphone-cli vm new myphone                              # 1. empty bundle\nvphone-cli fw prepare myphone --iphone-version 26.1     # 2. download + merge IPSWs\nvphone-cli fw patch myphone --variant jb                # 3. patch the boot chain\n\nvphone-cli vm launch myphone --dfu &                    # 4. boot into DFU (background)\nvphone-cli restore myphone --get-shsh                   #    fetch SHSH\nvphone-cli restore myphone                              #    DFU restore\nvphone-cli vm stop myphone                              #    stop the DFU boot\n\nvphone-cli cfw install myphone --variant jb             # 5. install CFW (host-mount; asks for sudo)\nvphone-cli vm launch myphone                            # 6. first boot\n```\n\nUpdate to a newer iOS by pointing `fw prepare` at an IPSW: `--iphone-source /path/to.ipsw --cloudos-source /path/to.ipsw`.\n\n## Firmware Variants\n\nFive patch variants with increasing security bypass — pass one to `--variant`:\n\n| Variant      | Boot Chain  | CFW       | Notes                                                              |\n| ------------ | ----------- | --------- | ----------------------------------------------------------------- |\n| `less`       | 4 patches   | 2 phases  | Patchless — keeps iOS mitigations enabled                         |\n| `regular`    | 42 patches  | 10 phases | AMFI/SSV/Img4/TXM bypass                                           |\n| `dev`        | 53 patches  | 12 phases | + TXM entitlement/debug bypass                                    |\n| `jb`         | 113 patches | 14 phases | + full jailbreak (Sileo, TrollStore auto-install on first boot)   |\n| `exp`        | 141 patches | 18 phases | JB superset + anti-VM-detection research patches                  |\n\nSee [`research/0_binary_patch_comparison.md`](./research/0_binary_patch_comparison.md) for the per-component breakdown.\n\n## Running & Connecting\n\n- **SSH (jailbreak):** `ssh -p 22222 mobile@<vm-ip>` (password `alpine`)\n- **SSH (regular/dev):** `ssh -p 22222 root@<vm-ip>`\n- **VNC:** `vnc://<vm-ip>:5901`\n\n## Locations\n\nEverything vphone-cli creates lives under `~/.vphone/` — kept outside the repo and the `.app` so the signed bundle stays portable. Redirect the whole tree with `$VPHONE_ROOT`:\n\n| Path              | Contents                                                                                     |\n| ----------------- | -------------------------------------------------------------------------------------------- |\n| `~/.vphone/`      | The per-user data root — override the entire location with `$VPHONE_ROOT`.                   |\n| `~/.vphone/VMs/`  | VM bundles — one directory per VM. This is the library; override with `$VPHONE_LIBRARY_ROOT`. |\n| `~/.vphone/ipsws/`| Downloaded iPhone + cloudOS IPSWs, cached and reused across VMs.                              |\n| `~/.vphone/tools/`| Cached APFS seal-volume artifacts (`apfs_sealvolume_<version>`) fetched during `fw prepare`.  |\n| `~/.vphone/debs/` | Cached `.deb` packages the `jb`/`exp` CFW install lays into the guest (Sileo, apt, …).        |\n| `~/.vphone/venv/` | Auto-provisioned Python environment (see [Python runtime](#python-runtime); override with `$VPHONE_VENV_DIR`). |\n\nPrecedence: the per-item overrides (`$VPHONE_LIBRARY_ROOT`, `$VPHONE_VENV_DIR`) win over `$VPHONE_ROOT`, which wins over the `~/.vphone` default. The `ipsws/`, `tools/`, and `debs/` caches always sit directly under whichever root is active.\n\n## SIP/AMFI Relaxation\n\n**Option A — fully disable SIP, then disable AMFI via boot-arg (most permissive).** \n\nIn Recovery (long-press power → Terminal):\n\n```bash\ncsrutil disable\ncsrutil allow-research-guests enable\n```\n\nThen reboot into macOS and set the AMFI boot-arg (needs SIP fully off to take effect):\n\n```bash\nsudo nvram boot-args=\"amfi_get_out_of_my_way=1 -v\"   # reboot after\n```\n\n**Option B — keep SIP on (debug-only relaxed), then allowlist the binary with amfidont** (leaves AMFI enabled system-wide). \n\nIn Recovery:\n\n```bash\ncsrutil enable --without debug\ncsrutil allow-research-guests enable\n```\n\nThen reboot into macOS and:\n\n```bash\nvphone-amfidont         # .build/vphone-cli.app/Contents/Resources/vphone-amfidont for local builds\n```\n\n## Tested Environments\n\n| Host            | iPhone                | CloudOS         |\n| --------------- | --------------------- | --------------- |\n| Mac16,11 27.0b2 | `17,3_18.6.2_22G100`  | `26.1-23B85`    |\n| Mac16,8 26.5.1  | `17,3_26.0_23A341`    | `26.1-23B85`    |\n| Mac16,8 26.5.1  | `17,3_26.0.1_23A355`  | `26.1-23B85`    |\n| Mac16,12 26.3   | `17,3_26.1_23B85`     | `26.1-23B85`    |\n| Mac16,12 26.3   | `17,3_26.3_23D127`    | `26.1-23B85`    |\n| Mac16,12 26.3   | `17,3_26.3_23D127`    | `26.3-23D128`   |\n| Mac16,12 26.3   | `17,3_26.3.1_23D8133` | `26.3-23D128`   |\n| Mac16,11 26.2   | `17,3_26.4_23E246`    | `26.4-23E5207q` |\n| Mac16,11 26.2   | `17,3_26.5_23F77`     | `26.4-23E5207q` |\n| Mac16,11 27.0b2 | `17,3_26.5.2_23F84`   | `26.4-23E5207q` |\n| Mac16,6 26.4.1  | `17,3_26.6_23G71`     | `26.4-23E5207q` |\n| Mac16,11 27.0b2 | `17,3_26.6.1_23G83`   | `26.4-23E5207q` |\n| Mac16,11 27.0b2 | `17,3_27.0_24A5380h`  | `26.4-23E5207q` |\n| Mac16,6 26.4.1  | `17,3_27.0_24A5390f`  | `26.4-23E5207q` |\n| Mac16,6 26.6.1  | `17,3_27.0_24A5408d`  | `26.4-23E5207q` |\n| Mac16,11 27.0b2 | `17,3_27.0_24A5418b`  | `26.4-23E5207q` |\n| Mac16,11 27.0b2 | `17,3_27.0_24A5424a`  | `26.4-23E5207q` |\n| Mac16,11 27.0b2 | `17,3_27.0_24A5430a`  | `26.4-23E5207q` |\n\n## FAQ\n\n**`zsh: killed ./vphone-cli`** — AMFI/debug restrictions aren't bypassed; see [Prerequisites](#prerequisites) (`amfi_get_out_of_my_way=1` or `amfidont`).\n\n**`Virtualization is not available on this hardware`** — your Mac is itself a VM; PV=3 guest boot can't nest. Use a non-nested macOS 15+ host.\n\n**Stuck on \"Press home to continue\"** — connect via VNC and right-click (two-finger click) to simulate the home button.\n\n**System apps won't install** — during iOS setup, don't pick Japan or the EU as your region (extra regulatory checks the VM can't satisfy); pick e.g. United States.\n\n**App crashes on launch with `EXC_GUARD` / `GUARD_TYPE_MACH_PORT`** — re-patch with `vphone-cli fw patch <name> --variant <v> --force-exc-guard`, then re-restore/install ([#291](https://github.com/Lakr233/vphone-cli/issues/291)). Always on for iOS 18 bases.\n\n**Install a `.ipa`/`.tipa`** — use the running VM's Install menu (drag-drop or file picker).\n\n**`cfw install` hangs re-signing a system binary (e.g. `Campo`), memory climbing unbounded** — known bug in `ldid-procursus` up to `2.1.5-procursus7` (the current Homebrew `stable`): `bytes(uint64_t)` calls `__builtin_clzll(0)` with no zero-guard, which is undefined behavior, and on this build resolves to a `0`-length that underflows an unsigned loop counter — `ldid` spins writing one byte at a time into a growing buffer instead of terminating. Triggered by *any* entitlements plist containing an integer value of exactly `0` (some real Apple system binaries have these). Fixed upstream but not yet in a tagged release; rebuild from source: `brew install --HEAD ldid-procursus && brew link --overwrite ldid-procursus`. Kill the hung `ldid` process first (`sudo kill -9 <pid>`) if you already hit it.\n\n## Automation\n\n`vphone-cli` exposes a host control socket (`<bundle>/vphone.sock`) for programmatic control — screenshots, touch, swipes, hardware keys, clipboard — each action returning an inline screenshot for AI-driven E2E testing. See [vphone-mcp](https://github.com/pluginslab/vphone-mcp) for an MCP server wrapping it.\n\n## Acknowledgements\n\n- [wh1te4ever/super-tart-vphone-writeup](https://github.com/wh1te4ever/super-tart-vphone-writeup)\n",
+      "rank": 8,
+      "weekly_stars": 1982
+    },
+    {
+      "full_name": "fmtlib/fmt",
+      "html_url": "https://github.com/fmtlib/fmt",
+      "description": "A modern formatting library",
+      "homepage": "https://fmt.dev",
+      "language": "C++",
+      "stars": 25496,
+      "forks": 3035,
+      "open_issues": 12,
+      "topics": [
+        "c-plus-plus",
+        "chrono",
+        "cpp",
+        "cross-platform",
+        "floating-point",
+        "formatting",
+        "multiplatform",
+        "output",
+        "performance",
+        "printf",
+        "ranges",
+        "unicode"
+      ],
+      "license": "MIT",
+      "created_at": "2012-12-07T16:26:46Z",
+      "updated_at": "2026-09-05T05:20:49Z",
+      "pushed_at": "2026-09-04T23:27:22Z",
+      "archived": false,
+      "readme": "<img src=\"https://user-images.githubusercontent.com/576385/156254208-f5b743a9-88cf-439d-b0c0-923d53e8d551.png\" alt=\"{fmt}\" width=\"25%\"/>\n\n[![image](https://github.com/fmtlib/fmt/actions/workflows/linux.yml/badge.svg?branch=master)](\nhttps://github.com/fmtlib/fmt/actions?query=workflow%3Alinux)\n[![image](https://github.com/fmtlib/fmt/actions/workflows/macos.yml/badge.svg?branch=master)](\nhttps://github.com/fmtlib/fmt/actions?query=workflow%3Amacos)\n[![image](https://github.com/fmtlib/fmt/actions/workflows/windows.yml/badge.svg?branch=master)](\nhttps://github.com/fmtlib/fmt/actions?query=workflow%3Awindows)\n[![fmt is continuously fuzzed at oss-fuzz](https://oss-fuzz-build-logs.storage.googleapis.com/badges/fmt.svg)](\nhttps://issues.oss-fuzz.com/issues?q=title:fmt%20cc:victor.zverovich@gmail.com)\n[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8880/badge)](\nhttps://www.bestpractices.dev/projects/8880)\n[![image](https://api.securityscorecards.dev/projects/github.com/fmtlib/fmt/badge)](\nhttps://securityscorecards.dev/viewer/?uri=github.com/fmtlib/fmt)\n[![Ask questions at StackOverflow with the tag fmt](\nhttps://img.shields.io/badge/stackoverflow-fmt-blue.svg)](https://stackoverflow.com/questions/tagged/fmt)\n[![Support Ukraine](\nhttps://img.shields.io/badge/Support-Ukraine-005BBB?labelColor=FFD500)](https://novaukraine.org/)\n\n**{fmt}** is an open-source formatting library providing a fast and safe\nalternative to C stdio and C++ iostreams.\n\n[Documentation](https://fmt.dev)\n\n[Cheat Sheets](https://hackingcpp.com/cpp/libs/fmt.html)\n\nQ&A: ask questions on [StackOverflow with the tag\nfmt](https://stackoverflow.com/questions/tagged/fmt).\n\nTry {fmt} in [Compiler Explorer](https://godbolt.org/z/8Mx1EW73v).\n\n[![Live demo by Demoshell](https://build.demoshell.com/v1/embed/badge.svg)](https://build.demoshell.com/launch?snapshot=demoshell%2Ftools%3Afmt)\n\n# Features\n\n- Simple [format API](https://fmt.dev/latest/api/) with positional\n  arguments for localization\n- Implementation of [C++20\n  std::format](https://en.cppreference.com/w/cpp/utility/format) and\n  [C++23 std::print](https://en.cppreference.com/w/cpp/io/print)\n- [Format string syntax](https://fmt.dev/latest/syntax/) similar\n  to Python\\'s\n  [format](https://docs.python.org/3/library/stdtypes.html#str.format)\n- Fast IEEE 754 floating-point formatter with correct rounding,\n  shortness and round-trip guarantees using the\n  [Dragonbox](https://github.com/jk-jeon/dragonbox) algorithm\n- Portable Unicode support\n- Safe [printf\n  implementation](https://fmt.dev/latest/api/#printf-api)\n  including the POSIX extension for positional arguments\n- Extensibility: [support for user-defined\n  types](https://fmt.dev/latest/api/#formatting-user-defined-types)\n- High performance: faster than common standard library\n  implementations of `(s)printf`, iostreams, `to_string` and\n  `to_chars`, see [Speed tests](#speed-tests) and [Converting a\n  hundred million integers to strings per\n  second](https://vitaut.net/posts/2020/fast-int-to-string-revisited/)\n- Small code size both in terms of source code with the minimum\n  configuration consisting of just three files, `base.h`, `format.h`\n  and `format-inl.h`, and compiled code; see [Compile time and code\n  bloat](#compile-time-and-code-bloat)\n- Reliability: the library has an extensive set of\n  [tests](https://github.com/fmtlib/fmt/tree/master/test) and is\n  [continuously fuzzed](https://bugs.chromium.org/p/oss-fuzz/issues/list?colspec=ID%20Type%20Component%20Status%20Proj%20Reported%20Owner%20Summary&q=proj%3Dfmt&can=1)\n- Safety: the library is fully type-safe, errors in format strings can\n  be reported at compile time, automatic memory management prevents\n  buffer overflow errors\n- Ease of use: small self-contained code base, no external\n  dependencies, permissive MIT\n  [license](https://github.com/fmtlib/fmt/blob/master/LICENSE)\n- [Portability](https://fmt.dev/latest/#portability) with\n  consistent output across platforms and support for older compilers\n- Clean warning-free codebase even on high warning levels such as\n  `-Wall -Wextra -pedantic`\n- Locale independence by default\n- Optional header-only configuration enabled with the\n  `FMT_HEADER_ONLY` macro\n\nSee the [documentation](https://fmt.dev) for more details.\n\n# Examples\n\n**Print to stdout** ([run](https://godbolt.org/z/Tevcjh))\n\n``` c++\n#include <fmt/base.h>\n\nint main() {\n  fmt::print(\"Hello, world!\\n\");\n}\n```\n\n**Format a string** ([run](https://godbolt.org/z/oK8h33))\n\n``` c++\nstd::string s = fmt::format(\"The answer is {}.\", 42);\n// s == \"The answer is 42.\"\n```\n\n**Format a string using positional arguments**\n([run](https://godbolt.org/z/Yn7Txe))\n\n``` c++\nstd::string s = fmt::format(\"I'd rather be {1} than {0}.\", \"right\", \"happy\");\n// s == \"I'd rather be happy than right.\"\n```\n\n**Print dates and times** ([run](https://godbolt.org/z/c31ExdY3W))\n\n``` c++\n#include <fmt/chrono.h>\n\nint main() {\n  auto now = std::chrono::system_clock::now();\n  fmt::print(\"Date and time: {}\\n\", now);\n  fmt::print(\"Time: {:%H:%M}\\n\", now);\n}\n```\n\nOutput:\n\n    Date and time: 2023-12-26 19:10:31.557195597\n    Time: 19:10\n\n**Print a container** ([run](https://godbolt.org/z/MxM1YqjE7))\n\n``` c++\n#include <vector>\n#include <fmt/ranges.h>\n\nint main() {\n  std::vector<int> v = {1, 2, 3};\n  fmt::print(\"{}\\n\", v);\n}\n```\n\nOutput:\n\n    [1, 2, 3]\n\n**Check a format string at compile time**\n\n``` c++\nstd::string s = fmt::format(\"{:d}\", \"I am not a number\");\n```\n\nThis gives a compile-time error in C++20 because `d` is an invalid\nformat specifier for a string.\n\n**Write a file from a single thread**\n\n``` c++\n#include <fmt/os.h>\n\nint main() {\n  auto out = fmt::output_file(\"guide.txt\");\n  out.print(\"Don't {}\", \"Panic\");\n}\n```\n\nThis can be [up to 9 times faster than `fprintf`](\nhttps://vitaut.net/posts/2020/optimal-file-buffer-size/).\n\n**Print with colors and text styles**\n\n``` c++\n#include <fmt/color.h>\n\nint main() {\n  fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold,\n             \"Hello, {}!\\n\", \"world\");\n  fmt::print(fg(fmt::color::floral_white) | bg(fmt::color::slate_gray) |\n             fmt::emphasis::underline, \"Olá, {}!\\n\", \"Mundo\");\n  fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,\n             \"你好{}！\\n\", \"世界\");\n}\n```\n\nOutput on a modern terminal with Unicode support:\n\n![image](https://github.com/fmtlib/fmt/assets/576385/2a93c904-d6fa-4aa6-b453-2618e1c327d7)\n\n# Performance\n\n{fmt} can be tens of percent to 20–30 times faster than `sprintf` and\niostreams, especially for numeric formatting. It minimizes dynamic memory\nallocations and can optionally [compile format strings](\nhttps://fmt.dev/latest/api/#compile-api) into efficient formatting code.\n\nSee [format-benchmark](https://github.com/fmtlib/format-benchmark) and\n[dtoa-benchmark](https://github.com/fmtlib/dtoa-benchmark) for benchmarks\nand methodology.\n\n**Time per double (smaller is better):**\n\n[![Time per double for floating-point formatting methods](\nhttps://github.com/user-attachments/assets/3678bc4a-9405-489e-8ce1-ca702829cdaa)](\nhttps://github.com/fmtlib/dtoa-benchmark)\n\n`ostringstream` and `sprintf` are omitted because they are an order of\nmagnitude slower than the other methods.\n\n## Compile time and code bloat\n\nThe script [bloat-test.py][test] from [format-benchmark][bench] tests compile\ntime and code bloat for nontrivial projects. It generates 100 translation units\nand uses `printf()` or its alternative five times in each to simulate a\nmedium-sized project. The resulting executable size and compile time on an\nApple M5 Max running macOS 26.6.2 with Apple Clang 21.0.0\n(clang-2100.1.1.101), taking the best of three runs, are shown in the following\ntables.\n\n[test]: https://github.com/fmtlib/format-benchmark/blob/master/bloat-test.py\n[bench]: https://github.com/fmtlib/format-benchmark\n\n**Optimized build (-O3)**\n\n| Method            | Compile Time, s | Executable size, KiB | Stripped size, KiB |\n|-------------------|-----------------|----------------------|--------------------|\n| printf            |             1.2 |                   54 |                 50 |\n| IOStreams         |            21.8 |                   98 |                 84 |\n| {fmt} 12.2        |             4.2 |                   54 |                 50 |\n| tinyformat        |            25.5 |                  164 |                136 |\n| Boost Format 1.88 |            43.4 |                  550 |                333 |\n| stb_sprintf       |             1.4 |                   87 |                 83 |\n\n{fmt} is fast to compile and is comparable to `printf` in terms of per-call\nbinary size (within a rounding error on this system).\n\n**Non-optimized build**\n\n| Method            | Compile Time, s | Executable size, KiB | Stripped size, KiB |\n|-------------------|-----------------|----------------------|--------------------|\n| printf            |             1.1 |                   54 |                 50 |\n| IOStreams         |            20.7 |                   88 |                 68 |\n| {fmt} 12.2        |             4.0 |                   87 |                 84 |\n| tinyformat        |            21.8 |                  188 |                145 |\n| Boost Format 1.88 |            30.0 |                  749 |                430 |\n| stb_sprintf       |             1.2 |                  103 |                 99 |\n\n`libc`, `libc++`, and `libfmt` were linked as shared libraries to compare\nformatting function overhead only. tinyformat, Boost Format, and stb_sprintf\nare header-only libraries.\n\n# Projects using {fmt}\n\nNotable users include:\n\n- [Apple's FoundationDB](https://github.com/apple/foundationdb)\n- [Blizzard Battle.net](https://battle.net/)\n- [Ceph](https://ceph.com/)\n- [ClickHouse](https://github.com/ClickHouse/ClickHouse)\n- [Envoy](https://github.com/envoyproxy/envoy)\n- [Folly](https://github.com/facebook/folly)\n- [MariaDB](https://mariadb.org/)\n- [MongoDB](https://mongodb.com/)\n- [PyTorch](https://github.com/pytorch/pytorch)\n- [Seastar](https://seastar.io/)",
+      "rank": 9,
+      "weekly_stars": 1671
+    },
+    {
+      "full_name": "every-app/open-seo",
+      "html_url": "https://github.com/every-app/open-seo",
+      "description": "Open source alternative to Semrush and Ahrefs",
+      "homepage": "https://openseo.so",
+      "language": "TypeScript",
+      "stars": 17073,
+      "forks": 2133,
+      "open_issues": 150,
+      "topics": [
+        "backlink-analysis",
+        "google-search-console-mcp",
+        "keyword-research",
+        "mcp",
+        "seo",
+        "seo-agent",
+        "seo-audit",
+        "seo-automation",
+        "seo-skills",
+        "seo-tools",
+        "site-audit"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-27T18:57:41Z",
+      "updated_at": "2026-09-05T05:40:52Z",
+      "pushed_at": "2026-09-03T15:54:34Z",
+      "archived": false,
+      "readme": "# OpenSEO\n\n> Open source alternative to Semrush and Ahrefs\n\nOpenSEO is an SEO tool for _the people_. If tools like Semrush or Ahrefs are too expensive or bloated, OpenSEO is a pay-as-you-go alternative that you actually control.\n\n> All-in-one SEO tool for you and your AI agent.\n\nConnect with any agent like Claude Code, OpenClaw or Hermes. We have pre-built skills, but you can build your own to tailor OpenSEO to your needs.\n\n<img width=\"1385\" height=\"794\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd208249-44ea-4849-bb4b-5fc896aeab73\" />\n\n## Hosted Version\n\nTry OpenSEO for free on our website. If you want to support the project, a hosted subscription is $10/month.\n\n[openseo.so](https://openseo.so)\n\n## Why use OpenSEO?\n\n- Best in class MCP and AI Skills.\n- Modern, simple UI.\n  - Focused workflows instead of a bloated, complex SEO suite.\n- No subscriptions.\n  - Bring your own DataForSEO API key and pay only for what you use.\n- Fork and vibe code your own custom tool.\n\n## Main SEO Workflows\n\n- Keyword research\n- Rank tracking\n- Competitor Insights\n- Backlinks\n- Site Audits\n- AI Visibility\n\n## OpenSEO MCP & Agent Skills\n\nOpenSEO exposes an MCP server so AI agents like Claude Code, OpenClaw, and Hermes can use your SEO data directly. Agent Skills are reusable workflows that guide your agent through SEO tasks using the MCP.\n\n- [Set up OpenSEO MCP](https://openseo.so/docs/mcp)\n- [Set up OpenSEO Agent Skills](https://openseo.so/docs/skills/setup)\n\n## Self-Hosting\n\nOpenSEO supports two self-hosting paths:\n\n- **Simple: Docker (Best for testing it out)** - For personal use on your own machine. See [`docs/SELF_HOSTING_DOCKER.md`](./docs/SELF_HOSTING_DOCKER.md).\n  - Unless you already are self-hosting other apps and are confident doing so, we recommend self-hosting with Cloudflare as opposed to Railway, Coolify or Dokploy.\n  - We plan to make it simpler to host on those platforms in the next few months.\n- **Recommended: Cloudflare** - For internet-facing self-hosting across multiple devices or with your team (works on the free plan). See [`docs/SELF_HOSTING_CLOUDFLARE.md`](./docs/SELF_HOSTING_CLOUDFLARE.md).\n\nEither way, you need a DataForSEO API key to get SEO data. See [`docs/DATAFORSEO_API_KEY.md`](./docs/DATAFORSEO_API_KEY.md).\n\n## Costs\n\nOpenSEO needs a [DataForSEO](https://dataforseo.com/?aff=255379) API key so that you can get SEO data. You pay them directly when self hosting.\n\nSee [openseo.so/pricing](https://openseo.so/pricing)\n\nWhen you self host, your costs will be slightly lower than the estimates on our website. The way the hosted service makes money is by charging 28% extra for every request we make to DataForSEO.\n\n## Local Development\n\nSee [`docs/LOCAL_DEVELOPMENT.md`](./docs/LOCAL_DEVELOPMENT.md).\n\n## Contributing\n\nCreating clear issues is the best way to contribute.\n\nRead more here: [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)\n\nWe have this skill: `/simple-issue-description` which helps.\n\n```sh\nnpx skills add every-app/open-seo --skill simple-issue-description\n```\n\n## Community\n\nJoin Discord to chat: [Discord](https://discord.gg/c9uGs3cFXr)\n\nFollow along for updates:\n\n- Follow on X: https://x.com/bensenescu\n- Sign up for the mailing list on our website: [openseo.so](https://openseo.so)\n",
+      "rank": 10,
+      "weekly_stars": 2950
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 60,707 个新增 Star，tt-a1i/archify、THU-MAIC/OpenMAIC、bilawalsidhu/gods-eye-view 位居前三。主要开发语言集中在 TypeScript、Python、JavaScript。头部项目体现的方向包括：Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.；Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click；A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.。",
+    "top_picks": [
+      "tt-a1i/archify",
+      "THU-MAIC/OpenMAIC",
+      "bilawalsidhu/gods-eye-view"
+    ],
+    "projects": [
+      {
+        "full_name": "tt-a1i/archify",
+        "tagline": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+        "overview": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export. 主要语言为 JavaScript，公开主题包括：agent-skills、architecture-as-code、architecture-diagram、claude-skill。",
+        "core_features": [
+          "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、architecture-as-code、architecture-diagram、claude-skill 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 48,380 Stars、3,127 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "THU-MAIC/OpenMAIC",
+        "tagline": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+        "overview": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 31,596 Stars、5,197 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "bilawalsidhu/gods-eye-view",
+        "tagline": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+        "overview": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe. 主要语言为 JavaScript，公开主题包括：3d-globe、cesium、flight-tracking、geospatial。",
+        "core_features": [
+          "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 3d-globe、cesium、flight-tracking、geospatial 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 17,621 Stars、3,555 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：NOASSERTION；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "Gitlawb/openclaude",
+        "tagline": "runs anywhere. uses anything",
+        "overview": "runs anywhere. uses anything 主要语言为 TypeScript，公开主题包括：ai、ai-agent、ai-tools、cli。",
+        "core_features": [
+          "runs anywhere. uses anything",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、ai-agent、ai-tools、cli 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 32,605 Stars、9,051 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：NOASSERTION；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "google-research/timesfm",
+        "tagline": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.",
+        "overview": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting. 主要语言为 Python，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 31,117 Stars、2,974 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "jingyaogong/minimind",
+        "tagline": "🧠 Train a 64M-parameter LLM from scratch in just 2h!",
+        "overview": "🧠 Train a 64M-parameter LLM from scratch in just 2h! 主要语言为 Python，公开主题包括：artificial-intelligence、large-language-model。",
+        "core_features": [
+          "🧠 Train a 64M-parameter LLM from scratch in just 2h!",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 artificial-intelligence、large-language-model 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 58,584 Stars、7,615 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "K-Dense-AI/scientific-agent-skills",
+        "tagline": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+        "overview": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard. 主要语言为 Python，公开主题包括：agent-skills、ai-scientist、bioinformatics、chemoinformatics。",
+        "core_features": [
+          "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、ai-scientist、bioinformatics、chemoinformatics 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 42,691 Stars、3,909 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "Lakr233/vphone-cli",
+        "tagline": "仓库未提供项目简介。",
+        "overview": "仓库未提供项目简介。 主要语言为 Swift，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "仓库未提供项目简介。",
+          "主要技术栈：Swift"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Swift 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 10,564 Stars、1,356 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "fmtlib/fmt",
+        "tagline": "A modern formatting library",
+        "overview": "A modern formatting library 主要语言为 C++，公开主题包括：c-plus-plus、chrono、cpp、cross-platform。",
+        "core_features": [
+          "A modern formatting library",
+          "主要技术栈：C++"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 c-plus-plus、chrono、cpp、cross-platform 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 C++ 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 25,496 Stars、3,035 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "every-app/open-seo",
+        "tagline": "Open source alternative to Semrush and Ahrefs",
+        "overview": "Open source alternative to Semrush and Ahrefs 主要语言为 TypeScript，公开主题包括：backlink-analysis、google-search-console-mcp、keyword-research、mcp。",
+        "core_features": [
+          "Open source alternative to Semrush and Ahrefs",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 backlink-analysis、google-search-console-mcp、keyword-research、mcp 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 17,073 Stars、2,133 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
