@@ -1,0 +1,628 @@
+{
+  "date": "2026-10-03",
+  "repositories": [
+    {
+      "full_name": "paperclipai/paperclip",
+      "html_url": "https://github.com/paperclipai/paperclip",
+      "description": "The open-source app everyone uses to manage agents at work",
+      "homepage": "https://paperclip.ing",
+      "language": "TypeScript",
+      "stars": 96403,
+      "forks": 16325,
+      "open_issues": 6302,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-03-02T15:01:51Z",
+      "updated_at": "2026-10-03T06:19:38Z",
+      "pushed_at": "2026-10-03T06:18:45Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"doc/assets/banner.jpg\" alt=\"Paperclip is the app people use to manage AI agents for work.\" width=\"720\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"#quickstart\"><strong>Quickstart</strong></a> &middot;\n  <a href=\"https://docs.paperclip.ing\"><strong>Docs</strong></a> &middot;\n  <a href=\"https://github.com/paperclipai/paperclip\"><strong>GitHub</strong></a> &middot;\n  <a href=\"https://discord.gg/m4HZY7xNG3\"><strong>Discord</strong></a> &middot;\n  <a href=\"https://x.com/papercliping\"><strong>Twitter</strong></a> &middot;\n  <a href=\"https://paperclip.ing\"><strong>Website</strong></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/paperclipai/paperclip/blob/master/LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-blue\" alt=\"MIT License\" /></a>\n  <a href=\"https://github.com/paperclipai/paperclip/stargazers\"><img src=\"https://img.shields.io/github/stars/paperclipai/paperclip?style=flat\" alt=\"Stars\" /></a>\n  <a href=\"https://www.star-history.com/paperclipai/paperclip\"><img src=\"https://api.star-history.com/badge?repo=paperclipai/paperclip\" alt=\"Star History Rank\" /></a>\n  <a href=\"https://discord.gg/m4HZY7xNG3\"><img src=\"https://img.shields.io/badge/discord-join-7289da\" alt=\"Discord\" /></a>\n</p>\n\n<br/>\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/773bdfb2-6d1e-4e30-8c5f-3487d5b70c8f\" width=\"600\" controls></video>\n</div>\n\n<p align=\"center\">\n  <a href=\"https://paperclip.ing/waitlist/\"><strong>Sign up for the Paperclip Cloud waitlist →</strong></a>\n</p>\n\n<br/>\n\n# Paperclip is the app people use to manage AI agents for work.\n\nOpen-source orchestration for teams of AI agents.\n\n**If OpenClaw is an _employee_, Paperclip is the _company_.**\n\nPaperclip is a Node.js server and React UI that orchestrates a team of AI agents to run a business. Bring your own agents, assign goals, and track work and costs from one dashboard. Choose models and harnesses per agent while keeping your team's tasks, skills, permissions, and history in one place.\n\nIt looks like a task manager. Under the hood: org charts, budgets, governance, goal alignment, and agent coordination.\n\n**Manage business goals, not pull requests.**\n\n|        | Step            | Example                                                            |\n| ------ | --------------- | ------------------------------------------------------------------ |\n| **01** | Define the goal | _\"Build the #1 AI note-taking app to $1M MRR.\"_                    |\n| **02** | Hire the team   | CEO, CTO, engineers, designers, marketers — any bot, any provider. |\n| **03** | Approve and run | Review strategy. Set budgets. Hit go. Monitor from the dashboard.  |\n\n<br/>\n\n<div align=\"center\">\n<table>\n  <tr>\n    <td align=\"center\" rowspan=\"2\"><strong>Works<br/>with</strong></td>\n    <td align=\"center\" valign=\"top\"><img src=\"doc/assets/logos/openclaw.svg\" width=\"32\" height=\"32\" alt=\"OpenClaw\" /><br/><sub>OpenClaw</sub></td>\n    <td align=\"center\" valign=\"top\"><img src=\"doc/assets/logos/claude.svg\" width=\"32\" height=\"32\" alt=\"Claude Code\" /><br/><sub>Claude Code</sub></td>\n    <td align=\"center\" valign=\"top\"><img src=\"ui/public/brands/codex-color.svg\" width=\"32\" height=\"32\" alt=\"Codex\" /><br/><sub>Codex</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/cursor-dark.svg\" /><img src=\"ui/public/brands/adapters/cursor.svg\" width=\"32\" height=\"32\" alt=\"Cursor and Cursor Cloud\" /></picture><br/><sub>Cursor<br/>+ Cloud</sub></td>\n    <td align=\"center\" valign=\"top\"><img src=\"ui/public/brands/adapters/gemini-color.svg\" width=\"32\" height=\"32\" alt=\"Gemini CLI\" /><br/><sub>Gemini CLI</sub></td>\n  </tr>\n  <tr>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/opencode-logo-dark-square.svg\" /><img src=\"ui/public/brands/opencode-logo-light-square.svg\" width=\"32\" height=\"32\" alt=\"OpenCode\" /></picture><br/><sub>OpenCode</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/pi-dark.svg\" /><img src=\"ui/public/brands/adapters/pi.svg\" width=\"32\" height=\"32\" alt=\"Pi\" /></picture><br/><sub>Pi</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/hermesagent-dark.svg\" /><img src=\"ui/public/brands/adapters/hermesagent.svg\" width=\"32\" height=\"32\" alt=\"Hermes and Hermes Gateway\" /></picture><br/><sub>Hermes<br/>+ Gateway</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/grok-dark.svg\" /><img src=\"ui/public/brands/adapters/grok.svg\" width=\"32\" height=\"32\" alt=\"Grok Build\" /></picture><br/><sub>Grok Build</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/kimi-color.svg\" /><img src=\"ui/public/brands/adapters/kimi-color-light.svg\" width=\"32\" height=\"32\" alt=\"Kimi Code\" /></picture><br/><sub>Kimi Code</sub></td>\n  </tr>\n</table>\n\n<em>If it can receive a heartbeat, it's hired.</em>\n\n</div>\n\nCustom processes, HTTP endpoints, and external adapter packages extend the roster. See the [adapter overview](https://docs.paperclip.ing/reference/adapters/overview/) for setup and capabilities.\n\n<br/>\n\n## Paperclip is right for you if\n\n- ✅ You want to build **autonomous AI organizations**\n- ✅ You **coordinate many different agents** (OpenClaw, Codex, Claude, Cursor) toward a common goal\n- ✅ You have **20 simultaneous Claude Code terminals** open and lose track of what everyone is doing\n- ✅ You want agents running **autonomously 24/7**, but still want to audit work and chime in when needed\n- ✅ You want to **monitor costs** and enforce budgets\n- ✅ You want a process for managing agents that **feels like using a task manager**\n- ✅ You want to manage your autonomous businesses **from your phone**\n\n<br/>\n\n## The four pillars\n\nFour things have to work for an organization of AI agents to actually produce: the tasks, the org, the training, and the infrastructure. Paperclip is built around exactly those four pillars.\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/paperclipai/paperclip/1ec33ffd8b597f7e36aac3e2fbb4665b8c42dc3c/doc/assets/four-pillars-dark.png\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/paperclipai/paperclip/1ec33ffd8b597f7e36aac3e2fbb4665b8c42dc3c/doc/assets/four-pillars-light.png\">\n  <img src=\"https://raw.githubusercontent.com/paperclipai/paperclip/1ec33ffd8b597f7e36aac3e2fbb4665b8c42dc3c/doc/assets/four-pillars-light.png\" alt=\"The four pillars of Paperclip\">\n</picture>\n\n| Pillar | Built for | What it covers |\n| --- | --- | --- |\n| **Agentic Task Manager** — Declare intent. Agents work. You verify the output. | Everyone, daily | Tasks, approvals & review gates · proactive agent coworkers · auditable routines & workflows · verify from diffs, screenshots & tests |\n| **Org Chart for Agents** — Roles, permissions & boundaries for humans and agents. | Managers | Mixed human + agent org chart · responsibilities, delegation, specialization · governance: who can do what · scoped secrets & company boundaries · connection permissions & responsible-user identities |\n| **Agent Employee Training** — Design, train & evaluate your AI employees. | Enablers | Skill Studio & shared org-wide skills · evals & saved test runs · active learning loops & quality metrics · performance reviews for agents · saved test inputs · skill version history & restore · reusable team templates |\n| **Agentic OS** — The infrastructure that makes the work run. | IT & platform | Cross-provider runtime: any model, any agent · sandboxing, integrations & MCP servers · SSO, GRC, RBAC & cost controls · data privacy, internal trace collection, compounding data value · personal & shared app connections · run history & opt-in tracing |\n\n<br/>\n\n## Features\n\n<table>\n<tr>\n<td align=\"center\" width=\"33%\">\n<h3>🔌 Bring Your Own Agent</h3>\nAny agent, any runtime, one org chart. If it can receive a heartbeat, it's hired.\n</td>\n<td align=\"center\" width=\"33%\">\n<h3>🎯 Goal Alignment</h3>\nLink tasks and projects to your organization goals. Agents receive the goal context behind their work.\n</td>\n<td align=\"center\" width=\"33%\">\n<h3>💓 Heartbeats</h3>\nAgents wake for assigned work, follow-up messages, or configured schedules. Delegation flows up and down the org chart.\n</td>\n</tr>\n<tr>\n<td align=\"center\">\n<h3>💰 Cost Control</h3>\nCompany, agent, and project <a href=\"https://docs.paperclip.ing/guides/day-to-day/costs/\">budgets</a>. Track reported spend, get threshold alerts, and pause work at configured limits.\n</td>\n<td align=\"center\">\n<h3>🏢 Multi-Organization</h3>\nOne deployment, many organizations. Separate tasks, agents, permissions, and activity histories for each.\n</td>\n<td align=\"center\">\n<h3>🎫 Task Threads</h3>\nKeep conversations, plans, blockers, files, and run history attached to the work. Assign tasks to agents or people.\n</td>\n</tr>\n<tr>\n<td align=\"center\">\n<h3>🛡️ Governance</h3>\nConfigure <a href=\"https://docs.paperclip.ing/guides/day-to-day/approvals/\">review and approval stages</a>, approve hires, and pause, reassign, or stop work when needed.\n</td>\n<td align=\"center\">\n<h3>📊 Org Chart</h3>\nHierarchies, roles, reporting lines. Your agents have a boss, a title, and a job description.\n</td>\n<td align=\"center\">\n<h3>📱 Mobile Ready</h3>\nMonitor and manage your autonomous businesses from anywhere.\n</td>\n</tr>\n<tr>\n<td align=\"center\">\n<h3>🔗 Apps & Connections</h3>\n<a href=\"https://docs.paperclip.ing/connectors/\">Connect services</a> such as GitHub, Notion, and Railway, or your own MCP server. Set gateway actions to Allowed, Ask first, or Off.\n</td>\n<td align=\"center\">\n<h3>👥 Shared Agents, Personal Accounts</h3>\nChoose <a href=\"https://docs.paperclip.ing/connector",
+      "rank": 1,
+      "weekly_stars": 12825
+    },
+    {
+      "full_name": "vectorize-io/hindsight",
+      "html_url": "https://github.com/vectorize-io/hindsight",
+      "description": "Hindsight: Agent Memory That Learns",
+      "homepage": "https://hindsight.vectorize.io/",
+      "language": "Python",
+      "stars": 44803,
+      "forks": 5872,
+      "open_issues": 277,
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai-memory",
+        "memory"
+      ],
+      "license": "MIT",
+      "created_at": "2025-10-30T11:49:48Z",
+      "updated_at": "2026-10-03T06:25:27Z",
+      "pushed_at": "2026-10-02T17:43:57Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n![Hindsight Banner](./hindsight-docs/static/img/hindsight-github-banner.png)\n\n[Documentation](https://hindsight.vectorize.io) • [Integrations](https://hindsight.vectorize.io/integrations) • [Cookbook](https://hindsight.vectorize.io/cookbook) • [Benchmarks](https://benchmarks.hindsight.vectorize.io/) • [Paper](https://arxiv.org/abs/2512.12818) • [Hindsight Cloud](https://ui.hindsight.vectorize.io)\n\n[![Release](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml/badge.svg)](https://github.com/vectorize-io/hindsight/actions/workflows/release.yml)\n[![Version](https://img.shields.io/pypi/v/hindsight-api?logo=python&logoColor=white&label=version&color=blue)](https://pypi.org/project/hindsight-api/)\n[![PyPI Downloads](https://img.shields.io/pypi/dm/hindsight-client?logo=pypi&logoColor=white&label=PyPI&color=blue)](https://pypi.org/project/hindsight-client/)\n[![NPM Downloads](https://img.shields.io/npm/dm/%40vectorize-io%2Fhindsight-client?logo=npm&logoColor=white&label=NPM&color=blue)](https://www.npmjs.com/package/@vectorize-io/hindsight-client)\n[![Slack Community](https://img.shields.io/badge/Slack-Join%20Community-4A154B?logo=slack)](https://vectorize.io/slack)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n<br/>\n<p align=\"center\">\n <a href=\"https://www.star-history.com/vectorize-io/hindsight\"><img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=rank\" alt=\"Star History Rank\" /> <img src=\"https://api.star-history.com/badge?repo=vectorize-io/hindsight&type=trending\" alt=\"GitHub Trending Repository of the Day\" /></a>\n</p>\n\n</div>\n\n---\n\n## What is Hindsight?\n\nHindsight™ is an agent memory system built to create smarter agents that learn over time. Most agent memory systems focus on recalling conversation history. Hindsight is focused on making agents that learn, not just remember.\n\n<video src=\"https://github.com/user-attachments/assets/923b798d-3581-4897-bb62-9cfa5a931682\" controls></video>\n\nIt eliminates the shortcomings of alternative techniques such as RAG and knowledge graph and delivers state-of-the-art performance on long term memory tasks.\n\n**Contents**\n\n- [Memory Performance & Accuracy](#memory-performance--accuracy)\n- [Quick Start](#quick-start) — [server](#1-start-a-server) · [clients](#2-connect-a-client) · [platforms](#supported-platforms) · [embedded](#python-embedded-no-server-required)\n- [Adding Hindsight to Your Agent](#adding-hindsight-to-your-agent) — [LLM Wrapper](#llm-wrapper-2-lines-of-code) · [integrations](#integrations) · [coding agents](#coding-agents) · [MCP](#mcp-server)\n- [Core Concepts](#core-concepts) — [memory types](#memory-types) · [retain / recall / reflect](#the-three-operations) · [observations](#observations) · [mental models & knowledge pages](#mental-models--knowledge-pages) · [banks](#memory-banks)\n- [Use Cases](#use-cases)\n- [Running in Production](#running-in-production)\n- [Resources](#resources)\n\n---\n\n## Memory Performance & Accuracy\n\nHindsight is the most accurate agent memory system ever tested according to benchmark performance. It has achieved state-of-the-art performance on the LongMemEval benchmark, widely used to assess memory system performance across a variety of conversational AI scenarios. The current reported performance of Hindsight and other agent memory solutions as of January 2026 is shown here:\n\n![Overview](./hindsight-docs/static/img/hindsight-benchmarks.png)\n\n> Live, continuously updated results — including per-model accuracy, latency and cost — are published at [benchmarks.hindsight.vectorize.io](https://benchmarks.hindsight.vectorize.io/).\n\nThe benchmark performance data for Hindsight has been independently reproduced by research collaborators at the Virginia Tech [Sanghani Center for Artificial Intelligence and Data Analytics](https://sanghani.cs.vt.edu/) and The Washington Post. Other scores are self-reported by software vendors.\n\nHindsight is being used in production at Fortune 500 enterprises and by a growing number of AI startups.\n\n---\n\n> 🤖 **Using a coding agent?** Install the Hindsight documentation skill for instant access to docs while you code:\n> ```bash\n> npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs\n> ```\n> Works with Claude Code, Cursor, and other AI coding assistants.\n\n---\n\n## Quick Start\n\n### 1. Start a server\n\n#### Docker (recommended)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\n\ndocker run -it --pull always --name hindsight --restart unless-stopped -p 8888:8888 -p 9999:9999 \\\n  -e HINDSIGHT_API_LLM_API_KEY=$OPENAI_API_KEY \\\n  -v hindsight-data:/home/hindsight/.pg0 \\\n  ghcr.io/vectorize-io/hindsight:latest\n```\n\n>API: http://localhost:8888\n>UI: http://localhost:9999\n\nHindsight works with **25+ LLM providers** via `HINDSIGHT_API_LLM_PROVIDER` — hosted (`openai`, `anthropic`, `gemini`, `groq`, `bedrock`, `vertexai`, `minimax`, `deepseek`, `atlas`, `meta`, …), fully local (`ollama`, `lmstudio`, `llamacpp`), any OpenAI-compatible endpoint, and gateways (`litellm`, `litellmrouter`) that reach the rest. Existing subscriptions work too: `openai-codex` (ChatGPT Plus/Pro), `claude-code` (Claude Pro/Max), `cursor` (Cursor) and `github-copilot` (GitHub Copilot) need no API key. See [supported models](https://hindsight.vectorize.io/developer/models).\n\n#### Docker (external PostgreSQL)\n\n```bash\nexport OPENAI_API_KEY=sk-xxx\nexport HINDSIGHT_DB_PASSWORD=choose-a-password\ncd docker/docker-compose\ndocker compose up\n```\n\n> Oracle AI Database is also supported for enterprise deployments with full feature parity. See the [storage documentation](https://hindsight.vectorize.io/developer/storage) for details.\n\n#### Bare metal (pip)\n\n```bash\npip install hindsight-api\nexport HINDSIGHT_API_LLM_API_KEY=sk-xxx\n\nhindsight-api\n```\n\n#### Kubernetes (Helm)\n\n```bash\nhelm install hindsight oci://ghcr.io/vectorize-io/charts/hindsight \\\n  --set api.llm.provider=openai \\\n  --set api.llm.apiKey=sk-xxx \\\n  --set postgresql.enabled=true\n```\n\n#### Managed (no server)\n\n[Hindsight Cloud](https://vectorize.io/pricing) is the hosted option: managed infrastructure that scales automatically, plus a dashboard, backups, team collaboration and a 99.9% uptime SLA. Billing is usage-based with free credits to start — no fixed monthly or per-seat fee. Point any client at `https://api.hindsight.vectorize.io` with your API key and skip the deployment entirely.\n\n[Compare self-hosted, Cloud and Enterprise →](https://vectorize.io/pricing) · [Sign up →](https://ui.hindsight.vectorize.io)\n\nAll options, including Windows and air-gapped setups, are covered in the [installation guide](https://hindsight.vectorize.io/developer/installation).\n\n### 2. Connect a client\n\n```bash\npip install hindsight-client -U                                  # Python\nnpm install @vectorize-io/hindsight-client                        # Node.js / TypeScript\ngo get github.com/vectorize-io/hindsight/hindsight-clients/go     # Go\ncurl -fsSL https://hindsight.vectorize.io/get-cli | bash          # CLI\n```\n\n#### Python\n\n```python\nfrom hindsight_client import Hindsight\n\nclient = Hindsight(base_url=\"http://localhost:8888\")\n\n# Retain: Store information\nclient.retain(bank_id=\"my-bank\", content=\"Alice works at Google as a software engineer\")\n\n# Recall: Search memories\nclient.recall(bank_id=\"my-bank\", query=\"What does Alice do?\")\n\n# Reflect: Generate disposition-aware response\nclient.reflect(bank_id=\"my-bank\", query=\"Tell me about Alice\")\n```\n\n#### Node.js / TypeScript\n\n```javascript\nconst { HindsightClient } = require('@vectorize-io/hindsight-client');\n\nconst main = async () => {\n  const client = new HindsightClient({ baseUrl: 'http://localhost:8888' });\n\n  await client.retain('my-bank', 'Alice loves hiking in Yosemite');\n\n  const results = await client.recall('my-bank', 'What does Alice like?');\n  console.log(results);\n}\n\nmain();\n```\n\nFull reference: [Python](https://hindsight.vectorize.io/sdks/python) · [Node.js](https://hindsight.vectorize.io/sdks/nodejs) · [Go](https://hindsight.vectorize.io/sdks/go) · [CLI](https://hindsight.vectorize.io/sdks/cli) · [REST API](https://hindsight.vectorize.io/api-reference)\n\n### Supported Platforms\n\n| Platform | Docker | Bare Metal (pip) | Embedded DB (pg0) |\n|----------|--------|------------------|--------------------|\n| **Linux** (x86_64, ARM64) | ✅ | ✅ | ✅ |\n| **macOS** (Apple Silicon / arm64) | ✅ | ✅ | ✅ |\n| **macOS** (Intel / x86_64) | ✅ | ⚠️ | ✅ |\n| **Windows** (x86_64) | ✅ | ✅ | ✅ |\n\n⚠️ Intel Macs: use `hindsight-all-slim` — see the [installation guide](https://hindsight.vectorize.io/developer/installation#supported-platforms) for details.\n\n### Python Embedded (no server required)\n\n```bash\npip install hindsight-all -U\n```\n\nOn Intel (x86_64) Macs, install `hindsight-all-slim` instead — see [Supported Platforms](#supported-platforms).\n\n```python\nimport os\nfrom hindsight import HindsightServer, HindsightClient\n\nwith HindsightServer(\n    llm_provider=\"openai\",\n    llm_model=\"gpt-5-mini\",\n    llm_api_key=os.environ[\"OPENAI_API_KEY\"]\n) as server:\n    client = HindsightClient(base_url=server.url)\n    client.retain(bank_id=\"my-bank\", content=\"Alice works at Google\")\n    results = client.recall(bank_id=\"my-bank\", query=\"Where does Alice work?\")\n```\n\nA [Node.js equivalent](https://hindsight.vectorize.io/sdks/hindsight-all-npm) and a [daemon CLI](https://hindsight.vectorize.io/sdks/embed) are also available.\n\n---\n\n## Adding Hindsight to Your Agent\n\n### LLM Wrapper (2 lines of code)\n\nThe easiest way to add memory to an existing agent is the LLM Wrapper. Swap your LLM client for a wrapped one — memories are then stored and retrieved automatically on every call, with no other changes to your code.\n\n```bash\npip install hindsight-litellm\n```\n\n```python\nfrom openai import OpenAI\nfrom hindsight_litellm import wrap_openai\n\n# Wrap your existing LLM client and you're done.\n# Defaults to Hindsight Cloud; pass hindsight_api_url for a self-hosted server.\nclient = ",
+      "rank": 2,
+      "weekly_stars": 16183
+    },
+    {
+      "full_name": "debpalash/VoiceStudio",
+      "html_url": "https://github.com/debpalash/VoiceStudio",
+      "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+      "homepage": "https://voicestudio.sh",
+      "language": "Python",
+      "stars": 52057,
+      "forks": 5800,
+      "open_issues": 85,
+      "topics": [
+        "ai",
+        "audiobook",
+        "cuda",
+        "dubbing",
+        "elevenlabs-alternative",
+        "huggingface",
+        "local-first",
+        "mlx",
+        "omnivoice-studio",
+        "speech-to-text",
+        "tauri",
+        "text-to-speech",
+        "transcription",
+        "translate",
+        "tts",
+        "voice-ai",
+        "voice-cloning",
+        "voice-generation",
+        "voicestudio",
+        "workflow"
+      ],
+      "license": "AGPL-3.0",
+      "created_at": "2026-04-09T21:40:26Z",
+      "updated_at": "2026-10-03T06:27:38Z",
+      "pushed_at": "2026-10-03T05:18:43Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n  <img src=\"docs/logo.png\" alt=\"VoiceStudio\" width=\"88\" />\n  <h1>VoiceStudio</h1>\n  <p>\n    <a href=\"https://trendshift.io/repositories/28176?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-28176\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/28176\" alt=\"VoiceStudio ranking on Trendshift\" width=\"220\" height=\"48\" /></a>\n  </p>\n  <p><strong>Open-source voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.</strong></p>\n  <p>\n    <a href=\"https://voicestudio.sh/?utm_source=github&utm_medium=readme&utm_campaign=project\">Website</a> ·\n    <a href=\"https://github.com/debpalash/VoiceStudio/releases/latest\">Download</a> ·\n    <a href=\"#get-started\">Get started</a> ·\n    <a href=\"#documentation\">Docs</a> ·\n    <a href=\"https://discord.gg/bzQavDfVV9\">Discord</a> ·\n    <a href=\"README_CN.md\">简体中文</a> ·\n    <a href=\"README_JA.md\">日本語</a>\n  </p>\n  <p>\n    <a href=\"https://github.com/debpalash/VoiceStudio/actions/workflows/ci.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/debpalash/VoiceStudio/ci.yml?branch=main\" alt=\"CI\" /></a>\n    <a href=\"https://github.com/debpalash/VoiceStudio/releases/latest\"><img src=\"https://img.shields.io/github/v/release/debpalash/VoiceStudio\" alt=\"Latest release\" /></a>\n    <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-AGPL--3.0-blue\" alt=\"AGPL-3.0\" /></a>\n  </p>\n</div>\n\n![A tour of the Electron app: voice cloning, voice design, dubbing, and model management](docs/media/electron/voicestudio.gif)\n\n## Your voice. Your workflow.\n\n| Create | Produce | Connect |\n| :--- | :--- | :--- |\n| Clone a voice or design your own | Dub videos with timed speech | Local API & MCP for agents |\n| Dictate with a floating widget | Stories, audiobooks & batch jobs | Optional remote workers |\n\nStart with **VoiceStudio** (default, powered by k2-fsa/OmniVoice), or choose another engine. [Features & engine catalog](docs/feature-catalog.md).\n\nLocal workflows run on your hardware. Remote services are optional; usage analytics requires consent.\n\n<details>\n<summary><strong>Explore the workspaces</strong> · Clone, dub, design & models</summary>\n\n<table>\n  <tr>\n    <td><img src=\"docs/media/electron/voice-cloning.png\" alt=\"Electron voice cloning workspace with the bundled demo voice\" width=\"100%\" /></td>\n    <td><img src=\"docs/media/electron/dubbing.png\" alt=\"Electron video dubbing workspace\" width=\"100%\" /></td>\n  </tr>\n  <tr><td align=\"center\">Voice cloning</td><td align=\"center\">Video dubbing</td></tr>\n  <tr>\n    <td><img src=\"docs/media/electron/voice-design.png\" alt=\"Describe a voice in the Electron voice design workspace\" width=\"100%\" /></td>\n    <td><img src=\"docs/media/electron/models.png\" alt=\"Install and manage local speech models\" width=\"100%\" /></td>\n  </tr>\n  <tr><td align=\"center\">Voice design</td><td align=\"center\">Local models</td></tr>\n</table>\n\n<img width=\"2628\" height=\"1950\" alt=\"VoiceStudio desktop workspace\" src=\"https://github.com/user-attachments/assets/b474497d-a453-49a3-a2dd-f023ec6b7659\" />\n\n</details>\n\n## Get started\n\n### One-command install (macOS / Linux)\n\n```sh\n# Latest Electron release\ncurl -fsSL https://voicestudio.sh/install | sh\n\n# A specific published Electron release (replace X.Y.Z)\ncurl -fsSL https://voicestudio.sh/install | sh -s -- --version X.Y.Z\n\n# Build current main and install the desktop app\ncurl -fsSL https://voicestudio.sh/install | sh -s -- --main\n\n# Uninstall the app, keeping your data\ncurl -fsSL https://voicestudio.sh/install | sh -s -- --uninstall\n```\n\nOn Windows, run `irm https://voicestudio.sh/install | iex` in PowerShell.\nRelease downloads require curl and a SHA-256 tool. `--main` requires Git,\nNode.js 22+, Bun, Rust/Cargo, and platform build tools; see\n[installer prerequisites and behavior](docs/install/script.md).\nThe installer preserves your settings, projects, and models. Older versions\nmust contain Electron packages; it never falls back to archived Tauri builds.\n\nOr download from [Releases](https://github.com/debpalash/VoiceStudio/releases/latest) (macOS `.dmg`, Windows `.exe`, Linux `.AppImage` or `.deb`) and follow your platform guide:\n\n**[macOS](docs/install/macos.md) · [Windows](docs/install/windows.md) · [Linux](docs/install/linux.md) · [Docker](docs/install/docker.md)**\n\n| Hardware | Support |\n|---|---|\n| NVIDIA GPU (Windows / Linux) | CUDA acceleration |\n| Apple Silicon | Metal (MPS) acceleration |\n| No dedicated GPU (Intel/AMD integrated graphics, older PCs) | Fully usable on the CPU, slower; setup installs the small CPU build of PyTorch (about 5 GB free disk) |\n| Windows on ARM (Snapdragon X etc.) | **Experimental**, validation pending: native ARM64 app, x64 Python backend under emulation, CPU only |\n| Intel Mac | App UI only; connect to a remote backend ([why](docs/install/macos.md)) |\n\nOpen **Voice cloning**, choose a voice or add a clean reference recording, enter your text, and generate. Install the required model when prompted. Hardware needs vary by engine; see [performance](docs/performance.md).\n\n### Install with prompt\n\nPaste into your coding agent (Claude Code, Codex, Cursor, …):\n\n```text\nInstall the VoiceStudio Electron app on this device and verify it works, following\nhttps://github.com/debpalash/VoiceStudio/blob/main/docs/install/agent.md\n```\n\nThe [agent guide](docs/install/agent.md) covers hardware detection, reusing existing\ndata, asking before model downloads, and a test generation. Agents that support skills\ncan also run `npx skills add debpalash/VoiceStudio`.\n\n<details>\n<summary><strong>Run the Electron preview from source</strong></summary>\n\n```bash\ngit clone https://github.com/debpalash/VoiceStudio.git\ncd VoiceStudio\nbun install\nbun run setup:api  # prepare Python dependencies before starting Electron\nbun run dev\n```\n\nSee [Electron setup](electron/README.md) for prerequisites and backend configuration.\n\nUse `bun run smoke-test` to build and launch an isolated packaged Electron app.\nAdd `-- --install` for the networked managed-runtime installation check.\n\n</details>\n\n> **Electron is the only desktop app and web UI.** Version 0.5.3 was the final Tauri release. Existing Tauri users must [install Electron separately](docs/electron-migration.md). The retired Tauri shell and legacy UI entry points have been removed.\n\n## Documentation\n\n| Need | Start here |\n|---|---|\n| Setup help | [Troubleshooting](docs/install/troubleshooting.md) · [Model downloads](docs/downloading-models.md) |\n| Models & audio quality | [Engine guides](docs/engines/README.md) · [Benchmarks](docs/benchmarks.md) |\n| Integrations | [Local API](docs/speech-platform.md) · [MCP](docs/mcp.md) · [Examples](examples/README.md) |\n| Development | [Contributing](.github/CONTRIBUTING.md) · [Electron](electron/README.md) · [Changelog](CHANGELOG.md) |\n\nAgent skills: `npx skills add debpalash/VoiceStudio` — choose **voicestudio** for audio workflows or **voicestudio-maintainer** for repository maintenance.\n\n## Sponsors\n\n<a href=\"https://forms.gle/2PYCvd39hbwijzX37\"><img src=\"docs/media/sponsor-slot.svg\" alt=\"Your brand — apply for a featured VoiceStudio sponsor slot\" width=\"640\" /></a>\n\n**Become a featured partner.** [Apply for a paid placement](https://forms.gle/2PYCvd39hbwijzX37) · [Email us](mailto:partner@voicestudio.sh)\n\nSupport development: [Ko-fi](https://ko-fi.com/debpalash) · [PayPal](https://paypal.me/palashCoder) · [Sponsorship details](SPONSORS.md)\n\n## License & responsible use\n\n[AGPL-3.0](LICENSE). Models have their own licenses; review them before commercial use. Clone voices only with permission. See [license details](LICENSE-NOTICE.md).\n",
+      "rank": 3,
+      "weekly_stars": 16475
+    },
+    {
+      "full_name": "rohitg00/ai-engineering-from-scratch",
+      "html_url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "description": "Learn it. Build it. Ship it for others.",
+      "homepage": "https://aiengineeringfromscratch.com",
+      "language": "Python",
+      "stars": 62745,
+      "forks": 10725,
+      "open_issues": 65,
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "ai-engineering",
+        "computer-vision",
+        "course",
+        "deep-learning",
+        "from-scratch",
+        "generative-ai",
+        "llm",
+        "machine-learning",
+        "mcp",
+        "nlp",
+        "python",
+        "reinforcement-learning",
+        "rust",
+        "swarm-intelligence",
+        "transformers",
+        "tutorial",
+        "typescript"
+      ],
+      "license": "MIT",
+      "created_at": "2026-03-18T18:38:02Z",
+      "updated_at": "2026-10-03T06:23:42Z",
+      "pushed_at": "2026-10-02T05:37:24Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"assets/banner.svg\" alt=\"AI Engineering from Scratch — reference manual banner\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <b>Read in your language:</b>\n  <a href=\"i18n/es/README.md\">Español</a> ·\n  <a href=\"i18n/fr/README.md\">Français</a> ·\n  <a href=\"i18n/pt/README.md\">Português</a> ·\n  <a href=\"i18n/de/README.md\">Deutsch</a> ·\n  <a href=\"i18n/it/README.md\">Italiano</a> ·\n  <a href=\"i18n/zh/README.md\">简体中文</a> ·\n  <a href=\"i18n/ja/README.md\">日本語</a> ·\n  <a href=\"i18n/ko/README.md\">한국어</a> ·\n  <a href=\"i18n/hi/README.md\">हिन्दी</a> ·\n  <a href=\"i18n/ar/README.md\">العربية</a> ·\n  <a href=\"i18n/ru/README.md\">Русский</a> ·\n  <a href=\"i18n/tr/README.md\">Türkçe</a>\n  <br><sub>Translated landing pages, committed to the repo. English is canonical; lesson pages are machine-translated on the <code>translations</code> branch. See <a href=\"docs/i18n.md\">docs/i18n.md</a>.</sub>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-1a1a1a?style=flat-square&labelColor=fafaf5\" alt=\"MIT License\"></a>\n  <a href=\"ROADMAP.md\"><img src=\"https://img.shields.io/badge/lessons-523-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"523 lessons\"></a>\n  <a href=\"#contents\"><img src=\"https://img.shields.io/badge/phases-20-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"20 phases\"></a>\n  <a href=\"https://github.com/rohitg00/ai-engineering-from-scratch/stargazers\"><img src=\"https://img.shields.io/github/stars/rohitg00/ai-engineering-from-scratch?style=flat-square&labelColor=fafaf5&color=3553ff\" alt=\"GitHub stars\"></a>\n  <a href=\"https://aiengineeringfromscratch.com\"><img src=\"https://img.shields.io/badge/web-aiengineeringfromscratch.com-3553ff?style=flat-square&labelColor=fafaf5\" alt=\"Website\"></a>\n</p>\n\n### Sponsors\n\n<a href=\"https://serpapi.com/ai-engineering-from-scratch\">\n  <img align=\"left\" src=\"assets/sponsors/serpapi-banner.png\" alt=\"SerpApi. Web Search API for your AI apps. Available in Markdown and JSON for any integration.\" width=\"600\">\n</a>\n\n<p><br><b>Thank you to our sponsors.</b></p>\n<p>Your support keeps every lesson free and open source.</p>\n<p>\n  <a href=\"#supporters\">See all supporters</a><br>\n  <a href=\"SPONSORS.md\">Become a sponsor</a>\n  <br clear=\"all\">\n</p>\n\n```text\n░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒\n```\n\n> **84% of students already use AI tools. Only 18% feel prepared to use them\n> professionally.** This curriculum closes that gap.\n>\n> 523 lessons. 20 phases. ~342 hours. Python, TypeScript, Rust, Julia. Every lesson ships\n> a reusable artifact: a prompt, a skill, an agent, an MCP server. Free, open source, MIT.\n>\n> You don't just learn AI. You build it. End-to-end. By hand.\n\n<!-- STATS:START (generated from site/stats.json by build.js — do not edit by hand) -->\n<p align=\"center\"><sub><b>114,584</b> readers &nbsp;·&nbsp; <b>181,995</b> page views in the last 30 days &nbsp;·&nbsp; as of 2026-08-29</sub></p>\n<!-- STATS:END -->\n\n## Start here: choose what you want to build\n\nYou do not need to scan 523 lessons before beginning. Pick one goal. Each link\nopens the same curriculum on GitHub or the website, and both versions use the\nsame lesson code.\n\n| Your goal | Learn on GitHub | Learn on the website |\n|---|---|---|\n| I am new and want the complete foundation | [Phase 0: Setup and Tooling](phases/00-setup-and-tooling/) | [Dev Environment](https://aiengineeringfromscratch.com/lesson?path=phases/00-setup-and-tooling/01-dev-environment) |\n| I know Python and want math plus ML foundations | [Phase 1: Math Foundations](phases/01-math-foundations/) | [Linear Algebra Intuition](https://aiengineeringfromscratch.com/lesson?path=phases/01-math-foundations/01-linear-algebra-intuition) |\n| I want to build production LLM applications | [Phase 11: LLM Engineering](phases/11-llm-engineering/) | [Prompt Engineering](https://aiengineeringfromscratch.com/lesson?path=phases/11-llm-engineering/01-prompt-engineering) |\n| I want to build agents | [Phase 14: Agent Engineering](phases/14-agent-engineering/) | [The Agent Loop](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/01-the-agent-loop) |\n| I want to use coding agents on real repositories | [Agent-Assisted Engineering path](learning-paths/using-coding-agents.json) | [Agent-Assisted Engineering](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/31-agent-workbench-why-models-fail&learningPath=using-coding-agents) |\n| I want to shape the right build before implementation | [Product Judgment and Delivery path](learning-paths/shaping-the-build.json) | [Product Judgment and Delivery](https://aiengineeringfromscratch.com/lesson?path=phases/14-agent-engineering/47-outcomes-before-output&learningPath=shaping-the-build) |\n| I want to build with Model Context Protocol (MCP) | [Model Context Protocol (MCP) route](phases/13-tools-and-protocols/README.md#model-context-protocol-mcp-path) | [Model Context Protocol (MCP) path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/06-mcp-fundamentals&learningPath=model-context-protocol) |\n| I want to write and ship Agent Skills | [Focused Agent Skills route](phases/13-tools-and-protocols/README.md#agent-skills-fast-path) | [Agent Skills path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills) |\n| I want to prepare for a Claude certification | [Certification onboarding](certifications/claude/GETTING_STARTED.md) | [Certification Academy](https://aiengineeringfromscratch.com/certifications.html) |\n| I want to prepare for the MCP Associate (MCPA) | [MCPA onboarding](certifications/mcpa/GETTING_STARTED.md) | [MCPA track](https://aiengineeringfromscratch.com/certification?id=mcpa-f) |\n\nNot sure where you fit? Use the [`start-learning` placement tutor](skills/start-learning/SKILL.md)\nor the [website prerequisites guide](https://aiengineeringfromscratch.com/prereqs.html).\n\nCompare four core domains and six career routes in the [AI Engineering Learning Paths](https://aiengineeringfromscratch.com/learning-paths.html).\n\n### Use every lesson the same way\n\n1. **Read** `docs/en.md` and explain the core idea in your own words.\n2. **Type and build** the important code instead of treating the code block as decoration.\n3. **Run** the lesson command from the repository root, the directory containing `README.md` and `phases/`.\n4. **Keep evidence**: the command, working directory, exit code, meaningful output, and the artifact you changed or produced.\n5. **Continue** only when you can explain the output and make one small change without guessing.\n\nCommands in lesson pages are paths from the repository root unless the lesson\nexplicitly says to change directories. If a lesson offers several languages,\nrun the implementation for the language you are learning.\n\n### Clone it and produce your first evidence\n\n```bash\ngit clone https://github.com/rohitg00/ai-engineering-from-scratch.git\ncd ai-engineering-from-scratch\npython3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route beginner\npython3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py\n```\n\nThe preflight separates requirements needed now from tools needed later. Every\nrequired failure includes the detected reason and a corrective command. The\nsecond command is a dependency-free lesson and ends by showing that a matrix\ntimes a vector is the operation inside a neural network layer. Save that\nterminal output as your first evidence.\n\n## Add the AI tutor in 30 seconds\n\nIf Node.js, `npx`, and a skill-capable coding agent are already installed,\nyour coding agent can become your tutor in two commands. A repository clone is\nnot needed to install or read the tutor. Runnable focused-path labs need\n`python3`. Agent Skills host labs also need a selected host and a writable\nuser or project skill scope.\n\nCheck the local requirements first:\n\n```bash\nnode --version\nnpx --version\npython3 --version\n```\n\nThen install the curriculum skills and choose the host and scope you intend to\nuse when the installer asks:\n\n```bash\nnpx skills add rohitg00/ai-engineering-from-scratch\n```\n\nInvocation syntax belongs to the host, not to the portable `SKILL.md` format:\n\n| Host | Start the course | Start Model Context Protocol (MCP) | Start Agent Skills | Run a phase quiz |\n|---|---|---|---|---|\n| Codex | `start-learning`, or choose it from `/skills` | `learn-mcp`, or choose it from `/skills` | `learn-agent-skills`, or choose it from `/skills` | `check-understanding 13`, or choose it from `/skills` |\n| Claude Code | `/start-learning` | `/learn-mcp` | `/learn-agent-skills` | `/check-understanding 13` |\n| Other compatible hosts | `Use start-learning to begin the course.` | `Use learn-mcp to start the Model Context Protocol (MCP) path.` | `Use learn-agent-skills to start the Agent Skills Engineering path.` | `Use check-understanding to quiz me on Phase 13.` |\n\nA ten-question placement quiz maps what you already know to a starting phase and\nsaves a personalized study plan to `LEARNING.md`. From there, the `learn` skill\nteaches one lesson per session: concept, math, code, quiz. It streams lessons\nstraight from this repo, and the `course-guide` skill jumps you to the exact\nlesson that covers anything you are stuck on. In Codex, invoke these skills with\n`learn` and `course-guide`; in Claude Code, use `/learn` and `/course-guide`;\nin other compatible hosts, ask to use the skill by name.\n\nOnly want Model Context Protocol (MCP)? Use the MCP invocation for your host. It creates\n`MCP-LEARNING.md` and follows one 17-lesson route through stateless\nrequests, transports, bidirectional work, security, reliability, registry\ngovernance, and conformance evidence. The exact order and checkpoints live in\nthe [Model Context Protocol (MCP) manifest](learning-paths/model-context-protocol.json).\n\nOnly want Agent Skills? Use the Agent Skills invocation for your host. It\ncreate",
+      "rank": 4,
+      "weekly_stars": 5600
+    },
+    {
+      "full_name": "flutter/flutter",
+      "html_url": "https://github.com/flutter/flutter",
+      "description": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
+      "homepage": "https://flutter.dev",
+      "language": "Dart",
+      "stars": 179270,
+      "forks": 32866,
+      "open_issues": 13252,
+      "topics": [
+        "android",
+        "app-framework",
+        "cross-platform",
+        "dart",
+        "dart-platform",
+        "desktop",
+        "flutter",
+        "flutter-package",
+        "fuchsia",
+        "ios",
+        "linux-desktop",
+        "macos",
+        "material-design",
+        "mobile",
+        "mobile-development",
+        "skia",
+        "web",
+        "web-framework",
+        "windows"
+      ],
+      "license": "BSD-3-Clause",
+      "created_at": "2015-03-06T22:54:58Z",
+      "updated_at": "2026-10-03T06:28:40Z",
+      "pushed_at": "2026-10-03T06:28:42Z",
+      "archived": false,
+      "readme": "<a href=\"https://flutter.dev/\">\n  <h1 align=\"center\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://docs.flutter.dev/logo_dark.png\">\n      <img alt=\"Flutter\" src=\"https://docs.flutter.dev/logo.png\">\n    </picture>\n  </h1>\n</a>\n\n[![Flutter CI Status](https://flutter-dashboard.appspot.com/api/public/build-status-badge?repo=flutter)](https://flutter-dashboard.appspot.com/#/build?repo=flutter)\n[![Discord badge][]][Discord instructions]\n[![Twitter handle][]][Twitter badge]\n[![BlueSky badge][]][BlueSky handle]\n[![LFX Health Score](https://insights.linuxfoundation.org/api/badge/health-score?project=flutter)](https://insights.linuxfoundation.org/project/flutter)\n[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5631/badge)](https://bestpractices.coreinfrastructure.org/projects/5631)\n[![SLSA 1](https://slsa.dev/images/gh-badge-level1.svg)](https://slsa.dev)\n\nFlutter is Google's SDK for crafting beautiful, fast user experiences for\nmobile, web, and desktop from a single codebase. Flutter works with existing\ncode, is used by developers and organizations around the world, and is free and\nopen source.\n\n## Documentation\n\n* [Install Flutter](https://docs.flutter.dev/get-started)\n* [Flutter documentation](https://docs.flutter.dev)\n* [Development wiki](./docs/README.md)\n* [Contributing to Flutter](https://github.com/flutter/flutter/blob/main/CONTRIBUTING.md)\n\nFor release and other announcements, join the\n[flutter-announce](https://groups.google.com/g/flutter-announce)\nmailing list. Our documentation also tracks [breaking\nchanges](https://docs.flutter.dev/release/breaking-changes) across releases.\n\n## Terms of service\n\nThe Flutter tool may occasionally download resources from Google servers. By\ndownloading or using the Flutter SDK, you agree to the Google Terms of Service:\nhttps://policies.google.com/terms\n\nFor example, when installed from GitHub (as opposed to from a prepackaged\narchive), the Flutter tool will download the Dart SDK from Google servers\nimmediately when first run, as it is used to execute the `flutter` tool itself.\nThis will also occur when Flutter is upgraded (e.g. by running the `flutter\nupgrade` command).\n\n## About Flutter\n\nWe think Flutter will help you create beautiful, fast apps, with a productive,\nextensible and open development model, whether you're targeting iOS or Android,\nweb, Windows, macOS, Linux or embedding it as the UI toolkit for a platform of\nyour choice.\n\n### Beautiful user experiences\n\nWe want to enable designers to deliver their full creative vision without being\nforced to water it down due to limitations of the underlying framework.\nFlutter's [layered architecture] gives you control over every pixel on the\nscreen and its powerful compositing capabilities let you overlay and animate\ngraphics, video, text, and controls without limitation. Flutter includes a full\n[set of widgets][widget catalog] that deliver pixel-perfect experiences whether\nyou're building for iOS ([Cupertino]) or other platforms ([Material]), along with\nsupport for customizing or creating entirely new visual components.\n\n<p align=\"center\"><img src=\"https://github.com/flutter/website/blob/main/sites/docs/web/assets/images/docs/homepage/reflectly-hero-600px.png?raw=true\" alt=\"Reflectly hero image\"></p>\n\n### Fast results\n\nFlutter is fast. It's powered by hardware-accelerated 2D graphics\nlibraries like [Skia] (which underpins Chrome and Android) and\n[Impeller]. We architected Flutter to\nsupport glitch-free, jank-free graphics at the native speed of your device.\n\nFlutter code is powered by the world-class [Dart programming language], which enables\ncompilation to 32-bit and 64-bit ARM machine code for iOS and Android,\nJavaScript and WebAssembly for the web, as well as Intel x64 and ARM\nfor desktop devices.\n\n<p align=\"center\"><img src=\"https://github.com/flutter/website/blob/main/sites/docs/web/assets/images/docs/homepage/dart-diagram-small.png?raw=true\" alt=\"Dart diagram\"></p>\n\n### Productive development\n\nFlutter offers [stateful hot reload][Hot reload], allowing you to make changes to your code\nand see the results instantly without restarting your app or losing its state.\n\n[![Hot reload animation][]][Hot reload]\n\n### Extensible and open model\n\nFlutter works with any development tool (or none at all), and also includes\neditor plug-ins for both [Visual Studio Code] and [IntelliJ / Android Studio].\nFlutter provides [tens of thousands of packages][Flutter packages] to speed your\ndevelopment, regardless of your target platform. And accessing other native code\nis easy, with support for both FFI ([on Android][Android FFI], [on iOS][iOS FFI],\n[on macOS][macOS FFI], [on Linux][Linux FFI], and [on Windows][Windows FFI]) as well as\n[platform-specific APIs][platform channels].\n\nFlutter is a fully open-source project, and we welcome contributions.\nInformation on how to get started can be found in our\n[contributor guide](CONTRIBUTING.md).\n\n[flutter.dev]: https://flutter.dev\n[Discord instructions]: ./docs/contributing/Chat.md\n[Discord badge]: https://img.shields.io/discord/608014603317936148?logo=discord\n[Twitter handle]: https://img.shields.io/twitter/follow/flutterdev.svg?style=social&label=Follow\n[Twitter badge]: https://twitter.com/intent/follow?screen_name=flutterdev\n[BlueSky badge]: https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff&label=Follow%20me%20on&color=0285FF\n[BlueSky handle]: https://bsky.app/profile/flutter.dev\n[layered architecture]: https://docs.flutter.dev/resources/inside-flutter\n[architectural overview]: https://docs.flutter.dev/resources/architectural-overview\n[widget catalog]: https://docs.flutter.dev/ui/widgets\n[Cupertino]: https://docs.flutter.dev/ui/widgets/cupertino\n[Material]: https://docs.flutter.dev/ui/widgets/material\n[Skia]: https://skia.org/\n[Dart programming language]: https://dart.dev/\n[Hot reload animation]: https://github.com/flutter/website/blob/main/sites/docs/web/assets/images/docs/tools/android-studio/hot-reload.gif?raw=true\n[Hot reload]: https://docs.flutter.dev/tools/hot-reload\n[Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter\n[IntelliJ / Android Studio]: https://plugins.jetbrains.com/plugin/9212-flutter\n[Flutter packages]: https://pub.dev/flutter\n[Android FFI]: https://docs.flutter.dev/platform-integration/android/c-interop\n[iOS FFI]: https://docs.flutter.dev/platform-integration/ios/c-interop\n[macOS FFI]: https://docs.flutter.dev/platform-integration/macos/c-interop\n[Linux FFI]: https://docs.flutter.dev/platform-integration/linux/building#integrate-with-linux\n[Windows FFI]: https://docs.flutter.dev/platform-integration/windows/building#integrating-with-windows\n[platform channels]: https://docs.flutter.dev/platform-integration/platform-channels\n[interop example]: https://github.com/flutter/flutter/tree/main/examples/platform_channel\n[Impeller]: https://docs.flutter.dev/perf/impeller\n",
+      "rank": 5,
+      "weekly_stars": 228
+    },
+    {
+      "full_name": "pbakaus/impeccable",
+      "html_url": "https://github.com/pbakaus/impeccable",
+      "description": "The design language that makes your AI harness better at design.",
+      "homepage": "https://impeccable.style",
+      "language": "JavaScript",
+      "stars": 74483,
+      "forks": 4488,
+      "open_issues": 62,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2025-11-16T01:52:04Z",
+      "updated_at": "2026-10-03T06:28:24Z",
+      "pushed_at": "2026-10-03T05:22:53Z",
+      "archived": false,
+      "readme": "# Impeccable\n\nDesign guidance for AI coding agents. 1 skill, 24 commands, live browser iteration, and 61 deterministic detector rules for AI-generated frontend design.\n\n> **Quick start:** From your project root, run `npx impeccable install`, then run `/impeccable init` inside your AI coding tool. Full docs: [impeccable.style](https://impeccable.style).\n\n## Why Impeccable?\n\nAnthropic's [frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) was the first widely-used design skill for Claude. Impeccable started from there.\n\nEvery model trained on the same SaaS templates. Skip the guidance and you get the same handful of tells on every project: Inter for everything, purple-to-blue gradients, cards nested in cards, gray text on colored backgrounds, the rounded-square icon tile above every heading.\n\nImpeccable adds:\n- **One setup flow.** `/impeccable init` records durable product truth in `PRODUCT.md`, so later commands know the audience, purpose, operating context, constraints, voice, and evidence without confusing those facts with surface-level visual direction.\n- **24 commands.** A shared design vocabulary with your AI: `polish`, `audit`, `critique`, `distill`, `animate`, `bolder`, `quieter`, and more.\n- **61 deterministic detector rules** plus LLM-only critique checks. The CLI and browser extension run the deterministic rules with no LLM and no API key.\n\n## What's Included\n\n### The Skill: impeccable\n\nThe skill installs as one command:\n\n```bash\n/impeccable <command> <target>\n```\n\nStart every new project with:\n\n```bash\n/impeccable init\n```\n\n`init` inspects the project, asks only for material gaps in durable product truth, and writes `PRODUCT.md`. Visitor mode and visual direction are chosen later for each surface; incumbent or newly built visual systems are recorded separately in `DESIGN.md`.\n\n### 24 Commands\n\nAll commands are accessed through `/impeccable`:\n\n| Command | What it does |\n|---------|--------------|\n| `/impeccable craft` | Full shape-then-build flow with visual iteration |\n| `/impeccable init` | One-time setup: gather durable product context, write PRODUCT.md, configure live mode when applicable, recommend next steps |\n| `/impeccable document` | Generate root DESIGN.md from existing project code |\n| `/impeccable extract` | Pull reusable components and tokens into the design system |\n| `/impeccable shape` | Plan UX/UI before writing code |\n| `/impeccable critique` | UX design review: hierarchy, clarity, emotional resonance |\n| `/impeccable audit` | Run technical quality checks (a11y, performance, responsive) |\n| `/impeccable polish` | Final pass, design system alignment, and shipping readiness |\n| `/impeccable bolder` | Amplify boring designs |\n| `/impeccable quieter` | Tone down overly bold designs |\n| `/impeccable distill` | Strip to essence |\n| `/impeccable harden` | Error handling, i18n, text overflow, edge cases |\n| `/impeccable onboard` | First-run flows, empty states, activation paths |\n| `/impeccable animate` | Add purposeful motion |\n| `/impeccable colorize` | Introduce strategic color |\n| `/impeccable typeset` | Fix font choices, hierarchy, sizing |\n| `/impeccable layout` | Fix layout, spacing, visual rhythm |\n| `/impeccable delight` | Add moments of joy |\n| `/impeccable overdrive` | Add technically extraordinary effects |\n| `/impeccable clarify` | Improve unclear UX copy |\n| `/impeccable adapt` | Adapt for different devices |\n| `/impeccable optimize` | Performance improvements |\n| `/impeccable live` | Visual variant mode: iterate on elements in the browser |\n| `/impeccable generate` | Generate variants of a named element in the live browser, no manual picking |\n\nUse `/impeccable pin <command>` to create standalone shortcuts (e.g., `pin audit` creates `/audit`).\n\n#### Usage Examples\n\n```\n/impeccable audit blog           # Audit blog hub + post pages\n/impeccable critique landing     # UX design review\n/impeccable polish settings      # Final pass before shipping\n/impeccable harden checkout      # Add error handling + edge cases\n```\n\nOr use `/impeccable` directly with a description:\n```\n/impeccable redo this hero section\n```\n\n### Anti-Patterns\n\nThe skill includes explicit guidance on what to avoid:\n\n- Don't use overused fonts (Arial, Inter, system defaults)\n- Don't use gray text on colored backgrounds\n- Don't use pure black/gray (always tint)\n- Don't wrap everything in cards or nest cards inside cards\n- Don't use bounce/elastic easing (feels dated)\n\n## See It In Action\n\nVisit [the Neo Mirai case study](https://impeccable.style/cases/neo-mirai) to see a before/after case study of a real project transformed with Impeccable commands.\n\n## Installation\n\nThe skill needs no runtime of its own. Every skill copy ships a small launcher (`scripts/impeccable`, plus `impeccable.cmd` for Windows) that runs the Impeccable engine, a self-contained binary that either sits next to the launcher or is downloaded once on first run into `~/.impeccable/bin/`. Node is only involved if you use the `npx impeccable` installer, which is a shim around the same binary; the manual and Git options below work without it.\n\n### Option 1: CLI installer (Recommended)\n\nFrom the root of your project, run:\n\n```bash\nnpx impeccable install\n```\n\nThis shows the harness folders or installed CLIs it detected (for example `~/.claude`, `~/.codex`, `~/.grok`, `~/.hermes`, `~/.veto`, or project-local `.cursor`), lets you keep the detected set or customize providers, then asks whether to install into the current project or globally. Use `--providers=claude,codex,cursor,grok,hermes,veto` and `--scope=project|global` to skip those choices in scripts. On Claude Code, Cursor, Codex, GitHub Copilot, and Grok Build, it also installs the provider-native hook manifest for the current project. Veto receives the packaged skill under `~/.veto/skills/` and does not run native Impeccable edit hooks. Works with Cursor, Claude Code, Gemini CLI, Codex CLI, Grok Build, Hermes Agent, Veto, and every other supported tool. Reload your harness afterward.\n\nTo refresh an existing install, run:\n\n```bash\nnpx impeccable update\n```\n\nCodex users should open `/hooks` after install or update and approve the project hook when prompted. Codex tracks trust by hook definition, so updates that change `.codex/hooks.json` can require approval again. Grok Build users need project folder trust (`/hooks-trust` or launch with `--trust`) before `.grok/hooks/` scripts run.\n\nSee [Allow the hook in your harness](https://impeccable.style/docs/hooks#allow-the-hook-in-your-harness) for harness-specific trust and verification steps.\n\n### Option 2: Git Submodule\n\nFor teams that want to keep Impeccable vendored and updated through Git, add this repo as a submodule and link the compiled provider build into your harness folders:\n\n```bash\ngit submodule add https://github.com/pbakaus/impeccable .impeccable\nnpx impeccable link --source=.impeccable --providers=claude,cursor\ngit add .gitmodules .impeccable .claude .cursor\ngit commit -m \"Add Impeccable skills\"\n```\n\nUse the providers your project needs, for example `claude`, `cursor`, `gemini`, `codex`, `github`, `grok`, `hermes`, `opencode`, `pi`, `qoder`, `trae`, `trae-cn`, `rovo-dev`, `vibe`, or `veto`. The command links individual skill folders from `.impeccable/dist/universal/` and leaves existing real skill directories untouched unless you pass `--force`.\n\nTo update later:\n\n```bash\ngit submodule update --remote .impeccable\nnpx impeccable link --source=.impeccable --providers=claude,cursor\n```\n\n### Option 3: Plugin install\n\n**GitHub Copilot in VS Code:**\n\nInstall [Impeccable from the Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=renaissance-geek.impeccable), or run:\n\n```bash\ncode --install-extension renaissance-geek.impeccable\n```\n\nRequires VS Code 1.109.3+, Copilot Chat access, and a trusted local workspace. Open Chat in Agent mode and try `/impeccable polish`. This skill-only extension does not install automatic hooks; avoid a duplicate Impeccable skill in the same workspace/profile. See [VS Code distribution details](docs/VSCODE-EXTENSION.md).\n\n**Claude Code:**\n```bash\n/plugin marketplace add pbakaus/impeccable\n```\n\n> Claude Code only. After adding the marketplace, open `/plugin` and install Impeccable from the list.\n\n**Grok Build:**\n```bash\ngrok plugin install pbakaus/impeccable#plugin --trust\n```\n\n> Grok Build only. The `#plugin` suffix installs the slim plugin package (skills, agents, and hooks) instead of the full monorepo. Then run `/impeccable init` in a Grok session. Project-scoped installs via `npx impeccable install --providers=grok` also work and write `.grok/skills/` plus `.grok/hooks/impeccable.json`.\n\n### Option 4: Download from Website\n\nVisit [impeccable.style](https://impeccable.style), download the ZIP for your tool, and extract to your project.\n\n### Option 5: Copy from Repository\n\n**Cursor:**\n```bash\ncp -r dist/cursor/.cursor your-project/\n```\n\n> **Note:** Cursor skills require setup:\n> 1. Switch to Nightly channel in Cursor Settings → Beta\n> 2. Enable Agent Skills in Cursor Settings → Rules\n>\n> [Learn more about Cursor skills](https://cursor.com/docs/context/skills)\n\n**Claude Code:**\n```bash\n# Project-specific\ncp -r dist/claude-code/.claude your-project/\n\n# Or global (applies to all projects)\ncp -r dist/claude-code/.claude/* ~/.claude/\n```\n\n**OpenCode:**\n```bash\ncp -r dist/opencode/.opencode your-project/\n```\n\n**DeepSeek Harness:**\n```bash\n# Project-specific\ncp -r dist/dsh/.dsh your-project/\n\n# Or global (applies to all projects)\nmkdir -p \"${DSH_HOME:-$HOME/.dsh}/skills\"\ncp -r dist/dsh/.dsh/skills/* \"${DSH_HOME:-$HOME/.dsh}/skills/\"\n```\n\nThe CLI honors `DSH_HOME` only when it resolves inside your home directory (or to home itself); otherwise it uses `~/.dsh`. An outside-home manual copy is not managed by `impeccable install/update`.\n\n**Hermes Agent:**\n```bash\n# Global (applies to all projects; uses the active profile, or ~/.hermes by default)\ncp -r dist/hermes/.",
+      "rank": 6,
+      "weekly_stars": 3124
+    },
+    {
+      "full_name": "vercel/next.js",
+      "html_url": "https://github.com/vercel/next.js",
+      "description": "The React Framework",
+      "homepage": "https://nextjs.org",
+      "language": "JavaScript",
+      "stars": 143023,
+      "forks": 33713,
+      "open_issues": 3531,
+      "topics": [
+        "blog",
+        "browser",
+        "compiler",
+        "components",
+        "hybrid",
+        "nextjs",
+        "node",
+        "react",
+        "server-rendering",
+        "ssg",
+        "static",
+        "static-site-generator",
+        "universal",
+        "vercel"
+      ],
+      "license": "MIT",
+      "created_at": "2016-10-05T23:32:51Z",
+      "updated_at": "2026-10-03T06:23:31Z",
+      "pushed_at": "2026-10-03T06:01:21Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n  <a href=\"https://nextjs.org\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png\">\n      <img alt=\"Next.js logo\" src=\"https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png\" height=\"128\">\n    </picture>\n  </a>\n  <h1>Next.js</h1>\n\n<a href=\"https://vercel.com\"><img alt=\"Vercel logo\" src=\"https://img.shields.io/badge/MADE%20BY%20Vercel-000000.svg?style=for-the-badge&logo=Vercel&labelColor=000\"></a>\n<a href=\"https://www.npmjs.com/package/next\"><img alt=\"NPM version\" src=\"https://img.shields.io/npm/v/next.svg?style=for-the-badge&labelColor=000000\"></a>\n<a href=\"https://github.com/vercel/next.js/blob/canary/license.md\"><img alt=\"License\" src=\"https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=000000\"></a>\n<a href=\"https://github.com/vercel/next.js/discussions\"><img alt=\"Join the community on GitHub\" src=\"https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&logo=Next.js&labelColor=000000&logoWidth=20\"></a>\n\n</div>\n\n## Getting Started\n\nUsed by some of the world's largest companies, Next.js enables you to create full-stack web applications by extending the latest React features, and integrating powerful Rust-based JavaScript tooling for the fastest builds.\n\n- Visit our [Learn Next.js](https://nextjs.org/learn) course to get started with Next.js.\n- Visit the [Next.js Showcase](https://nextjs.org/showcase) to see more sites built with Next.js.\n\n## Documentation\n\nVisit [https://nextjs.org/docs](https://nextjs.org/docs) to view the full documentation.\n\n## Community\n\nThe Next.js community can be found on [GitHub Discussions](https://github.com/vercel/next.js/discussions) where you can ask questions, voice ideas, and share your projects with other people.\n\nTo chat with other community members, you can join the Next.js [Discord](https://nextjs.org/discord) server.\n\nDo note that our [Code of Conduct](https://github.com/vercel/next.js/blob/canary/CODE_OF_CONDUCT.md) applies to all Next.js community channels. Users are **highly encouraged** to read and adhere to it to avoid repercussions.\n\n## Contributing\n\nContributions to Next.js are welcome and highly appreciated. However, before you jump right into it, we would like you to review our [Contribution Guidelines](/contributing.md) to make sure you have a smooth experience contributing to Next.js.\n\n### Good First Issues:\n\nWe have a list of **[good first issues](https://github.com/vercel/next.js/labels/good%20first%20issue)** that contain bugs that have a relatively limited scope. This is a great place for newcomers and beginners alike to get started, gain experience, and get familiar with our contribution process.\n\n---\n## Security\n\nIf you believe you have found a security vulnerability in Next.js, we encourage you to **_responsibly disclose this and NOT open a public issue_**.\n\nTo participate in our Open Source Software Bug Bounty program, please visit [https://hackerone.com/vercel](https://hackerone.com/vercel).\n",
+      "rank": 7,
+      "weekly_stars": 658
+    },
+    {
+      "full_name": "alirezarezvani/claude-skills",
+      "html_url": "https://github.com/alirezarezvani/claude-skills",
+      "description": "380 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 380+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills.",
+      "homepage": "https://alirezarezvani.medium.com/",
+      "language": "Python",
+      "stars": 27359,
+      "forks": 3856,
+      "open_issues": 27,
+      "topics": [
+        "agent-plugins",
+        "agent-skills",
+        "agentic-ai",
+        "ai-coding-agent",
+        "anthropic-claude",
+        "claude-ai",
+        "claude-code",
+        "claude-code-plugins",
+        "claude-code-skills",
+        "claude-skills",
+        "codex-skills",
+        "coding-agent-plugins",
+        "cursor-skills",
+        "developer-tools",
+        "gemini-cli-skills",
+        "openai-codex",
+        "openclaw",
+        "openclaw-plugins",
+        "openclaw-skills",
+        "prompt-engineering"
+      ],
+      "license": "MIT",
+      "created_at": "2025-10-19T04:04:05Z",
+      "updated_at": "2026-10-03T06:28:56Z",
+      "pushed_at": "2026-08-30T09:46:16Z",
+      "archived": false,
+      "readme": "# Claude Code Skills & Plugins — Agent Skills for Every Coding Tool\n\n**388 production-ready Claude Code skills, plugins, and agent skills for 13 AI coding tools.**\n\nThe most comprehensive open-source library of Claude Code skills and agent plugins — also works with OpenAI Codex, Gemini CLI, Cursor, and 9 more coding agents. Reusable expertise packages covering engineering, DevOps, marketing (incl. AEO — Answer Engine Optimization for LLM citation), security (PreToolUse hooks), compliance, C-level advisory (incl. founder-mode CFO/CMO/CRO/CPO/COO/CHRO/CISO/GC/CDO/CAIO/CCO/VPE personas + 21 /cs:* slash commands), productivity (capture/email/reflect/weekly-review/deep-work/meetings), an academic research stack (litreview/grants/dossier/patent/syllabus/pulse/notebooklm/deep-research + hybrid router), and enterprise Research Operations (clinical-research/research-finance/market-research/product-research, v2.9.0).\n\n**Works with:** Claude Code · OpenAI Codex · Gemini CLI · OpenClaw · Hermes Agent[^hermes] · Mistral Vibe[^vibe] · Cursor · Aider · Windsurf · Kilo Code · OpenCode · Augment · Antigravity\n\n[^hermes]: Hermes Agent is **BYO-sync tier**: the repo ships a pre-generated `.hermes/skills/claude-skills/` tree, but you run `python scripts/sync-hermes-skills.py` once locally to install into `~/.hermes/skills/`. Uses the same agentskills.io SKILL.md standard — no format conversion.\n[^vibe]: Mistral Vibe is also **BYO-sync tier**: the repo ships a pre-generated `.vibe/skills/claude-skills/` tree, run `./scripts/vibe-install.sh` once locally to install into `~/.vibe/skills/`. Same agentskills.io SKILL.md standard — no format conversion. Docs: <https://docs.mistral.ai/mistral-vibe/agents-skills>.\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)\n[![Skills](https://img.shields.io/badge/Skills-388-brightgreen?style=for-the-badge)](#skills-overview)\n[![Agents](https://img.shields.io/badge/Agents-118-blue?style=for-the-badge)](#agents)\n[![Personas](https://img.shields.io/badge/Personas-7-purple?style=for-the-badge)](#personas)\n[![Commands](https://img.shields.io/badge/Commands-150-orange?style=for-the-badge)](#commands)\n[![Stars](https://img.shields.io/github/stars/alirezarezvani/claude-skills?style=for-the-badge)](https://github.com/alirezarezvani/claude-skills/stargazers)\n[![SkillCheck Validated](https://img.shields.io/badge/SkillCheck-Validated-4c1?style=for-the-badge)](https://getskillcheck.com)\n\n> **5,200+ GitHub stars** — the most comprehensive open-source Claude Code skills & agent plugins library.\n\n---\n\n## What Are Claude Code Skills & Agent Plugins?\n\nClaude Code skills (also called agent skills or coding agent plugins) are modular instruction packages that give AI coding agents domain expertise they don't have out of the box. Each skill includes:\n\n- **SKILL.md** — structured instructions, workflows, and decision frameworks\n- **Python tools** — 706 CLI scripts (all stdlib-only, zero pip installs)\n- **Reference docs** — 823 templates, checklists, and domain-specific knowledge files\n\n**One repo, thirteen platforms.** Works natively as Claude Code plugins, Codex agent skills, Gemini CLI skills, Hermes Agent skills, Mistral Vibe skills, and converts to more tools via `scripts/convert.sh`. All 727 Python tools run anywhere Python runs.\n\n### Skills vs Agents vs Personas\n\n| | Skills | Agents | Personas |\n|---|---|---|---|\n| **Purpose** | How to execute a task | What task to do | Who is thinking |\n| **Scope** | Single domain | Single domain | Cross-domain |\n| **Voice** | Neutral | Professional | Personality-driven |\n| **Example** | \"Follow these steps for SEO\" | \"Run a security audit\" | \"Think like a startup CTO\" |\n\nAll three work together. See [Orchestration](#orchestration) for how to combine them.\n\n---\n\n## Quick Install\n\n> **Windows users:** clone with `git clone -c core.symlinks=true` (Developer Mode enabled) — otherwise the `.gemini/`/`.codex/`/`.vibe/`/`.hermes/` mirror trees check out as 1-line pointer text files instead of skills — and set `PYTHONUTF8=1` so tools that print Unicode don't crash on legacy-codepage consoles. Details: [INSTALLATION.md → Windows Notes](INSTALLATION.md#windows-notes).\n\n### Gemini CLI (New)\n\n```bash\n# Clone the repository\ngit clone https://github.com/alirezarezvani/claude-skills.git\ncd claude-skills\n\n# Run the setup script\n./scripts/gemini-install.sh\n\n# Start using skills\n> activate_skill(name=\"senior-architect\")\n```\n\n### Claude Code (Recommended)\n\n```bash\n# Add the marketplace\n/plugin marketplace add alirezarezvani/claude-skills\n\n# Install by domain\n/plugin install engineering-skills@claude-code-skills          # 24 core engineering\n/plugin install engineering-advanced-skills@claude-code-skills  # 25 POWERFUL-tier\n/plugin install product-skills@claude-code-skills               # 12 product skills\n/plugin install marketing-skills@claude-code-skills             # 43 marketing skills\n/plugin install ra-qm-skills@claude-code-skills                 # 12 regulatory/quality\n/plugin install pm-skills@claude-code-skills                    # 6 project management\n/plugin install c-level-skills@claude-code-skills               # 28 C-level advisory (full C-suite)\n/plugin install business-growth-skills@claude-code-skills       # 4 business & growth\n/plugin install finance-skills@claude-code-skills               # 2 finance (analyst + SaaS metrics)\n\n# Or install individual skills\n/plugin install skill-security-auditor@claude-code-skills       # Security scanner\n/plugin install playwright-pro@claude-code-skills                  # Playwright testing toolkit\n/plugin install self-improving-agent@claude-code-skills         # Auto-memory curation\n/plugin install content-creator@claude-code-skills              # Single skill\n```\n\n### OpenAI Codex\n\n```bash\nnpx agent-skills-cli add alirezarezvani/claude-skills --agent codex\n# Or: git clone + ./scripts/codex-install.sh\n```\n\n### OpenClaw\n\n```bash\nbash <(curl -s https://raw.githubusercontent.com/alirezarezvani/claude-skills/main/scripts/openclaw-install.sh)\n```\n\n### Manual Installation\n\n```bash\ngit clone https://github.com/alirezarezvani/claude-skills.git\n# Copy any skill folder to ~/.claude/skills/ (Claude Code) or ~/.codex/skills/ (Codex)\n```\n\n---\n\n## Multi-Tool Support (New)\n\n**Convert all 345 skills to 9 AI coding tools** with a single script:\n\n| Tool | Format | Install |\n|------|--------|---------|\n| **Cursor** | `.mdc` rules | `./scripts/install.sh --tool cursor --target .` |\n| **Aider** | `CONVENTIONS.md` | `./scripts/install.sh --tool aider --target .` |\n| **Kilo Code** | `.kilocode/rules/` | `./scripts/install.sh --tool kilocode --target .` |\n| **Windsurf** | `.windsurf/skills/` | `./scripts/install.sh --tool windsurf --target .` |\n| **OpenCode** | `.opencode/skills/` | `./scripts/install.sh --tool opencode --target .` |\n| **Augment** | `.augment/rules/` | `./scripts/install.sh --tool augment --target .` |\n| **Antigravity** | `~/.gemini/antigravity/skills/` | `./scripts/install.sh --tool antigravity` |\n| **Hermes Agent** | `~/.hermes/skills/` | `python scripts/sync-hermes-skills.py --verbose` |\n| **Mistral Vibe** | `~/.vibe/skills/` | `./scripts/vibe-install.sh` |\n\n**How it works:**\n\n```bash\n# 1. Convert all skills to all tools (takes ~15 seconds)\n./scripts/convert.sh --tool all\n\n# 2. Install into your project (with confirmation)\n./scripts/install.sh --tool cursor --target /path/to/project\n\n# Or use --force to skip confirmation:\n./scripts/install.sh --tool aider --target . --force\n\n# 3. Verify\nfind .cursor/rules -name \"*.mdc\" | wc -l  # Should show 346\n```\n\n**Each tool gets:**\n- ✅ All 345 skills converted to native format\n- ✅ Per-tool README with install/verify/update steps\n- ✅ Support for scripts, references, templates where applicable\n- ✅ Zero manual conversion work\n\nRun `./scripts/convert.sh --tool all` to generate tool-specific outputs locally.\n\n---\n\n## Skills Overview\n\n**388 production-ready skills across 20 domains:**\n\n| Domain | Skills | Highlights | Details |\n|--------|--------|------------|---------|\n| **🔧 Engineering — Core** | 53 | Architecture, frontend, backend, fullstack, QA, DevOps, SecOps, AI/ML, data, Playwright Pro (test gen, flaky fix, migrations), self-improving agent (auto-memory curation), security suite, a11y audit, **named-persona-adversarial-review** (review via named engineering philosophies), **embedded-iot-mentor** (MCU/board selection, firmware-reuse-first, breadboard-MVP discipline) | [engineering-team/](engineering-team/) |\n| **⚡ Engineering — POWERFUL** | 93 | Agent designer, RAG architect, database designer, CI/CD builder, security auditor, MCP builder, AgentHub, Helm charts, Terraform, self-eval, llm-wiki, tc-tracker, autoresearch-agent, **reliability portfolio** (feature-flags-architect, kubernetes-operator, chaos-engineering, slo-architect), ship-gate, security-guidance PreToolUse hook, **Matt Pocock skills** (write-a-skill, caveman, grill-me, handoff, grill-with-docs), **zero-hallucination-coder** (Discuss→Map→Decompose→Execute→Verify), **agent-harness** (goal→plan→execute→verify→close loops over any domain), **memory-engineering** (price the memory write path, pick which cost to pay, audit FACT/SKILL/LOG density, gate on a forgetting policy), **skillopt-sleep** (nightly gated self-evolution from real Claude Code sessions, vendored from microsoft/SkillOpt), **book-to-skill** (compile a book, docs folder, or spec collection into a knowledge-base skill, then package it as a plugin), **boost-asio-pro** (async C++ networking — version-gated coroutine/callback styles, strand discipline), **human-gate** (batched human review as a structured artifact + a gate that refuses to close on open blockers), **agent-memory** (four-tier L0-L3 memory ladder over Claude Code hooks; promotion earned by recurrence across sessions and days, redacted or contested claims refuse to promote, nothing reaches CLAUDE.md without a human adopt), **skill-doctor** (grade the a",
+      "rank": 8,
+      "weekly_stars": 832
+    },
+    {
+      "full_name": "heygen-com/hyperframes",
+      "html_url": "https://github.com/heygen-com/hyperframes",
+      "description": "Write HTML. Render video. Built for agents.",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 55999,
+      "forks": 5041,
+      "open_issues": 143,
+      "topics": [
+        "ai",
+        "animation",
+        "ffmpeg",
+        "framework",
+        "gsap",
+        "html",
+        "mcp",
+        "puppeteer",
+        "rendering",
+        "typescript",
+        "video"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-03-10T01:51:06Z",
+      "updated_at": "2026-10-03T06:27:34Z",
+      "pushed_at": "2026-10-03T06:26:00Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/logo/dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/logo/light.svg\">\n    <img alt=\"HyperFrames\" src=\"docs/logo/light.svg\" width=\"300\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/v/hyperframes.svg?style=flat\" alt=\"npm version\"></a>\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/dm/hyperframes.svg?style=flat\" alt=\"npm downloads\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-blue.svg\" alt=\"License\"></a>\n  <a href=\"https://nodejs.org\"><img src=\"https://img.shields.io/badge/node-%3E%3D22-brightgreen\" alt=\"Node.js\"></a>\n  <a href=\"https://discord.gg/EbK98HBPdk\"><img src=\"https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\"><b>Write HTML. Render video. Built for agents.</b></p>\n\n<p align=\"center\">\n  <a href=\"https://hyperframes.heygen.com/quickstart\">Quickstart</a> |\n  <a href=\"https://hyperframes.heygen.com/showcase\">Showcase</a> |\n  <a href=\"https://www.hyperframes.dev/\">Playground</a> |\n  <a href=\"https://hyperframes.heygen.com/catalog/blocks/data-chart\">Catalog</a> |\n  <a href=\"https://hyperframes.heygen.com/introduction\">Docs</a> |\n  <a href=\"https://discord.gg/EbK98HBPdk\">Discord</a>\n</p>\n\n<p align=\"center\">\n  <img src=\"docs/public/images/hyperframes-logo-motion-1280-trimmed.webp\" alt=\"HyperFrames demo: HTML code on the left transforms into a rendered video on the right\" width=\"800\">\n</p>\n\nHyperFrames is an open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.\n\n## Quick Start\n\n### With an AI coding agent\n\nFor Claude Code, install the versioned plugin:\n\n```bash\nclaude plugin marketplace add heygen-com/hyperframes\nclaude plugin install hyperframes@hyperframes\n```\n\nEnable auto-update for the **hyperframes** marketplace in `/plugin` → **Marketplaces**,\nthen use `/hyperframes:hyperframes`. See the [plugin guide](docs/guides/plugins.mdx)\nfor Copilot, VS Code, Cursor, Gemini CLI, updates, and migration.\n\nFor standalone skills (including OpenCode), use:\n\n```bash\nnpx skills add heygen-com/hyperframes\n```\n\n> The picker opens with nothing pre-selected — the **Core Skills** group is all you need: the `/hyperframes` router installs each creation workflow on demand. Agents and non-interactive runs should use `npx hyperframes skills update` instead — it installs exactly the core set, whereas `skills add --all` installs all 21 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx hyperframes skills`.\n>\n> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx hyperframes skills update` installs from the current `main`, so reach for it when you need the newest copy of a skill.\n\nTry a prompt like:\n\n> Using `/hyperframes`, create a 10-second product intro with a fade-in title, a background video, and subtle background music.\n\nThe skills teach agents the HyperFrames production loop: plan the video, write valid HTML, wire seekable animations, add media, lint, preview, and render. They work with Claude Code, Codex, Cursor, Gemini CLI, IBM Bob, and other coding agents that support skills.\n\n## Skills\n\nHyperFrames ships 21 skills agents load on demand. Read `/hyperframes` first — it's the router and capability map; it picks a workflow for any \"make me a…\" request — video, deck, or composition port — and points to the domain skills below.\n\nFor standalone installation, default to the **core set** — the router installs each creation workflow on demand. `npx hyperframes skills update` installs exactly that from anywhere; the interactive picker (`npx skills add heygen-com/hyperframes`) lists it as the \"Core Skills\" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 21. Use `npx skills add heygen-com/hyperframes --all` to install the complete published set deliberately (skips the picker), or `npx skills add heygen-com/hyperframes --skill <name>` for just one (bare name, no leading `/`).\n\nStandalone installs stay lean after that: `npx hyperframes init` keeps the **core set** fresh (the router, the `hyperframes-*` domain skills, and `media-use` — plus whatever is already installed; `/figma` stays on demand) and never expands a partial install; the creation workflows install **on demand** — the router runs `npx hyperframes skills update <workflow>` before entering one. Nothing re-pulls the full set behind your back.\n\n### Plugin packages\n\nPlugins bundle the full skill catalog and use their agent's update manager.\n`bun run package:agent-plugin` builds the committed portable ZIP, source metadata,\nand SHA-256 checksum. See the [maintainer checklist](docs/contributing/agent-plugins.mdx).\n\n### Upload to Codex\n\nBuild the upload-ready Codex plugin archive from the committed `HEAD` version of the manifest, brand assets, and skills:\n\n```bash\nbun run package:codex-plugin\n```\n\nThis writes `dist/hyperframes-plugin.zip` with a `hyperframes/` root folder and fails if the archive exceeds Codex's 100 MB upload limit.\n\n### Router\n\n| Skill          | Use when                                                                                                                                                                                                                                                                 |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| `/hyperframes` | **Read first** for any request to make / create / edit / animate / render a video, animation, or motion graphic. Capability map for the domain skills, the intent layer that confirms every creation brief up front, and intent router for the creation workflows below. |\n\n### Creation workflows\n\n| Skill                      | Use when                                                                                                                                                                                                                     |\n| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `/product-launch-video`    | Any **website** — marketing / launching / promoting a product (from its URL, a brief, or a script), or a site tour / showcase / social clip featuring the site's own visuals. Up to ~3 min (sweet spot 30-90s).              |\n| `/faceless-explainer`      | **Explaining a topic / concept** from arbitrary text — no product, no URL, no website capture; every visual is LLM-invented (typography / abstract / diagram / data-viz).                                                    |\n| `/pr-to-video`             | A **GitHub pull request** (PR URL, `owner/repo#N` ref, or \"this PR\") → changelog / feature-reveal / fix / refactor explainer, read via the `gh` CLI.                                                                         |\n| `/embedded-captions`       | Adding **captions / subtitles** to an existing talking-head video (footage untouched) — verbatim rail, embedded climax behind the subject, or pure-cinematic embed.                                                          |\n| `/talking-head-recut`      | Packaging an existing talking-head / interview / podcast video with **designed graphic overlays** — lower-thirds, data callouts, kinetic titles, pull-quotes, side panels, PiP.                                              |\n| `/motion-graphics`         | A short, **unnarrated, design-led motion graphic** (~under 10s) — kinetic type, stat / chart hit, logo sting, lower-third, animated tweet / headline. MP4 or transparent overlay.                                            |\n| `/music-to-video`          | A **music track** (audio file, video to pull audio from, or one generated from a mood brief) → a **beat-synced** video — lyric, slideshow, or kinetic promo; music drives pacing.                                            |\n| `/slideshow`               | A **presentation / pitch deck / interactive deck** — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode. Output is a navigable deck, not a rendered video.                                     |\n| `/general-video`           | **Anything else** — longer or multi-scene pieces, brand / sizzle reel, title card, static loop, freeform composition. Input- and length-agnostic fallback, and the home of companion mode (co-create with the full toolbox). |\n| `/remotion-to-hyperframes` | **Porting an existing Remotion** (React) composition's source to HyperFrames HTML. One-way migration, not creation.                                                                                                          |\n\n### Domain skills (loaded on demand)\n\nAtomic capabilities the creation workflows compose against — pull one when you need that specific layer.\n\n| Skill                    | Covers                                                                                                                                                                                                                                                                                                                                                                                                  ",
+      "rank": 9,
+      "weekly_stars": 2661
+    },
+    {
+      "full_name": "TencentCloud/Octop",
+      "html_url": "https://github.com/TencentCloud/Octop",
+      "description": "A smarter, self-hosted AI assistant — multi-user, multi-agent.",
+      "homepage": "https://octop.cloud",
+      "language": "Python",
+      "stars": 6439,
+      "forks": 794,
+      "open_issues": 716,
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "ai",
+        "ai-agent",
+        "ai-agents",
+        "local-first",
+        "long-term-memory"
+      ],
+      "license": "MIT",
+      "created_at": "2026-07-08T12:54:20Z",
+      "updated_at": "2026-10-03T06:22:26Z",
+      "pushed_at": "2026-10-03T02:37:53Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"docs/assets/readme-banner.png\" alt=\"Octop Banner\" width=\"600\" />\n</p>\n\n<p align=\"center\">\n  <strong>A smarter, self-hosted AI assistant — multi-user, multi-agent.</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/95504?utm_source=repository-badge&utm_medium=badge&utm_campaign=badge-repository-95504\" target=\"_blank\" rel=\"noopener noreferrer\">\n    <img src=\"https://trendshift.io/api/badge/repositories/95504\" alt=\"TencentCloud/Octop | Trendshift\" width=\"250\" height=\"55\" />\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.python.org/downloads/\"><img alt=\"Python 3.12+\" src=\"https://img.shields.io/badge/python-3.12%2B-blue?logo=python&logoColor=white\" /></a>\n  <a href=\"https://github.com/TencentCloud/Octop/blob/main/LICENSE\"><img alt=\"License: MIT\" src=\"https://img.shields.io/badge/license-MIT-green\" /></a>\n  <a href=\"https://github.com/TencentCloud/Octop/releases\"><img alt=\"Version\" src=\"https://img.shields.io/badge/version-1.0.2b5-orange\" /></a>\n  <a href=\"https://pypi.org/project/octop/\"><img src=\"https://img.shields.io/pypi/v/octop\" alt=\"PyPI\" /></a>\n  <a href=\"https://github.com/astral-sh/ruff\"><img alt=\"Code Style: Ruff\" src=\"https://img.shields.io/badge/code%20style-ruff-000000?logo=ruff&logoColor=white\" /></a>\n  <a href=\"https://github.com/TencentCloud/Octop\"><img alt=\"GitHub stars\" src=\"https://img.shields.io/github/stars/TencentCloud/Octop?style=social\" /></a>\n  <a href=\"https://github.com/TencentCloud/Octop/fork\"><img alt=\"GitHub forks\" src=\"https://img.shields.io/github/forks/TencentCloud/Octop?style=social\" /></a>\n  <a href=\"https://discord.gg/jPas5J8Ua\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/Discord-Join%20Us-5865F2?logo=discord&logoColor=white\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#-highlights\">Highlights</a> ·\n  <a href=\"#-overview\">Overview</a> ·\n  <a href=\"#-core-technology\">Core Technology</a> ·\n  <a href=\"#-features\">Features</a> ·\n  <a href=\"#-roadmap\">Roadmap</a> ·\n  <a href=\"#-quick-start\">Quick Start</a> ·\n  <a href=\"#-contents\">Contents</a>\n</p>\n\n<p align=\"center\">\n  <b>English</b> · <a href=\"README_CN.md\">中文</a>\n</p>\n\n---\n\n**Octop** is an open-source, self-hosted AI assistant. It's not just a tool — it's a digital life form that can operate in parallel. Through its multi-agent architecture, it builds an intelligent environment that is both independent and collaborative for teams, families, and individuals. Best of all, it runs entirely on your machine — the fully self-hosted design means privacy is never a compromise, while single-process startup makes the powerful web console, CLI, and IM integrations readily accessible.\n\nChat through the Web Dashboard, Feishu, DingTalk, QQ, WeChat, Telegram, Discord, WeCom, or programmatic HTTP/SSE/WebSocket. Extend capabilities with the **expert library**, **Connectors** (OAuth + MCP), and **ACP** integration for IDE workflows.\n\n## ✨ Highlights\n\n| | Feature | Description |\n|---|---------|-------------|\n| 👥 | **Multi-user expert team** | One admin, shared household; built-in expert library and expert market — switch specialists per scenario |\n| 🤝 | **Expert sharing** | Publish experts and shared skill/sub-agent pools so teammates reuse proven setups instead of rebuilding them |\n| 🎭 | **MBTI personas** | 16 personality templates plus an interactive quiz — give each agent a distinct character |\n| 🎯 | **AgentTeams** *(Beta)* | A coordinator schedules multiple experts on multi-step work; [details](docs/expert-teams.md) |\n| 🔒 | **Security built-in** | JWT multi-user isolation, tool approval, shell command guardrails, and PII redaction — data stays local |\n| 🔌 | **Connector ecosystem** | Tencent suite (Docs, Meeting, News, …); OAuth and MCP gateway extend resource boundaries |\n| 💾 | **Pluggable workspace backends** | Local disk, Docker sandbox, PostgreSQL, or COS/S3 for agent files — separate from the control-plane DB |\n| 🧠 | **Portable memory** | Powered by [Octop Memory](https://github.com/TencentCloud/octop-memory); memory migrates with the workspace |\n| 📚 | **Knowledge base** | RAG over your documents; share corpora within a deployment and ground answers in your private data |\n| 🧩 | **Plugins** | Extend Octop with third-party plugins; bundled plugins are seeded and toggled on demand |\n| ↔️ | **ACP bidirectional** | `octop acp` for IDE/terminal AI; delegate to OpenCode / Claude Code with permission gates |\n| 💻 | **Terminal AI+** | Interactive shell in the browser — AI-assisted command execution and troubleshooting |\n| 🌐 | **Browser AI+** | Headless Chromium sessions for web automation, screenshots, and remote browsing |\n| 🖥️ | **Remote desktop** | Live screen and input from the dashboard on Linux, Windows, and macOS — remote office work and GUI apps; one-click isolated desktop on headless Linux |\n| 🪟 | **Desktop client** | Native Windows / macOS / Linux apps (and FnOS packages) alongside the web dashboard |\n| 🏠 | **Self-hosted** | Dashboard, CLI, IM channels, and cron in one `octop run` — all data under `~/.octop/` |\n\n## 📌 Overview\n\nOctop is a self-hosted AI assistant platform for households and small teams. It runs a single process that serves a web dashboard, a CLI, IM channels (Feishu, DingTalk, QQ, WeChat, Telegram, Discord, WeCom, and more), and cron automation — all sharing one control-plane database under `~/.octop/` (SQLite by default; PostgreSQL optional).\n\n> Octop's design goal: keep every conversation, workspace, and credential on your own machine, while giving each user a personal team of specialized agents they can switch between per task.\n\n<details>\n<summary>🐾 What can you do with Octop</summary>\n\n- **Personal assistant** — let a dedicated agent write weekly reports, organize notes, and manage your schedule; memory persists with the workspace.\n- **Family sharing** — one admin account, the whole household; assign different agents and experts per member; share experts and knowledge bases when useful.\n- **Team helper** — AgentTeams or parallel agents, bridging Feishu / DingTalk / WeCom / WeChat to route tasks into group chats.\n- **Developer boost** — delegate coding tasks to OpenCode / Claude Code via ACP, or troubleshoot from the terminal with AI assistance.\n- **Web automation** — use Browser AI+ and remote desktop for forms, screenshots, and GUI apps.\n- **Scheduled tasks** — configure cron in natural language so the agent pushes or runs jobs on time every day.\n\n</details>\n\n## 🧠 Core Technology\n\n| Layer | Technology |\n|-------|-----------|\n| **Language** | Python 3.12+ |\n| **Web framework** | FastAPI + uvicorn |\n| **Agent runtime** | [Octop Harness](https://github.com/TencentCloud/octop-harness) |\n| **Gateway** | [Octop Gateway](https://github.com/TencentCloud/octop-gateway) |\n| **Control plane DB** | SQLite (WAL, default) or PostgreSQL (optional) |\n| **Frontend** | React 18 + TypeScript + Vite + Ant Design |\n| **Scheduling** | APScheduler |\n| **ACP** | agent-client-protocol |\n| **Build / quality** | hatchling · ruff · mypy · pytest |\n\nOctop is built on the Octop Harness stack — a set of focused runtimes that Octop composes into one process:\n\n- **[Octop Harness](https://github.com/TencentCloud/octop-harness)** — Agent runtime: model routing, tools, skills, and conversation checkpointing.\n- **[Octop Gateway](https://github.com/TencentCloud/octop-gateway)** — multi-platform IM channel bridge that normalizes incoming messages into a single processing pipeline.\n- **[Octop Memory](https://github.com/TencentCloud/octop-memory)** — hierarchical recall with full-text search, so an agent's memory travels with its workspace.\n- **[Octop Browser](https://github.com/TencentCloud/octop-browser)** — CDP-based browser automation with persistent profiles for web tasks.\n\nInstead of an external queue or message broker, Octop routes every surface — Web UI, IM, and cron — through one in-process `HarnessProcessor`. The result is a single, restart-safe process whose entire state is rebuilt from the control-plane database on boot (local SQLite by default; PostgreSQL optional).\n\n## 🤔 Features\n\n### Server & auth\n- Multi-user JWT authentication with admin role\n- First-run setup wizard (`octop init`)\n- Interactive API docs at `/api/docs` (off by default — set `\"enable_api_docs\": true` in `config.json` to enable)\n\n### Experts\n- Multiple experts per user; each has its own workspace, providers, channels, and cron\n- 16 MBTI persona templates + custom system prompt\n- Expert library scanned at boot (`infra/agents/experts/library/`); expert market and in-deployment expert sharing\n- **AgentTeams** *(Beta)* — coordinator + member experts for multi-step tasks ([docs/expert-teams.md](docs/expert-teams.md))\n- Workspace backends (expert files): local disk, Docker sandbox, PostgreSQL, COS/S3, and other remote stores — distinct from the control-plane database\n\n### Channels & automation\n- IM channels: Feishu, DingTalk, QQ, WeChat, Telegram, Discord, WeCom, and more\n- Proactive cron jobs with natural-language and slash-command triggers\n- Unified message processing across Web UI, IM, and cron surfaces\n\n### Surfaces\n- **Web dashboard** — chat, experts / teams, connectors, channels, cron, knowledge, plugins, settings\n- **Desktop client** — native apps for Windows / macOS / Linux; FnOS packages for NAS\n- **CLI** — `octop run`, `octop chats`, `octop acp`, admin commands\n- **HTTP/SSE/WebSocket API** — full programmatic access\n- **Remote desktop** — dashboard control of the host desktop session\n\n### Knowledge & plugins\n- **Knowledge base** — RAG over your documents; optional sharing within the same deployment\n- **Plugins** — install and manage third-party plugins (`octop plugin`); bundled plugins are seeded and toggled on demand from the dashboard\n\n### ACP (Agent Client Protocol)\n\nOctop supports ACP in two directions:\n\n1. **Inbound** — external tools use **your** Octop agent\n   ```bash\n   octop acp --agent main   # stdio ACP server for Zed, OpenCode, …\n   ```\n\n2. **Outbound** — Octop delegates to external codin",
+      "rank": 10,
+      "weekly_stars": 1425
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 60,011 个新增 Star，paperclipai/paperclip、vectorize-io/hindsight、debpalash/VoiceStudio 位居前三。主要开发语言集中在 Python、TypeScript、JavaScript。头部项目体现的方向包括：The open-source app everyone uses to manage agents at work；Hindsight: Agent Memory That Learns；VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.。",
+    "top_picks": [
+      "paperclipai/paperclip",
+      "vectorize-io/hindsight",
+      "debpalash/VoiceStudio"
+    ],
+    "projects": [
+      {
+        "full_name": "paperclipai/paperclip",
+        "tagline": "The open-source app everyone uses to manage agents at work",
+        "overview": "The open-source app everyone uses to manage agents at work 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "The open-source app everyone uses to manage agents at work",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 96,403 Stars、16,325 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "vectorize-io/hindsight",
+        "tagline": "Hindsight: Agent Memory That Learns",
+        "overview": "Hindsight: Agent Memory That Learns 主要语言为 Python，公开主题包括：agentic-ai、agents、ai-memory、memory。",
+        "core_features": [
+          "Hindsight: Agent Memory That Learns",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agentic-ai、agents、ai-memory、memory 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 44,803 Stars、5,872 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "debpalash/VoiceStudio",
+        "tagline": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+        "overview": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages. 主要语言为 Python，公开主题包括：ai、audiobook、cuda、dubbing。",
+        "core_features": [
+          "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、audiobook、cuda、dubbing 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 52,057 Stars、5,800 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：AGPL-3.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "rohitg00/ai-engineering-from-scratch",
+        "tagline": "Learn it. Build it. Ship it for others.",
+        "overview": "Learn it. Build it. Ship it for others. 主要语言为 Python，公开主题包括：agents、ai、ai-agents、ai-engineering。",
+        "core_features": [
+          "Learn it. Build it. Ship it for others.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agents、ai、ai-agents、ai-engineering 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 62,745 Stars、10,725 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "flutter/flutter",
+        "tagline": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
+        "overview": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond 主要语言为 Dart，公开主题包括：android、app-framework、cross-platform、dart。",
+        "core_features": [
+          "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
+          "主要技术栈：Dart"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 android、app-framework、cross-platform、dart 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Dart 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 179,270 Stars、32,866 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：BSD-3-Clause；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "pbakaus/impeccable",
+        "tagline": "The design language that makes your AI harness better at design.",
+        "overview": "The design language that makes your AI harness better at design. 主要语言为 JavaScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "The design language that makes your AI harness better at design.",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 74,483 Stars、4,488 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "vercel/next.js",
+        "tagline": "The React Framework",
+        "overview": "The React Framework 主要语言为 JavaScript，公开主题包括：blog、browser、compiler、components。",
+        "core_features": [
+          "The React Framework",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 blog、browser、compiler、components 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 143,023 Stars、33,713 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "alirezarezvani/claude-skills",
+        "tagline": "380 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 380+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills.",
+        "overview": "380 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 380+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills. 主要语言为 Python，公开主题包括：agent-plugins、agent-skills、agentic-ai、ai-coding-agent。",
+        "core_features": [
+          "380 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 380+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-plugins、agent-skills、agentic-ai、ai-coding-agent 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 27,359 Stars、3,856 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "heygen-com/hyperframes",
+        "tagline": "Write HTML. Render video. Built for agents.",
+        "overview": "Write HTML. Render video. Built for agents. 主要语言为 TypeScript，公开主题包括：ai、animation、ffmpeg、framework。",
+        "core_features": [
+          "Write HTML. Render video. Built for agents.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、animation、ffmpeg、framework 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 55,999 Stars、5,041 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "TencentCloud/Octop",
+        "tagline": "A smarter, self-hosted AI assistant — multi-user, multi-agent.",
+        "overview": "A smarter, self-hosted AI assistant — multi-user, multi-agent. 主要语言为 Python，公开主题包括：agent、agentic-ai、ai、ai-agent。",
+        "core_features": [
+          "A smarter, self-hosted AI assistant — multi-user, multi-agent.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent、agentic-ai、ai、ai-agent 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 6,439 Stars、794 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
