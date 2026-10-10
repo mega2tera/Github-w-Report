@@ -1,0 +1,586 @@
+{
+  "date": "2026-10-10",
+  "repositories": [
+    {
+      "full_name": "boykopovar/AnyPS5",
+      "html_url": "https://github.com/boykopovar/AnyPS5",
+      "description": "Tool for automatic PS5 executables porting to Linux and Windows",
+      "homepage": "https://discord.gg/BHFztBPUe",
+      "language": "C++",
+      "stars": 23372,
+      "forks": 1928,
+      "open_issues": 304,
+      "topics": [
+        "anyps5",
+        "dynamic-library",
+        "game-porting",
+        "ps5",
+        "ps5-tools",
+        "spir-v",
+        "vulkan"
+      ],
+      "license": "GPL-2.0",
+      "created_at": "2026-08-03T21:30:25Z",
+      "updated_at": "2026-10-10T07:03:03Z",
+      "pushed_at": "2026-10-10T07:01:37Z",
+      "archived": false,
+      "readme": "# About\n\nTool for automatic executables porting to Linux and Windows.\n\nIncludes a [relinker](core/relinker) that converts executable to the target system's native format and implementations of [system prx libraries](core/libs/prx) suitable for dynamic linking. No emulation or separate runtime process.\n\n[Usage](docs/user/USAGE.md), [Build instructions](docs/dev/BUILD.md), [Architecture](docs/dev/ARCHITECTURE.md), [Technical debt of the project](docs/dev/TechnicalDebt.md), [code style conventions](docs/dev/CONVENTIONS.md), [contributing](CONTRIBUTING.md)\n\n## Status\n\n[![libraries](https://boykopovar.github.io/AnyPS5/badge-libraries.svg)](https://boykopovar.github.io/AnyPS5/) [![shaders](https://boykopovar.github.io/AnyPS5/badge-shaders.svg)](https://boykopovar.github.io/AnyPS5/)\n\n[![progress map](https://boykopovar.github.io/AnyPS5/progress.svg)](https://boykopovar.github.io/AnyPS5/)\n\n<sub>* System libraries: percentage of the functions known to the project so far (declared in [core/libs/prx](core/libs/prx)), not of every PS5 system function. The total grows as more functions are declared.</sub>\n\n[List of verified games](docs/user/COMPATIBILITY.md)\n\nDreaming Sarah (2D platformer) runs at a stable 60 fps on a GTX 1050 Ti / i5-7500 3.4GHz.\n\nUnsupported or unexpected states strictly throw `std::runtime_error`. `what()` is printed to stderr and the process terminates.\n\nThe [shader recompiler](core/shader/recompiler/Recompiler.cpp) successfully produces SPIR-V (validated via [Spirv-Tools](3rdparty/SPIRV-Tools) when built with `ANYPS5_ENABLE_SPIRV_TOOLS`).\n\n## Compatibility\n\nSee the [game compatibility list](docs/user/COMPATIBILITY.md) for tested games and known issues.\n\n## Input mapping\n\nSDL-mapped game controllers are supported, including analog sticks and triggers. Keyboard and mouse controls can be configured with an `anyps5-input.ini` file. See [input mapping](docs/user/INPUT_MAPPING.md) for the supported devices and configuration format.\n\n## Disclaimer\n\nThis project is intended for interoperability, research, preservation, and compatibility purposes. It does not include, distribute, or require copyrighted software, firmware, cryptographic keys, or proprietary libraries. Users are responsible for ensuring that any binaries used with this project are obtained and used in accordance with applicable laws and their respective license terms.\n\n## License\n\nThis project is licensed under the GNU General Public License version 2 only.\n",
+      "rank": 1,
+      "weekly_stars": 15539
+    },
+    {
+      "full_name": "mvschwarz/openrig",
+      "html_url": "https://github.com/mvschwarz/openrig",
+      "description": "Build your own network of agents from Claude Code, Codex and Pi: persistent teams with roles, shared context and owned work.",
+      "homepage": "https://openrig.dev",
+      "language": "TypeScript",
+      "stars": 6548,
+      "forks": 481,
+      "open_issues": 152,
+      "topics": [
+        "agent-harness",
+        "agent-orchestration",
+        "agent-skills",
+        "ai-coding",
+        "claude-code",
+        "cli",
+        "codex-cli",
+        "multi-agent",
+        "multi-agent-systems",
+        "tmux",
+        "typescript"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-04-01T06:22:40Z",
+      "updated_at": "2026-10-10T06:52:08Z",
+      "pushed_at": "2026-10-10T06:55:37Z",
+      "archived": false,
+      "readme": "# OpenRig\n\n[![npm version](https://img.shields.io/npm/v/@openrig/cli)](https://www.npmjs.com/package/@openrig/cli) [![npm downloads](https://img.shields.io/npm/dw/@openrig/cli)](https://www.npmjs.com/package/@openrig/cli) [![License: Apache 2.0](https://img.shields.io/github/license/mvschwarz/openrig)](LICENSE) [![GitHub stars](https://img.shields.io/github/stars/mvschwarz/openrig?style=social)](https://github.com/mvschwarz/openrig/stargazers)\n\nA harness wraps a model. A rig wraps your harnesses. Define your agent team in YAML, boot it with one command. Claude Code and Codex in the same rig, managed as one system.\n\nOpenRig is open-source software for building and running your own network of agents. It turns AI coding agents from a pile of terminal sessions into a persistent, organized team. Talk to a lead agent about the outcome you want; it can coordinate specialists across teams and bring you results and decisions that need your attention. Start with a repository and one useful change, then keep the team's work and context at the same addresses.\n\nIt's the open-source system behind my AI civilization experiments.\n\n**Guide:** [Getting started](docs/reference/getting-started.md) · **Stuck?** [Help](docs/reference/help.md) · **Questions:** [Q&A](https://github.com/mvschwarz/openrig/discussions/92) · **Updates and demos:** [@_feralmachine on X](https://x.com/_feralmachine)\n\n## See it running\n\n![The OpenRig TUI: the build rig as a graph, then as a table of seats with runtime, model, context and state, then one seat in detail (real recording, 10 seconds)](assets/readme/openrig-agents-working.gif)\n\n**Start here:** [the guided first-use path](docs/reference/getting-started.md): install, talk to the kernel operator, then choose a team for your first useful change.\n\nNot setting this up today? Get the next walkthrough and occasional OpenRig updates → https://openrig.dev/follow\n\n## Install and first run\n\nRequires Node.js 22 or 24 and tmux, on macOS or Linux. On Linux, the distribution's own Node.js can be older (Ubuntu 24.04's is 18); install a supported version with [nvm](https://github.com/nvm-sh/nvm) (`nvm install 22`) or NodeSource. On a Mac with Apple silicon, use Node.js 22 ([compatibility history](docs/releases/v0.5.15.md#known-compatibility-limitation)). On Windows, use WSL2, the Windows route OpenRig supports; native Windows isn't supported. OpenRig's automated tests don't run on WSL2 yet; see [one user's working setup](docs/reference/getting-started.md#wsl2-a-reported-working-setup). Launching a rig writes provider hooks and workspace trust settings. Before running the commands below, read [what OpenRig changes on your machine](#what-openrig-changes-on-your-machine) and back up the relevant files.\n\n**One command.** This runs OpenRig's install script from the `v0.6.8` release. It checks Node.js and npm, installs the latest published `@openrig/cli` with `npm install -g`, runs the Node.js and SQLite check, then runs `rig setup --dry-run` and `rig setup`. The first line prints that plan and changes nothing:\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/mvschwarz/openrig/v0.6.8/scripts/install.sh | sh -s -- --dry-run\ncurl -fsSL https://raw.githubusercontent.com/mvschwarz/openrig/v0.6.8/scripts/install.sh | sh\n```\n\nIf a provider isn't signed in yet, the last step reports `FAILED [4/4]`, and `rig setup` lists the sign-in under \"Some steps need attention\". If the only remaining failures are provider sign-ins, the install steps finished; sign in to each selected provider as below and continue.\n\n**Or step by step:**\n\n```bash\nnpm install -g @openrig/cli\nrig setup --dry-run\n```\n\nTo install with Bun instead, run `bun add -g @openrig/cli`. OpenRig still runs on Node.js, so install Node.js 22 as well. Bun may block this package's postinstall script, in which case the Node.js and SQLite check described under [what OpenRig changes on your machine](#what-openrig-changes-on-your-machine) does not run at install time.\n\nnpm 11 and later can skip that postinstall script and print `npm warn install-scripts` naming `@openrig/cli`. That's expected: the CLI still works, and only the Node.js and SQLite check was skipped. To run it yourself, use `node \"$(npm root -g)/@openrig/cli/scripts/check-abi.mjs\"`; `rig doctor` checks the Node.js version only.\n\nChoose the working account you already have: **Claude Code, Codex, or both**. Reuse an explicit choice; no second subscription is required. `rig setup --dry-run` previews the broader setup; applying `rig setup` checks both harnesses and installs a missing one, plus Herdr unless declined with `--no-herdr`. On macOS, the installing agent offers Ghostty once. Setup leaves an existing cmux installation alone. It is optional for the [selected-provider path](docs/reference/getting-started.md#choose-your-providers).\n\nA team seat with no permission policy, per-seat choice or (for Codex) named profile launches with OpenRig's [team default](docs/reference/rig-spec.md#team-launch-defaults): Claude runs ordinary `rig` commands, project reads and common tests without prompting, while lifecycle commands such as `rig up` and `rig down` still ask; Codex also gets the OpenRig workspace and its pod's state directory as writable directories. Before launching, your agent recommends keeping that default, and offers to remember selected OpenRig commands in your native settings only if you want that, at personal project scope unless you explicitly choose user-wide sessions. It is not global YOLO or permission to invent work. On Yes, the agent [adds and verifies native rules](docs/reference/getting-started.md#have-your-agent-configure-permissions); No or no answer keeps the team default and leaves settings unchanged. An existing explicit choice is reused. Say “Undo the OpenRig command allowances added by this setup” to remove only its additions.\n\nIf permission prompts are slowing you down, consider the\n[workshop bundle](https://openrig.dev/rigs/workshop). It ships with broad access\nand [non-interruptive mode](docs/reference/non-interruptive-mode.md): its agents\nbypass permission prompts and supported harness warning dialogs. The listing\nand before-install view explain that access before you choose it.\n\nCheck `tmux -V` and only your selected CLI/login: `claude --version` plus\n`claude auth status`, or `codex --version` plus `codex login status`. If needed,\nsign in once with `claude auth login` or `codex login`; do not install or log in\nto an unused provider.\n\n### Your agent opens OpenRig for you\n\nAfter installing, your agent opens the OpenRig TUI and the operator for you. To get back to them later, ask your\nagent for OpenRig or your agents in any words. After checking the selected login, it runs:\n\n```sh\nrig daemon start  # if stopped\nrig terminal open saved:kernel --window\n```\n\n`--window` opens a new terminal tab or window itself, or a space in your current\nHerdr session. Below 120 measured columns,\nthe **operator** fills the first page; from 120, the dashboard and operator share\nit equally. The advisor has a separate tab or tmux window.\nAn installing agent can run it from its shell on the daemon's\ndesktop; the person copies nothing. It uses Herdr when installed, otherwise\nthe same layout in plain tmux, and preserves existing conversations. `rig tui`\nis the team dashboard. Installation is finished when you are talking to the\noperator; if you choose to talk later, that handoff remains pending.\n\nIf setup stops, read the named step: missing tools and selected-provider logins\nneed their specific setup action. A harness permission rule, sandbox or automatic\npermission decision can also block the installing agent's command. The agent\nshould name the command and reported reason, then help you resolve that specific\nstep within your chosen permissions. A permission refusal is not an OpenRig\ninstallation result.\n\nThe desktop may need an Automation approval; SSH/headless sessions may have no\ndisplay. Herdr can show first-run panels, and an 80×24 window can cramp the view.\nFollow [the OpenRig view checks and next steps](docs/reference/getting-started.md#what-can-interrupt-installation-and-the-openrig-view).\nHerdr is visible only inside a terminal you can see. Changing the shared TUI to\n`:terminals` does not open that terminal. The agent checks the visible window when\nit has desktop access and says what it could not verify otherwise. Over headless\nSSH, it asks you to open a new terminal window or tab and gives the exact connection\nand attachment command for the current view. If you choose a manual attachment\nafter a failure,\nask the installing agent for the exact command using your current operator\nsession; run that in a new terminal window.\n\nThe kernel's operator helps you pick a first team. It asks what you want to build,\nrecommends one of three, and fits it to the providers you have.\n\n| Team | Talk to | Agents and purpose |\n| --- | --- | --- |\n| `starter` | `dev-build@starter` | A Claude Code builder and Codex reviewer for one bounded change |\n| `workshop` | `orch-lead@workshop` | A lead, builder, QA and reviewer for ongoing work in one repository; a rig bundle the operator installs from its pinned listing |\n| `factory` | `orch-lead@factory` | Seven: a lead, advisor, build, QA, design and two independent reviewers for sustained product work |\n\nAs shipped, `starter` uses both Claude Code and Codex. With only one of them, ask\nthe kernel operator to adapt it: it writes a copy of the team for your providers\nunder the same name. [The naming guide](docs/reference/topology-naming.md) explains\nhow their pods and roles grow and how to name your own team. `first-project` is\nstarter's old name and still starts it,\nunless you already have a rig named `first-project` or `starter`: then it refuses\nand names the `rig up <name> --existing` command that brings that rig back.\nShow the selected runtime, configured model and command before launch; confirm the\naccount supports the model instead of silently falling back. The kernel starts\na",
+      "rank": 2,
+      "weekly_stars": 2338
+    },
+    {
+      "full_name": "mattpocock/skills",
+      "html_url": "https://github.com/mattpocock/skills",
+      "description": "Skills for Real Engineers. Straight from my .agents directory.",
+      "homepage": "https://aihero.dev/skills",
+      "language": "Shell",
+      "stars": 283211,
+      "forks": 23724,
+      "open_issues": 162,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-02-03T11:15:53Z",
+      "updated_at": "2026-10-10T07:02:46Z",
+      "pushed_at": "2026-10-09T10:57:08Z",
+      "archived": false,
+      "readme": "<p>\n  <a href=\"https://www.aihero.dev/s/skills-newsletter\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skills-repo-dark_2x.png\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\">\n      <img alt=\"Skills\" src=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\" width=\"369\">\n    </picture>\n  </a>\n</p>\n\n# Skills For Real Engineers\n\n[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)\n\nMy agent skills that I use every day to do real engineering - not vibe coding.\n\nDeveloping real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.\n\nThese skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy.\n\nIf you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter:\n\n[Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)\n\n## Installation (30-second setup)\n\nA plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.\n\n### 1. Get the skills\n\n<details>\n<summary><strong>Claude Code</strong></summary>\n\n```bash\nclaude plugin install mattpocock-skills@claude-plugins-official\n```\n\nUpdates itself by default.\n\n</details>\n\n<details>\n<summary><strong>Codex</strong></summary>\n\n```bash\ncodex plugin marketplace add mattpocock/skills\ncodex plugin add mattpocock-skills@mattpocock\n```\n\nUpdates itself at startup.\n\n</details>\n\n<details>\n<summary><strong>GitHub Copilot</strong> (CLI and VS Code)</summary>\n\n```bash\ncopilot plugin marketplace add mattpocock/skills\ncopilot plugin install mattpocock-skills@mattpocock\n```\n\nThen, once, add to `~/.copilot/settings.json`:\n\n```json\n{\n  \"extraKnownMarketplaces\": {\n    \"mattpocock\": { \"source\": { \"source\": \"github\", \"repo\": \"mattpocock/skills\" }, \"autoUpdate\": true }\n  }\n}\n```\n\nIn VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/mattpocock/skills`. It updates daily.\n\n</details>\n\n<details>\n<summary><strong>Gemini CLI</strong> (manual updates)</summary>\n\n```bash\ngemini skills install https://github.com/mattpocock/skills.git --path skills/engineering\ngemini skills install https://github.com/mattpocock/skills.git --path skills/productivity\n```\n\nRe-run both commands to update.\n\n</details>\n\n<details>\n<summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>\n\n```bash\nnpx skills@latest add mattpocock/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose\n```\n\nWhen the installer asks which skills to take, include `setup-matt-pocock-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.\n\n</details>\n\n### 2. Run `/setup-matt-pocock-skills`\n\nIn your agent, run it once per repo. It will:\n\n- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)\n- Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)\n- Ask you where you want to save any docs we create\n\n### 3. Bam - you're ready to go.\n\n## Why These Skills Exist\n\nI built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.\n\n### #1: The Agent Didn't Do What I Want\n\n> \"No-one knows exactly what they want\"\n>\n> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)\n\n**The Problem**. The most common failure mode in software development is misalignment. You think the dev knows what you want. Then you see what they've built - and you realize it didn't understand you at all.\n\nThis is just the same in the AI age. There is a communication gap between you and the agent. The fix for this is a **grilling session** - getting the agent to ask you detailed questions about what you're building.\n\n**The Fix** is to use:\n\n- [`/grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses\n- [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)\n\nThese are my most popular skills. They help you align with the agent before you get started, and think deeply about the change you're making. Use them _every_ time you want to make a change.\n\n### #2: The Agent Is Way Too Verbose\n\n> With a ubiquitous language, conversations among developers and expressions of the code are all derived from the same domain model.\n>\n> Eric Evans, [Domain-Driven-Design](https://www.amazon.co.uk/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)\n\n**The Problem**: At the start of a project, devs and the people they're building the software for (the domain experts) are usually speaking different languages.\n\nI felt the same tension with my agents. Agents are usually dropped into a project and asked to figure out the jargon as they go. So they use 20 words where 1 will do.\n\n**The Fix** for this is a shared language. It's a document that helps agents decode the jargon used in the project.\n\n<details>\n<summary>\nExample\n</summary>\n\nHere's an example [glossary](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md) (still named `CONTEXT.md` at that pinned commit, from before the skills renamed the convention), from my `course-video-manager` repo. Which one is easier to read?\n\n- **BEFORE**: \"There's a problem when a lesson inside a section of a course is made 'real' (i.e. given a spot in the file system)\"\n- **AFTER**: \"There's a problem with the materialization cascade\"\n\nThis concision pays off session after session.\n\n</details>\n\nThis is built into [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in ADR's.\n\nIt's hard to explain how powerful this is. It might be the single coolest technique in this repo. Try it, and see.\n\n> [!TIP]\n> A shared language has many other benefits than reducing verbosity:\n>\n> - **Variables, functions and files are named consistently**, using the shared language\n> - As a result, the **codebase is easier to navigate** for the agent\n> - The agent also **spends fewer tokens on thinking**, because it has access to a more concise language\n\n### #3: The Code Doesn't Work\n\n> \"Always take small, deliberate steps. The rate of feedback is your speed limit. Never take on a task that’s too big.\"\n>\n> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)\n\n**The Problem**: Let's say that you and the agent are aligned on what to build. What happens when the agent _still_ produces crap?\n\nIt's time to look at your feedback loops. Without feedback on how the code it produces actually runs, the agent will be flying blind.\n\n**The Fix**: You need the usual tranche of feedback loops: static types, browser access, and automated tests.\n\nFor automated tests, a red-green-refactor loop is critical. This is where the agent writes a failing test first, then fixes the test. This helps give the agent a consistent level of feedback that results in far better code.\n\nI've built a **[`/tdd`](./skills/engineering/tdd/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.\n\nFor debugging, I've also built a **[`/diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md)** skill that wraps best debugging practices into a disciplined loop, gated phase by phase.\n\n### #4: We Built A Ball Of Mud\n\n> \"Invest in the design of the system _every day_.\"\n>\n> Kent Beck, [Extreme Programming Explained](https://www.amazon.co.uk/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)\n\n> \"The best modules are deep. They allow a lot of functionality to be accessed through a simple interface.\"\n>\n> John Ousterhout, [A Philosophy Of Software Design](https://www.amazon.co.uk/Philosophy-Software-Design-2nd/dp/173210221X)\n\n**The Problem**: Most apps built with agents are complex and hard to change. Because agents can radically speed up coding, they also accelerate software entropy. Codebases get more complex at an unprecedented rate.\n\n**The Fix** for this is a radical new approach to AI-powered development: caring about the design of the code.\n\nThis is built in to every layer of these skills:\n\n- [`/to-spec`](./skills/engineering/to-spec/SKILL.md) quizzes you about which modules you're touching before creating a spec\n\nAnd crucially, [`/improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md) surveys a codebase for deepening opportunities and hands you the candidates. I recommend running it on your codebase once every few days. It is a survey, not a rescue: on a genuinely old codebase it will find real candidates, but it won't untangle the mud for you.\n\n### Summary\n\nSoftware engineering fundamentals matter more than ever. These skills are my best effort at condensing these fundamentals into repeatable practices, to help you ship the best apps of your career. Enjoy.\n\n## Reference\n\nThese split on one axis: who can invoke them. **User-invoked** skills are reachable only when you type them (e.g. `/grill-me`); their job is to orchestrate. **Model-invoked** skills can be invoked by you _or_ reached",
+      "rank": 3,
+      "weekly_stars": 8156
+    },
+    {
+      "full_name": "heygen-com/hyperframes",
+      "html_url": "https://github.com/heygen-com/hyperframes",
+      "description": "Write HTML. Render video. Built for agents.",
+      "homepage": "https://hyperframes.dev",
+      "language": "TypeScript",
+      "stars": 59957,
+      "forks": 5352,
+      "open_issues": 231,
+      "topics": [
+        "ai",
+        "animation",
+        "ffmpeg",
+        "framework",
+        "gsap",
+        "html",
+        "mcp",
+        "puppeteer",
+        "rendering",
+        "typescript",
+        "video"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-03-10T01:51:06Z",
+      "updated_at": "2026-10-10T07:00:31Z",
+      "pushed_at": "2026-10-10T06:58:53Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/logo/dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/logo/light.svg\">\n    <img alt=\"HyperFrames\" src=\"docs/logo/light.svg\" width=\"300\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/v/hyperframes.svg?style=flat\" alt=\"npm version\"></a>\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/dm/hyperframes.svg?style=flat\" alt=\"npm downloads\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-blue.svg\" alt=\"License\"></a>\n  <a href=\"https://nodejs.org\"><img src=\"https://img.shields.io/badge/node-%3E%3D22-brightgreen\" alt=\"Node.js\"></a>\n  <a href=\"https://discord.gg/EbK98HBPdk\"><img src=\"https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\"><b>Write HTML. Render video. Built for agents.</b></p>\n\n<p align=\"center\">\n  <a href=\"https://www.hyperframes.dev/studio\">Studio</a> |\n  <a href=\"https://hyperframes.heygen.com/quickstart\">Quickstart</a> |\n  <a href=\"https://hyperframes.heygen.com/showcase\">Showcase</a> |\n  <a href=\"https://www.hyperframes.dev/\">Playground</a> |\n  <a href=\"https://hyperframes.heygen.com/catalog/blocks/data-chart\">Catalog</a> |\n  <a href=\"https://hyperframes.heygen.com/introduction\">Docs</a> |\n  <a href=\"https://discord.gg/EbK98HBPdk\">Discord</a>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/user-attachments/assets/f6ff9fae-f33d-4f68-bd54-f3ed4ba6473b\" alt=\"HyperFrames app opening from the Dock: native Mac and Linux app now available\" width=\"800\">\n</p>\n\nHyperFrames is an open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.\n\n## Quick Start\n\n### With an AI coding agent\n\nFor Claude Code, install the versioned plugin:\n\n```bash\nclaude plugin marketplace add heygen-com/hyperframes\nclaude plugin install hyperframes@hyperframes\n```\n\nEnable auto-update for the **hyperframes** marketplace in `/plugin` → **Marketplaces**,\nthen use `/hyperframes:hyperframes`. See the [plugin guide](docs/guides/plugins.mdx)\nfor Copilot, VS Code, Cursor, Gemini CLI, updates, and migration.\n\nFor standalone skills (including OpenCode), use:\n\n```bash\nnpx skills add heygen-com/hyperframes\n```\n\n> The picker opens with nothing pre-selected — the **Core Skills** group is all you need: the `/hyperframes` router installs each creation workflow on demand. Agents and non-interactive runs should use `npx hyperframes skills update` instead — it installs exactly the core set, whereas `skills add --all` installs all 21 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx hyperframes skills`.\n>\n> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx hyperframes skills update` installs from the current `main`, so reach for it when you need the newest copy of a skill.\n\nTry a prompt like:\n\n> Using `/hyperframes`, create a 10-second product intro with a fade-in title, a background video, and subtle background music.\n\nThe skills teach agents the HyperFrames production loop: plan the video, write valid HTML, wire seekable animations, add media, lint, preview, and render. They work with Claude Code, Codex, Cursor, Gemini CLI, IBM Bob, and other coding agents that support skills.\n\n## Skills\n\nHyperFrames ships 21 skills agents load on demand. Read `/hyperframes` first — it's the router and capability map; it picks a workflow for any \"make me a…\" request — video, deck, or composition port — and points to the domain skills below.\n\nFor standalone installation, default to the **core set** — the router installs each creation workflow on demand. `npx hyperframes skills update` installs exactly that from anywhere; the interactive picker (`npx skills add heygen-com/hyperframes`) lists it as the \"Core Skills\" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 21. Use `npx skills add heygen-com/hyperframes --all` to install the complete published set deliberately (skips the picker), or `npx skills add heygen-com/hyperframes --skill <name>` for just one (bare name, no leading `/`).\n\nStandalone installs stay lean after that: `npx hyperframes init` keeps the **core set** fresh (the router, the `hyperframes-*` domain skills, and `media-use` — plus whatever is already installed; `/figma` stays on demand) and never expands a partial install; the creation workflows install **on demand** — the router runs `npx hyperframes skills update <workflow>` before entering one. Nothing re-pulls the full set behind your back.\n\n### Plugin packages\n\nPlugins bundle the full skill catalog and use their agent's update manager.\n`bun run package:agent-plugin` builds the committed portable ZIP, source metadata,\nand SHA-256 checksum. See the [maintainer checklist](docs/contributing/agent-plugins.mdx).\n\n### Upload to Codex\n\nBuild the upload-ready Codex plugin archive from the committed `HEAD` version of the manifest, brand assets, and skills:\n\n```bash\nbun run package:codex-plugin\n```\n\nThis writes `dist/hyperframes-plugin.zip` with a `hyperframes/` root folder and fails if the archive exceeds Codex's 100 MB upload limit.\n\n### Router\n\n| Skill          | Use when                                                                                                                                                                                                                                                                 |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| `/hyperframes` | **Read first** for any request to make / create / edit / animate / render a video, animation, or motion graphic. Capability map for the domain skills, the intent layer that confirms every creation brief up front, and intent router for the creation workflows below. |\n\n### Creation workflows\n\n| Skill                      | Use when                                                                                                                                                                                                                     |\n| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `/product-launch-video`    | Any **website** — marketing / launching / promoting a product (from its URL, a brief, or a script), or a site tour / showcase / social clip featuring the site's own visuals. Up to ~3 min (sweet spot 30-90s).              |\n| `/faceless-explainer`      | **Explaining a topic / concept** from arbitrary text — no product, no URL, no website capture; every visual is LLM-invented (typography / abstract / diagram / data-viz).                                                    |\n| `/pr-to-video`             | A **GitHub pull request** (PR URL, `owner/repo#N` ref, or \"this PR\") → changelog / feature-reveal / fix / refactor explainer, read via the `gh` CLI.                                                                         |\n| `/embedded-captions`       | Adding **captions / subtitles** to an existing talking-head video (footage untouched) — verbatim rail, embedded climax behind the subject, or pure-cinematic embed.                                                          |\n| `/talking-head-recut`      | Packaging an existing talking-head / interview / podcast video with **designed graphic overlays** — lower-thirds, data callouts, kinetic titles, pull-quotes, side panels, PiP.                                              |\n| `/motion-graphics`         | A short, **unnarrated, design-led motion graphic** (~under 10s) — kinetic type, stat / chart hit, logo sting, lower-third, animated tweet / headline. MP4 or transparent overlay.                                            |\n| `/music-to-video`          | A **music track** (audio file, video to pull audio from, or one generated from a mood brief) → a **beat-synced** video — lyric, slideshow, or kinetic promo; music drives pacing.                                            |\n| `/slideshow`               | A **presentation / pitch deck / interactive deck** — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode. Output is a navigable deck, not a rendered video.                                     |\n| `/general-video`           | **Anything else** — longer or multi-scene pieces, brand / sizzle reel, title card, static loop, freeform composition. Input- and length-agnostic fallback, and the home of companion mode (co-create with the full toolbox). |\n| `/remotion-to-hyperframes` | **Porting an existing Remotion** (React) composition's source to HyperFrames HTML. One-way migration, not creation.                                                                                                          |\n\n### Domain skills (loaded on demand)\n\nAtomic capabilities the creation workflows compose against — pull one when you need that specific layer.\n\n| Skill                    | Covers                                                                                                                                                                                                                                                                                                                           ",
+      "rank": 4,
+      "weekly_stars": 4003
+    },
+    {
+      "full_name": "cursor/plugins",
+      "html_url": "https://github.com/cursor/plugins",
+      "description": "Cursor plugin specification and official plugins",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 10636,
+      "forks": 1006,
+      "open_issues": 197,
+      "topics": [],
+      "license": "未声明",
+      "created_at": "2026-01-23T01:57:42Z",
+      "updated_at": "2026-10-10T07:02:50Z",
+      "pushed_at": "2026-10-10T04:39:40Z",
+      "archived": false,
+      "readme": "# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Eric Zakariasson | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Eric Zakariasson | Developer Tools | Internal team workflows for CI, code review, shipping, local automation, and verification. |\n| `thermos` | [Thermos](thermos/) | Cursor | Developer Tools | Thermo-nuclear branch review: deep security/correctness audits, harsh code-quality rubrics, parallel subagents, thermos orchestration, and optional merge-ready PR flows. |\n| `create-plugin` | [Create Plugin](create-plugin/) | Cursor | Developer Tools | Scaffold and validate new agent plugins. |\n| `ralph-loop` | [Ralph Loop](ralph-loop/) | Cursor | Developer Tools | Iterative self-referential AI loops using the Ralph Wiggum technique. |\n| `agent-compatibility` | [Agent Compatibility](agent-compatibility/) | Cursor | Developer Tools | CLI-backed repo compatibility scans plus agents that audit startup, validation, and docs against reality. |\n| `cli-for-agent` | [CLI for Agents](cli-for-agent/) | Eric Zakariasson | Developer Tools | Patterns for designing CLIs that coding agents can run reliably: flags, help with examples, pipelines, errors, idempotency, dry-run. |\n| `pr-review-canvas` | [PR Review Canvas](pr-review-canvas/) | Cursor | Developer Tools | Render PR diffs as review canvases grouped by importance. |\n| `docs-canvas` | [Docs Canvas](docs-canvas/) | Cursor | Developer Tools | Render documentation as a navigable canvas. |\n| `cursor-sdk` | [Cursor SDK](cursor-sdk/) | Cursor | Developer Tools | Build apps, scripts, and automations with the TypeScript SDK. |\n| `origin-apps` | [Origin Apps](origin-apps/) | Cursor | Developer Tools | Skills for building on the Cursor Origin API. Fetch the live spec first, then follow the Origin rules for credentials, scopes, webhooks, paging, and errors. Includes a skill that plans the port of an existing GitHub App. |\n| `orchestrate` | [Orchestrate](orchestrate/) | Cursor | Developer Tools | Fan large tasks out across parallel cloud agents with planners, workers, verifiers, and structured handoffs. |\n| `pstack` | [pstack](pstack/) | Lauren Tan | Developer Tools | if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence. |\n| `dyl-stack` | [dyl-stack](dyl-stack/) | Dylan Gattey | Developer Tools | Dylan's agent style on top of pstack: root causes over symptom patches, The Algorithm before design, terse verified delivery, a PR review that fits in a paste, and Figma-to-UI with a visual judge. |\n| `advisor` | [Advisor](advisor/) | Cursor | Developer Tools | Consult a stronger model before major decisions, when stuck, and before declaring done. |\n| `grok-voice` | [Grok Voice](grok-voice/) | Eric Zakariasson | Developer Tools | Add Grok voice to an app: realtime speech-to-speech, speech-to-text dictation, text-to-speech read-aloud, and a log-driven fix loop for voice sessions. |\n| `gmail` | [Gmail](third_party/gmail/) | Cursor | Productivity | Search, read, draft, and manage email. |\n| `google-drive` | [Google Drive](third_party/google-drive/) | Cursor | Productivity | Search, read, create, and share files. |\n| `google-calendar` | [Google Calendar](third_party/google-calendar/) | Cursor | Productivity | Search events and schedule meetings. |\n| `google-docs` | [Google Docs](third_party/google-docs/) | Cursor | Productivity | Read, create, and edit documents. |\n| `google-sheets` | [Google Sheets](third_party/google-sheets/) | Cursor | Productivity | Read, write, and append spreadsheet data. |\n| `google-slides` | [Google Slides](third_party/google-slides/) | Cursor | Productivity | Create, edit, and render presentations. |\n| `gong` | [Gong](third_party/gong/) | Cursor | Integrations | Pull account summaries, deal insights, and call briefs. |\n| `salesforce` | [Salesforce](third_party/salesforce/) | Cursor | Integrations | Query, create, and update records in your org. |\n| `salesforce-headless-360` | [Salesforce (Headless 360, Beta)](third_party/salesforce-headless-360/) | Cursor | Integrations | Manage records, users, and org setup across Salesforce. |\n| `playwright` | [Playwright](third_party/playwright/) | Cursor | Integrations | Navigate, click, screenshot, and test in a real browser. |\n| `github` | [GitHub](third_party/github/) | Cursor | Integrations | Manage repos, issues, pull requests, and Actions. |\n| `ashby` | [Ashby](third_party/ashby/) | Cursor | Integrations | Search candidates, prep interviews, and manage pipeline tasks. |\n| `hubspot` | [HubSpot](third_party/hubspot/) | Cursor | Integrations | Search and update contacts, companies, deals, and tickets. |\n| `intercom` | [Intercom](third_party/intercom/) | Cursor | Integrations | Search conversations, contacts, and Help Center articles. |\n| `zoom` | [Zoom](third_party/zoom/) | Cursor | Integrations | Search meetings, pull transcripts, and work with Zoom Docs. |\n| `x` | [X](third_party/x/) | Cursor | Integrations | Search posts, read timelines, pull trends, and manage bookmarks. |\n| `clay` | [Clay](third_party/clay/) | Cursor | Integrations | Enrich people and companies, run AI research agents. |\n| `circleback` | [Circleback](third_party/circleback/) | Cursor | Integrations | Search meetings, transcripts, action items, and emails. |\n| `docusign` | [Docusign](third_party/docusign/) | Cursor | Integrations | Manage envelopes, templates, workflows, and agreements. |\n| `navan` | [Navan](third_party/navan/) | Cursor | Integrations | Query expenses, travel bookings, policies, and cards. |\n| `profound` | [Profound](third_party/profound/) | Cursor | Integrations | Track AI visibility, sentiment, and citations. |\n| `juicebox` | [Juicebox](third_party/juicebox/) | Cursor | Integrations | Query recruiting analytics, shortlists, and sourcing agents. |\n| `outreach` | [Outreach](third_party/outreach/) | Cursor | Integrations | Search sequences, prospects, and Kaia meetings. |\n| `amplemarket` | [Amplemarket](third_party/amplemarket/) | Cursor | Integrations | Search people and companies, enrich leads, run sequences. |\n| `klaviyo` | [Klaviyo](third_party/klaviyo/) | Cursor | Integrations | Manage profiles, segments, campaigns, and flows. |\n| `customer-io` | [Customer.io](third_party/customer-io/) | Cursor | Integrations | Build campaigns, manage segments, and query people. |\n| `mailerlite` | [MailerLite](third_party/mailerlite/) | Cursor | Integrations | Manage subscribers, groups, campaigns, and automations. |\n| `brevo` | [Brevo](third_party/brevo/) | Cursor | Integrations | Manage contacts, email and SMS campaigns, and CRM deals. |\n| `typeform` | [Typeform](third_party/typeform/) | Cursor | Integrations | Build forms, analyze responses, and manage contacts. |\n| `jotform` | [Jotform](third_party/jotform/) | Cursor | Integrations | Create and edit forms, then read submissions. |\n| `semrush` | [Semrush](third_party/semrush/) | Cursor | Integrations | Research keywords, backlinks, traffic, and competitors. |\n| `ahrefs` | [Ahrefs](third_party/ahrefs/) | Cursor | Integrations | Research keywords, backlinks, rankings, and site health. |\n| `godaddy` | [GoDaddy](third_party/godaddy/) | Cursor | Integrations | Brainstorm domain names and check availability. |\n| `upwork` | [Upwork](third_party/upwork/) | Cursor | Integrations | Search talent, post jobs, and manage contracts. |\n| `workable` | [Workable](third_party/workable/) | Cursor | Integrations | Search candidates, move pipelines, and manage HR records. |\n| `brex` | [Brex](third_party/brex/) | Cursor | Integrations | Query expenses, receipts, bills, cards, and travel. |\n| `mercury` | [Mercury](third_party/mercury/) | Cursor | Integrations | Read balances, transactions, statements, and cards. |\n| `todoist` | [Todoist](third_party/todoist/) | Cursor | Integrations | Create, find, and complete tasks and projects. |\n| `calendly` | [Calendly](third_party/calendly/) | Cursor | Integrations | Check availability and book, cancel, or reschedule. |\n| `smartsheet` | [Smartsheet](third_party/smartsheet/) | Cursor | Integrations | Query and update sheets, rows, and workspaces. |\n| `wrike` | [Wrike](third_party/wrike/) | Cursor | Integrations | Search projects, create tasks, and post comments. |\n| `coda` | [Coda](third_party/coda/) | Cursor | Integrations | Search docs, read pages, and update tables. |\n| `guru` | [Guru](third_party/guru/) | Cursor | Integrations | Search company knowledge and draft verified answers. |\n| `fireflies` | [Fireflies](third_party/fireflies/) | Cursor | Integrations | Search meeting transcripts, summaries, and action items. |\n| `otter` | [Otter.ai](third_party/otter/) | Cursor | Integrations | Search meeting history and pull full transcripts. |\n| `fathom` | [Fathom](third_party/fathom/) | Cursor | Integrations | Search meetings and pull transcripts and summaries. |\n| `craft` | [Craft](third_party/craft/) | Cursor | Integrations | Search, create, and update documents and daily notes. |\n| `mem` | [Mem](third_party/mem/) | Cursor | Integrations | Capture, search, and organize notes and collections. |\n| `readwise` | [Readwise](third_party/readwise/) | Cursor | Integrations | Search highlights and Reader documents, save articles. |\n| `similarweb` | [Similarweb](third_party/similarweb/) | Cursor | Integrations | Analyze website traffic, audiences, and",
+      "rank": 5,
+      "weekly_stars": 1125
+    },
+    {
+      "full_name": "EpicGames/raddebugger",
+      "html_url": "https://github.com/EpicGames/raddebugger",
+      "description": "A native, user-mode, multi-process, graphical debugger.",
+      "homepage": "",
+      "language": "C",
+      "stars": 8292,
+      "forks": 395,
+      "open_issues": 316,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2024-01-10T19:24:08Z",
+      "updated_at": "2026-10-10T07:00:14Z",
+      "pushed_at": "2026-10-07T20:56:17Z",
+      "archived": false,
+      "readme": "# The RAD Debugger Project\r\n\r\n_**NOTE:** This README does not document usage instructions and tips for the\r\ndebugger itself, and is intended as a technical overview of the project. The\r\ndebugger's README, which includes usage instructions and tips, can be found\r\npackaged along with debugger releases, or within the `build` folder after a\r\nlocal copy has been built. You can find pre-built release binaries\r\n[here](https://github.com/EpicGames/raddebugger/releases)._\r\n\r\nThe RAD Debugger is a native, user-mode, multi-process, graphical debugger. It\r\ncurrently only supports local-machine Windows x64 debugging with PDBs, with\r\nplans to expand and port in the future. In the future we'll expand to also\r\nsupport native Linux debugging and DWARF debug info.\r\n\r\nThe debugger is currently in *ALPHA*. In order to get the debugger\r\nbullet-proof, it'd greatly help out if you submitted the issues you find\r\n[here](https://github.com/EpicGames/raddebugger/issues), along with any\r\ninformation you can gather, like dump files (along with the build you used),\r\ninstructions to reproduce, test executables, and so on.\r\n\r\nIn addition to the debugger, we aim to further improve the toolchain with two\r\nadditional related technologies: **(1)** the RAD Debug Info (RDI) format, and\r\n**(2)** the RAD Linker.\r\n\r\n## The RAD Debug Info (RDI) Format\r\n\r\nThe RAD Debug Info (RDI) format is our custom debug information format, which\r\nthe debugger parses and uses, rather than the debug information natively\r\nproduced by toolchains, like PDB or DWARF. To work with these existing\r\ntoolchains, we convert PDB (and eventually PE/ELF files with embedded DWARF)\r\ninto the RDI format on-demand.\r\n\r\nThe RDI format is currently specified in code, in the files within the\r\n`src/lib_rdi` folder. In [`rdi.h`](src/lib_rdi/rdi.h) and\r\n[`rdi.c`](src/lib_rdi/rdi.c), the types and functions which define the format\r\nitself are specified. In [`rdi_parse.h`](src/lib_rdi/rdi_parse.h) and\r\n[`rdi_parse.c`](src/lib_rdi/rdi_parse.c), helpers for parsing the format are\r\nincluded.\r\n\r\nWe also have an in-progress library for constructing and serializing RDI data,\r\nlocated within the `src/lib_rdi_make` folder.\r\n\r\nOur `radbin` utility (accessible through the debugger too, via the `--bin`\r\ncommand line argument) is capable of converting native debug information formats\r\nto RDI, and of producing textual dumps of contents stored within RDI files.\r\n\r\n## The RAD Linker\r\n\r\nThe RAD Linker is a new performance linker for generating x64 PE/COFF binaries.\r\nIt is designed to be very fast when creating gigantic executables. It generates\r\nstandard PDB files for debugging, but it can also (optionally) natively create\r\nRAD Debug Info too, which is useful both to eliminate on-demand conversion time\r\nwhen debugging, but also for huge executables that otherwise create broken\r\nPDBs that overflow internal 32-bit tables.\r\n\r\nThe RAD Linker is primarily optimized to handle huge linking projects. In our\r\ntest cases (where debug info is multiple gigabytes), we see 50% faster link\r\ntimes.\r\n\r\nThe command line syntax is fully compatible with MSVC; you can get a full list\r\nof implemented switches from `/help`.\r\n\r\nOur current designed-for use case for the linker is to help with the\r\ncompile-debug cycle of huge projects. We don't yet have support for\r\nlink-time-optimizations, but this feature is on the road map.\r\n\r\nBy default, the linker spawns as many threads as there are cores, so if you plan\r\nto run multiple linkers in parallel, you can limit the number of thread workers\r\nvia `/rad_workers`.\r\n\r\nWe also have support for large memory pages, which, when enabled, reduce link\r\ntime by another 25%. To link with large pages, you need to explicitly request\r\nthem via `/rad_large_pages`. Large pages are off by default, since Windows\r\nsupport for large pages is a bit buggy; we recommend they only be used in Docker\r\nor VM images where the environment is reset after each link. In a standard\r\nWindows environment, using large pages otherwise will fragment memory quickly,\r\nforcing a reboot. We are working on a Linux port of the linker that will be able\r\nto build with large pages robustly.\r\n\r\nA benchmark of the linker's performance is below:\r\n\r\n![AMD Ryzen Threadripper PRO 3995WX 64-Cores, 256 GiB RAM (Windows x64)](https://github.com/user-attachments/assets/a95b382a-76b4-4a4c-b809-b61fe25e667a)\r\n\r\n---\r\n\r\n# Project Development Setup / Local Build Instructions\r\n\r\nThe project is actively developed both on [Windows x64](#windows-x64) and\r\n[Linux x64](#linux-x64) development machines. Click on whichever you'd like to\r\nuse.\r\n\r\n## Windows x64\r\n\r\n### 1. Installing the Required Tools (MSVC & Windows SDK)\r\n\r\nFirst, you'll need the [Microsoft C/C++ Build Tools v15 (2017) or later](https://aka.ms/vs/17/release/vs_BuildTools.exe),\r\nfor the Windows SDK, and the MSVC compiler and linker.\r\n\r\nIf the Windows SDK is installed (e.g. via installation of the Microsoft C/C++\r\nBuild Tools), you may also build with [Clang](https://releases.llvm.org/).\r\n\r\n### 2. Build Environment Setup\r\n\r\nBuilding the codebase can be done in a terminal which is equipped with the\r\nability to call either MSVC or Clang from command line.\r\n\r\nThis is generally done by calling `vcvarsall.bat x64`, which is included in the\r\nMicrosoft C/C++ Build Tools. This script is automatically called by the `x64\r\nNative Tools Command Prompt for VS <year>` variant of the vanilla `cmd.exe`. If\r\nyou've installed the build tools, this command prompt may be easily located by\r\nsearching for `Native` from the Windows Start Menu search.\r\n\r\nYou can ensure that the MSVC compiler is accessible from your command line by\r\nrunning:\r\n\r\n```\r\ncl\r\n```\r\n\r\nIf everything is set up correctly, you should have output very similar to the\r\nfollowing:\r\n\r\n```\r\nMicrosoft (R) C/C++ Optimizing Compiler Version 19.29.30151 for x64\r\nCopyright (C) Microsoft Corporation.  All rights reserved.\r\n\r\nusage: cl [ option... ] filename... [ /link linkoption... ]\r\n```\r\n\r\n### 3. Building\r\n\r\nWithin this terminal, `cd` to the root directory of the codebase, and just run\r\nthe `build.bat` script:\r\n\r\n```\r\nbuild\r\n```\r\n\r\nYou should see the following output:\r\n\r\n```\r\n[debug mode]\r\n[msvc compile]\r\n[default mode, assuming `raddbg` build]\r\nmetagen_main.c\r\nsearching C:\\devel\\raddebugger/src... 458 files found\r\nparsing metadesk... 16 metadesk files parsed\r\ngathering tables... 97 tables found\r\ngenerating layer code...\r\nraddbg_main.c\r\n```\r\n\r\nIf everything worked correctly, there will be a `build` folder in the root\r\nlevel of the codebase, and it will contain a freshly-built `raddbg.exe`.\r\n\r\nThis `raddbg.exe` will have been built in **debug mode**, which is not built\r\nwith optimizations, and may perform worse. To produce a\r\n**release mode executable**, run `build.bat` with a `release` argument:\r\n\r\n```\r\nbuild release\r\n```\r\n\r\nThis build will take significantly longer.\r\n\r\nBy default, `build.bat` only builds the debugger if no arguments (or just\r\n`release`) are passed, but additional arguments can be passed to build the RAD\r\nLinker, or the `radbin` CLI binary file utility:\r\n\r\n```\r\nbuild radlink release\r\nbuild radbin release\r\n```\r\n\r\n## Linux x64\r\n\r\n### 1. Installing the Required Tools (GCC or Clang, Libraries)\r\n\r\nFirst, you'll need either GCC or Clang, if you don't already have them. They\r\ncan be obtained by running one of the following commands, depending on your\r\ntoolchain of choice and distribution:\r\n\r\n#### GCC on Ubuntu / Debian / Mint\r\n```\r\nsudo apt update && sudo apt install build-essential\r\n```\r\n\r\n#### Clang on Ubuntu / Debian / Mint\r\n```\r\nsudo apt update && sudo apt install clang llvm\r\n```\r\n\r\n#### GCC on Arch / Manjaro\r\n```\r\nsudo pacman -S base-devel\r\n```\r\n\r\n#### Clang on Arch / Manjaro\r\n```\r\nsudo pacman -S clang llvm\r\n```\r\n\r\nIf you've installed the Clang and LLVM tooling required, you can run:\r\n\r\n```\r\nclang --version && llvm-ar --version\r\n```\r\n\r\nYou should see output similar to the following:\r\n\r\n```\r\nUbuntu clang version 18.1.3 (1ubuntu1)\r\nTarget: x86_64-pc-linux-gnu\r\nThread model: posix\r\nInstalledDir: /usr/bin\r\nUbuntu LLVM version 18.1.3\r\n  Optimized build.\r\n```\r\n\r\nIf you've installed the GCC tooling required, you can run:\r\n\r\n```\r\ngcc --version && gcc-ar --version\r\n```\r\n\r\nYou should see output similar to the following:\r\n\r\n```\r\ngcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\r\nCopyright (C) 2023 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\n\r\nGNU ar (GNU Binutils for Ubuntu) 2.42\r\nCopyright (C) 2024 Free Software Foundation, Inc.\r\nThis program is free software; you may redistribute it under the terms of\r\nthe GNU General Public License version 3 or (at your option) any later version.\r\nThis program has absolutely no warranty.\r\n```\r\n\r\n### 2. Installing Dependencies\r\n\r\nThe debugger project relies on a few dynamically linked libraries being present\r\non the system:\r\n\r\n- `libfreetype`\r\n- `libx11`\r\n- `libxext`\r\n- `libxfixes`\r\n- `libxrandr`\r\n- `libgl`\r\n- `libegl`\r\n\r\nYou'll need the development packages for them in order to build. These can be\r\ninstalled using one of the following commands, depending on your distribution:\r\n\r\n#### Ubuntu / Debian / Mint \r\n\r\n```\r\nsudo apt install -y libfreetype6-dev libx11-dev libxext-dev libxfixes-dev libxrandr-dev libgl-dev libegl-dev\r\n```\r\n\r\n#### Arch / Manjaro\r\n\r\n```\r\nsudo pacman -S --needed freetype2 libx11 libxext libxfixes libxrandr libglvnd\r\n```\r\n\r\n### 3. Building\r\n\r\nTo build, `cd` to the root directory of the codebase, and run the `build.sh`\r\nscript:\r\n\r\n```\r\n./build.sh\r\n```\r\n\r\nYou should see something similar to the following output:\r\n\r\n```\r\n[clang compile]\r\n[debug mode]\r\n[building metagen]\r\nsearching /mnt/c/devel/raddebugger/src... 562 files found\r\nparsing metadesk... 23 metadesk files parsed\r\ngathering tables... 138 tables found\r\ngenerating layer code...\r\n```\r\n\r\nIf everything worked correctly, there will be a `build` folder in the root\r\nlevel of the codebase, and it will contain a fresh",
+      "rank": 6,
+      "weekly_stars": 654
+    },
+    {
+      "full_name": "thedotmack/claude-mem",
+      "html_url": "https://github.com/thedotmack/claude-mem",
+      "description": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+      "homepage": "https://claude-mem.ai",
+      "language": "TypeScript",
+      "stars": 99044,
+      "forks": 8674,
+      "open_issues": 143,
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2025-08-31T20:50:03Z",
+      "updated_at": "2026-10-10T06:51:55Z",
+      "pushed_at": "2026-10-09T10:23:45Z",
+      "archived": false,
+      "readme": "<h1 align=\"center\">\n  <br>\n  <a href=\"https://github.com/thedotmack/claude-mem\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/public/claude-mem-logo-for-dark-mode.webp\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/public/claude-mem-logo-for-light-mode.webp\">\n      <img src=\"docs/public/claude-mem-logo-for-light-mode.webp\" alt=\"Claude-Mem\" width=\"400\">\n    </picture>\n  </a>\n</h1>\n\n<p align=\"center\">\n  <img alt=\"Vercel OSS Program\" src=\"https://vercel.com/oss/program-badge-2026.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"Greptile\" src=\"docs/public/greptile-wordmark-green.svg\" height=\"24\" />\n  &nbsp;&nbsp;&nbsp;\n  <img alt=\"SerpApi\" src=\"docs/public/serpapi-logo-with-wordmark-gradient.svg\" height=\"24\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"docs/i18n/README.zh.md\">🇨🇳 中文</a> •\n  <a href=\"docs/i18n/README.zh-tw.md\">🇹🇼 繁體中文</a> •\n  <a href=\"docs/i18n/README.ja.md\">🇯🇵 日本語</a> •\n  <a href=\"docs/i18n/README.pt.md\">🇵🇹 Português</a> •\n  <a href=\"docs/i18n/README.pt-br.md\">🇧🇷 Português</a> •\n  <a href=\"docs/i18n/README.ko.md\">🇰🇷 한국어</a> •\n  <a href=\"docs/i18n/README.es.md\">🇪🇸 Español</a> •\n  <a href=\"docs/i18n/README.de.md\">🇩🇪 Deutsch</a> •\n  <a href=\"docs/i18n/README.fr.md\">🇫🇷 Français</a> •\n  <a href=\"docs/i18n/README.he.md\">🇮🇱 עברית</a> •\n  <a href=\"docs/i18n/README.ar.md\">🇸🇦 العربية</a> •\n  <a href=\"docs/i18n/README.ru.md\">🇷🇺 Русский</a> •\n  <a href=\"docs/i18n/README.pl.md\">🇵🇱 Polski</a> •\n  <a href=\"docs/i18n/README.cs.md\">🇨🇿 Čeština</a> •\n  <a href=\"docs/i18n/README.nl.md\">🇳🇱 Nederlands</a> •\n  <a href=\"docs/i18n/README.tr.md\">🇹🇷 Türkçe</a> •\n  <a href=\"docs/i18n/README.uk.md\">🇺🇦 Українська</a> •\n  <a href=\"docs/i18n/README.vi.md\">🇻🇳 Tiếng Việt</a> •\n  <a href=\"docs/i18n/README.tl.md\">🇵🇭 Tagalog</a> •\n  <a href=\"docs/i18n/README.id.md\">🇮🇩 Indonesia</a> •\n  <a href=\"docs/i18n/README.th.md\">🇹🇭 ไทย</a> •\n  <a href=\"docs/i18n/README.hi.md\">🇮🇳 हिन्दी</a> •\n  <a href=\"docs/i18n/README.bn.md\">🇧🇩 বাংলা</a> •\n  <a href=\"docs/i18n/README.ur.md\">🇵🇰 اردو</a> •\n  <a href=\"docs/i18n/README.ro.md\">🇷🇴 Română</a> •\n  <a href=\"docs/i18n/README.sv.md\">🇸🇪 Svenska</a> •\n  <a href=\"docs/i18n/README.it.md\">🇮🇹 Italiano</a> •\n  <a href=\"docs/i18n/README.el.md\">🇬🇷 Ελληνικά</a> •\n  <a href=\"docs/i18n/README.hu.md\">🇭🇺 Magyar</a> •\n  <a href=\"docs/i18n/README.fi.md\">🇫🇮 Suomi</a> •\n  <a href=\"docs/i18n/README.da.md\">🇩🇰 Dansk</a> •\n  <a href=\"docs/i18n/README.no.md\">🇳🇴 Norsk</a>\n</p>\n\n<h4 align=\"center\">Persistent memory compression system built for <a href=\"https://claude.com/claude-code\" target=\"_blank\">Claude Code</a>.</h4>\n\n<p align=\"center\">\n  <a href=\"LICENSE\">\n    <img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg\" alt=\"License\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/version-13.35.0-green.svg\" alt=\"Version\">\n  </a>\n  <a href=\"package.json\">\n    <img src=\"https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg\" alt=\"Node\">\n  </a>\n  <a href=\"https://github.com/thedotmack/awesome-claude-code\">\n    <img src=\"https://awesome.re/mentioned-badge.svg\" alt=\"Mentioned in Awesome Claude Code\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/15496\" target=\"_blank\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\">\n      <img src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/trendshift-badge.svg\" alt=\"thedotmack/claude-mem | Trendshift\" width=\"250\" height=\"55\"/>\n    </picture>\n  </a>\n</p>\n\n<br>\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\">\n      <a href=\"https://github.com/thedotmack/claude-mem\">\n        <picture>\n          <img\n            src=\"https://raw.githubusercontent.com/thedotmack/claude-mem/main/docs/public/cm-preview.gif\"\n            alt=\"Claude-Mem Preview\"\n            width=\"500\"\n          >\n        </picture>\n      </a>\n    </td>\n    <td align=\"center\">\n      <a href=\"https://www.star-history.com/#thedotmack/claude-mem&Date\">\n        <picture>\n          <source\n            media=\"(prefers-color-scheme: dark)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&theme=dark&legend=top-left\"\n          />\n          <source\n            media=\"(prefers-color-scheme: light)\"\n            srcset=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n          />\n          <img\n            alt=\"Star History Chart\"\n            src=\"https://api.star-history.com/image?repos=thedotmack/claude-mem&type=date&legend=top-left\"\n            width=\"500\"\n          />\n        </picture>\n      </a>\n    </td>\n  </tr>\n</table>\n\n<p align=\"center\">\n  <a href=\"#quick-start\">Quick Start</a> •\n  <a href=\"#how-it-works\">How It Works</a> •\n  <a href=\"#mcp-search-tools\">Search Tools</a> •\n  <a href=\"#documentation\">Documentation</a> •\n  <a href=\"#configuration\">Configuration</a> •\n  <a href=\"#troubleshooting\">Troubleshooting</a> •\n  <a href=\"#license\">License</a>\n</p>\n\n<p align=\"center\">\n  Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to future sessions. This enables Claude to maintain continuity of knowledge about projects even after sessions end or reconnect.\n</p>\n\n---\n\n## Quick Start\n\nInstall claude-mem for Grok Bot:\n\n```bash\nnpx claude-mem install --ide grok-bot\n```\n\nGrok Bot has no host hooks, so we watch the chat log files. Default is CMEM Pro, the hosted memory. Local observer is opt-in: `--provider host`. Installing this plugin does not install Cursor.\n\n**Awareness push pilot (LFG + Orifice):** needle observations (`decision`, `bugfix`, `security_alert`, `sensitive`) are appended as dated `- YYYY-MM-DD [awareness] …` lines into that bot's `memory/log/YYYY-MM.md`. Grok Bot already re-reads the log from disk. This does not write `profile.md`, user-memory, or project memory. Disable with `CLAUDE_MEM_GROK_BOT_AWARENESS_ENABLED=false`.\n\nInstall with a single command:\n\n```bash\nnpx claude-mem install\n```\n\nThe installer sets everything up first, then asks you to sign in to claude-mem in your browser (email magic link — no card required). Signing in provisions a memory key for your account and unlocks the **claude-mem observer** with a **30 Day Free Trial**: memory runs off-plan, so you get up to 100% more usage from your plan. When the free trial ends, memory automatically falls back to your Anthropic plan unless you subscribe. After sign-in you pick your memory provider — the claude-mem observer, your own OpenRouter or Gemini key, or your Anthropic plan.\n\nPrefer to skip the sign-in? Pass an explicit `--provider` flag, set `CLAUDE_MEM_ONLINE_OPTIN=false`, or run in CI/non-interactive shells — the installer completes without any account interaction.\n\nOr install for OpenCode:\n\n```bash\nnpx claude-mem install --ide opencode\n```\n\nThis works with OpenCode 1.3.4 or later, including OpenCode 2. Restart OpenCode after installing.\n\nOr install for **T3 Code** (Codex and Claude Code providers):\n\n```bash\nnpx claude-mem install --ide t3code\n```\n\nThe installer discovers T3 Code's enabled providers, registers native Claude-Mem plugins in their configured homes, and supports T3-managed Codex. Restart T3 Code, trust the provider's hooks when prompted, and start a new thread. See the [T3 Code integration guide](https://docs.claude-mem.ai/t3code-integration) for custom server settings, status, and removal.\n\nOr install for Antigravity CLI ([setup guide](https://docs.claude-mem.ai/antigravity-cli/setup)):\n\n```bash\nnpx claude-mem install --ide antigravity\n```\n\nOr install for OMP (Oh My Pi):\n\n```bash\nnpx claude-mem install --ide omp\n```\n\nOr install the native Pi extension or DeepSeek Harness plugin:\n\n```bash\nnpx claude-mem install --ide pi\nnpx claude-mem install --ide dsh --dsh-profile tui\n```\n\nPi and DeepSeek Harness use the worker runtime. See [native harness setup](docs/native-harness-integrations.md) for capture, recall, and troubleshooting.\n\nOr install from the plugin marketplace inside Claude Code:\n\n```bash\n/plugin marketplace add thedotmack/claude-mem\n\n/plugin install claude-mem\n```\n\nRestart Claude Code. Context from previous sessions will automatically appear in new sessions.\n\n> **Note:** Claude-Mem is also published on npm, but `npm install -g claude-mem` installs the **SDK/library only** — it does not register the plugin hooks or set up the worker service. Always install via `npx claude-mem install` or the `/plugin` commands above.\n\n### 🦞 OpenClaw Gateway\n\nInstall claude-mem as a persistent memory plugin on [OpenClaw](https://openclaw.ai) gateways with a single command:\n\n```bash\ncurl -fsSL https://install.cmem.ai/openclaw.sh | bash\n```\n\nThe installer handles dependencies, plugin setup, AI provider configuration, worker startup, and optional real-time observation feeds to Telegram, Discord, Slack, and more. See the [OpenClaw Integration Guide](https://docs.claude-mem.ai/openclaw-integration) for details.\n\n**Key Features:**\n\n- 🧠 **Persistent Memory** - Context survives across sessions\n- 📊 **Progressive Disclosure** - Layered memory retrieval with token cost visibility\n- 🔍 **Skill-Based Search** - Query your project history with mem-search skill\n- 🖥️ **Web Viewer UI** - Real-time memory stream at the worker URL printed on startup\n- 💻 **Claude Desktop Skill** - Search memory from Claude Desktop conversations\n- 🔒 **Privacy Control** - Use `<private>` tags to exclude sensitive content from storage\n- ⚙️ **Context Configuration** - Fine-grained control over what context gets injected\n- 🤖 **Automatic Operation** - No manual intervention required\n- 🔗 **Citations** - Reference past observations with IDs through the worker API or view all in ",
+      "rank": 7,
+      "weekly_stars": 3850
+    },
+    {
+      "full_name": "earthtojake/text-to-cad",
+      "html_url": "https://github.com/earthtojake/text-to-cad",
+      "description": "Give your agent CAD superpowers.",
+      "homepage": "https://www.texttocad.dev",
+      "language": "Python",
+      "stars": 18835,
+      "forks": 1861,
+      "open_issues": 27,
+      "topics": [
+        "agents",
+        "ai-agents",
+        "cad",
+        "mechanical-engineering",
+        "robotics",
+        "step",
+        "stl",
+        "stp",
+        "text-to-cad"
+      ],
+      "license": "MIT",
+      "created_at": "2026-04-22T01:09:45Z",
+      "updated_at": "2026-10-10T07:01:38Z",
+      "pushed_at": "2026-10-10T06:36:54Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n<img src=\"apps/docs/public/brand/logo-texttocad-animated.svg\" alt=\"text-to-cad\" width=\"800\">\n\nGive your agent CAD superpowers.\n\n[Docs](https://www.texttocad.dev)\n\n[![GitHub stars](https://img.shields.io/github/stars/earthtojake/text-to-cad?style=for-the-badge&logo=github&label=Stars)](https://github.com/earthtojake/text-to-cad/stargazers)\n[![skills.sh](https://skills.sh/b/earthtojake/text-to-cad?style=for-the-badge)](https://skills.sh/earthtojake/text-to-cad)\n[![Follow @earthtojake](https://img.shields.io/badge/Follow-%40earthtojake-000000?style=for-the-badge&logo=x)](https://x.com/earthtojake)\n[![Join Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/5FGB9DwJYU)\n[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)\n[![Tests](https://img.shields.io/github/actions/workflow/status/earthtojake/text-to-cad/test.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=Tests)](https://github.com/earthtojake/text-to-cad/actions/workflows/test.yml?query=branch%3Amain)\n[![cadgen](https://img.shields.io/pypi/v/cadgen?style=for-the-badge&logo=pypi&logoColor=white&label=cadgen)](https://pypi.org/project/cadgen/)\n[![build123d](https://img.shields.io/badge/build123d-0.11-2F6FB0?style=for-the-badge)](https://github.com/gumyr/build123d)\n[![Open CASCADE](https://img.shields.io/badge/Open%20CASCADE-7.9-E2001A?style=for-the-badge)](https://dev.opencascade.org)\n[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](packages/cadgen/pyproject.toml)\n[![Node.js](https://img.shields.io/badge/Node.js-20+-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)\n\n</div>\n\n# text-to-cad\n\nThe text-to-cad plugin gives your agent local workflows for generating 3D models\nas STEP, GLB, STL or 3MF files. It also does design for manufacturing checks,\ngenerates engineering drawings, and connects to popular 3D printing, sheet metal\nand CNC fabrication services.\n\nIt is supported by all popular agents that support plugins or the\n[skills](https://skills.sh) framework, including Claude Code, Codex, Cursor,\nGemini and Grok.\n\n## 💻 Install\n\n### Ask your agent (recommended)\n\nSend this message to your agent and it will install text-to-cad for you.\n\n```text\nInstall text-to-cad from https://github.com/earthtojake/text-to-cad\n```\n\nBy default, text-to-cad sends usage stats and crash reports, tagged with a random\nID and never including your files, paths or prompts; turn them off with\n`uvx cadgen telemetry off`, or ask your agent to. [Telemetry](#telemetry) says\nthe rest.\n\nOr install it yourself:\n\n1. CAD runs through [uv](https://docs.astral.sh/uv/): check that it is installed\n   (`uv --version`), and if it is missing, install it with\n   [uv's installer](https://docs.astral.sh/uv/getting-started/installation/).\n2. Run the commands under your agent app's heading below, or under\n   [Other Agents](#other-agents) if it has none.\n3. Restart the app. Its first start downloads CAD's runtime, so it needs a network\n   connection.\n\nThe plugin for your agent app brings the skills and CAD's viewer, a local server\n(`cadgen mcp`). For an agent without a plugin, install the skills alone. Install\none or the other in an app, not both: two copies means every skill twice.\n\nThe install commands below take the `latest` branch: it holds the plugin alone\nand gets each release once it is on PyPI. `main`, where development happens,\ninstalls too, but can hold changes that aren't released yet. Each app names the\nbranch in its own way (`#latest`, `--ref latest`, `@latest` or\n`--branch latest`); leave it out and the app installs `main`.\n\nEach app's heading also says how to update text-to-cad, and how to reinstall it:\nremove it, then install it again. Updating the plugin updates CAD: the new\nrelease's cadgen is downloaded the first time it runs, and the skills and the\nserver share it. Earlier releases stay in uv's cache until you run `uv cache prune`.\n\n### Claude Code\n\n```bash\nclaude plugin marketplace add earthtojake/text-to-cad#latest\nclaude plugin install text-to-cad@earthtojake\n```\n\nThe plugin also starts CAD's server. Where Claude Code can show app views, CAD\nshows models as viewer cards in the conversation; otherwise, as in a terminal,\nasking it to show a model gives you a link that opens the model in the CAD\nViewer in your browser.\n\nTo update, run these, then restart Claude Code:\n\n```bash\nclaude plugin marketplace update earthtojake\nclaude plugin update text-to-cad@earthtojake\n```\n\nTo reinstall, remove it with these, then run the install commands again:\n\n```bash\nclaude plugin uninstall text-to-cad@earthtojake\nclaude plugin marketplace remove earthtojake\n```\n\n### Claude Desktop\n\nCAD shows models in the chat: ask Claude to show one and it appears as a viewer\ncard you can orbit, add to your prompt, and open full size; Claude can read what\nyou selected and see what you see. It runs locally through uv: add the server to\nClaude Desktop's config (Settings > Developer > Edit Config), then restart the\napp. If Claude Desktop cannot find `uvx`, give its full path (`which uvx`).\n\n```json\n{\n  \"mcpServers\": {\n    \"cad\": {\n      \"command\": \"uvx\",\n      \"args\": [\"--no-config\", \"--managed-python\", \"--python\", \"3.13\", \"--from\", \"cadgen==0.7.20\", \"cadgen\", \"mcp\"],\n      \"env\": {\"CADGEN_INSTALL_CHANNEL\": \"claude-desktop\"}\n    }\n  }\n}\n```\n\nThe config pins a cadgen release in `args`, and uvx keeps the version it first\ndownloads. To update, change that version to the\n[latest release](https://pypi.org/project/cadgen/), then restart Claude Desktop.\n\n### Codex\n\nInstall text-to-cad from Codex's plugin directory:\n[text-to-cad for Codex](https://chatgpt.com/plugins/plugins_6ac09476ef008191a35887b22b0d048a),\nthen **Open in desktop app**.\n\nIn the Codex app the plugin also brings the CAD viewer: **CAD** in the sidebar\n(recent models, and Open), a **CAD** tab beside each thread that the agent\ndrives, and *Open with CAD* for model files.\n\n<details>\n<summary>Manual install</summary>\n\n```bash\ncodex plugin marketplace add earthtojake/text-to-cad --ref latest\ncodex plugin add text-to-cad@earthtojake\n```\n\nTo update, upgrade the `earthtojake` marketplace (or use Plugins › Manage ›\nMarketplace), then restart Codex:\n\n```bash\ncodex plugin marketplace upgrade earthtojake\n```\n\nTo reinstall, remove it with these, then run the install commands again:\n\n```bash\ncodex plugin remove text-to-cad@earthtojake\ncodex plugin marketplace remove earthtojake\n```\n\nThe marketplace was renamed from `text-to-cad` to `earthtojake`; if you added it\nbefore, remove the old one first (`codex plugin marketplace remove text-to-cad`).\n\n</details>\n\n### Cursor\n\nCursor also loads the plugin installed with Claude Code. If the Claude Code plugin\nis installed, Cursor already has text-to-cad: skip this.\n\n```bash\ngit clone --depth 1 --branch latest https://github.com/earthtojake/text-to-cad ~/.cursor/plugins/local/text-to-cad\n```\n\nCursor reads `.cursor-plugin/plugin.json`: restart Cursor after cloning. Teams\ncan import the repository instead, under **Dashboard → Plugins & MCPs → Team\nMarketplaces**.\n\nTo update, pull the latest release, then restart Cursor:\n\n```bash\ngit -C ~/.cursor/plugins/local/text-to-cad pull\n```\n\nTo reinstall, delete the folder, then run the install command again:\n\n```bash\nrm -rf ~/.cursor/plugins/local/text-to-cad\n```\n\n### Grok Build\n\nGrok Build also loads the plugin installed with Claude Code. If the Claude Code\nplugin is installed, Grok Build already has text-to-cad: skip this.\n\n```bash\ngrok plugin install earthtojake/text-to-cad@latest --trust\ngrok plugin enable text-to-cad\n```\n\nGrok Build reads the Claude plugin manifest. Grok shows tool results as text, so\nasking it to show a model gives you a CAD Viewer link.\n\nTo update, run this, then restart Grok Build:\n\n```bash\ngrok plugin update text-to-cad\n```\n\nTo reinstall, remove it with this, then run the install commands again:\n\n```bash\ngrok plugin uninstall text-to-cad\n```\n\n### Gemini\n\n```bash\ngemini extensions install https://github.com/earthtojake/text-to-cad --ref latest --consent --auto-update\n```\n\nGemini installs the plugin as an extension, with the skills and CAD's server, and\nkeeps it up to date (`--auto-update`; `--consent` answers its security prompt). Like Grok, it shows tool results as text, so asking it to show a model\ngives you a CAD Viewer link.\n\nTo update now, run this, then restart Gemini:\n\n```bash\ngemini extensions update text-to-cad\n```\n\nTo reinstall, remove it with this, then run the install command again:\n\n```bash\ngemini extensions uninstall text-to-cad\n```\n\n### Other Agents\n\nFor an agent without plugin support: the skills give you everything you need for\ncore CAD workflows and let you view CAD files in a localhost web app. Install them\nwith the Skills CLI:\n\n```bash\nnpx skills add earthtojake/text-to-cad#latest\n```\n\nThe command asks which agents to install for, and where. To skip the questions,\nname the agent and install for your user:\n`npx skills add earthtojake/text-to-cad#latest -g -a <agent> -y`.\n\nEach skill runs cadgen through uv with the same pinned command the plugin's server\nuses, so uv must be installed. Without the plugin there is no CAD server, so the\nskills open models in the CAD Viewer in your browser.\n\n**To update or reinstall, run the same command again**, then restart the app.\n`add` re-fetches the package and overwrites what is already installed, so it both\nrefreshes existing skills and installs any skill added in a newer release.\n`npx skills update` only refreshes skills already in your lockfile, so it silently\nmisses new ones — which matters here, because releases do add skills.\n\nNeither command removes a skill that was retired upstream; drop one with\n`npx skills remove <skill>` if you need to. The retired `cad-viewer` skill is\nnow covered by the CAD, DXF and robot-description skills, and the retired\n`cad-mcp-setup` by th",
+      "rank": 8,
+      "weekly_stars": 2125
+    },
+    {
+      "full_name": "pingdotgg/t3code",
+      "html_url": "https://github.com/pingdotgg/t3code",
+      "description": "",
+      "homepage": "https://t3.codes",
+      "language": "TypeScript",
+      "stars": 26680,
+      "forks": 6970,
+      "open_issues": 2905,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-02-08T23:46:22Z",
+      "updated_at": "2026-10-10T06:55:19Z",
+      "pushed_at": "2026-10-10T06:57:13Z",
+      "archived": false,
+      "readme": "# T3 Code\n\nT3 Code is an \"agent harness control surface\". It enables control of the agents on your machine with a best-in-class mobile app ([iOS](https://apps.apple.com/us/app/t3-code-remote-claude-more/id6787819824), [Android](https://play.google.com/store/apps/details?id=com.t3tools.t3code)), [web app](https://app.t3.codes) and [Electron-based desktop app](https://t3.codes).\n\nWorks with your subscriptions on Claude Code, Codex, Cursor, Grok Build, OpenCode, and Google Antigravity. If they're set up on your computer, T3 Code can control them.\n\n## \"Wait, what are you selling me?\"\n\nNothing. We built T3 Code because we wanted the best possible development experience with agents. We were inspired by existing solutions like the Codex desktop app, Conductor, Claude Desktop and Cursor Glass, but none met our bar.\n\nWe wanted something performant, remote-ready, and truly open. If we ever go the wrong direction, we want you to have everything you need to fork and build the editor that you want.\n\n## Installation\n\n> [!WARNING]\n> T3 Code currently supports Codex, Claude, Cursor, Grok Build, OpenCode, and Antigravity. Install and authenticate at least one provider before use:\n>\n> - Codex: install [Codex CLI](https://developers.openai.com/codex/cli) and run `codex login`\n> - Claude: install [Claude Code](https://claude.com/product/claude-code) and run `claude auth login`\n> - Cursor: install [Cursor CLI](https://cursor.com/cli) and run `agent login`\n> - Grok Build: install [Grok Build CLI](https://x.ai/cli) and run `grok login`\n> - OpenCode: install [OpenCode](https://opencode.ai) and run `opencode auth login`\n> - Antigravity: enable it in Settings, then use **Install Antigravity** and **Sign in with Google**. No CLI is required.\n\n### Command line\n\n```bash\ncurl -fsSL https://t3.codes/install.sh | sh\n```\n\nOn Windows, in PowerShell:\n\n```powershell\nirm https://t3.codes/install.ps1 | iex\n```\n\nThen run `t3` to start the server and open the local web app. `t3 service install` keeps it running in the background, `t3 update` moves to a newer release, and `t3 --help` has the full reference.\n\nTo try it once without installing, run `npx t3@latest` instead.\n\n### Desktop app\n\nInstall the latest version of the desktop app from [GitHub Releases](https://github.com/pingdotgg/t3code/releases), or from your favorite package registry:\n\n#### Windows (`winget`)\n\n```bash\nwinget install T3Tools.T3Code\n```\n\n#### Windows (`scoop`)\n\n```bash\nscoop install extras/t3code\n```\n\n#### macOS (Homebrew)\n\n```bash\nbrew install --cask t3-code\n```\n\n#### Debian, Ubuntu (`.deb`)\n\nDownload the `.deb` from [GitHub Releases](https://github.com/pingdotgg/t3code/releases), then:\n\n```bash\nsudo apt install ./T3-Code-*.deb\n```\n\n#### Arch Linux (AUR)\n\nStable:\n\n```bash\nyay -S t3code-bin\n```\n\nNightly:\n\n```bash\nyay -S t3code-nightly-bin\n```\n\nThe AUR packaging is maintained in this repository under [`packaging/aur`](./packaging/aur).\n\n## Some notes\n\nWe are very very early in this project. Expect bugs.\n\nWe are (mostly) not accepting contributions yet. Small fixes may be considered. Big features will not be.\n\n## Documentation\n\nFull docs live in [docs/](./docs). There's no docs site yet.\n\n- [Install and first run](./docs/user/install.md)\n- [Permission modes](./docs/user/permission-modes.md)\n- [Keyboard shortcuts](./docs/user/keybindings.md)\n- [Project settings](./docs/user/project-settings.md)\n- [Appearance preferences](./docs/user/appearance.md)\n- [Remote access from a phone or another machine](./docs/user/remote-access.md)\n- [Connect Claude Code, Codex, ChatGPT and other agents over MCP](./docs/user/outside-agents.md)\n- [Keeping app and server in sync](./docs/user/updating.md)\n- [Source control integrations](./docs/user/source-control.md)\n- Multiple accounts: [Codex](./docs/user/providers-codex.md) · [Claude](./docs/user/providers-claude.md)\n- [Run T3 Code as a background service](./docs/user/background-service.md)\n\nBuilding from source? Start at [docs/internals/overview.md](./docs/internals/overview.md).\n\n## If you REALLY want to contribute still.... read this first\n\n### Install `vp`\n\nT3 Code uses Vite+ so you'll need to install the global `vp` command-line tool.\n\n#### macOS / Linux\n\n```bash\ncurl -fsSL https://vite.plus | bash\n```\n\n#### Windows\n\n```bash\nirm https://vite.plus/ps1 | iex\n```\n\nCheckout their getting started guide for more information: https://viteplus.dev/guide/\n\n### Install dependencies\n\n```bash\nvp i\n```\n\nRead [CONTRIBUTING.md](./CONTRIBUTING.md) before reporting a bug or opening a PR.\n\nHave a feature request? Start an [Ideas discussion](https://github.com/pingdotgg/t3code/discussions/categories/ideas).\n\nNeed support? Join the [Discord](https://discord.gg/jn4EGJjrvv).\n",
+      "rank": 9,
+      "weekly_stars": 2379
+    },
+    {
+      "full_name": "Panniantong/Agent-Reach",
+      "html_url": "https://github.com/Panniantong/Agent-Reach",
+      "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+      "homepage": "",
+      "language": "Python",
+      "stars": 95127,
+      "forks": 8316,
+      "open_issues": 204,
+      "topics": [
+        "agent-infrastructure",
+        "ai-agent",
+        "ai-search",
+        "automation",
+        "bilibili",
+        "claude-code",
+        "cli",
+        "cursor",
+        "free-api",
+        "llm-tools",
+        "mcp",
+        "python",
+        "reddit-scraper",
+        "twitter-scraper",
+        "web-scraper",
+        "xiaohongshu",
+        "youtube-transcript"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-24T02:10:24Z",
+      "updated_at": "2026-10-10T07:02:47Z",
+      "pushed_at": "2026-10-08T08:31:08Z",
+      "archived": false,
+      "readme": "<h1 align=\"center\">👁️ Agent Reach</h1>\n\n<p align=\"center\">\n  <strong>给你的 AI Agent 一键装上互联网能力</strong>\n</p>\n\n<p align=\"center\">\n  当下最稳的接入方式，替你选好、装好、体检好——接入方式会换代，你不用操心\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/24387\"><img src=\"https://trendshift.io/api/badge/repositories/24387\" alt=\"Trendshift GitHub Trending #1 Repository of the Day\"></a>\n  <a href=\"https://star-history.com/#Panniantong/Agent-Reach&Date\"><img src=\"https://api.star-history.com/badge?repo=Panniantong/Agent-Reach\" alt=\"Star History Rank\" width=\"196\" height=\"55\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge\" alt=\"MIT License\"></a>\n  <a href=\"https://www.python.org/\"><img src=\"https://img.shields.io/badge/Python-3.10+-green.svg?style=for-the-badge&logo=python&logoColor=white\" alt=\"Python 3.10+\"></a>\n  <a href=\"https://github.com/Panniantong/agent-reach/stargazers\"><img src=\"https://img.shields.io/github/stars/Panniantong/agent-reach?style=for-the-badge\" alt=\"GitHub Stars\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"#快速上手\">快速开始</a> · <a href=\"docs/README_en.md\">English</a> · <a href=\"docs/README_ja.md\">日本語</a> · <a href=\"docs/README_ko.md\">한국어</a> · <a href=\"#支持的平台\">支持平台</a> · <a href=\"#设计理念\">设计理念</a>\n</p>\n\n---\n\n## ❤️赞助商\n\n> [想出现在这里？](mailto:pnt01@foxmail.com)\n\n<details open>\n<summary>点击折叠</summary>\n\n<table>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://www.browseract.ai/Agent\"><img src=\"docs/assets/sponsors/browseract.png\" alt=\"BrowserAct\" width=\"150\"></a></td>\n<td><a href=\"https://www.browseract.ai/Agent\">BrowserAct</a> 支持从 Amazon、LinkedIn、X、Google Maps 等复杂网站提取你需要的任意数据。你只需用自然语言描述抓取需求，Agent 就会基于真实浏览器自动探索并测试页面流程，生成可靠、可复用的数据采集 Bot，并返回结构化结果。无需手动构建爬虫，无需编写代码。BrowserAct 内置隐身浏览、验证码处理和高质量住宅代理，帮助你更稳定地完成复杂网页数据采集。新用户注册即送 1000 积分，<a href=\"https://www.browseract.ai/Agent\">立即免费试用</a>。</td>\n</tr>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://www.tencentcloud.com/act/pro/intl-openclaw?referral_code=G76Y819A&amp;lang=zh&amp;pg=\"><img src=\"docs/assets/sponsors/tencent-cloud.svg\" alt=\"腾讯云 OpenClaw\" width=\"150\"></a></td>\n<td>在腾讯云 Lighthouse 秒级部署 OpenClaw 全能助手，可通过对话丝滑接入 Agent Reach，给你的 OpenClaw 一键装上互联网能力。</td>\n</tr>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://www.coreclaw.com/?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=Reach&amp;utm_term=Reach&amp;utm_id=Reach\"><img src=\"docs/assets/sponsors/coreclaw.png\" alt=\"CoreClaw\" width=\"150\"></a></td>\n<td><a href=\"https://www.coreclaw.com/?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=Reach&amp;utm_term=Reach&amp;utm_id=Reach\">CoreClaw</a> | 网页抓取平台与现成数据采集工具，CoreClaw 提供 100+ 现成数据采集工具，支持 Amazon、TikTok、Google Maps、Instagram、Facebook、YouTube 等平台，无需代码，支持 JSON/CSV 导出，仅对成功结果计费。<a href=\"https://www.coreclaw.com/?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=Reach&amp;utm_term=Reach&amp;utm_id=Reach\">免费$3测试！</a></td>\n</tr>\n<tr>\n<td width=\"180\" align=\"center\"><a href=\"https://www.ucloud.cn/site/active/astraflow?ytag=geo_waituo_Agent\"><img src=\"docs/assets/sponsors/astraflow.png\" alt=\"星图 AstraFlow\" width=\"150\"></a></td>\n<td><a href=\"https://www.ucloud.cn/site/active/astraflow?ytag=geo_waituo_Agent\">优刻得星图astraflow大模型</a>，支持200+模型一键调用：内置 Kimi K3、DeepSeek V4/V3、Qwen 3、GLM5.2、happyhorse等全球领先开源大模型，无需自训，开箱即用</td>\n</tr>\n</table>\n\n</details>\n\n---\n\n## 为什么需要 Agent Reach？\n\nAI Agent 已经能帮你写代码、改文档、管项目——但你让它去网上找点东西，它就抓瞎了：\n\n- 📺 \"帮我看看这个 YouTube 教程讲了什么\" → **看不了**，拿不到字幕\n- 🐦 \"帮我搜一下推特上大家怎么评价这个产品\" → **搜不了**，Twitter API 要付费\n- 📖 \"去 Reddit 上看看有没有人遇到过同样的 bug\" → **403 被封**，服务器 IP 被拒\n- 📕 \"帮我看看小红书上这个品的口碑\" → **打不开**，必须登录才能看\n- 📺 \"B站上有个技术视频，帮我总结一下\" → **拿不到**，通用下载工具被 B站风控全面拦截\n- 🔍 \"帮我在网上搜一下最新的 LLM 框架对比\" → **没有好用的搜索**，要么付费要么质量差\n- 🌐 \"帮我看看这个网页写了啥\" → **抓回来一堆 HTML 标签**，根本没法读\n- 📦 \"这个 GitHub 仓库是干嘛的？Issue 里说了什么？\" → 能用，但认证配置很麻烦\n- 📡 \"帮我订阅这几个 RSS 源，有更新告诉我\" → 要自己装库写代码\n\n**这些不难实现，但是需要自己折腾配置**\n\n每个平台都有自己的门槛——要付费的 API、要绕过的封锁、要登录的账号、要清洗的数据。你要一个一个去踩坑、装工具、调配置，光是让 Agent 能读个推特就得折腾半天。\n\n**Agent Reach 把这件事变成一句话：**\n\n```\n帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md\n```\n\n复制给你的 Agent，几分钟后它就能读推特、搜 Reddit、看 YouTube、刷小红书了。\n\n**已经装过了？更新也是一句话：**\n\n```\n帮我更新 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/update.md\n```\n\n> ⭐ **Star 这个项目**，我们会持续追踪各平台的变化、接入新的渠道。你不用自己盯——平台封了我们修，有新渠道我们加。\n\n### ✅ 在你用之前，你可能想知道\n\n| | |\n|---|---|\n| 💰 **完全免费** | 所有工具开源、所有 API 免费。唯一可能花钱的是服务器代理（$1/月），本地电脑不需要 |\n| 🔒 **隐私安全** | Cookie 只存在你本地，不上传不外传。代码完全开源，随时可审查 |\n| 🔄 **持续换代** | 每个平台都是「首选 + 备选」多后端路由。某个接入方式失效了，我们换下一个，你无感（2026-06 实例：yt-dlp 被 B站风控封死 → 已切换 bili-cli，用户零操作） |\n| 🤖 **兼容所有 Agent** | Claude Code、OpenClaw、Cursor、Windsurf……任何能跑命令行的 Agent 都能用 |\n| 🩺 **自带诊断** | `agent-reach doctor` 一条命令告诉你哪个通、哪个不通、怎么修 |\n\n---\n\n## 支持的平台\n\n| 平台 | 装好即用 | 配置后解锁 | 怎么配 |\n|------|---------|-----------|-------|\n| 🌐 **网页** | 阅读任意网页 | — | 无需配置 |\n| 📺 **YouTube** | 字幕提取 + 视频搜索 | — | 无需配置 |\n| 📡 **RSS** | 阅读任意 RSS/Atom 源 | — | 无需配置 |\n| 🔍 **全网搜索** | — | 全网语义搜索 | 自动配置（MCP 接入，免费无需 Key） |\n| 📦 **GitHub** | 读公开仓库 + 搜索 | 私有仓库、提 Issue/PR、Fork | 告诉 Agent「帮我登录 GitHub」 |\n| 🐦 **Twitter/X** | 读单条推文 | 搜索推文、浏览时间线、读长文 | 告诉 Agent「帮我配 Twitter」 |\n| 📺 **B站** | 搜索 + 视频详情（bili-cli，无需登录） | 字幕（OpenCLI） | 告诉 Agent「帮我配 B站」 |\n| 📖 **Reddit** | —（没有零配置路径：匿名接口已被封） | 搜索 + 读帖子和评论 | 桌面装 OpenCLI 用浏览器登录态；或 rdt-cli + Cookie |\n| 📘 **Facebook** | — | 搜索、主页、Feed、群组列表 | 桌面装 OpenCLI（复用 Chrome 登录态） |\n| 📷 **Instagram** | — | 用户搜索、Profile、用户最近帖子、Explore | 桌面装 OpenCLI（复用 Chrome 登录态） |\n| 📕 **小红书** | — | 搜索、阅读、评论 | OpenCLI 只用用户已有 Chrome 会话；MCP/存量工具用 Cookie-Editor |\n| 💼 **LinkedIn** | Jina Reader 读公开页面 | Profile 详情、公司页面、职位搜索 | 告诉 Agent「帮我配 LinkedIn」 |\n| 🎯 **Boss直聘** | CDP 链路体检 | 搜索岗位 + JD 全文（专用真 Chrome） | 告诉 Agent「帮我配 Boss直聘」；Agent 打开专用 Chrome，你手动登录 |\n| 💻 **V2EX** | 热门帖子、节点帖子、帖子详情+回复、用户信息 | — | 无需配置 |\n| 📈 **雪球** | 股票行情、搜索股票、热门帖子、热门股票排行 | — | 告诉 Agent「帮我配雪球」 |\n| 🎙️ **小宇宙播客** | — | 播客音频转文字（Whisper 转录，免费 Key） | 告诉 Agent「帮我配小宇宙播客」 |\n\n> **不知道怎么配？不用查文档。** 直接告诉 Agent「帮我配 XXX」，它知道需要什么、会一步一步引导你。\n>\n> 🍪 Twitter 只接受用户通过 Cookie-Editor 手工导出的内容。Agent Reach 不替用户执行小红书登录，也不读取小红书浏览器 Cookie；OpenCLI 只使用用户已经存在且明确控制的 Chrome 会话。`agent-reach configure xhs-cookies` 不会把 Cookie 注入 OpenCLI / Chrome；没有现成会话时，改用 Cookie-Editor 导出后配置 xiaohongshu-mcp / 存量工具。\n>\n> Twitter Cookie 保存后仅供 `agent-reach doctor` 检查配置是否齐全；直接运行上游 `twitter` 命令前，仍需在当前进程环境中显式设置 `TWITTER_AUTH_TOKEN` 和 `TWITTER_CT0`。\n>\n> 🔒 Cookie 只存在你本地，不上传不外传。代码完全开源，随时可审查。\n> 💻 本地电脑不需要代理。代理只有部署在服务器上才需要（~$1/月）。\n\n---\n\n## 快速上手\n\n> ⚠️ **OpenClaw 用户请先确认 exec 权限已开启**\n>\n> Agent Reach 依赖 Agent 执行 shell 命令（`pip install`、`mcporter`、`twitter` 等）。如果你的 OpenClaw 使用了默认的 `messaging` 工具配置，Agent 将无法执行命令。**安装前请先开启 exec 权限**：\n>\n> ```bash\n> openclaw config set tools.profile \"coding\"\n> ```\n> 或在 `~/.openclaw/openclaw.json` 中设置 `\"tools\": { \"profile\": \"coding\" }`。\n> 设置后重启 Gateway（`openclaw gateway restart`）并开启新对话即可。其他平台（Claude Code、Cursor、Windsurf 等）不受此限制。\n\n复制这句话给你的 AI Agent（Claude Code、OpenClaw、Cursor 等）：\n\n```\n帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md\n```\n\n就这一步。Agent 会自己完成剩下的所有事情。\n\n> 🔄 **已安装过？** 更新也是一句话：\n> ```\n> 帮我更新 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/update.md\n> ```\n\n> 🛡️ **默认安全：** `agent-reach install` 默认只检查环境，不会自动装系统包或写入配置：\n> ```\n> 帮我安全检查并安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md\n> ```\n> 只有在你明确允许修改系统后，才使用 `agent-reach install --system`。\n\n<details>\n<summary>它会做什么？（点击展开）</summary>\n\n1. **安装 CLI 工具** — 从本仓库安装 `agent-reach` 命令行（自带 yt-dlp、feedparser；不要从 PyPI 安装同名包，它不是本项目）\n2. **检查系统基建** — 检查 Node.js、gh CLI、mcporter，并给出缺失项的安装方式\n3. **按授权安装与配置** — 仅在显式传入 `--system` 时安装依赖并通过 MCP 接入 Exa\n4. **检测环境** — 判断是本地电脑还是服务器，给出对应的配置建议\n5. **按授权注册 SKILL.md** — 仅在显式 `--system` 时写入 Agent 的 skills 目录；默认检查不改文件\n6. **问你要不要更多** — 默认只激活 6 个零配置渠道；小红书、Twitter、Reddit、Facebook、Instagram 这些需要登录态的，Agent 会列菜单问你要哪些，点名才装\n\n安装完之后，`agent-reach doctor` 一条命令告诉你每个渠道的状态、当前走哪条路。\n</details>\n\n---\n\n## 装好就能用\n\n不需要任何配置，告诉 Agent 就行：\n\n- \"帮我看看这个链接\" → `curl https://r.jina.ai/URL` 读任意网页\n- \"这个 GitHub 仓库是做什么的\" → `gh repo view owner/repo`\n- \"这个 YouTube 视频讲了什么\" → `yt-dlp` 提取字幕\n- \"B站搜一下 AI 教程\" → `bili search`（无需登录）\n- \"全网搜一下 LLM 框架对比\" → Exa 语义搜索\n- \"订阅这个 RSS\" → `feedparser` 解析\n\n**不需要记命令。** Agent 读了 SKILL.md 之后自己知道该调什么。需要登录的平台（小红书、Twitter、Reddit、Facebook、Instagram），告诉 Agent「帮我配 XXX」即可解锁。\n\n---\n\n## 设计理念\n\n**Agent Reach 是一个能力层（capability layer），不是又一个工具。**\n\n它比任何具体实现高一层——负责**选型、安装、体检、路由**，不负责底层读取本身。读取由 Agent 直接调用上游工具完成，没有包装层。\n\n你给一个新 Agent 装环境的时候，总要花时间去找工具、装依赖、调配置——Twitter 用什么读？Reddit 怎么登录？小红书的 CLI 停更了换什么？每次都要重新踩一遍。Agent Reach 做的事情很简单：**当下最稳的接入方式，我们替你选好、装好、体检好。接入方式会换代（2026 年 3 月一批单平台 CLI 集体停更，我们换了路由），你不用操心。**\n\n### 🔌 每个平台 = 首选 + 备选的有序后端列表\n\n换接入方式 = 调整列表顺序，不是重写代码。`agent-reach doctor` 会告诉你每个平台**当前在用哪个后端**。\n\n```\nchannels/\n├── web.py          → Jina Reader\n├── twitter.py      → twitter-cli ▸ OpenCLI ▸ bird\n├── youtube.py      → yt-dlp\n├── github.py       → gh CLI\n├── bilibili.py     → bili-cli ▸ OpenCLI ▸ 搜索 API（yt-dlp 已被 B站风控封死，退役）\n├── reddit.py       → OpenCLI ▸ rdt-cli（无零配置路径，必须登录态）\n├── facebook.py     → OpenCLI（桌面浏览器登录态）\n├── instagram.py    → OpenCLI（桌面浏览器登录态）\n├── xiaohongshu.py  → OpenCLI ▸ xiaohongshu-mcp ▸ xhs-cli\n├── linkedin.py     → mcp-server-linkedin ▸ Jina Reader\n├── rss.py          → feedparser\n├── exa_search.py   → Exa via mcporter\n└── __init__.py     → 渠道注册（doctor 检测用）\n```\n\n每个渠道文件按序**真实探测**各候选后端（不只是看命令存不存在），第一个完整可用的当选；坏掉的会给出修复处方。实际的读取和搜索由 Agent 直接调用上游工具完成。\n\n### 当前选型\n\n| 场景 | 首选 | 备选 | 为什么这么选 |\n|------|------|------|-----------|\n| 读网页 | [Jina Reader](https://github.com/jina-ai/reader) | — | 免费，不需要 API Key |\n| 读推特 | [twitter-cli](https://github.com/public-clis/twitter-cli) | [OpenCLI](https://github.com/jackwener/opencli) | 实测搜索稳定；OpenCLI 走浏览器登录态兜底 |\n| Reddit | [OpenCLI](https://github.com/jackwener/opencli)（桌面） | [rdt-cli](https://github.com/public-clis/rdt-cli) | 匿名接口已被封、官方 API 审批制——只剩登录态路线 |\n| Facebook | [OpenCLI](https://github.com/jackwener/opencli)（桌面） | — | Graph API/Groups API 权限收紧；浏览器登录态是当前最实用路径 |\n| Instagram | [OpenCLI](https://github.com/jackwener/opencli)（桌面） | 官方 Graph API（Business/C",
+      "rank": 10,
+      "weekly_stars": 7084
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 47,253 个新增 Star，boykopovar/AnyPS5、mvschwarz/openrig、mattpocock/skills 位居前三。主要开发语言集中在 TypeScript、Python、C++。头部项目体现的方向包括：Tool for automatic PS5 executables porting to Linux and Windows；Build your own network of agents from Claude Code, Codex and Pi: persistent teams with roles, shared context and owned work.；Skills for Real Engineers. Straight from my .agents directory.。",
+    "top_picks": [
+      "boykopovar/AnyPS5",
+      "mvschwarz/openrig",
+      "mattpocock/skills"
+    ],
+    "projects": [
+      {
+        "full_name": "boykopovar/AnyPS5",
+        "tagline": "Tool for automatic PS5 executables porting to Linux and Windows",
+        "overview": "Tool for automatic PS5 executables porting to Linux and Windows 主要语言为 C++，公开主题包括：anyps5、dynamic-library、game-porting、ps5。",
+        "core_features": [
+          "Tool for automatic PS5 executables porting to Linux and Windows",
+          "主要技术栈：C++"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 anyps5、dynamic-library、game-porting、ps5 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 C++ 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 23,372 Stars、1,928 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：GPL-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "mvschwarz/openrig",
+        "tagline": "Build your own network of agents from Claude Code, Codex and Pi: persistent teams with roles, shared context and owned work.",
+        "overview": "Build your own network of agents from Claude Code, Codex and Pi: persistent teams with roles, shared context and owned work. 主要语言为 TypeScript，公开主题包括：agent-harness、agent-orchestration、agent-skills、ai-coding。",
+        "core_features": [
+          "Build your own network of agents from Claude Code, Codex and Pi: persistent teams with roles, shared context and owned work.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-harness、agent-orchestration、agent-skills、ai-coding 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 6,548 Stars、481 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "mattpocock/skills",
+        "tagline": "Skills for Real Engineers. Straight from my .agents directory.",
+        "overview": "Skills for Real Engineers. Straight from my .agents directory. 主要语言为 Shell，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Skills for Real Engineers. Straight from my .agents directory.",
+          "主要技术栈：Shell"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Shell 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 283,211 Stars、23,724 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "heygen-com/hyperframes",
+        "tagline": "Write HTML. Render video. Built for agents.",
+        "overview": "Write HTML. Render video. Built for agents. 主要语言为 TypeScript，公开主题包括：ai、animation、ffmpeg、framework。",
+        "core_features": [
+          "Write HTML. Render video. Built for agents.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、animation、ffmpeg、framework 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 59,957 Stars、5,352 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "cursor/plugins",
+        "tagline": "Cursor plugin specification and official plugins",
+        "overview": "Cursor plugin specification and official plugins 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Cursor plugin specification and official plugins",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 10,636 Stars、1,006 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：未声明；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "EpicGames/raddebugger",
+        "tagline": "A native, user-mode, multi-process, graphical debugger.",
+        "overview": "A native, user-mode, multi-process, graphical debugger. 主要语言为 C，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "A native, user-mode, multi-process, graphical debugger.",
+          "主要技术栈：C"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 C 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 8,292 Stars、395 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "thedotmack/claude-mem",
+        "tagline": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+        "overview": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More 主要语言为 TypeScript，公开主题包括：ai、ai-agents、ai-memory、anthropic。",
+        "core_features": [
+          "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、ai-agents、ai-memory、anthropic 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 99,044 Stars、8,674 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "earthtojake/text-to-cad",
+        "tagline": "Give your agent CAD superpowers.",
+        "overview": "Give your agent CAD superpowers. 主要语言为 Python，公开主题包括：agents、ai-agents、cad、mechanical-engineering。",
+        "core_features": [
+          "Give your agent CAD superpowers.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agents、ai-agents、cad、mechanical-engineering 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 18,835 Stars、1,861 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "pingdotgg/t3code",
+        "tagline": "仓库未提供项目简介。",
+        "overview": "仓库未提供项目简介。 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "仓库未提供项目简介。",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 26,680 Stars、6,970 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "Panniantong/Agent-Reach",
+        "tagline": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+        "overview": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees. 主要语言为 Python，公开主题包括：agent-infrastructure、ai-agent、ai-search、automation。",
+        "core_features": [
+          "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-infrastructure、ai-agent、ai-search、automation 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 95,127 Stars、8,316 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
