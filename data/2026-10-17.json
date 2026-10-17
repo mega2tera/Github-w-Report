@@ -1,0 +1,592 @@
+{
+  "date": "2026-10-17",
+  "repositories": [
+    {
+      "full_name": "morluto/rea",
+      "html_url": "https://github.com/morluto/rea",
+      "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+      "homepage": "https://rea.tools",
+      "language": "TypeScript",
+      "stars": 293974,
+      "forks": 74130,
+      "open_issues": 1192,
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "binary-analysis",
+        "claude-code",
+        "cli",
+        "codex",
+        "cordis",
+        "decompiler",
+        "developer-tools",
+        "dsh",
+        "dsh-plugin",
+        "ghidra",
+        "hopper",
+        "llm",
+        "mcp",
+        "model-context-protocol",
+        "rea",
+        "reverse-engineering",
+        "static-analysis",
+        "touhou"
+      ],
+      "license": "MIT",
+      "created_at": "2026-04-14T00:51:32Z",
+      "updated_at": "2026-10-17T05:34:05Z",
+      "pushed_at": "2026-10-17T05:32:39Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n**English** · [简体中文](docs/readme/README_zh.md) · [繁體中文](docs/readme/README_zh-TW.md) · [日本語](docs/readme/README_ja.md) · [한국어](docs/readme/README_ko.md) · [Türkçe](docs/readme/README_tr.md) · [Русский](docs/readme/README_ru.md) · [Tiếng Việt](docs/readme/README_vi.md) · [ไทย](docs/readme/README_th.md) · [Deutsch](docs/readme/README_de.md) · [Español](docs/readme/README_es.md) · [Français](docs/readme/README_fr.md) · [Українська](docs/readme/README_uk.md) · [Polski](docs/readme/README_pl.md) · [Português (Brasil)](docs/readme/README_pt-BR.md) · [العربية](docs/readme/README_ar.md) · [فارسی](docs/readme/README_fa.md) · [Bahasa Indonesia](docs/readme/README_id.md) · [Italiano](docs/readme/README_it.md)\n· [Ελληνικά](docs/readme/README_el.md)\n\n# REA: Reverse Engineer Anything\n\n### One MCP for reverse engineering across binaries, applications, and runtime behavior.\n\n**See a feature you like. Understand how it works, down to the binary level.**\n\n[![npm version](https://img.shields.io/npm/v/rea-agents?style=flat-square&color=cb3837)](https://www.npmjs.com/package/rea-agents)\n[![MCP tool catalog](https://img.shields.io/badge/MCP-tool_catalog-5c4ee5?style=flat-square)](docs/mcp-contracts.md#generated-catalog)\n[![Node.js requirements](https://img.shields.io/badge/Node.js-requirements-339933?style=flat-square&logo=nodedotjs&logoColor=white)](#what-you-can-analyze)\n[![skills.sh](https://skills.sh/b/morluto/rea?style=flat-square)](https://skills.sh/morluto/rea/reverse-engineer-anything)\n[![MIT license](https://img.shields.io/badge/license-MIT-f4c430?style=flat-square)](LICENSE)\n[![Discord](https://img.shields.io/discord/1556595354999332884?logo=discord&logoColor=white&label=Discord&color=5865F2)](https://discord.gg/GkcryMnJDM)\n\n<a href=\"https://trendshift.io/repositories/82054?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-82054\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/82054\" alt=\"morluto%2Frea | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n**[Website](https://rea.tools/) · [Guides](https://rea.tools/guides/) · [Showcases](https://rea.tools/showcase/)**\n\n[Quick start](#quick-start) · [How REA works](#how-rea-works) · [What you can analyze](#what-you-can-analyze) · [Showcases](#showcases) · [FAQ](#faq) · [Documentation](#documentation)\n\n<code>npx rea-agents setup</code>\n\n</div>\n\n> [!IMPORTANT]\n> Get REA from [morluto/rea](https://github.com/morluto/rea),\n> [rea.tools](https://rea.tools/), or the [rea-agents npm package](https://www.npmjs.com/package/rea-agents).\n> Follow the installation and release links from these official sources. A similar\n> repository name or copied README does not establish that a download is official.\n\n<div align=\"center\">\n\n<br />\n\n<img src=\"docs/assets/rea-hopper-analysis.png\" alt=\"REA launching its analysis bridge inside Hopper while inspecting a native binary\" width=\"1200\" />\n\n<br /><br />\n\n<table aria-label=\"REA community\">\n<tr>\n<td align=\"center\" width=\"360\">\n  <a href=\"https://discord.gg/GkcryMnJDM\">\n    <img src=\"docs/assets/discord.svg\" height=\"42\" alt=\"Discord\" /><br />\n    <strong>Join the Reverse Engineering Community</strong>\n  </a><br />\n  <sub>Discord · Q&amp;A · Show and Tell</sub>\n</td>\n</tr>\n</table>\n\n<br />\n\n</div>\n\n---\n\nSee a feature in an app that you want in your own product? Ask your agent to investigate it with REA. It can inspect the app without its source code, explain how the feature works, show the evidence, and build a version for your project.\n\nREA connects your agent to tools for inspecting native binaries, JavaScript and Electron apps, .NET assemblies, and websites. You can also use the same tools from your terminal. Analysis runs locally, and results include the evidence and limitations behind each conclusion.\n\nSetup registers REA with your agent and installs matching workflow instructions. Native analysis can use an existing Hopper, Ghidra, or IDA installation; setup can optionally install Hopper with approval. Static JavaScript analysis needs no native analysis engine.\n\n> **[Visit the REA website](https://rea.tools/)** for setup instructions, illustrated guides, and real case studies.\n\n## Quick start\n\nOn Linux, Ghidra, JADX, firmware tool launches and static JavaScript/Electron\nanalysis require a procps-compatible `ps` on REA's `PATH` for process ownership\nchecks. Recovery steps are in `docs/installation.md` under\n\"Linux owned-process prerequisite\".\n\n### Set up your agent\n\nWith Node.js and npm installed, run:\n\n```bash\nnpx rea-agents setup\n```\n\nChoose your agents, review the proposed changes, and approve them. Setup adds\nREA's MCP server and matching workflow instructions, with backups of existing\nconfiguration. Restart your agent afterward.\n\nSetup supports Claude Code, Codex, Cursor, Gemini CLI, Grok Build and\n[other agents](docs/installation.md#supported-agents). See\n[installation and setup](docs/installation.md) for provider configuration and\nmanual MCP registration.\n\n### Ask your agent\n\n```text\nUnderstand how search works in the Notes app, show me the evidence, and build a\nsimilar feature for my project.\n```\n\nReplace Notes with your target app and the feature you want to understand.\n\n### Use the terminal\n\nInspect an extracted JavaScript/Electron app directory or ASAR:\n\n```bash\nnpx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json\n```\n\nThe result includes modules, imports, Electron boundaries and their evidence.\nReplace the path with your target, such as `\"D:/apps/example\"` on Windows.\n\nTo install the `rea` command for regular use:\n\n```bash\nnpm install --global rea-agents\nrea --help\n```\n\nFor native analysis, configure a provider first. See the\n[CLI and Evidence guide](docs/cli.md) for native commands, provider selection,\nsnapshots and scripting.\n\n### Update REA\n\nREA changes quickly, and new releases include frequent bug fixes. Keep your\ninstallation up to date.\n\nFor a CLI installed with `npm install --global` or `bun add --global`:\n\n```bash\nrea update\n```\n\nBun global updates require Bun 1.2.17 or later. With an older Bun release,\nupgrade Bun manually before running `rea update`.\n\nTo refresh your agent registrations and skill, run the setup command printed\nby the update.\n\nIf you use `npx`, update your agent setup with:\n\n```bash\nnpx rea-agents@latest setup\n```\n\nReview the setup changes and restart your agent. For one-off CLI commands,\nuse `npx rea-agents@latest` followed by the command. With Bun, use\n`bunx rea-agents@latest` in place of `npx rea-agents@latest`.\n\n## How REA works\n\nYour agent calls REA through MCP to inspect the target and trace relevant code.\nREA returns findings with their evidence. The agent uses them to ask follow-up\nquestions, explain the behavior, or write and test an implementation.\nCLI commands use the same workflows.\n\n![REA investigation flow: your agent asks about a local target, REA inspects and traces it using analysis tools, and the agent uses the returned code, references and unknowns to explain, implement and test.](website/public/assets/figures/rea-investigation-flow.svg)\n\n[Open the full-size figure](website/public/assets/figures/rea-investigation-flow.svg).\n\n<a id=\"current-status\"></a>\n\n## What you can analyze\n\nREA requires Node.js 22.x (>=22.19), 24.x (>=24.11), or 26+, plus npm.\nAdditional tools and host support depend on the target:\n\n| Target                 | What REA returns                                                                     | Requirements and guide                                                                                                                |\n| ---------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |\n| Native binaries        | Pseudocode, assembly, strings, symbols, calls and references                         | Hopper, Ghidra or IDA; [native analysis](docs/native-investigation.md)                                                                |\n| Offline ELF layout     | Sections, segments, original symbols/relocations and static mitigation candidates    | Caller-supplied pwntools on Linux x64; [binary diagnostics](docs/binary-diagnostics.md)                                               |\n| Go binaries            | Embedded compiler version, modules, replacements and build settings                  | Built-in static ELF/PE/thin Mach-O inspection; no Go installation required                                                            |\n| Rust binaries          | Embedded cargo-auditable crate names, versions, sources and dependency edges         | Built-in static ELF/PE/thin Mach-O inspection; [Rust binaries](docs/rust-binaries.md)                                                 |\n| WASM artifact          | Validation, sections, exact import/export WAT forms and decoded WAT                  | Caller-supplied WABT 1.0.42; `inspect_wasm_artifact`                                                                                  |\n| EVM bytecode           | Dispatch selectors, byte offsets, inferred arguments and mutability                  | Local raw/hex carrier on Linux x64; [offline EVM guide](docs/evm-bytecode.md)                                                         |\n| SQLite databases       | Tables, columns, indexes, views, triggers and selected ordinary-table rows           | Local database/WAL snapshot; Node.js 24.x >=24.15 or 26+ with native SQLite limits                                                    |\n| Recorded Linux crashes | Raw notes, every recorded thread's registers/signals and optional mapping candidates | Caller-supplied pwntools on Linux x64; optional GDB/pwndbg; [recorded crashes](docs/recorded-crashes.md)                              |\n| JavaScript / Electron  | Modules, imports, source maps, routes, IPC and native add-on relationships        ",
+      "rank": 1,
+      "weekly_stars": 248962
+    },
+    {
+      "full_name": "storytold/artcraft",
+      "html_url": "https://github.com/storytold/artcraft",
+      "description": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
+      "homepage": "https://getartcraft.com",
+      "language": "Rust",
+      "stars": 30825,
+      "forks": 4896,
+      "open_issues": 437,
+      "topics": [
+        "3d-graphics",
+        "ai",
+        "aivideo",
+        "filmmaking",
+        "imagegeneration"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2022-03-31T23:19:12Z",
+      "updated_at": "2026-10-17T05:33:18Z",
+      "pushed_at": "2026-10-15T02:48:37Z",
+      "archived": false,
+      "readme": "<h1 align=\"center\">ArtCraft</h1>\n<p align=\"center\"><strong>The IDE for artists.</strong></p>\n\n<!-- Main video: https://www.youtube.com/watch?v=kzvQMdg66Go\n     GitHub media issue: https://github.com/storytold/artcraft/issues/1951 -->\n\nhttps://github.com/user-attachments/assets/7339bd09-3e0d-44a7-a024-af9de64e4c11\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/watch?v=kzvQMdg66Go\">Watch the two-minute ArtCraft demo on YouTube</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://discord.gg/artcraft\"><img alt=\"Discord members online\" src=\"https://img.shields.io/discord/1359579021108842617?style=for-the-badge&amp;label=Discord&amp;color=5865F2&amp;logo=discord&amp;logoColor=white\"></a>\n  <a href=\"https://www.youtube.com/@OfficialArtCraftStudios\"><img alt=\"YouTube\" src=\"https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&amp;logo=youtube&amp;logoColor=white\"></a>\n  <a href=\"https://x.com/get_artcraft\"><img alt=\"X\" src=\"https://img.shields.io/badge/X-181717?style=for-the-badge&amp;logo=x&amp;logoColor=white\"></a>\n  <a href=\"https://www.linkedin.com/company/artcraft-ai\"><img alt=\"LinkedIn\" src=\"https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge\"></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://getartcraft.com/\">Download ArtCraft</a> ·\n  <a href=\"https://github.com/storytold/artcraft/releases\">GitHub releases</a> ·\n  <a href=\"./_docs/dev_setup.md\">Build from source</a>\n</p>\n\nArtCraft is the IDE for interactive AI image and video creation. Compose in 2D, stage scenes in 3D, and choose the models that fit your work. Turn prompting into *crafting* with visual tools for precise, repeatable results.\n\n## Show, Don't Tell: Advanced Crafting Features\n\nArtists need control over composition, character identity, and camera placement. Build the scene before you generate it. Click any preview to view it at full size.\n\n| Feature                                                                                                             | Preview                                                                                                                                                                                                                                                                                                           |\n| ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Image to Location**<br>Place virtual actors in a consistent environment and plan multiple shots in the same room. | <a href=\"https://github.com/user-attachments/assets/21f103e3-cc19-4882-a630-9caa1b76ae31\"><img src=\"https://github.com/user-attachments/assets/21f103e3-cc19-4882-a630-9caa1b76ae31\" width=\"180\" alt=\"Image to Location demo\"></a>                                                                                |\n| **3D Image Compositing**<br>Layer backdrops, foregrounds, and props in 3D to build compositions with depth.         | <a href=\"https://github.com/user-attachments/assets/f93a616f-571d-474e-bcc0-53736de7303d\"><img src=\"https://github.com/user-attachments/assets/f93a616f-571d-474e-bcc0-53736de7303d\" width=\"180\" alt=\"3D Image Compositing demo\"></a>                                                                             |\n| **2D Image Compositing**<br>Compose a scene with image layers, background removal, and drawing tools.               | <a href=\"https://github.com/user-attachments/assets/d6f99391-e496-4c62-9e37-29734ba5f899\"><img src=\"https://github.com/user-attachments/assets/d6f99391-e496-4c62-9e37-29734ba5f899\" width=\"180\" alt=\"2D Image Compositing demo\"></a>                                                                             |\n| **Image to 3D Mesh**<br>Turn an image into a 3D object you can position, rotate, and frame precisely.               | <a href=\"https://github.com/user-attachments/assets/600a405c-e360-48c1-9b42-6e657ae6243b\"><img src=\"https://github.com/user-attachments/assets/600a405c-e360-48c1-9b42-6e657ae6243b\" width=\"180\" alt=\"Image to 3D Mesh demo\"></a>                                                                                 |\n| **Character Posing**<br>Pose characters and set your camera before generating the final shot.                       | <a href=\"https://raw.githubusercontent.com/storytold/github-media/22a27373707b13f48fc56405f1f89ca143c43d5d/character-posing.webp\"><img src=\"https://raw.githubusercontent.com/storytold/github-media/22a27373707b13f48fc56405f1f89ca143c43d5d/character-posing.webp\" width=\"180\" alt=\"Character Posing demo\"></a> |\n| **Scene Blocking with Kitbashing**<br>Combine 3D asset kits to control camera angles, object placement, and depth.  | <a href=\"https://github.com/user-attachments/assets/eef025ac-0346-4a46-a023-d48e23629eb5\"><img src=\"https://github.com/user-attachments/assets/eef025ac-0346-4a46-a023-d48e23629eb5\" width=\"180\" alt=\"Scene Blocking with Kitbashing demo\"></a>                                                                   |\n| **Character Identity Transfer**<br>Use a posed mannequin to guide the placement and pose of your character.         | <a href=\"https://github.com/user-attachments/assets/629119ee-8c76-4a83-9827-8c6c995a3ec1\"><img src=\"https://github.com/user-attachments/assets/629119ee-8c76-4a83-9827-8c6c995a3ec1\" width=\"180\" alt=\"Character Identity Transfer demo\"></a>                                                                      |\n| **Background Removal**<br>Isolate subjects to use as props, layers, or backdrops in 2D and 3D scenes.               | <a href=\"https://github.com/user-attachments/assets/90c65057-5531-404f-83af-b34e66e24ec1\"><img src=\"https://github.com/user-attachments/assets/90c65057-5531-404f-83af-b34e66e24ec1\" width=\"180\" alt=\"Background Removal demo\"></a>                                                                               |\n| **Mixed Asset Crafting**<br>Combine image cutouts, worlds, and 3D meshes in one scene.                              | <a href=\"https://raw.githubusercontent.com/storytold/github-media/main/ship-editing.gif\"><img src=\"https://raw.githubusercontent.com/storytold/github-media/main/ship-editing.gif\" width=\"180\" alt=\"Mixed Asset Crafting demo\"></a>                                                                               |\n\nMore previews are coming for scene blocking, canvas editing, and scene relighting.\n\n## Quick and Easy Prompting\n\nStart with a prompt when you want to explore an idea quickly, then use the canvas and scene tools to refine it.\n\n| Feature                                                                                                       | Preview                                                                                                                                                                                                                                 |\n| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Text to Image**<br>Explore ideas across a wide range of image models with a text prompt.                    | <a href=\"https://github.com/user-attachments/assets/9cc289cd-faf4-4eaf-aed2-21134cce127c\"><img src=\"https://github.com/user-attachments/assets/9cc289cd-faf4-4eaf-aed2-21134cce127c\" width=\"180\" alt=\"Text to Image demo\"></a>          |\n| **Prompted Image Editing**<br>Describe changes to an image with models such as Nano Banana Pro and GPT Image. | <a href=\"https://github.com/user-attachments/assets/a06fa6ad-936c-42d0-8767-48fdbb8ff141\"><img src=\"https://github.com/user-attachments/assets/a06fa6ad-936c-42d0-8767-48fdbb8ff141\" width=\"180\" alt=\"Prompted Image Editing demo\"></a> |\n| **Canvas Image Editing**<br>Use drawing, masks, and inpainting to guide exactly where an image changes.       | <a href=\"https://github.com/user-attachments/assets/f036e08a-f3a6-417a-98ee-ec7f04b2b5ff\"><img src=\"https://github.com/user-attachments/assets/f036e08a-f3a6-417a-98ee-ec7f04b2b5ff\" width=\"180\" alt=\"Canvas Image Editing demo\"></a>   |\n| **Image to Video**<br>Animate an image with your choice of video models and generation controls.              | <a href=\"https://github.com/user-attachments/assets/2bc6c592-511e-4fba-b40f-03c96699b7f7\"><img src=\"https://github.com/user-attachments/assets/2bc6c592-511e-4fba-b40f-03c96699b7f7\" width=\"180\" alt=\"Image to Video demo\"></a>         |\n\nMore previews are coming for image inpainting and image ingredients.\n\n## Models and Providers Supported within ArtCraft\n\n| Provider     | Models and workflows                                                                            |\n| ------------ | ----------------------------------------------------------------------------------------------- |\n| **ArtCraft** | Images, video, music and sound, 3D meshes, and worlds. Browse the complete model catalog below. |\n| Grok         | Grok Imagine and Grok Video.                                                                    |\n| Midjourney   | Midjourney image generation.                                                                    |\n| Sora         | Sora 1, Sora 2, and GPT Image 1.                                                                |\n| World Labs   | Marble world generation with Gaussian splats.                                                   |\n\n<details>\n<summary><strong>ArtCraft: the full 62-model catalog</strong></summary>\n\n<!-- Catalog source: artcraft-services/crates/service/web/storyteller_web/src/configs/omni_gen/\n     image_m",
+      "rank": 2,
+      "weekly_stars": 20267
+    },
+    {
+      "full_name": "boykopovar/AnyPS5",
+      "html_url": "https://github.com/boykopovar/AnyPS5",
+      "description": "Tool for automatic PS5 executables porting to Linux and Windows",
+      "homepage": "https://boykopovar.github.io/AnyPS5/",
+      "language": "C++",
+      "stars": 40074,
+      "forks": 3589,
+      "open_issues": 918,
+      "topics": [
+        "anyps5",
+        "dynamic-library",
+        "game-porting",
+        "ps5",
+        "ps5-tools",
+        "spir-v",
+        "vulkan"
+      ],
+      "license": "GPL-2.0",
+      "created_at": "2026-08-03T21:30:25Z",
+      "updated_at": "2026-10-17T05:27:43Z",
+      "pushed_at": "2026-10-17T05:21:26Z",
+      "archived": false,
+      "readme": "# About\n\nTool for automatic executables porting to Linux and Windows.\n\n[**Web converter**](https://boykopovar.github.io/AnyPS5/) - files stay on your device.\n\n![anyps5_collage1](https://github.com/user-attachments/assets/ed2f0b2d-33d3-46d7-ab88-767ca872fc99)\n\nIncludes a [relinker](core/relinker) that converts executable to the target system's native format and implementations of [system prx libraries](core/libs/prx) suitable for dynamic linking. No emulation or separate runtime process.\n\n[**Discord**](https://discord.gg/BHFztBPUe), [Usage](docs/user/USAGE.md), [Build instructions](docs/dev/BUILD.md), [Architecture](docs/dev/ARCHITECTURE.md), [Technical debt of the project](docs/dev/TechnicalDebt.md), [code style conventions](docs/dev/CONVENTIONS.md), [contributing](CONTRIBUTING.md)\n\n## Status\n\n[![libraries](https://boykopovar.github.io/AnyPS5/badge-libraries.svg)](https://boykopovar.github.io/AnyPS5/progress.html) [![shaders](https://boykopovar.github.io/AnyPS5/badge-shaders.svg)](https://boykopovar.github.io/AnyPS5/progress.html)\n\n[![progress map](https://boykopovar.github.io/AnyPS5/progress.svg)](https://boykopovar.github.io/AnyPS5/progress.html)\n\n[Progress history](https://boykopovar.github.io/AnyPS5/history.html)\n\n<sub>* System libraries: percentage of the functions known to the project so far (declared in [core/libs/prx](core/libs/prx)), not of every PS5 system function. The total grows as more functions are declared.</sub>\n\nUnsupported or unexpected states strictly throw `std::runtime_error`. `what()` is printed to stderr and the process terminates.\n\nThe [shader recompiler](core/shader/recompiler/Recompiler.cpp) successfully produces SPIR-V (validated via [Spirv-Tools](3rdparty/SPIRV-Tools) when built with `ANYPS5_ENABLE_SPIRV_TOOLS`).\n\n## Compatibility\n\nPer-game progress (stage reached, open blockers, libraries and GPU coverage) is tracked on the [blocker map](https://alxcbtw.github.io/anyps5-roadmap/), a community project built from public GitHub data ([source](https://github.com/AlxcBTW/anyps5-roadmap)). Test reports go in the [Game bring-up](https://github.com/boykopovar/AnyPS5/discussions/categories/game-bring-up) discussions, one thread per title.\n\n## Input mapping\n\nSDL-mapped game controllers are supported, including analog sticks and triggers. Keyboard and mouse controls can be configured with an `anyps5-input.ini` file. See [input mapping](docs/user/INPUT_MAPPING.md) for the supported devices and configuration format.\n\n## Disclaimer\n\nThis project is intended for interoperability, research, preservation, and compatibility purposes. It does not include, distribute, or require copyrighted software, firmware, cryptographic keys, or proprietary libraries. Users are responsible for ensuring that any binaries used with this project are obtained and used in accordance with applicable laws and their respective license terms.\n\n## License\n\nThis project is licensed under the GNU General Public License version 2 only.\n",
+      "rank": 3,
+      "weekly_stars": 20518
+    },
+    {
+      "full_name": "cathrynlavery/diagram-design",
+      "html_url": "https://github.com/cathrynlavery/diagram-design",
+      "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+      "homepage": "https://diagramdesign.dev",
+      "language": "HTML",
+      "stars": 56534,
+      "forks": 3590,
+      "open_issues": 41,
+      "topics": [
+        "agent-skills",
+        "claude-code",
+        "codex",
+        "data-visualization",
+        "diagrams",
+        "drawio",
+        "mermaid",
+        "svg"
+      ],
+      "license": "MIT",
+      "created_at": "2026-04-16T18:01:16Z",
+      "updated_at": "2026-10-17T05:33:11Z",
+      "pushed_at": "2026-10-16T19:42:46Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n<h1>\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/hero/hero-dark.webp\">\n    <img alt=\"Diagram Design. Editorial diagrams your designer won't hate.\" src=\"docs/hero/hero-light.webp\">\n  </picture>\n</h1>\n\n**An agent skill that draws diagrams as one self-contained HTML + SVG file, in your brand.<br>45 diagram types. No shadows. No Mermaid slop.**\n\n[![GitHub stars](https://img.shields.io/github/stars/cathrynlavery/diagram-design?style=flat-square&color=bf4520)](https://github.com/cathrynlavery/diagram-design/stargazers)\n[![skills.sh installs](https://skills.sh/b/cathrynlavery/diagram-design?style=flat-square)](https://skills.sh/cathrynlavery/diagram-design/diagram-design)\n[![CI](https://img.shields.io/github/actions/workflow/status/cathrynlavery/diagram-design/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/cathrynlavery/diagram-design/actions/workflows/ci.yml)\n[![Plugin version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcathrynlavery%2Fdiagram-design%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&style=flat-square&color=555555)](CHANGELOG.md)\n[![MIT license](https://img.shields.io/badge/license-MIT-555555?style=flat-square)](LICENSE)\n\n<a href=\"https://trendshift.io/repositories/26141\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/26141\" alt=\"cathrynlavery/diagram-design on Trendshift\" width=\"250\" height=\"55\"/></a>\n\n**[Website](https://diagramdesign.dev) · [Gallery](https://cathrynlavery.github.io/diagram-design/) · [Changelog](CHANGELOG.md)**\n\n[Install](#install) · [What it makes](#what-it-makes) · [Quickstart](#quickstart) · [Match your brand](#onboarding-make-it-look-like-your-brand) · [Import](#import-from-drawio-mermaid-or-excalidraw) · [Export](#export-to-png--svg) · [Contributing](#contributing)\n\n<code>npx skills add cathrynlavery/diagram-design</code>\n\n<br><br>\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/hero/demo.gif\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/hero/demo-light.gif\">\n  <img src=\"docs/hero/demo.gif\" alt=\"A prompt typed into an agent session becomes a finished architecture diagram, then a plain first-pass diagram is redrawn with the skill, then the gallery of diagram types\" width=\"900\">\n</picture>\n\n</div>\n\n<br>\n\nAsk your agent in plain words:\n\n- *\"Make me an architecture diagram of my app: frontend, backend, database, Redis cache.\"*\n- *\"I need a quadrant showing Q2 projects by impact vs effort.\"*\n- *\"Give me a sequence of a bearer call with token refresh on 401.\"*\n- *\"Onboard diagram-design to https://yoursite.com\"* (pulls your palette and fonts so every diagram after this one matches your site)\n\nThe agent picks the type, states its plan, and writes one `.html` file you can open by double-clicking.\n\n---\n\n## Install\n\nWorks with any host that reads Agent Skills, including Cursor, Claude Code, Codex, GitHub Copilot, Gemini CLI, Cline, Windsurf and Amp:\n\n```bash\nnpx skills add cathrynlavery/diagram-design\n```\n\nIn Claude Code, the plugin marketplace gets you updates and the slash commands:\n\n```text\n/plugin marketplace add cathrynlavery/diagram-design\n/plugin install diagram-design@diagram-design\n```\n\nOfficial builds come only from this repository. LittleMight, Cathryn Lavery's company, publishes the plugin directory listings; a listing under any other name is an unofficial copy. [PRIVACY.md](PRIVACY.md) lists what the skill sends over the network.\n\n<details>\n<summary><b>Claude Code</b>: turn on auto-update</summary>\n\nAfter installing, run `/plugin`, open **Marketplaces**, select **diagram-design**, and choose **Enable auto-update**. Claude Code disables auto-update by default for third-party marketplaces; after this toggle, it refreshes the marketplace and installed plugin in the background after startup. Run `/reload-plugins` when prompted, or let the next session load the update.\n\n</details>\n\n<details>\n<summary><b>Cursor</b>, Cline, Gemini CLI, Windsurf, Amp, Zed, Warp, Roo, Kilo and other Agent Skills hosts</summary>\n\nThe cross-agent [`skills` CLI](https://skills.sh) resolves this repository, detects `skills/diagram-design/SKILL.md`, and installs the whole skill (`references/`, `assets/`, `scripts/`) into every host root you select, including Cursor's:\n\n```bash\nnpx skills add cathrynlavery/diagram-design\n```\n\nWhen the selected roots resolve to more than one skills directory, the CLI asks for an installation method and recommends **Symlink**: one canonical copy, linked into each root, so a later update reaches all of them at once. Pass `--copy` for independent copies per host instead. A selection that resolves to a single directory is copied, because the distinction is immaterial there. Where symlinks are unavailable (Windows without Developer Mode) the CLI falls back to copies and reports which roots it copied.\n\nThis is a standalone install, separate from the marketplaces below: it does not follow marketplace updates automatically. Pull merged updates with `npx skills update diagram-design`. It also installs the Agent Skill only, so the `/export-diagram`, `/import-mermaid`, `/profile`, and `/doctor` command surfaces stay with the native packages. On a host that has one of the marketplaces below, prefer the marketplace.\n\n> **One-time migration:** an existing standalone `npx skills add` copy will not start following the Codex marketplace automatically. Remove that standalone copy, then use the Codex marketplace commands. Likewise, uninstall a personal Cowork copy and reinstall Diagram Design from your organization's marketplace. Future marketplace version bumps then flow through each client's native update path.\n\n</details>\n\n<details>\n<summary><b>Codex</b></summary>\n\n```bash\ncodex plugin marketplace add cathrynlavery/diagram-design\ncodex plugin add diagram-design@diagram-design\n```\n\nCodex refreshes configured Git marketplaces at startup. To fetch immediately, run `codex plugin marketplace upgrade diagram-design` and start a new session.\n\n</details>\n\n<details>\n<summary><b>GitHub Copilot</b></summary>\n\n```bash\ncopilot plugin marketplace add cathrynlavery/diagram-design\ncopilot plugin install diagram-design@diagram-design\n```\n\nCopilot installs the shared Diagram Design skill plus its doctor, export, import, and profile capabilities from the existing repository marketplace. Confirm discovery with `copilot skill list` (or `/skills` in an interactive session), then ask for a diagram in natural language. To fetch a merged update, run `copilot plugin marketplace update diagram-design`, then `copilot plugin update diagram-design@diagram-design`.\n\n</details>\n\n<details>\n<summary><b>Factory Droid</b></summary>\n\n```bash\ndroid plugin marketplace add https://github.com/cathrynlavery/diagram-design\ndroid plugin install diagram-design@diagram-design --scope user\n```\n\nDroid tracks Git plugins by commit rather than the manifest's display version. To fetch a merged update, run `droid plugin marketplace update diagram-design`, then `droid plugin update diagram-design@diagram-design --scope user`, and start a new session.\n\n</details>\n\n<details>\n<summary><b>Claude Cowork</b> (organization marketplace)</summary>\n\nOrganization GitHub marketplaces currently require a private or internal repository, so first mirror this public repository into one owned by your organization. In **Organization settings → Plugins**, choose **Add plugin → GitHub**, connect that mirror, and enable **Sync automatically** from the marketplace menu. Automatic sync runs when a pull request containing a plugin version bump is merged to the mirror's default branch; direct pushes do not trigger the webhook. Install Diagram Design from the resulting organization marketplace.\n\n</details>\n\n<details>\n<summary><b>Pi</b></summary>\n\n```bash\npi install https://github.com/cathrynlavery/diagram-design\n```\n\nRun `/reload` in an open Pi session. Pi makes the skill available for matching diagram requests; use `/skill:diagram-design` to invoke it explicitly. Pi also loads the `/export-diagram`, `/import-mermaid`, `/import-excalidraw`, `/profile`, and `/doctor` prompt templates. The unpinned Git install is intentional: Pi has no automatic package refresh, so run `pi update --extensions` to pull merged updates.\n\n</details>\n\n<details>\n<summary><b>Kiro</b></summary>\n\nImport the Agent Skill from the repository subdirectory URL:\n\n```text\nhttps://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design\n```\n\nKiro copies imported skills into `.kiro/skills/` for a workspace or `~/.kiro/skills/` globally, so re-import the URL to pick up updates. Custom agents that declare resources should include `skill://diagram-design/**/SKILL.md`.\n\n</details>\n\n<details>\n<summary><b>OpenCode</b></summary>\n\nCopy or symlink `skills/diagram-design/` to `.opencode/skills/diagram-design` in a project or `~/.config/opencode/skills/diagram-design` globally. OpenCode has no Diagram Design marketplace package; copied installs update only when you replace the directory from a newer checkout.\n\n</details>\n\n<details>\n<summary><b>Editable install</b> (customize the style guide in a clone)</summary>\n\nManaged installs are convenient, but changes to `references/style-guide.md` may be replaced by package updates. Saved profiles in `~/.diagram-design/profiles/` survive updates, and projects with a `.diagram-design` marker are unaffected. Clone the repo and install the local path if you plan to customize the working style guide directly:\n\n```bash\ngit clone git@github.com:cathrynlavery/diagram-design.git ~/code/diagram-design\n\n# Pi: register the checkout as a local package\npi install ~/code/diagram-design\n\n# Claude Code: symlink the inner skill\nln -s ~/code/diagram-design/skills/diagram-design ~/.claude/skills/diagram-design\n\n# Other Agent Skills hosts: create only the roots you use\nmkdir -p ~/.agents/skills ~/.cursor/skills ~/.cline/skills ~/.kiro/skills ~/.config/o",
+      "rank": 4,
+      "weekly_stars": 9024
+    },
+    {
+      "full_name": "heygen-com/hyperframes",
+      "html_url": "https://github.com/heygen-com/hyperframes",
+      "description": "Write HTML. Render video. Built for agents.",
+      "homepage": "https://hyperframes.dev",
+      "language": "TypeScript",
+      "stars": 65446,
+      "forks": 5898,
+      "open_issues": 343,
+      "topics": [
+        "ai",
+        "animation",
+        "ffmpeg",
+        "framework",
+        "gsap",
+        "html",
+        "mcp",
+        "puppeteer",
+        "rendering",
+        "typescript",
+        "video"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-03-10T01:51:06Z",
+      "updated_at": "2026-10-17T05:33:08Z",
+      "pushed_at": "2026-10-17T05:24:14Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/logo/dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"docs/logo/light.svg\">\n    <img alt=\"HyperFrames\" src=\"docs/logo/light.svg\" width=\"300\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/v/hyperframes.svg?style=flat\" alt=\"npm version\"></a>\n  <a href=\"https://www.npmjs.com/package/hyperframes\"><img src=\"https://img.shields.io/npm/dm/hyperframes.svg?style=flat\" alt=\"npm downloads\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-Apache%202.0-blue.svg\" alt=\"License\"></a>\n  <a href=\"https://nodejs.org\"><img src=\"https://img.shields.io/badge/node-%3E%3D22-brightgreen\" alt=\"Node.js\"></a>\n  <a href=\"https://discord.gg/EbK98HBPdk\"><img src=\"https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white\" alt=\"Discord\"></a>\n</p>\n\n<p align=\"center\"><b>Write HTML. Render video. Built for agents.</b></p>\n\n<p align=\"center\">\n  <a href=\"https://www.hyperframes.dev/studio\">Studio</a> |\n  <a href=\"https://hyperframes.heygen.com/quickstart\">Quickstart</a> |\n  <a href=\"https://hyperframes.heygen.com/showcase\">Showcase</a> |\n  <a href=\"https://www.hyperframes.dev/\">Playground</a> |\n  <a href=\"https://hyperframes.heygen.com/catalog/blocks/data-chart\">Catalog</a> |\n  <a href=\"https://hyperframes.heygen.com/introduction\">Docs</a> |\n  <a href=\"https://discord.gg/EbK98HBPdk\">Discord</a>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/user-attachments/assets/f6ff9fae-f33d-4f68-bd54-f3ed4ba6473b\" alt=\"HyperFrames app opening from the Dock: native Mac and Linux app now available\" width=\"800\">\n</p>\n\nHyperFrames is an open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.\n\n## Quick Start\n\n### With an AI coding agent\n\nFor Claude Code, install the versioned plugin:\n\n```bash\nclaude plugin marketplace add heygen-com/hyperframes\nclaude plugin install hyperframes@hyperframes\n```\n\nEnable auto-update for the **hyperframes** marketplace in `/plugin` → **Marketplaces**,\nthen use `/hyperframes:hyperframes`. See the [plugin guide](docs/guides/plugins.mdx)\nfor Copilot, VS Code, Cursor, Gemini CLI, updates, and migration.\n\nFor standalone skills (including OpenCode), use:\n\n```bash\nnpx skills add heygen-com/hyperframes\n```\n\n> The picker opens with nothing pre-selected — the **Core Skills** group is all you need: the `/hyperframes` router installs each creation workflow on demand. Agents and non-interactive runs should use `npx hyperframes skills update` instead — it installs exactly the core set, whereas `skills add --all` installs all 21 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx hyperframes skills`.\n>\n> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx hyperframes skills update` installs from the current `main`, so reach for it when you need the newest copy of a skill.\n\nTry a prompt like:\n\n> Using `/hyperframes`, create a 10-second product intro with a fade-in title, a background video, and subtle background music.\n\nThe skills teach agents the HyperFrames production loop: plan the video, write valid HTML, wire seekable animations, add media, lint, preview, and render. They work with Claude Code, Codex, Cursor, Gemini CLI, IBM Bob, and other coding agents that support skills.\n\n## Skills\n\nHyperFrames ships 21 skills agents load on demand. Read `/hyperframes` first — it's the router and capability map; it picks a workflow for any \"make me a…\" request — video, deck, or composition port — and points to the domain skills below.\n\nFor standalone installation, default to the **core set** — the router installs each creation workflow on demand. `npx hyperframes skills update` installs exactly that from anywhere; the interactive picker (`npx skills add heygen-com/hyperframes`) lists it as the \"Core Skills\" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 21. Use `npx skills add heygen-com/hyperframes --all` to install the complete published set deliberately (skips the picker), or `npx skills add heygen-com/hyperframes --skill <name>` for just one (bare name, no leading `/`).\n\nStandalone installs stay lean after that: `npx hyperframes init` keeps the **core set** fresh (the router, the `hyperframes-*` domain skills, and `media-use` — plus whatever is already installed; `/figma` stays on demand) and never expands a partial install; the creation workflows install **on demand** — the router runs `npx hyperframes skills update <workflow>` before entering one. Nothing re-pulls the full set behind your back.\n\n### Plugin packages\n\nPlugins bundle the full skill catalog and use their agent's update manager.\n`bun run package:agent-plugin` builds the committed portable ZIP, source metadata,\nand SHA-256 checksum. See the [maintainer checklist](docs/contributing/agent-plugins.mdx).\n\n### Upload to Codex\n\nBuild the upload-ready Codex plugin archive from the committed `HEAD` version of the manifest, brand assets, and skills:\n\n```bash\nbun run package:codex-plugin\n```\n\nThis writes `dist/hyperframes-plugin.zip` with a `hyperframes/` root folder and fails if the archive exceeds Codex's 100 MB upload limit.\n\n### Router\n\n| Skill          | Use when                                                                                                                                                                                                                                                                 |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| `/hyperframes` | **Read first** for any request to make / create / edit / animate / render a video, animation, or motion graphic. Capability map for the domain skills, the intent layer that confirms every creation brief up front, and intent router for the creation workflows below. |\n\n### Creation workflows\n\n| Skill                      | Use when                                                                                                                                                                                                                     |\n| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `/product-launch-video`    | Any **website** — marketing / launching / promoting a product (from its URL, a brief, or a script), or a site tour / showcase / social clip featuring the site's own visuals. Up to ~3 min (sweet spot 30-90s).              |\n| `/faceless-explainer`      | **Explaining a topic / concept** from arbitrary text — no product, no URL, no website capture; every visual is LLM-invented (typography / abstract / diagram / data-viz).                                                    |\n| `/pr-to-video`             | A **GitHub pull request** (PR URL, `owner/repo#N` ref, or \"this PR\") → changelog / feature-reveal / fix / refactor explainer, read via the `gh` CLI.                                                                         |\n| `/embedded-captions`       | Adding **captions / subtitles** to an existing talking-head video (footage untouched) — verbatim rail, embedded climax behind the subject, or pure-cinematic embed.                                                          |\n| `/talking-head-recut`      | Packaging an existing talking-head / interview / podcast video with **designed graphic overlays** — lower-thirds, data callouts, kinetic titles, pull-quotes, side panels, PiP.                                              |\n| `/motion-graphics`         | A short, **unnarrated, design-led motion graphic** (~under 10s) — kinetic type, stat / chart hit, logo sting, lower-third, animated tweet / headline. MP4 or transparent overlay.                                            |\n| `/music-to-video`          | A **music track** (audio file, video to pull audio from, or one generated from a mood brief) → a **beat-synced** video — lyric, slideshow, or kinetic promo; music drives pacing.                                            |\n| `/slideshow`               | A **presentation / pitch deck / interactive deck** — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode. Output is a navigable deck, not a rendered video.                                     |\n| `/general-video`           | **Anything else** — longer or multi-scene pieces, brand / sizzle reel, title card, static loop, freeform composition. Input- and length-agnostic fallback, and the home of companion mode (co-create with the full toolbox). |\n| `/remotion-to-hyperframes` | **Porting an existing Remotion** (React) composition's source to HyperFrames HTML. One-way migration, not creation.                                                                                                          |\n\n### Domain skills (loaded on demand)\n\nAtomic capabilities the creation workflows compose against — pull one when you need that specific layer.\n\n| Skill                    | Covers                                                                                                                                                                                                                                                                                                                           ",
+      "rank": 5,
+      "weekly_stars": 5601
+    },
+    {
+      "full_name": "mattpocock/skills",
+      "html_url": "https://github.com/mattpocock/skills",
+      "description": "Skills for Real Engineers. Straight from my .agents directory.",
+      "homepage": "https://aihero.dev/skills",
+      "language": "Shell",
+      "stars": 294255,
+      "forks": 24668,
+      "open_issues": 188,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-02-03T11:15:53Z",
+      "updated_at": "2026-10-17T05:33:42Z",
+      "pushed_at": "2026-10-13T08:46:40Z",
+      "archived": false,
+      "readme": "<p>\n  <a href=\"https://www.aihero.dev/s/skills-newsletter\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skills-repo-dark_2x.png\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\">\n      <img alt=\"Skills\" src=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\" width=\"369\">\n    </picture>\n  </a>\n</p>\n\n# Skills For Real Engineers\n\n[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)\n\nMy agent skills that I use every day to do real engineering - not vibe coding.\n\nDeveloping real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.\n\nThese skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy.\n\nIf you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter:\n\n[Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)\n\n## Installation (30-second setup)\n\nA plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.\n\n### 1. Get the skills\n\n<details>\n<summary><strong>Claude Code</strong></summary>\n\n```bash\nclaude plugin install mattpocock-skills@claude-plugins-official\n```\n\nUpdates itself by default.\n\n</details>\n\n<details>\n<summary><strong>Codex</strong></summary>\n\n```bash\ncodex plugin marketplace add mattpocock/skills\ncodex plugin add mattpocock-skills@mattpocock\n```\n\nUpdates itself at startup.\n\n</details>\n\n<details>\n<summary><strong>GitHub Copilot</strong> (CLI and VS Code)</summary>\n\n```bash\ncopilot plugin marketplace add mattpocock/skills\ncopilot plugin install mattpocock-skills@mattpocock\n```\n\nThen, once, add to `~/.copilot/settings.json`:\n\n```json\n{\n  \"extraKnownMarketplaces\": {\n    \"mattpocock\": { \"source\": { \"source\": \"github\", \"repo\": \"mattpocock/skills\" }, \"autoUpdate\": true }\n  }\n}\n```\n\nIn VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/mattpocock/skills`. It updates daily.\n\n</details>\n\n<details>\n<summary><strong>Gemini CLI</strong> (manual updates)</summary>\n\n```bash\ngemini skills install https://github.com/mattpocock/skills.git --path skills/engineering\ngemini skills install https://github.com/mattpocock/skills.git --path skills/productivity\n```\n\nRe-run both commands to update.\n\n</details>\n\n<details>\n<summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>\n\n```bash\nnpx skills@latest add mattpocock/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose\n```\n\nWhen the installer asks which skills to take, include `setup-matt-pocock-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.\n\n</details>\n\n### 2. Run `/setup-matt-pocock-skills`\n\nIn your agent, run it once per repo. It will:\n\n- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)\n- Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)\n- Ask you where you want to save any docs we create\n\n### 3. Bam - you're ready to go.\n\n## Why These Skills Exist\n\nI built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.\n\n### #1: The Agent Didn't Do What I Want\n\n> \"No-one knows exactly what they want\"\n>\n> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)\n\n**The Problem**. The most common failure mode in software development is misalignment. You think the dev knows what you want. Then you see what they've built - and you realize it didn't understand you at all.\n\nThis is just the same in the AI age. There is a communication gap between you and the agent. The fix for this is a **grilling session** - getting the agent to ask you detailed questions about what you're building.\n\n**The Fix** is to use:\n\n- [`/grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses\n- [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)\n\nThese are my most popular skills. They help you align with the agent before you get started, and think deeply about the change you're making. Use them _every_ time you want to make a change.\n\n### #2: The Agent Is Way Too Verbose\n\n> With a ubiquitous language, conversations among developers and expressions of the code are all derived from the same domain model.\n>\n> Eric Evans, [Domain-Driven-Design](https://www.amazon.co.uk/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)\n\n**The Problem**: At the start of a project, devs and the people they're building the software for (the domain experts) are usually speaking different languages.\n\nI felt the same tension with my agents. Agents are usually dropped into a project and asked to figure out the jargon as they go. So they use 20 words where 1 will do.\n\n**The Fix** for this is a shared language. It's a document that helps agents decode the jargon used in the project.\n\n<details>\n<summary>\nExample\n</summary>\n\nHere's an example [glossary](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md) (still named `CONTEXT.md` at that pinned commit, from before the skills renamed the convention), from my `course-video-manager` repo. Which one is easier to read?\n\n- **BEFORE**: \"There's a problem when a lesson inside a section of a course is made 'real' (i.e. given a spot in the file system)\"\n- **AFTER**: \"There's a problem with the materialization cascade\"\n\nThis concision pays off session after session.\n\n</details>\n\nThis is built into [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in ADR's.\n\nIt's hard to explain how powerful this is. It might be the single coolest technique in this repo. Try it, and see.\n\n> [!TIP]\n> A shared language has many other benefits than reducing verbosity:\n>\n> - **Variables, functions and files are named consistently**, using the shared language\n> - As a result, the **codebase is easier to navigate** for the agent\n> - The agent also **spends fewer tokens on thinking**, because it has access to a more concise language\n\n### #3: The Code Doesn't Work\n\n> \"Always take small, deliberate steps. The rate of feedback is your speed limit. Never take on a task that’s too big.\"\n>\n> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)\n\n**The Problem**: Let's say that you and the agent are aligned on what to build. What happens when the agent _still_ produces crap?\n\nIt's time to look at your feedback loops. Without feedback on how the code it produces actually runs, the agent will be flying blind.\n\n**The Fix**: You need the usual tranche of feedback loops: static types, browser access, and automated tests.\n\nFor automated tests, a red-green-refactor loop is critical. This is where the agent writes a failing test first, then fixes the test. This helps give the agent a consistent level of feedback that results in far better code.\n\nI've built a **[`/tdd`](./skills/engineering/tdd/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.\n\nFor debugging, I've also built a **[`/diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md)** skill that wraps best debugging practices into a disciplined loop, gated phase by phase.\n\n### #4: We Built A Ball Of Mud\n\n> \"Invest in the design of the system _every day_.\"\n>\n> Kent Beck, [Extreme Programming Explained](https://www.amazon.co.uk/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)\n\n> \"The best modules are deep. They allow a lot of functionality to be accessed through a simple interface.\"\n>\n> John Ousterhout, [A Philosophy Of Software Design](https://www.amazon.co.uk/Philosophy-Software-Design-2nd/dp/173210221X)\n\n**The Problem**: Most apps built with agents are complex and hard to change. Because agents can radically speed up coding, they also accelerate software entropy. Codebases get more complex at an unprecedented rate.\n\n**The Fix** for this is a radical new approach to AI-powered development: caring about the design of the code.\n\nThis is built in to every layer of these skills:\n\n- [`/to-spec`](./skills/engineering/to-spec/SKILL.md) quizzes you about which modules you're touching before creating a spec\n\nAnd crucially, [`/improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md) surveys a codebase for deepening opportunities and hands you the candidates. I recommend running it on your codebase once every few days. It is a survey, not a rescue: on a genuinely old codebase it will find real candidates, but it won't untangle the mud for you.\n\n### Summary\n\nSoftware engineering fundamentals matter more than ever. These skills are my best effort at condensing these fundamentals into repeatable practices, to help you ship the best apps of your career. Enjoy.\n\n## Reference\n\nThese split on one axis: who can invoke them. **User-invoked** skills are reachable only when you type them (e.g. `/grill-me`); their job is to orchestrate. **Model-invoked** skills can be invoked by you _or_ reached",
+      "rank": 6,
+      "weekly_stars": 11937
+    },
+    {
+      "full_name": "NationalSecurityAgency/ghidra",
+      "html_url": "https://github.com/NationalSecurityAgency/ghidra",
+      "description": "Ghidra is a software reverse engineering (SRE) framework",
+      "homepage": "",
+      "language": "Java",
+      "stars": 89751,
+      "forks": 10035,
+      "open_issues": 2102,
+      "topics": [
+        "disassembler",
+        "reverse-engineering",
+        "software-analysis"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2019-03-01T03:27:48Z",
+      "updated_at": "2026-10-17T05:34:07Z",
+      "pushed_at": "2026-10-16T16:52:06Z",
+      "archived": false,
+      "readme": "<img src=\"Ghidra/Features/Base/src/main/resources/images/GHIDRA_3.png\" width=\"400\">\n\n# Ghidra Software Reverse Engineering Framework\nGhidra is a software reverse engineering (SRE) framework created and maintained by the \n[National Security Agency][nsa] Research Directorate. This framework includes a suite of \nfull-featured, high-end software analysis tools that enable users to analyze compiled code on a \nvariety of platforms including Windows, macOS, and Linux. Capabilities include disassembly, \nassembly, decompilation, graphing, and scripting, along with hundreds of other features. Ghidra \nsupports a wide variety of processor instruction sets and executable formats and can be run in both \nuser-interactive and automated modes. Users may also develop their own Ghidra extension components \nand/or scripts using Java or Python.\n\nIn support of NSA's Cybersecurity mission, Ghidra was built to solve scaling and teaming problems \non complex SRE efforts, and to provide a customizable and extensible SRE research platform. NSA has \napplied Ghidra SRE capabilities to a variety of problems that involve analyzing malicious code and \ngenerating deep insights for SRE analysts who seek a better understanding of potential \nvulnerabilities in networks and systems.\n\nIf you are a U.S. citizen interested in projects like this, to develop Ghidra and other \ncybersecurity tools for NSA to help protect our nation and its allies, consider applying for a \n[career with us][career].\n\n## Security Warning\n**WARNING:** There are known security vulnerabilities within certain versions of Ghidra.  Before \nproceeding, please read through Ghidra's [Security Advisories][security] for a better understanding \nof how you might be impacted.\n\n## Install\nTo install an official pre-built multi-platform Ghidra release:  \n* Install [JDK 25 64-bit][jdk]\n* Download a Ghidra [release file][releases]\n  - **NOTE:** The official multi-platform release file is named \n    `ghidra_<version>_<release>_<date>.zip` which can be found under the \"Assets\" drop-down.\n    Downloading either of the files named \"Source Code\" is not correct for this step.\n* Extract the Ghidra release file\n  - **NOTE:** Do not extract on top of an existing installation\n* Launch Ghidra: `./ghidraRun` (`ghidraRun.bat` for Windows)\n  - or launch [PyGhidra][pyghidra]: `./support/pyghidraRun` (`support\\pyghidraRun.bat` for Windows)\n\nFor additional information and troubleshooting tips about installing and running a Ghidra release, \nplease refer to the [Getting Started][gettingstarted] document which can be found at the root of a \nGhidra installation directory. \n\n## Build\n[![Build Ghidra][build-ghidra-badge]][build-ghidra-action]\n\nTo create the latest development build for your platform from this source repository:\n\n##### Install build tools:\n* [JDK 25 64-bit][jdk]\n* [Gradle 9.1.0+][gradle] (or provided Gradle wrapper if Internet connection is available)\n* [Python3][python3] (version 3.9 to 3.15) with bundled pip\n* GCC or Clang, and make (Linux/macOS-only)\n* [Microsoft Visual Studio][vs] 2017+ or [Microsoft C++ Build Tools][vcbuildtools] with the\n  following components installed (Windows-only):\n  - MSVC\n  - Windows SDK\n  - C++ ATL\n\n##### Download and extract the source:\n[Download from GitHub][master]\n```\nunzip ghidra-master\ncd ghidra-master\n```\n**NOTE:** Instead of downloading the compressed source, you may instead want to clone the GitHub \nrepository: `git clone https://github.com/NationalSecurityAgency/ghidra.git`\n\n##### Download additional build dependencies into source repository:\n**NOTE:** If an Internet connection is available and you did not install Gradle, the \n`./gradlew` (or `gradlew.bat`) command may be used in place of the `gradle` command in the following\ninstructions.\n\n```\ngradle -I gradle/support/fetchDependencies.gradle\n```\n\n##### Create development build: \n```\ngradle buildGhidra\n```\nThe compressed development build will be located at `build/dist/`.\n\nFor more detailed information on building Ghidra, please read the [Developer's Guide][devguide].\n\nFor issues building, please check the [Known Issues][known-issues] section for possible solutions.\n\n## Develop\n\n### User Scripts and Extensions\nGhidra installations support users writing custom scripts and extensions via the *GhidraDev* plugin \nfor Eclipse.  The plugin and its corresponding instructions can be found within a Ghidra release at\n`Extensions/Eclipse/GhidraDev/` or at [this link][ghidradev].  Alternatively, Visual Studio Code may\nbe used to edit scripts by clicking the Visual Studio Code icon in the Script Manager.\nFully-featured Visual Studio Code projects can be created from a Ghidra CodeBrowser window at \n_Tools -> Create VSCode Module project_.\n\n**NOTE:** Both the *GhidraDev* plugin for Eclipse and Visual Studio Code integrations only support \ndeveloping against fully built Ghidra installations which can be downloaded from the\n[Releases][releases] page.\n\n### Advanced Development\nTo develop the Ghidra tool itself, it is highly recommended to use Eclipse, which the Ghidra \ndevelopment process has been highly customized for.\n\n##### Install build and development tools:\n* Follow the above [build instructions](#build) so the build completes without errors\n* Install [Eclipse IDE for Java Developers][eclipse]\n\n##### Prepare the development environment:\n``` \ngradle prepdev eclipse buildNatives\n```\n\n##### Import Ghidra projects into Eclipse:\n* *File* -> *Import...*\n* *General* | *Existing Projects into Workspace*\n* Select root directory to be your downloaded or cloned ghidra source repository\n* Check *Search for nested projects*\n* Click *Finish*\n\nWhen Eclipse finishes building the projects, Ghidra can be launched and debugged with the provided\n**Ghidra** Eclipse *run configuration*.\n\nFor more detailed information on developing Ghidra, please read the [Developer's Guide][devguide].\n\n## Contribute\nIf you would like to contribute bug fixes, improvements, and new features back to Ghidra, please \ntake a look at our [Contributor's Guide][contrib] to see how you can participate in this open \nsource project.\n\n[build-ghidra-action]: https://github.com/NationalSecurityAgency/ghidra/actions/workflows/build-ghidra.yml\n[build-ghidra-badge]: https://github.com/NationalSecurityAgency/ghidra/actions/workflows/build-ghidra.yml/badge.svg\n[nsa]: https://www.nsa.gov\n[contrib]: CONTRIBUTING.md\n[devguide]: DevGuide.md\n[gettingstarted]: GhidraDocs/GettingStarted.md\n[known-issues]: DevGuide.md#known-issues\n[career]: https://www.intelligencecareers.gov/nsa\n[releases]: https://github.com/NationalSecurityAgency/ghidra/releases\n[jdk]: https://adoptium.net/temurin/releases\n[gradle]: https://gradle.org/releases/\n[python3]: https://www.python.org/downloads/\n[vs]: https://visualstudio.microsoft.com/vs/community/\n[vcbuildtools]: https://visualstudio.microsoft.com/visual-cpp-build-tools/\n[eclipse]: https://www.eclipse.org/downloads/packages/\n[master]: https://github.com/NationalSecurityAgency/ghidra/archive/refs/heads/master.zip\n[security]: https://github.com/NationalSecurityAgency/ghidra/security/advisories\n[ghidradev]: GhidraBuild/EclipsePlugins/GhidraDev/GhidraDevPlugin/README.md\n[pyghidra]: Ghidra/Features/PyGhidra/README.md\n",
+      "rank": 7,
+      "weekly_stars": 7510
+    },
+    {
+      "full_name": "mksglu/context-mode",
+      "html_url": "https://github.com/mksglu/context-mode",
+      "description": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and   enforces routing across 17 platforms via MCP + hooks.",
+      "homepage": "https://context-mode.com",
+      "language": "TypeScript",
+      "stars": 30300,
+      "forks": 2139,
+      "open_issues": 358,
+      "topics": [
+        "antigravity",
+        "claude",
+        "claude-code",
+        "claude-code-hooks",
+        "claude-code-plugins",
+        "claude-code-skill",
+        "codex",
+        "codex-cli",
+        "context-mode",
+        "copilot",
+        "cursor-plugin",
+        "kiro",
+        "mcp",
+        "mcp-server",
+        "mcp-tools",
+        "openclaw",
+        "opencode",
+        "pi-agent",
+        "skills",
+        "zed-extension"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2026-02-23T05:56:28Z",
+      "updated_at": "2026-10-17T05:33:06Z",
+      "pushed_at": "2026-10-17T04:15:36Z",
+      "archived": false,
+      "readme": "# Context Mode\n\n**The other half of the context problem.**\n\n[![users](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fmksglu%2Fcontext-mode%40main%2Fstats.json&query=%24.message&label=users&color=brightgreen)](https://www.npmjs.com/package/context-mode) [![npm](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fmksglu%2Fcontext-mode%40main%2Fstats.json&query=%24.npm&label=npm&color=blue)](https://www.npmjs.com/package/context-mode) [![marketplace](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fmksglu%2Fcontext-mode%40main%2Fstats.json&query=%24.marketplace&label=marketplace&color=blue)](https://github.com/mksglu/context-mode) [![GitHub stars](https://img.shields.io/github/stars/mksglu/context-mode?style=flat&color=yellow)](https://github.com/mksglu/context-mode/stargazers) [![GitHub forks](https://img.shields.io/github/forks/mksglu/context-mode?style=flat&color=blue)](https://github.com/mksglu/context-mode/network/members) [![Last commit](https://img.shields.io/github/last-commit/mksglu/context-mode?color=green)](https://github.com/mksglu/context-mode/commits) [![License: ELv2](https://img.shields.io/badge/License-ELv2-blue.svg)](LICENSE)\n[![Discord](https://img.shields.io/discord/1478479412700909750?label=Discord&logo=discord&color=5865f2)](https://discord.gg/DCN9jUgN5v)\n[![Hacker News #1](https://img.shields.io/badge/Hacker%20News-%231%20%E2%80%A2%20570%2B%20points-ff6600?logo=ycombinator&logoColor=white)](https://news.ycombinator.com/item?id=47193064)\n\n<p align=\"center\">\n<sub>Used across teams at</sub>\n<br><br>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Microsoft-141414?style=flat\" alt=\"Microsoft\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Google-141414?style=flat&logo=google&logoColor=white\" alt=\"Google\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Meta-141414?style=flat&logo=meta&logoColor=white\" alt=\"Meta\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Amazon-141414?style=flat\" alt=\"Amazon\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/IBM-141414?style=flat\" alt=\"IBM\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/NVIDIA-141414?style=flat&logo=nvidia&logoColor=white\" alt=\"NVIDIA\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/ByteDance-141414?style=flat&logo=bytedance&logoColor=white\" alt=\"ByteDance\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Stripe-141414?style=flat&logo=stripe&logoColor=white\" alt=\"Stripe\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Datadog-141414?style=flat&logo=datadog&logoColor=white\" alt=\"Datadog\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Salesforce-141414?style=flat\" alt=\"Salesforce\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/GitHub-141414?style=flat&logo=github&logoColor=white\" alt=\"GitHub\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Red%20Hat-141414?style=flat&logo=redhat&logoColor=white\" alt=\"Red Hat\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Supabase-141414?style=flat&logo=supabase&logoColor=white\" alt=\"Supabase\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Canva-141414?style=flat\" alt=\"Canva\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Notion-141414?style=flat&logo=notion&logoColor=white\" alt=\"Notion\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Hasura-141414?style=flat&logo=hasura&logoColor=white\" alt=\"Hasura\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Framer-141414?style=flat&logo=framer&logoColor=white\" alt=\"Framer\" /></a>\n<a href=\"#\"><img src=\"https://img.shields.io/badge/Cursor-141414?style=flat&logo=cursor&logoColor=white\" alt=\"Cursor\" /></a>\n</p>\n\n## The Problem\n\nEvery MCP tool call dumps raw data into your context window. A Playwright snapshot costs 56 KB. Twenty GitHub issues cost 59 KB. One access log — 45 KB. After 30 minutes, 40% of your context is gone. And when the agent compacts the conversation to free space, it forgets which files it was editing, what tasks are in progress, and what you last asked for. On top of that, the agent wastes output tokens on filler, pleasantries, and verbose explanations — burning context from both sides.\n\n### How Context Mode Solves It\n\nContext Mode is an MCP server that solves all four sides of this problem:\n\n1. **Context Saving** — Sandbox tools keep raw data out of the context window. 315 KB becomes 5.4 KB. 98% reduction.\n2. **Session Continuity** — Every file edit, git operation, task, error, and user decision is tracked in SQLite. When the conversation compacts, context-mode doesn't dump this data back into context — it indexes events into FTS5 and retrieves only what's relevant via BM25 search. The model picks up exactly where you left off. If you don't `--continue`, previous session data is deleted immediately — a fresh session means a clean slate.\n3. **Think in Code** — The LLM should program the analysis, not compute it. Instead of reading 50 files into context to count functions, the agent writes a script that does the counting and `console.log()`s only the result. One script replaces ten tool calls and saves 100x context. This is a mandatory paradigm across all 17 supported clients, plus the OpenClaw gateway integration: stop treating the LLM as a data processor, treat it as a code generator.\n\n   ```js\n   // Before: 47 × Read() = 700 KB.  After: 1 × ctx_execute() = 3.6 KB.\n   ctx_execute(\"javascript\", `\n     const files = fs.readdirSync('src').filter(f => f.endsWith('.ts'));\n     files.forEach(f => console.log(f + ': ' + fs.readFileSync('src/'+f,'utf8').split('\\\\n').length + ' lines'));\n   `);\n   ```\n4. **No prose-style enforcement** — context-mode keeps raw data out of context but never dictates how the model writes its final answer. Brevity, completeness, formatting — your model's call (or yours via your own `CLAUDE.md` / `AGENTS.md`). Aggressive brevity prompts have been shown to degrade coding/reasoning benchmarks ([Moonshot AI on `kimi-k2.5`](https://github.com/anomalyco/opencode/issues/20258)) — the routing block stays focused on *where data goes*, not on *how the model talks*.\n\n<a href=\"https://www.youtube.com/watch?v=QUHrntlfPo4\">\n  <picture>\n    <img src=\"https://img.youtube.com/vi/QUHrntlfPo4/maxresdefault.jpg\" alt=\"Watch context-mode demo on YouTube\" width=\"100%\">\n  </picture>\n</a>\n<p align=\"center\"><a href=\"https://www.youtube.com/watch?v=QUHrntlfPo4\"><img src=\"https://img.shields.io/badge/%E2%96%B6%EF%B8%8F_Watch_Demo-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white\" alt=\"Watch on YouTube\"></a></p>\n\n## Install\n\nPlatforms are grouped by install complexity. Hook-capable platforms get automatic routing enforcement. Non-hook platforms need a one-time routing file copy.\n\n<details open>\n<summary><strong>Claude Code</strong> — plugin marketplace, fully automatic</summary>\n\n**Prerequisites:** Claude Code v1.0.33+ (`claude --version`). If `/plugin` is not recognized, update first: `brew upgrade claude-code` or `npm update -g @anthropic-ai/claude-code`.\n\n**Install:**\n\n```bash\n/plugin marketplace add mksglu/context-mode\n/plugin install context-mode@context-mode\n```\n\nRestart Claude Code (or run `/reload-plugins`).\n\n**Verify:**\n\n```\n/context-mode:ctx-doctor\n```\n\nAll checks should show `[x]`. The doctor validates runtimes, hooks, FTS5, and plugin registration.\n\n**Routing:** Automatic. The SessionStart hook injects routing instructions at runtime — no file is written to your project. The plugin registers all hooks (PreToolUse, PostToolUse, UserPromptSubmit, PreCompact, SessionStart, Stop) and 11 MCP tools — six sandbox tools (`ctx_batch_execute`, `ctx_execute`, `ctx_execute_file`, `ctx_index`, `ctx_search`, `ctx_fetch_and_index`) plus five meta-tools (`ctx_stats`, `ctx_doctor`, `ctx_upgrade`, `ctx_purge`, `ctx_insight`).\n\n| Slash Command | What it does |\n|---|---|\n| `/context-mode:ctx-stats` | Context savings — per-tool breakdown, tokens consumed, savings ratio. |\n| `/context-mode:ctx-doctor` | Diagnostics — runtimes, hooks, FTS5, plugin registration, versions. |\n| `/context-mode:ctx-index` | Index a local file or directory into the persistent FTS5 knowledge base. |\n| `/context-mode:ctx-search` | Search previously indexed content. |\n| `/context-mode:ctx-upgrade` | Pull latest, rebuild, migrate cache, fix hooks. |\n| `/context-mode:ctx-purge` | Permanently delete all indexed content from the knowledge base. |\n| `/context-mode:ctx-insight` | Opens the hosted Insight dashboard ([context-mode.com/insight](https://context-mode.com/insight)) in your browser — org analytics for AI-assisted engineering teams. |\n\n> **Note:** Slash commands are a Claude Code plugin feature. On other platforms, type `ctx stats`, `ctx doctor`, `ctx index`, `ctx search`, `ctx upgrade`, or `ctx insight` in the chat — the model calls the MCP tool automatically. See [Utility Commands](#utility-commands).\n\n**Status line (optional):** Claude Code's plugin manifest cannot declare a status line, so this is a one-time manual edit to `~/.claude/settings.json`:\n\n```json\n{\n  \"statusLine\": {\n    \"type\": \"command\",\n    \"command\": \"context-mode statusline\"\n  }\n}\n```\n\nAfter saving, restart Claude Code. The bar shows `$ saved this session · $ saved across sessions · % efficient` so you can see savings accumulate in real time. The wiring is path-free — `context-mode statusline` resolves through the bundled CLI regardless of where the plugin cache lives.\n\n<details>\n<summary>Alternative — MCP-only install (no hooks or slash commands)</summary>\n\n```bash\nclaude mcp add context-mode -- npx -y context-mode\n```\n\nThis gives you all 11 MCP tools without automatic routing. The model can still use them — it just won't be nudged to prefer them over raw Bash/Read/WebFetch. Good for trying it out before committing to the full plugin.\n\n</details>\n\n</details>\n\n<details>\n<summary><strong>Gemini CLI</strong> — one config file, hooks included</sum",
+      "rank": 8,
+      "weekly_stars": 4207
+    },
+    {
+      "full_name": "ranxianglei/billion-context",
+      "html_url": "https://github.com/ranxianglei/billion-context",
+      "description": "A context-compression plugin for small context windows (a 100K context is enough), token savings (5x fewer tokens), and month-long single sessions (billions of tokens).上下文压缩插件，兼顾小窗口(100k上下文足矣)省token(省5倍token)和超长会话(数月级别几十亿token单会话)。billion-context is all you need",
+      "homepage": "",
+      "language": "TypeScript",
+      "stars": 1572,
+      "forks": 124,
+      "open_issues": 302,
+      "topics": [
+        "dsh-plugin"
+      ],
+      "license": "NOASSERTION",
+      "created_at": "2026-08-06T08:27:34Z",
+      "updated_at": "2026-10-17T05:28:23Z",
+      "pushed_at": "2026-10-17T05:32:37Z",
+      "archived": false,
+      "readme": "# billion-context\n\n<p align=\"center\"><a href=\"./README.md\">English</a> | <a href=\"./README.zh-CN.md\">中文</a></p>\n\n<p align=\"center\"><strong>Context-compression plugin</strong> — <em>billion-context is all you need.</em></p>\n\n<p align=\"center\"><sub>small context windows (100K is enough) · <em>5× fewer tokens</em> · month-long single sessions (billions of tokens) · high compression quality</sub></p>\n\n<p align=\"center\">\n<a href=\"https://www.npmjs.com/package/billion-context\"><img src=\"https://img.shields.io/npm/v/billion-context.svg?style=flat-square\" alt=\"npm\"></a>\n<a href=\"https://github.com/ranxianglei/billion-context/blob/master/LICENSE\"><img src=\"https://img.shields.io/npm/l/billion-context.svg?style=flat-square\" alt=\"license\"></a>\n<a href=\"https://github.com/ranxianglei/billion-context\"><img src=\"https://img.shields.io/badge/GitHub-ranxianglei%2Fbillion--context-181717?style=flat-square&logo=github\" alt=\"GitHub\"></a>\n</p>\n\n<p align=\"center\">\n<code>npm install -g billion-context --prefix=~/.local</code>\n</p>\n\n<p align=\"center\">\n<a href=\"https://claude.com/product/claude-code\" title=\"Claude Code\"><img src=\"https://cdn.simpleicons.org/claude/D97757\" height=\"26\" alt=\"Claude Code\"></a>&nbsp;\n<a href=\"https://github.com/openai/codex\" title=\"Codex\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.iconify.design/simple-icons/openai.svg?color=white\"><img src=\"https://api.iconify.design/simple-icons/openai.svg\" height=\"26\" alt=\"Codex\"></picture></a>&nbsp;\n<a href=\"https://opencode.ai\" title=\"OpenCode\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cdn.simpleicons.org/opencode/FFFFFF\"><img src=\"https://cdn.simpleicons.org/opencode/000000\" height=\"26\" alt=\"OpenCode\"></picture></a>&nbsp;\n<a href=\"https://pi.dev\" title=\"pi\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cdn.simpleicons.org/pi/FFFFFF\"><img src=\"https://cdn.simpleicons.org/pi/000000\" height=\"26\" alt=\"pi\"></picture></a>&nbsp;\n<a href=\"https://github.com/google-gemini/gemini-cli\" title=\"Gemini CLI\"><img src=\"https://cdn.simpleicons.org/googlegemini/8E75B2\" height=\"26\" alt=\"Gemini CLI\"></a>&nbsp;\n<a href=\"https://www.kimi.com\" title=\"Kimi\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cdn.simpleicons.org/kimi/FFFFFF\"><img src=\"https://cdn.simpleicons.org/kimi/000000\" height=\"26\" alt=\"Kimi\"></picture></a>&nbsp;\n<a href=\"https://github.com/QwenLM/qwen-code\" title=\"Qwen Code\"><img src=\"https://cdn.simpleicons.org/qwen/6950EF\" height=\"26\" alt=\"Qwen Code\"></a>&nbsp;\n<a href=\"https://github.com/github/copilot-cli\" title=\"GitHub Copilot CLI\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cdn.simpleicons.org/githubcopilot/FFFFFF\"><img src=\"https://cdn.simpleicons.org/githubcopilot/000000\" height=\"26\" alt=\"GitHub Copilot CLI\"></picture></a>&nbsp;\n<a href=\"https://www.trae.ai\" title=\"TRAE\"><img src=\"https://cdn.simpleicons.org/trae/32F08C\" height=\"26\" alt=\"TRAE\"></a>&nbsp;\n<a href=\"https://www.codebuddy.cn\" title=\"CodeBuddy\"><img src=\"https://cdn.simpleicons.org/codebuddy/6C4DFF\" height=\"26\" alt=\"CodeBuddy\"></a>&nbsp;\n<a href=\"https://qoder.com\" title=\"Qoder\"><img src=\"https://icons.duckduckgo.com/ip3/qoder.com.ico\" height=\"26\" alt=\"Qoder\"></a>&nbsp;\n<a href=\"https://iflow.cn\" title=\"iFlow CLI\"><img src=\"https://img.alicdn.com/imgextra/i4/O1CN01yBfg3x1iNi4YggwIt_!!6000000004401-2-tps-72-72.png\" height=\"26\" alt=\"iFlow CLI\"></a>&nbsp;\n<a href=\"https://www.minimax.io\" title=\"MiniMax Code (mcode)\"><img src=\"https://cdn.simpleicons.org/minimax/E73562\" height=\"26\" alt=\"MiniMax Code\"></a>&nbsp;\n<a href=\"https://www.deepseek.com\" title=\"deepseek-harness (dsh)\"><img src=\"https://cdn.simpleicons.org/deepseek/5786FE\" height=\"26\" alt=\"deepseek-harness\"></a>&nbsp;\n<a href=\"https://ampcode.com\" title=\"Amp\"><img src=\"https://icons.duckduckgo.com/ip3/ampcode.com.ico\" height=\"26\" alt=\"Amp\"></a>&nbsp;\n<a href=\"https://charm.land/crush\" title=\"Crush\"><img src=\"https://icons.duckduckgo.com/ip3/charm.land.ico\" height=\"26\" alt=\"Crush\"></a>&nbsp;\n<a href=\"https://zed.dev\" title=\"Zed\"><img src=\"https://icons.duckduckgo.com/ip3/zed.dev.ico\" height=\"26\" alt=\"Zed\"></a>&nbsp;\n<a href=\"https://aider.chat\" title=\"aider\"><img src=\"https://raw.githubusercontent.com/Aider-AI/aider/main/aider/website/assets/icons/favicon-32x32.png\" height=\"26\" alt=\"aider\"></a>&nbsp;\n<a href=\"https://github.com/aaif-goose/goose\" title=\"goose\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/aaif-goose/goose/main/documentation/static/img/logo_dark.png\"><img src=\"https://raw.githubusercontent.com/aaif-goose/goose/main/documentation/static/img/logo_light.png\" height=\"26\" alt=\"goose\"></picture></a>&nbsp;\n<a href=\"https://github.com/NousResearch/hermes-agent\" title=\"hermes\"><img src=\"https://raw.githubusercontent.com/NousResearch/hermes-agent/main/apps/bootstrap-installer/src-tauri/icons/128x128.png\" height=\"26\" alt=\"hermes\"></a>&nbsp;\n<a href=\"https://z.ai\" title=\"zcode (Z.ai)\"><img src=\"https://z-cdn.chatglm.cn/z-ai/static/logo.svg\" height=\"26\" alt=\"zcode\"></a>&nbsp;\n<a href=\"https://omp.sh\" title=\"omp (oh-my-pi, Stencil Labs)\"><img src=\"https://omp.sh/favicon.svg\" height=\"26\" alt=\"omp\"></a>&nbsp;\n<a href=\"https://github.com/1jehuang/jcode\" title=\"jcode\"><img src=\"https://github.com/1jehuang.png\" height=\"26\" alt=\"jcode\"></a>\n</p>\n\n---\n\n> **Cache health at a glance:** a healthy session keeps a **95–97%** prefix-cache hit rate — compression itself costs ≤2%. Sustained lower? Check attribution with `/acp` or `/acp-cache` (see [FAQ](#faq)); usual causes, in order: upstream cache TTL expiry · model switch · a bili bug (please report) · other/unknown.\n\n## Community\n\nQQ Group:\n1056132097 (full)\n1108730198 (open)\n\n---\n\n## 📄 Paper / Preprint\n\n- **[Model-Driven Incremental Hierarchical Compression: Training-Free Multi-Generational Context Management for Long-Lived Coding Agents](./paper/model-driven-incremental-hierarchical-compression-training-free-multi-generational-context-management-for-long-lived-coding-agents.md)** (English, v0.2)\n\n> 📝 **The paper itself is open-sourced under the MIT License as part of the codebase (`paper/`). It is a living document — anyone may edit it; improvements are welcome via pull request.**\n\nA production-scale longitudinal study: 4.5 months, three hosts, 174,327 model calls, 18.76B cumulative input tokens (~24.7B across all hosts), zero window violations on 204,800-token models, marathon sessions of 8,584–12,049 calls.\n\n---\n\n`billion-context` sits between **any** agent and its model API, rewriting Anthropic/OpenAI streams with [acp-kernel](https://github.com/ranxianglei/acp-kernel) compression. The model decides **when** and **what** to compress into high-fidelity summaries — not a hard truncation limit.\n\n## Why\n\nLong coding sessions blow up context. Each provider charges per token, and once you pass the context window the session degrades or dies. `billion-context` compresses consumed conversation into layered summaries so you can run a single session for days — billions of tokens through one context window.\n\nUnlike a host's built-in summarizer, compression here is **incremental, reversible, and prefix-cache friendly**: summaries are written in small ranges, can be decompressed on demand, and the cache prefix stays intact.\n\n## How it works\n\n```\nAgent (Claude Code / Codex / Cursor / Aider ...)\n        │  you point the agent's base URL at the proxy\n        ▼\n┌─────────────────┐\n│  billion-context│   1. parse the request (Anthropic or OpenAI shape)\n│     proxy       │   2. run acp-kernel compression on the conversation\n│                 │   3. inject a `compress` tool + compression philosophy\n│                 │   4. forward to the real model API\n│                 │   5. rewrite the streaming response\n└─────────────────┘\n        │\n        ▼\n   real model API (Anthropic / OpenAI / compatible)\n```\n\n### Context-management tools\n\nThe proxy injects four context-management tools into the conversation; the model calls them itself as context grows, and the proxy executes `compress` server-side so folded ranges stay summarized in history until restored:\n\n- **`compress`** — fold a message range into a detailed summary.\n- **`decompress`** — restore a compressed range when exact details are needed again.\n- **`search_context`** — keyword search over compressed summaries and visible messages.\n- **`acp_status`** — context-usage overview plus which ranges are still compressible.\n\n## Which do I need?\n\nPick by your client:\n\n| Client | Use |\n|---|---|\n| **pi** | [`billion-context`](https://github.com/ranxianglei/billion-context) — `bili pi` (launcher) or `bili plugin install pi` (native); standalone [`billion-context-pi`](https://github.com/ranxianglei/billion-context-pi) remains usable — details: [CLIENTS.md](CLIENTS.md#pi-pidev-coding-agent) |\n| **opencode** (1.x / 2.x) | [`billion-context`](https://github.com/ranxianglei/billion-context) — `bili opencode` (launcher) or `bili plugin install opencode` (native); standalone [`opencode-acp`](https://github.com/ranxianglei/opencode-acp) remains usable on 1.x — full guide: [OpenCode](CLIENTS.md#opencode) |\n| **omp** | [`billion-context`](https://github.com/ranxianglei/billion-context) via `bili omp` (built-in plugin) or `bili plugin install omp` (self-spawning native plugin, no launcher) |\n| **dsh** | `bili dsh` (launcher — full native plugin via `--patch`) or `bili plugin install dsh` ≡ `dsh plugin --profile <name> add billion-context` (one unified lane) — details: [CLIENTS.md](CLIENTS.md) |\n| **kimi** | `bili plugin install kimi` (self-spawning native, Kimi Code ≥ 2.0.0) or `bili kimi` (cert-MITM) or `/bili/` prefix — details: [CLIENTS.md](CLIENTS.md) |\n| **hermes** | `bili plugin install hermes` (self-spawning native, Python plugin #958) or `bili hermes` (cert-MITM) |\n| **zcode** (Z.ai / bigmodel coding plan) | `bili plugin install zcode` (self-spawning native, #1145) or cert-MITM via the GUI's Settings → Netwo",
+      "rank": 9,
+      "weekly_stars": 779
+    },
+    {
+      "full_name": "anthropics/claude-plugins-official",
+      "html_url": "https://github.com/anthropics/claude-plugins-official",
+      "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+      "homepage": "https://code.claude.com/docs/en/plugins",
+      "language": "Python",
+      "stars": 40805,
+      "forks": 4415,
+      "open_issues": 1141,
+      "topics": [
+        "claude-code",
+        "mcp",
+        "skills"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2025-11-20T18:36:20Z",
+      "updated_at": "2026-10-17T05:32:54Z",
+      "pushed_at": "2026-10-16T16:36:46Z",
+      "archived": false,
+      "readme": "# Claude Code Plugins Directory\n\nA curated directory of high-quality plugins for Claude Code.\n\n> **⚠️ Important:** Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change. See each plugin's homepage for more information.\n\n## Structure\n\n- **`/plugins`** - Internal plugins developed and maintained by Anthropic\n- **`/external_plugins`** - Third-party plugins from partners and the community\n\n## Installation\n\nPlugins can be installed directly from this marketplace via Claude Code's plugin system.\n\nTo install, run `/plugin install {plugin-name}@claude-plugins-official`\n\nor browse for the plugin in `/plugin > Discover`\n\n## Contributing\n\n### Internal Plugins\n\nInternal plugins are developed by Anthropic team members. See `/plugins/example-plugin` for a reference implementation.\n\n### External Plugins\n\nThird-party partners can submit plugins for inclusion in the marketplace. External plugins must meet quality and security standards for approval. To submit a new plugin, use the [plugin directory submission form](https://clau.de/plugin-directory-submission).\n\n## Plugin Structure\n\nEach plugin follows a standard structure:\n\n```\nplugin-name/\n├── .claude-plugin/\n│   └── plugin.json      # Plugin metadata (required)\n├── .mcp.json            # MCP server configuration (optional)\n├── commands/            # Slash commands (optional)\n├── agents/              # Agent definitions (optional)\n├── skills/              # Skill definitions (optional)\n└── README.md            # Documentation\n```\n\n## Plugin names are immutable\n\nThe `name` field in a marketplace entry is an **immutable slug**. Once a plugin has been published, its `name` must not change — users have it installed under that slug, and renaming it breaks their install with a `plugin-not-found` error.\n\n- To change how a plugin is labeled in the UI, set or update `displayName` instead.\n- If a rename is genuinely unavoidable, add an entry to the top-level `renames` map in `.claude-plugin/marketplace.json` so existing installs auto-migrate:\n\n```json\n\"renames\": {\n  \"old-name\": \"new-name\"\n}\n```\n\nThe Claude Code plugin loader reads this map and transparently rewrites the old slug to the new one on the user's next sync.\n\n## Skill-bundle plugins\n\nWhen a plugin's source repository ships skills (`SKILL.md` files) without a `.claude-plugin/plugin.json` manifest, the marketplace entry can declare the skills directly using `strict: false` and an explicit `skills` array.\n\n```json\n{\n  \"name\": \"example-bundle\",\n  \"description\": \"Brief description of the bundled skills.\",\n  \"author\": { \"name\": \"Author Name\" },\n  \"category\": \"development\",\n  \"source\": {\n    \"source\": \"git-subdir\",\n    \"url\": \"https://github.com/example-org/sdk.git\",\n    \"path\": \"packages/agent-skills\",\n    \"ref\": \"main\",\n    \"sha\": \"<commit sha>\"\n  },\n  \"strict\": false,\n  \"skills\": [\n    \"./skill-a\",\n    \"./skill-b\",\n    \"./skill-c\"\n  ],\n  \"homepage\": \"https://github.com/example-org/sdk\"\n}\n```\n\nEach path in `skills` is relative to `source.path` and points at a directory containing a `SKILL.md`. Paths can reach deeper than a single level — for example, `[\"./libA/skill-1\", \"./libB/skill-2\"]` exposes a curated subset across multiple library subdirectories. Each skill is registered as `<plugin-name>:<skill-name>` in Claude Code.\n\nFor the underlying schema, see [Strict mode](https://code.claude.com/docs/en/plugin-marketplaces) in the marketplace documentation.\n\n## License\n\nPlease see each linked plugin for the relevant LICENSE file.\n\n## Documentation\n\nFor more information on developing Claude Code plugins, see the [official documentation](https://code.claude.com/docs/en/plugins).\n",
+      "rank": 10,
+      "weekly_stars": 2328
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 331,133 个新增 Star，morluto/rea、storytold/artcraft、boykopovar/AnyPS5 位居前三。主要开发语言集中在 TypeScript、Rust、C++。头部项目体现的方向包括：Reverse engineer anything with agents, from app behavior down to native binaries.；ArtCraft is an intentional crafting engine for artists, designers, and filmmakers；Tool for automatic PS5 executables porting to Linux and Windows。",
+    "top_picks": [
+      "morluto/rea",
+      "storytold/artcraft",
+      "boykopovar/AnyPS5"
+    ],
+    "projects": [
+      {
+        "full_name": "morluto/rea",
+        "tagline": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+        "overview": "Reverse engineer anything with agents, from app behavior down to native binaries. 主要语言为 TypeScript，公开主题包括：agent-skills、ai-agents、binary-analysis、claude-code。",
+        "core_features": [
+          "Reverse engineer anything with agents, from app behavior down to native binaries.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、ai-agents、binary-analysis、claude-code 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 293,974 Stars、74,130 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "storytold/artcraft",
+        "tagline": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
+        "overview": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers 主要语言为 Rust，公开主题包括：3d-graphics、ai、aivideo、filmmaking。",
+        "core_features": [
+          "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 3d-graphics、ai、aivideo、filmmaking 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 30,825 Stars、4,896 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "boykopovar/AnyPS5",
+        "tagline": "Tool for automatic PS5 executables porting to Linux and Windows",
+        "overview": "Tool for automatic PS5 executables porting to Linux and Windows 主要语言为 C++，公开主题包括：anyps5、dynamic-library、game-porting、ps5。",
+        "core_features": [
+          "Tool for automatic PS5 executables porting to Linux and Windows",
+          "主要技术栈：C++"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 anyps5、dynamic-library、game-porting、ps5 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 C++ 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 40,074 Stars、3,589 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：GPL-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "cathrynlavery/diagram-design",
+        "tagline": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+        "overview": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop. 主要语言为 HTML，公开主题包括：agent-skills、claude-code、codex、data-visualization。",
+        "core_features": [
+          "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+          "主要技术栈：HTML"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、claude-code、codex、data-visualization 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 HTML 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 56,534 Stars、3,590 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "heygen-com/hyperframes",
+        "tagline": "Write HTML. Render video. Built for agents.",
+        "overview": "Write HTML. Render video. Built for agents. 主要语言为 TypeScript，公开主题包括：ai、animation、ffmpeg、framework。",
+        "core_features": [
+          "Write HTML. Render video. Built for agents.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、animation、ffmpeg、framework 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 65,446 Stars、5,898 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "mattpocock/skills",
+        "tagline": "Skills for Real Engineers. Straight from my .agents directory.",
+        "overview": "Skills for Real Engineers. Straight from my .agents directory. 主要语言为 Shell，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Skills for Real Engineers. Straight from my .agents directory.",
+          "主要技术栈：Shell"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Shell 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 294,255 Stars、24,668 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "NationalSecurityAgency/ghidra",
+        "tagline": "Ghidra is a software reverse engineering (SRE) framework",
+        "overview": "Ghidra is a software reverse engineering (SRE) framework 主要语言为 Java，公开主题包括：disassembler、reverse-engineering、software-analysis。",
+        "core_features": [
+          "Ghidra is a software reverse engineering (SRE) framework",
+          "主要技术栈：Java"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 disassembler、reverse-engineering、software-analysis 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Java 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 89,751 Stars、10,035 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "mksglu/context-mode",
+        "tagline": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and   enforces routing across 17 platforms via MCP + hooks.",
+        "overview": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and   enforces routing across 17 platforms via MCP + hooks. 主要语言为 TypeScript，公开主题包括：antigravity、claude、claude-code、claude-code-hooks。",
+        "core_features": [
+          "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and   enforces routing across 17 platforms via MCP + hooks.",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 antigravity、claude、claude-code、claude-code-hooks 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 30,300 Stars、2,139 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：NOASSERTION；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "ranxianglei/billion-context",
+        "tagline": "A context-compression plugin for small context windows (a 100K context is enough), token savings (5x fewer tokens), and month-long single sessions (billions of tokens).上下文压缩插件，兼顾小窗口(100k上下文足矣)省token(省5倍token)和超长会话(数月级别几十亿token单会话)。billion-context is all you need",
+        "overview": "A context-compression plugin for small context windows (a 100K context is enough), token savings (5x fewer tokens), and month-long single sessions (billions of tokens).上下文压缩插件，兼顾小窗口(100k上下文足矣)省token(省5倍token)和超长会话(数月级别几十亿token单会话)。billion-context is all you need 主要语言为 TypeScript，公开主题包括：dsh-plugin。",
+        "core_features": [
+          "A context-compression plugin for small context windows (a 100K context is enough), token savings (5x fewer tokens), and month-long single sessions (billions of tokens).上下文压缩插件，兼顾小窗口(100k上下文足矣)省token(省5倍token)和超长会话(数月级别几十亿token单会话)。billion-context is all you need",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 dsh-plugin 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 1,572 Stars、124 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：NOASSERTION；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "anthropics/claude-plugins-official",
+        "tagline": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+        "overview": "Official, Anthropic-managed directory of high quality Claude Code Plugins. 主要语言为 Python，公开主题包括：claude-code、mcp、skills。",
+        "core_features": [
+          "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 claude-code、mcp、skills 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 40,805 Stars、4,415 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
