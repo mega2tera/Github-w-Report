@@ -1,0 +1,546 @@
+{
+  "date": "2026-10-31",
+  "repositories": [
+    {
+      "full_name": "cloudflare/security-audit-skill",
+      "html_url": "https://github.com/cloudflare/security-audit-skill",
+      "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+      "homepage": "",
+      "language": "JavaScript",
+      "stars": 54410,
+      "forks": 3529,
+      "open_issues": 103,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-06-18T14:08:44Z",
+      "updated_at": "2026-10-31T06:57:27Z",
+      "pushed_at": "2026-09-14T19:29:02Z",
+      "archived": false,
+      "readme": "# security-audit\n\nA coding-agent skill that turns your agent into a security auditor. It orchestrates isolated agents through reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting.\n\nThis is the skill that seeded Cloudflare's vulnerability discovery harness, described in [Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness). The harness grew into a multi-stage, fleet-wide system; this skill is the single-repo starting point it evolved from.\n\n## What it does\n\nThe skill runs a structured audit in six phases:\n\n1. **Reconnaissance** -- map architecture, trust boundaries, input surfaces, prior evidence, and deterministic coverage in `architecture.md` and `coverage-ledger.json`.\n2. **Coverage-led hunting** -- assign isolated hunters from ledger units, record their checks, and use coverage critics to find gaps.\n3. **Candidate validation** -- give every unique candidate to a fresh verifier that tries to disprove it.\n4. **Structured output** -- write `confirmed`, `needs_validation`, and `rejected` records to `findings.json` and validate them against `report-schema.json`.\n5. **Independent record verification** -- fresh agents verify final source claims. Material replacements receive another independent verifier.\n6. **Target-neutral reporting** -- derive `REPORT.md`, `FINDINGS-DETAIL.md`, and `NEEDS-VALIDATION.md` from the verified records and coverage ledger.\n\nThe parent runs `validate-coverage-ledger.cjs` after creating the ledger and after each later ledger update. It runs `validate-findings.cjs` in Phase 4 and again after every Phase 5 replacement.\n\nThe verdicts are distinct: `confirmed` has a complete source trace and bounded observed result, `needs_validation` has an exact unresolved fact and no severity, and `rejected` records a disproved candidate.\n\nMultiple runs against the same repo are additive. The skill uses prior ledgers and findings to target gaps, revalidate changed source, and carry forward current-source evidence without treating stale or unresolved work as covered.\n\n## Files\n\n| File | Purpose |\n|------|---------|\n| `SKILL.md` | Setup, core principles, platform terminology, workflow overview, and audit anti-patterns |\n| `RECONNAISSANCE.md` | Phase 1 reconnaissance prompts and synthesis instructions |\n| `HUNTING.md` | Phase 2 orchestration, hunting methodology, and validation rules |\n| `ATTACK-CLASSES.md` | Core, wildcard, and obvious-things attack prompts |\n| `MEMORY-SAFETY-AND-BINARY.md` | Memory-safety, binary, and kernel hunting classes for native targets |\n| `AI-AND-LLM.md` | Prompt-injection, agent/tool, and output-handling hunting classes for LLM-backed targets |\n| `WEB-PROTOCOL-AND-AUTH.md` | HTTP request-framing, cache, and authentication-protocol hunting classes for HTTP-protocol and auth targets |\n| `CLIENT-SIDE.md` | DOM-injection, messaging-trust, UI-redress, and prototype-pollution hunting classes for client-side/browser targets |\n| `SUPPLY-CHAIN-AND-RELEASE.md` | Dependency, CI, release, signing, update, plugin, and extension hunting classes |\n| `CLOUD-AND-DEPLOYMENT.md` | IAM, infrastructure-as-code, container, serverless, ingress, and runtime-configuration hunting classes |\n| `PROTOCOLS-RPC-AND-MESSAGING.md` | RPC, serialization, queue, broker, webhook, and streaming-protocol hunting classes |\n| `RESOURCE-EXHAUSTION-AND-AVAILABILITY.md` | Shared resource, quota, queue, worker, and operator-spend hunting classes |\n| `DATA-ISOLATION-AND-LIFECYCLE.md` | Tenant isolation, cache, search, export, backup, migration, deletion, and restore hunting classes |\n| `DESKTOP-MOBILE-AND-LOCAL-IPC.md` | Native app, deep-link, webview, exported-component, helper, daemon, and local-IPC hunting classes |\n| `VALIDATION-AND-REPORTING.md` | Phases 3–6 candidate validation, structured output, record verification, and reporting |\n| `report-schema.json` | JSON schema for all three `findings.json` verdicts |\n| `validate-findings.cjs` | Zero-dependency validator for `findings.json` in Phases 4 and 5 |\n| `validate-findings.test.cjs` | Findings-validator tests and producer-compatible fixture checks |\n| `validate-coverage-ledger.cjs` | Zero-dependency validator for `coverage-ledger.json` in Phases 1–5 |\n| `validate-coverage-ledger.test.cjs` | Coverage-ledger validator tests |\n\n## Installation\n\nInstall the skill with the [Skills CLI](https://skills.sh):\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit\n```\n\nUse `--global` for a user-level installation:\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit \\\n  --global\n```\n\nRun `npx skills --help` for agent-selection and non-interactive options.\n\n## Usage\n\nStart your coding agent in (or pointed at) the codebase you want to audit, then ask it to do a security audit:\n\n```\nsecurity audit this codebase\n```\n\n```\nfind security vulnerabilities in ./src\n```\n\n```\ndo a security review, output to ~/audits/my-project\n```\n\nThe skill activates automatically when the request matches its trigger (security audit, find vulnerabilities, pen-test the code, etc.). A direct codebase audit or pen-test request uses full audit mode. Security questions and focused vulnerability work use guidance mode unless you request report artifacts. In full audit mode, an unspecified output directory defaults to `~/security-audit-skill/<repo-name>/run-<N>`. The workflow writes inside the target repository only when you explicitly select a directory that version control ignores.\n\n## Requirements\n\n- A coding agent with a model that supports tool use and parallel sub-agents\n- Node.js for the zero-dependency findings and coverage-ledger validators\n- An OS-enforced sandbox for target-controlled builds, tests, processes, browsers, emulators, fuzzers, and fixtures. It must disable external networking, use a sanitized allowlisted environment, enforce resource limits, and allow writes only to assigned scratch paths. Without these controls, the workflow keeps the lead as `needs_validation` instead of executing target code.\n\n## Design principles\n\n- **Only confirm established boundary failures.** Keep a source-grounded blocked lead as `needs_validation` with its exact unresolved fact.\n- **Adversarial validation.** The agent that checks a finding is never the agent that found it.\n- **Severity requires impact.** Likelihood x impact, not deviation from a checklist.\n- **Defense-in-depth gaps are not vulnerabilities.** If Layer A prevents the attack, the absence of Layer B is a hardening note.\n- **Multiple runs improve coverage.** In our test runs, a single run found roughly half of the vulnerabilities that repeated runs found in total.\n\n## Contact\n\nQuestions, feedback, or comparing notes on AI-driven security tooling: security-ai-research@cloudflare.com\n\n## License\n\nMIT -- see [LICENSE](LICENSE).\n",
+      "rank": 1,
+      "weekly_stars": 12838
+    },
+    {
+      "full_name": "AgriciDaniel/claude-seo",
+      "html_url": "https://github.com/AgriciDaniel/claude-seo",
+      "description": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
+      "homepage": "skool.com/ai-marketing-hub-pro",
+      "language": "Python",
+      "stars": 24639,
+      "forks": 3279,
+      "open_issues": 75,
+      "topics": [
+        "ai",
+        "ai-seo",
+        "claude-code",
+        "claude-code-skill",
+        "marketing-automation",
+        "open-source",
+        "seo"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-07T08:17:38Z",
+      "updated_at": "2026-10-31T06:56:38Z",
+      "pushed_at": "2026-10-22T16:47:40Z",
+      "archived": false,
+      "readme": "<!--\n  Claude SEO (claude-seo): free, open-source SEO audit plugin for Claude Code by Agrici Daniel.\n  Technical SEO, Core Web Vitals, E-E-A-T, Schema.org, AI search (GEO), local SEO, e-commerce and international SEO.\n  26 sub-skills and 19 specialist agents. MIT licensed.\n-->\n\n<img src=\"assets/readme/v3/hero.svg\" width=\"1200\" height=\"420\" alt=\"Claude SEO: rank in Google, get cited by AI. Three bots climb from #48 to #1 by fixing crawl, speed, schema, AI access and authority, then Google, ChatGPT, Perplexity, Gemini and Claude cite the site.\" />\n\n<h1 align=\"center\">Claude SEO</h1>\n\n<p align=\"center\">\n  <b>Free, open-source SEO audits inside <a href=\"https://claude.com/product/claude-code\">Claude Code</a>.</b><br />\n  Rank higher in Google and get cited by AI search.\n</p>\n\n<p align=\"center\">\n  <a href=\"#install\">Install</a> ·\n  <a href=\"#see-it-in-action\">Demo</a> ·\n  <a href=\"#real-results\">Results</a> ·\n  <a href=\"#meet-the-team\">Team</a> ·\n  <a href=\"#commands\">Commands</a> ·\n  <a href=\"#pricing\">Pricing</a> ·\n  <a href=\"#faq\">FAQ</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/AgriciDaniel/claude-seo/actions/workflows/ci.yml\"><img src=\"https://github.com/AgriciDaniel/claude-seo/actions/workflows/ci.yml/badge.svg\" alt=\"CI\" /></a>\n  <a href=\"https://claude.com/product/claude-code\"><img src=\"https://img.shields.io/badge/Claude%20Code-Plugin-blue\" alt=\"Claude Code plugin\" /></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-MIT-yellow.svg\" alt=\"License: MIT\" /></a>\n  <a href=\"https://github.com/AgriciDaniel/claude-seo/releases\"><img src=\"https://img.shields.io/github/v/release/AgriciDaniel/claude-seo\" alt=\"Version\" /></a>\n  <a href=\"tests/\"><img src=\"https://img.shields.io/badge/tests-1077%20passing-brightgreen\" alt=\"Tests\" /></a>\n  <a href=\"https://github.com/AgriciDaniel/claude-seo\"><img src=\"https://img.shields.io/github/stars/AgriciDaniel/claude-seo?style=flat\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://www.skool.com/ai-marketing-hub-pro\"><img src=\"https://img.shields.io/badge/AI%20Marketing%20Hub-Pro%20community-purple\" alt=\"AI Marketing Hub Pro community\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/21053\"><img src=\"https://trendshift.io/api/badge/repositories/21053\" alt=\"AgriciDaniel/claude-seo on Trendshift: GitHub Trending #12 Repository Of The Day\" width=\"250\" height=\"55\" /></a>\n</p>\n\n**Claude SEO is a free SEO plugin for Claude Code.** Give it any website and it runs a full SEO audit in 10 to 15 minutes, then hands you a clear action plan, sorted by what matters most.\n\nIt checks everything a good SEO consultant would:\n\n- **Technical SEO.** Crawlability, indexing, sitemaps, robots.txt, redirects, page speed and Core Web Vitals.\n- **Content quality.** E-E-A-T (experience, expertise, authority and trust), thin pages and topic coverage.\n- **Structured data.** Finds, validates and writes Schema.org markup for rich results.\n- **AI search (GEO).** How likely Google AI Overviews, AI Mode, ChatGPT, Perplexity and Gemini are to cite your pages.\n- **Local and e-commerce SEO.** Google Business Profile, reviews, map pack, product pages and international sites.\n\nClaude SEO is built from 26 sub-skills and 19 specialist agents, and up to 17 agents work on your site at the same time. Every recommendation explains why it matters and how you will know it worked.\n\n## See it in action\n\nType `/seo` in Claude Code to see every command:\n\n![Claude SEO /seo command demo in the Claude Code terminal](screenshots/seo-command-demo.gif)\n\nRun a full audit and watch the agents fan out across the site:\n\n![Claude SEO /seo audit demo: parallel agents producing a prioritized action plan](screenshots/seo-audit-demo.gif)\n\n[Watch the full demo on YouTube](https://www.youtube.com/watch?v=COMnNlUakQk)\n\n## Real results\n\nThe project's own site, [claude-seo.md](https://claude-seo.md), audited with Claude SEO from day one: 10.8K Search Console clicks in its first 12 weeks and a 99 mobile PageSpeed score.\n\n<img src=\"assets/readme/screen.svg\" width=\"1200\" height=\"751\" alt=\"Real results: Google Search Console showing 10.8K clicks and 324K impressions for a new site between 23 March and 12 June 2026, next to a PageSpeed Insights report scoring 99 for performance and 100 for SEO.\" />\n\n## Meet the team\n\n<img src=\"assets/readme/v3/team.svg\" width=\"1200\" height=\"420\" alt=\"The Claude SEO team: 19 specialist agents on a website, each standing on the part it checks, shown one at a time with its role, model, ability and command.\" />\n\n<details>\n<summary><b>All 19 agents</b></summary>\n<br />\n\n| Agent | Role | Model | Command |\n|---|---|---|---|\n| `seo-technical` | Technical SEO Lead | Sonnet | `/seo technical` |\n| `seo-content` | Content Editor | Opus | `/seo content` |\n| `seo-schema` | Structured Data Engineer | Sonnet | `/seo schema` |\n| `seo-sitemap` | Sitemap Architect | Sonnet | `/seo sitemap` |\n| `seo-performance` | Performance Engineer | Sonnet | `/seo audit` |\n| `seo-visual` | Visual QA | Sonnet | `/seo audit` |\n| `seo-geo` | AI Search Analyst | Opus | `/seo geo` |\n| `seo-agentic` | Agent Readiness Analyst | Sonnet | `/seo agentic` |\n| `seo-local` | Local SEO Specialist | Sonnet | `/seo local` |\n| `seo-maps` | Maps Analyst | Sonnet | `/seo maps` |\n| `seo-google` | Google Data Analyst | Sonnet | `/seo google` |\n| `seo-backlinks` | Link Analyst | Sonnet | `/seo backlinks` |\n| Live data (extension) | Live Data Analyst | Sonnet | `/seo audit` |\n| `seo-image-gen` | Image Producer (extension) | Sonnet | `/seo image-gen` |\n| `seo-cluster` | Topic Strategist | Opus | `/seo cluster` |\n| `seo-sxo` | Search Experience Designer | Opus | `/seo sxo` |\n| `seo-drift` | Change Monitor | Opus | `/seo drift` |\n| `seo-ecommerce` | E-commerce Specialist | Sonnet | `/seo ecommerce` |\n| `seo-flow` | FLOW Strategist | Sonnet | `/seo flow` |\n\n</details>\n\n**Built for:**\n\n- **SEO agencies** that want weekly audits for every client instead of quarterly ones, with change monitoring to catch problems in between.\n- **In-house SEO teams** at SaaS, publishing and e-commerce companies that want a second pair of eyes before every review, AI search included.\n- **Freelance SEO consultants** who want to run an audit on the first call and show a real score and the top fixes before writing a proposal.\n\n## Commands\n\n<img src=\"assets/readme/v3/map.svg\" width=\"1200\" height=\"420\" alt=\"The six groups of SEO commands on a map: audits, technical SEO, content, schema and AI search, local and commerce, and extensions. The crew walks the path and each of the 30 commands is ticked off.\" />\n\n30 core and extension commands in six groups. Open one to see what is inside; a few more extension commands are in the [full command reference](docs/COMMANDS.md).\n\n<details>\n<summary><b>Audits and Planning</b> (5 commands)</summary>\n<ul><li><code>/seo setup</code>: Create or refresh the isolated Python runtime and Chromium</li><li><code>/seo doctor</code>: Check runtime readiness without changing the system</li><li><code>/seo audit &lt;url&gt;</code>: Full website audit with parallel agents</li><li><code>/seo page &lt;url&gt;</code>: Deep single-page analysis</li><li><code>/seo plan &lt;type&gt;</code>: Strategic SEO planning (saas, local, ecommerce, publisher, agency)</li></ul>\n</details>\n<details>\n<summary><b>Technical SEO</b> (7 commands)</summary>\n<ul><li><code>/seo technical &lt;url&gt;</code>: Technical SEO audit across 9 categories</li><li><code>/seo sitemap &lt;url | generate&gt;</code>: Analyze or generate XML sitemaps</li><li><code>/seo images &lt;url&gt;</code>: Image optimization analysis</li><li><code>/seo hreflang &lt;url&gt;</code>: Hreflang and i18n SEO audit and generation</li><li><code>/seo programmatic &lt;url&gt;</code>: Programmatic SEO analysis and planning</li><li><code>/seo google [command]</code>: Google SEO APIs: GSC, PageSpeed, CrUX, Indexing, GA4, PDF reports</li><li><code>/seo drift baseline | compare | history &lt;url&gt;</code>: SEO drift monitoring with SQLite snapshots</li></ul>\n</details>\n<details>\n<summary><b>Content and E-E-A-T</b> (6 commands)</summary>\n<ul><li><code>/seo content &lt;url&gt;</code>: E-E-A-T and content quality analysis</li><li><code>/seo content-brief &lt;topic&gt;</code>: Content brief: target keywords, outline, internal links</li><li><code>/seo cluster &lt;keyword&gt;</code>: SERP-based semantic clustering</li><li><code>/seo sxo &lt;url&gt;</code>: Search Experience Optimization: page type, user stories, personas</li><li><code>/seo flow [stage]</code>: FLOW framework prompts (CC BY 4.0, evidence-led)</li><li><code>/seo competitor-pages &lt;url&gt;</code>: Competitor comparison page generation</li></ul>\n</details>\n<details>\n<summary><b>Schema and AI Search</b> (3 commands)</summary>\n<ul><li><code>/seo schema &lt;url&gt;</code>: Detect, validate and generate Schema.org markup</li><li><code>/seo geo &lt;url&gt;</code>: AI Overviews and Generative Engine Optimization</li><li><code>/seo agentic &lt;url&gt;</code>: Agent readiness: Lighthouse Agentic Browsing X/N, AI agent access, llms.txt, Markdown, WebMCP</li></ul>\n</details>\n<details>\n<summary><b>Local, Links, Commerce</b> (4 commands)</summary>\n<ul><li><code>/seo local &lt;url&gt;</code>: Local SEO: GBP, citations, reviews, map pack</li><li><code>/seo maps [command]</code>: Maps intelligence: geo-grid, GBP audit, reviews, competitors</li><li><code>/seo backlinks &lt;url&gt;</code>: Backlink profile analysis (Moz, Bing, Common Crawl)</li><li><code>/seo ecommerce &lt;url&gt;</code>: E-commerce SEO and marketplace intelligence</li></ul>\n</details>\n<details>\n<summary><b>Extensions</b> (5 commands)</summary>\n<ul><li><code>/seo image-gen [use-case]</code>: AI image generation for SEO assets</li><li><code>/seo seranking [command]</code>: AI Share-of-Voice across ChatGPT, Gemini, Perplexity, AI Overviews, AI Mode</li><li><code>/seo profound [command]</code>: LLM citation tracking with time-series data</li><li><code>/seo bing [command] &lt;url&gt;</code>",
+      "rank": 2,
+      "weekly_stars": 4478
+    },
+    {
+      "full_name": "pbakaus/impeccable",
+      "html_url": "https://github.com/pbakaus/impeccable",
+      "description": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.",
+      "homepage": "https://impeccable.style",
+      "language": "Rust",
+      "stars": 97391,
+      "forks": 5738,
+      "open_issues": 64,
+      "topics": [
+        "agent-skills",
+        "ai",
+        "anti-slop",
+        "design",
+        "slop"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2025-11-16T01:52:04Z",
+      "updated_at": "2026-10-31T06:57:03Z",
+      "pushed_at": "2026-10-31T06:41:52Z",
+      "archived": false,
+      "readme": "# Impeccable\n\nThe design vocabulary for your coding agent. Steer with `polish` and `bolder`, review with `critique` and `audit`, and catch AI slop before it ships.\n\nFrom your project root:\n\n```bash\nnpx impeccable install\n```\n\nReload your coding tool, then run `/impeccable init` in your agent (`$impeccable init` on Codex).\n\nWorks with Claude Code, Cursor, Codex CLI, GitHub Copilot, Devin, Replit Agent, Gemini CLI, Grok Build, OpenCode, Google Antigravity, Kiro, Trae, Rovo Dev, Qoder, Mistral Vibe, Pi, Hermes Agent, DeepSeek Harness, and Veto. Full docs live at [impeccable.style/docs](https://impeccable.style/docs).\n\n| Without Impeccable | With Impeccable |\n|---|---|\n| ![Villa Castagneto built without Impeccable: cream background, a thin serif headline with an italic accent, two pill buttons, and flat vector illustrations in rounded cards](https://github.com/pbakaus/impeccable/raw/main/docs/images/readme-without.webp) | ![Villa Castagneto built with Impeccable: a full-bleed engraved night scene of the villa on its cliff above the sea, a condensed cream and vermilion headline, and a month strip along the bottom](https://github.com/pbakaus/impeccable/raw/main/docs/images/readme-with.webp) |\n\nSame model (Fable 5.1), same brief: a fourteen-room family guesthouse on the Ligurian coast. Without Impeccable, it builds the tasteful default: cream page, thin serif, italic accent, pill buttons. With it, the page is built around one picture: the house at night, seen from the water.\n\nFor a full project, see the [Neo Mirai case study](https://impeccable.style/cases/neo-mirai): a conference site taken from mockup to shipped page.\n\n## Why\n\nInter for everything. Purple-to-blue gradients. Cards nested in cards, gray text on colored backgrounds, a rounded-square icon tile above every heading. Ask an agent for a page with no other guidance and these show up again and again, across models and projects.\n\n- **Words for what you want.** \"Make it pop\" leaves your agent to guess. `/impeccable bolder the pricing cards` loads a playbook written for that one move and points it at one target.\n- **A reviewer.** `critique` scores the design against usability heuristics and ranks what to fix first. `audit` checks accessibility, performance, theming, and responsive behavior, with findings ranked P0 (blocking) to P3 (polish).\n- **A slop detector.** 62 deterministic rules flag the tells above, plus quality problems like cramped padding and skipped headings. No LLM, no API key.\n\nImpeccable is strongest on interfaces that already exist: point it at a page or a component and iterate. It builds new pages too; see [Build something new](https://impeccable.style/docs/new-work) for how to get the most out of that harder mode. To start, pick one component:\n\n```\n/impeccable critique the pricing cards\n```\n\n## How it works\n\nRun `/impeccable init` once per project. It reads your code, asks only what it can't infer (who the product is for, what it needs to do, the constraints), and writes `PRODUCT.md`. Every later command reads it. Run `/impeccable document` to capture your existing visual system in `DESIGN.md`, so changes stay on-brand. [More on context files](https://impeccable.style/docs/context).\n\nThen name a command and a target:\n\n```\n/impeccable critique the onboarding flow\n/impeccable quieter the landing page\n/impeccable polish settings\n/impeccable harden checkout\n```\n\nOr just describe what you want: `/impeccable redo this hero section`. Narrow targets get better results; a single section reviewed closely beats a whole page at a glance. Pin a command you use often with `/impeccable pin audit` to get `/audit` as its own shortcut.\n\n### 24 commands\n\n| | Commands |\n|---|---|\n| **Steer** | `bolder` amplifies safe designs · `quieter` tones down loud ones · `distill` removes what the page doesn't need · `colorize` brings color to a gray interface · `typeset` fixes fonts, hierarchy, and sizing · `layout` fixes spacing and rhythm · `animate` adds transitions and interaction feedback · `delight` adds personality · `overdrive` goes for shaders, spring physics, and scroll-driven effects |\n| **Review** | `critique` is a scored UX review · `audit` is a technical quality report |\n| **Finish** | `polish` is the final pass before shipping · `harden` covers errors, i18n, overflow, and edge cases · `clarify` rewrites unclear copy · `adapt` handles screen sizes and devices · `optimize` fixes loading and rendering performance · `onboard` designs first-run flows and empty states |\n| **Iterate live** | `live` lets you pick an element in the browser and cycle through variants · `generate` produces variants of a named element without manual picking |\n| **Plan and set up** | `shape` plans UX before code · `init` writes `PRODUCT.md` · `document` writes `DESIGN.md` · `extract` pulls repeated patterns into your design system |\n\nThe 24th, `craft`, is a deprecated alias for a plain build request. Type `/impeccable` alone to see the list in your agent. Each command has its own page: [impeccable.style/docs](https://impeccable.style/docs).\n\nOn Codex, open `/skills` or type `$impeccable` instead of the slash command.\n\n### Live mode\n\n`/impeccable live` opens your running dev server with an overlay. Select an element, pick a direction, and Impeccable hot-swaps variants in place. Accept one and it is written back to your source. It works with Vite, Next, SvelteKit, Astro, Nuxt, and plain HTML. [Iterate in the browser](https://impeccable.style/tutorials/iterate-live).\n\nLive mode edits a local checkout only; don't inject it into a deployed site or weaken a production CSP to make it work. Applying copy edits runs your `package.json`'s optional `impeccable:manual-edit-validate` script with your permissions, so review it before using live mode in an unfamiliar repo.\n\n## Three ways to run the detector\n\n**In your agent.** The design hook scans every UI file your agent edits and hands the findings back before the agent calls the work done. This is where most slop gets caught: without the hook, the detector only runs when someone remembers to run it. It's available on Claude Code, Cursor, Codex, GitHub Copilot, Grok Build, and Hermes Agent, and the installer sets it up. Say yes. [Automatic design checks](https://impeccable.style/docs/hooks).\n\n**In CI or your terminal.** The CLI needs no agent:\n\n```bash\nnpx impeccable detect src/                   # scan a directory\nnpx impeccable detect https://example.com    # scan a rendered page (uses your installed Chrome or Edge)\nnpx impeccable detect --json .               # machine-readable output\nnpx impeccable detect --github src/          # GitHub Actions annotations\nnpx impeccable detect --list-rules           # every rule with its id and description\n```\n\nSource files like JSX and TSX get the pattern rules only. Rules that need a rendered page, such as low contrast and tiny text, run when you scan a URL, so point the CLI at your dev server too: `npx impeccable detect http://localhost:5173`.\n\nExit code `2` means findings, `1` means a target couldn't be scanned. To allow your brand font everywhere, run `npx impeccable ignores add-value overused-font Inter --reason \"Brand font\"`. To turn a rule off for one file, add a comment: `<!-- impeccable-disable overused-font: exported brand doc -->`. [Run a detector scan](https://impeccable.style/docs/detector) · [Configuration and ignores](https://impeccable.style/docs/config).\n\n**In your browser.** The [Chrome extension](https://chromewebstore.google.com/detail/impeccable/bdkgmiklpdmaojlpflclinlofgjfpabf) overlays the same findings on any live page, yours or anyone else's. [Review with a visual overlay](https://impeccable.style/tutorials/critique-with-overlay).\n\n## Installation\n\n```bash\nnpx impeccable install\n```\n\nThe installer detects your coding tools, asks whether to install for this project or globally, and offers the design hook where your tool supports one. Accept the hook. Reload your tool afterward. `npx impeccable update` refreshes an existing install. For scripts, pass `--providers=claude,codex,cursor` and `--scope=project|global`.\n\nThree tools need one more step before the hook runs. In Codex, open `/hooks` and approve the project hook (again after an update that changes it). In Grok Build, run `/hooks-trust` or launch with `--trust`. In Hermes Agent, the hook is a plugin: run `hermes plugins enable impeccable-design-hook` once. [Allow the hook in your harness](https://impeccable.style/docs/hooks#allow-the-hook-in-your-harness).\n\nNode is only needed for `npx`. The skill itself runs a self-contained engine binary that ships next to it or downloads once into `~/.impeccable/bin/`.\n\n<details>\n<summary><b>Claude Code, Copilot, and Grok plugins</b></summary>\n\n**Claude Code:** `/plugin marketplace add pbakaus/impeccable`, then open `/plugin` and install Impeccable.\n\n**GitHub Copilot in VS Code:** install [Impeccable from the Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=renaissance-geek.impeccable) or run `code --install-extension renaissance-geek.impeccable`. Needs VS Code 1.109.3+, Copilot Chat, and a trusted workspace. It installs the skill without the hook. [Details](docs/VSCODE-EXTENSION.md).\n\n**Grok Build:** `grok plugin install pbakaus/impeccable#plugin --trust` installs the skill, agents, and hook.\n\n</details>\n\n<details>\n<summary><b>Git submodule (a pinned version for the whole team)</b></summary>\n\n```bash\ngit submodule add https://github.com/pbakaus/impeccable vendor/impeccable\nnpx impeccable link --source=vendor/impeccable --providers=claude,cursor\n```\n\nCommit `.gitmodules`, the submodule, and the generated links. Teammates run `git submodule update --init --recursive`. To upgrade, run `git submodule update --remote vendor/impeccable`, rerun the `link` command, and commit. Linking installs skills, not hooks. Existing skill folders stay put unless you pass `--force`.\n\n</details>\n\n<details>\n<summary><b>Manual copy, no Node required</b></summary>\n\nDownload the ZIP for your",
+      "rank": 3,
+      "weekly_stars": 11323
+    },
+    {
+      "full_name": "obra/superpowers",
+      "html_url": "https://github.com/obra/superpowers",
+      "description": "An agentic skills framework & software development methodology that works.",
+      "homepage": "",
+      "language": "Shell",
+      "stars": 309576,
+      "forks": 27545,
+      "open_issues": 375,
+      "topics": [
+        "ai",
+        "brainstorming",
+        "coding",
+        "obra",
+        "sdlc",
+        "skills",
+        "subagent-driven-development",
+        "superpowers"
+      ],
+      "license": "MIT",
+      "created_at": "2025-10-09T19:45:18Z",
+      "updated_at": "2026-10-31T06:57:34Z",
+      "pushed_at": "2026-10-29T23:35:34Z",
+      "archived": false,
+      "readme": "# Superpowers\n\nSuperpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.\n\n## Table of Contents\n\n- [How it works](#how-it-works)\n- [Commercial Services](#commercial-services)\n- [Getting Started](#installation)\n  - [Claude Code](#claude-code)\n  - [Antigravity](#antigravity)\n  - [Codex App](#codex-app)\n  - [Codex CLI](#codex-cli)\n  - [Cursor](#cursor)\n  - [Devin CLI](#devin-cli)\n  - [Factory Droid](#factory-droid)\n  - [Gemini CLI](#gemini-cli)\n  - [GitHub Copilot CLI](#github-copilot-cli)\n  - [Grok Build CLI](#grok-build-cli)\n  - [Kimi Code](#kimi-code)\n  - [OpenCode](#opencode)\n  - [Pi](#pi)\n  - [Qwen Code](#qwen-code)\n  - [Hermes Agent](#hermes-agent)\n  - [Muse](#muse)\n- [The Basic Workflow](#the-basic-workflow)\n- [When Something Goes Wrong](#when-something-goes-wrong)\n- [Community](#community)\n- [What's Inside](#whats-inside)\n- [Philosophy](#philosophy)\n- [Contributing](#contributing)\n- [Updating](#updating)\n- [License](#license)\n- [Visual companion telemetry](#visual-companion-telemetry)\n\n## How it works\n\nIt starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. \n\nOnce it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. \n\nAfter you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY. \n\nNext up, once you say \"go\", it launches a *subagent-driven-development* process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for your agent to work autonomously for a couple hours at a time without deviating from the plan you put together.\n\nThere's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.\n\n## Commercial Services\n\nIf you're using Superpowers in enterprise and could benefit from commercial support, additional tooling, or managed spending, please don't hesitate to drop us a line at sales@primeradiant.com.\n\n## Installation\n\nInstallation differs by harness. If you use more than one, install Superpowers separately for each one.\n\n### Claude Code\n\nSuperpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)\n\n#### Official Marketplace\n\n- Install the plugin from Anthropic's official marketplace:\n\n  ```bash\n  /plugin install superpowers@claude-plugins-official\n  ```\n\n#### Superpowers Marketplace\n\nThe Superpowers marketplace provides Superpowers and some other related plugins for Claude Code.\n\n- Register the marketplace:\n\n  ```bash\n  /plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin from this marketplace:\n\n  ```bash\n  /plugin install superpowers@superpowers-marketplace\n  ```\n\n### Antigravity\n\nInstall Superpowers as a plugin from this repository:\n\n```bash\nagy plugin install https://github.com/obra/superpowers\n```\n\nAntigravity lists each installed skill's description, and the description of\nthe `using-superpowers` skill prompts the model to load that skill at the start\nof a conversation. Reinstall with the same command to update.\n\n### Codex App\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- In the Codex app, click on Plugins in the sidebar.\n- You should see `Superpowers` in the Coding section.\n- Click the `+` next to Superpowers and follow the prompts.\n\n### Codex CLI\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- Open the plugin search interface:\n\n  ```bash\n  /plugins\n  ```\n\n- Search for Superpowers:\n\n  ```bash\n  superpowers\n  ```\n\n- Select `Install Plugin`.\n\n### Cursor\n\n- In Cursor Agent chat, install from marketplace:\n\n  ```text\n  /add-plugin superpowers\n  ```\n\n- Or search for \"superpowers\" in the plugin marketplace.\n\n### Devin CLI\n\n- Install the plugin from this repository:\n\n  ```bash\n  devin plugins install obra/superpowers\n  ```\n\n- Update to the latest version with:\n\n  ```bash\n  devin plugins update superpowers\n  ```\n\n### Factory Droid\n\n- Register the marketplace:\n\n  ```bash\n  droid plugin marketplace add https://github.com/obra/superpowers\n  ```\n\n- Install the plugin:\n\n  ```bash\n  droid plugin install superpowers@superpowers\n  ```\n\n### Gemini CLI\n\n- Install the extension:\n\n  ```bash\n  gemini extensions install https://github.com/obra/superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  gemini extensions update superpowers\n  ```\n\n### GitHub Copilot CLI\n\n- Register the marketplace:\n\n  ```bash\n  copilot plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin:\n\n  ```bash\n  copilot plugin install superpowers@superpowers-marketplace\n  ```\n\n### Grok Build CLI\n\nSuperpowers is available via the [official Grok plugin marketplace](https://github.com/xai-org/plugin-marketplace).\n\n- Install the plugin from xAI's official marketplace:\n\n  ```bash\n  grok plugin install superpowers@xai-official --trust\n  ```\n\n- Or open the marketplace in the TUI, search for Superpowers, and install it:\n\n  ```text\n  /marketplace\n  ```\n\n### Kimi Code\n\nSuperpowers is available in Kimi Code's plugin marketplace.\n\n- Open Kimi Code's plugin manager:\n\n  ```text\n  /plugins\n  ```\n\n- Go to `Marketplace` > `Superpowers` and install it.\n\n- Or install directly from this repository:\n\n  ```text\n  /plugins install https://github.com/obra/superpowers\n  ```\n\n- Detailed docs: [docs/README.kimi.md](docs/README.kimi.md)\n\n### OpenCode\n\nOpenCode uses its own plugin install; install Superpowers separately even if you\nalready use it in another harness.\n\n- Tell OpenCode:\n\n  ```\n  Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md\n  ```\n\n- Detailed docs: [docs/README.opencode.md](docs/README.opencode.md)\n\n### Pi\n\nInstall Superpowers as a Pi package from this repository:\n\n```bash\npi install git:github.com/obra/superpowers\n```\n\nFor local development, run Pi with this checkout loaded as a temporary package:\n\n```bash\npi -e /path/to/superpowers\n```\n\nThe Pi package loads the Superpowers skills and a small extension that injects the `using-superpowers` bootstrap at session startup and again after compaction. Pi has native skills, so no compatibility `Skill` tool is required. Subagent and task-list tools remain optional Pi companion packages.\n\n### Qwen Code\n\nQwen Code installs plugins from Claude Code marketplaces directly.\n\n- Install the plugin from this repository, and pick `superpowers` when prompted:\n\n  ```bash\n  qwen extensions install obra/superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  qwen extensions update superpowers\n  ```\n\n### Hermes Agent\n\nInstall Superpowers as a Hermes plugin from this repository:\n\n```bash\nhermes plugins install obra/superpowers --enable\n```\n\nRestart any active Hermes sessions after installing. Note: Hermes has no\npost-compaction hook, so a very long session that compacts over its first\nturn loses the bootstrap — start a fresh session if skills stop triggering.\n\n### Muse\n\nSuperpowers is available as a native Muse plugin — same repo, same skills, all harnesses. The `using-superpowers` bootstrap is injected via the native `SessionStart` hook alongside Claude Code, Codex, Cursor, Gemini, Pi, and the rest — no per-session opt-in.\n\n- Install from a local checkout:\n\n  ```bash\n  muse plugins install ./\n  muse plugins approve superpowers\n  ```\n\n  Or clone and install:\n\n  ```bash\n  git clone https://github.com/obra/superpowers.git\n  muse plugins install ./superpowers\n  muse plugins approve superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  muse plugins update superpowers\n  ```\n\nRestart any active Muse sessions after installing so the `SessionStart` hook takes effect — skills are active immediately, hooks require approval on first install. To verify, start a fresh session and send `Let's make a react todo list` — a working install auto-triggers `brainstorming` before any code is written. Version is tracked in `.version-bump.json` so `scripts/bump-version.sh` keeps it in sync.\n\n## The Basic Workflow\n\n1. **brainstorming** - Activates before building anything. Draws out what you actually want, and why, through questions that get you describing it, then plays its understanding back for correction. Small changes get agreed in chat; projects get a written design document a builder could plan from.\n\n2. **using-git-worktrees** - Activates after design approval. Creates isolated workspace on new branch, runs project setup, verifies clean test baseline.\n\n3. **writing-plans** - Activates with approved design. Breaks work into bite-sized tasks (2-5 minutes each). Every task has exact file paths, complete code, verification steps.\n\n4. **subagent-driven-development** or **executing-plans** - Activates with plan. Either dispatches a fresh subagent per task with a review after each (most thorough), or implements every task inline in the current session with one fresh review of the whole branch at the end (cheapest).\n\n5. **test-driven-development** - Activates during implementation. Enforces RED-GREEN-REFACTOR: write failing test, watch it fail, write minimal code, watch it pass, commit. Deletes code written before tests.\n\n6. **requesting-code-review** - Activates between tasks. Reviews against plan, reports issues by severity. Critical issues block progress.\n\n7. **finishing-a-development-branch** - Activates when tasks complete. Verifies tests, presents options (merge/PR/keep/discard), clea",
+      "rank": 4,
+      "weekly_stars": 5474
+    },
+    {
+      "full_name": "TauricResearch/TradingAgents",
+      "html_url": "https://github.com/TauricResearch/TradingAgents",
+      "description": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "homepage": "https://arxiv.org/pdf/2412.20138",
+      "language": "Python",
+      "stars": 118784,
+      "forks": 22706,
+      "open_issues": 97,
+      "topics": [
+        "agent",
+        "finance",
+        "llm",
+        "multiagent",
+        "trading"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2024-12-28T03:31:08Z",
+      "updated_at": "2026-10-31T06:55:21Z",
+      "pushed_at": "2026-10-27T08:43:04Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <img src=\"tradingagents/assets/tauric-logo.svg\" width=\"60%\" alt=\"Tauric Research\">\n</p>\n\n<div align=\"center\" style=\"line-height: 1;\">\n  <a href=\"https://arxiv.org/abs/2412.20138\" target=\"_blank\"><img alt=\"arXiv\" src=\"https://img.shields.io/badge/arXiv-2412.20138-B31B1B?logo=arxiv\"/></a>\n  <a href=\"https://discord.com/invite/hk9PGKShPK\" target=\"_blank\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/Discord-TradingResearch-7289da?logo=discord&logoColor=white&color=7289da\"/></a>\n  <a href=\"https://x.com/TauricResearch\" target=\"_blank\"><img alt=\"X Follow\" src=\"https://img.shields.io/badge/X-TauricResearch-white?logo=x&logoColor=white\"/></a>\n  <a href=\"https://github.com/TauricResearch/\" target=\"_blank\"><img alt=\"Community\" src=\"https://img.shields.io/badge/GitHub_Community-TauricResearch-14C290?logo=discourse\"/></a>\n</div>\n<br>\n<div align=\"center\">\n  <a href=\"https://github.com/TauricResearch\" target=\"_blank\"><img alt=\"TradingAgents #1 Repository of the Day\" src=\"https://trendshift.io/api/badge/repositories/16192\" width=\"250\" height=\"55\"/></a>\n</div>\n<br>\n<div align=\"center\">\n  <!-- Keep these links. Translations will automatically update with the README. -->\n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=de\">Deutsch</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=es\">Español</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=fr\">français</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ja\">日本語</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ko\">한국어</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=pt\">Português</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ru\">Русский</a> | \n  <a href=\"https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=zh\">中文</a>\n</div>\n\n---\n\n# TradingAgents: Multi-Agents LLM Financial Trading Framework\n\n## News\n\n<!-- news:start -->\n- [2026-10] **TradingAgents v0.7.1** released with decisions scored only on final closes and settled across long market holidays, a fix for model dates that could read filings made after the run date, and fixes to portfolios, prices, SEC statements and reports.\n- [2026-10] **TradingAgents v0.7.0** released with runs on your own ChatGPT Plus or Pro plan, backtests scored from the first close after each decision, a note at start-up when a newer release is out, and a wheel attached to each GitHub release.\n- [2026-10] **TradingAgents v0.6.0** released with reports saved as one HTML page, a provider per model tier so the managers and analysts can run on different models, past decisions settled for every ticker while the analysts work, and company news read from Yahoo search while Yahoo's news feed is down.\n\nFull release notes are in [CHANGELOG.md](CHANGELOG.md).\n\n<details>\n<summary>Earlier news</summary>\n\n- [2026-09] **TradingAgents v0.5.2** released with parallel analysts for a faster analysis, a CLI that runs without prompts from flags such as `--ticker` and `--date`, the run's settings recorded in every report, and backtests that see only data published by each analysis date.\n- [2026-09] **TradingAgents v0.5.1** released with a package layout organised by what each module holds (import paths moved), optional Jev screening of social posts, GPT-6 Sol and Luna as the default models, and fixes to run isolation and SEC EDGAR statements.\n- [2026-09] **TradingAgents v0.5.0** released with point-in-time integrity across every dated path, SEC EDGAR fundamentals served as filed, backtesting over a ticker and date grid, portfolio-aware runs, and current model lineups across every provider.\n- [2026-08] **TradingAgents v0.4.0** released with look-ahead / point-in-time fixes across FRED macro, social sentiment, and the decision-log memory; clearer decision signals; working CLI checkpoint resume; Trader price grounding; and the GPT-5.6 and GLM-5.3 models.\n- [2026-07] **TradingAgents v0.3.1** released with correctness and stability fixes: Alpha Vantage look-ahead filtering, graph-router crash-safety, graph-shape-aware checkpoint resume, working crypto sentiment sources, a configurable LLM retry budget, Bedrock API-key auth, and Claude Sonnet 5 / Fable 5 support.\n- [2026-06] **TradingAgents v0.3.0** released with a verified data-access contract, an expanded provider registry (NVIDIA, Kimi, Groq, Mistral, Bedrock, and any OpenAI-compatible endpoint), FRED and Polymarket data vendors, a current-generation model catalog, and a CI gate.\n- [2026-05] **TradingAgents v0.2.5** released with the grounded Sentiment Analyst, GPT-5.5 etc. model coverage, Qwen/GLM/MiniMax dual-region support, `TRADINGAGENTS_*` env-var configurability with API-key auto-detection, remote Ollama support, non-US alpha benchmarks, and ticker path-traversal hardening.\n- [2026-04] **TradingAgents v0.2.4** released with structured-output agents (Research Manager, Trader, Portfolio Manager), LangGraph checkpoint resume, persistent decision log, DeepSeek/Qwen/GLM/Azure provider support, Docker, and a Windows UTF-8 encoding fix.\n- [2026-03] **TradingAgents v0.2.3** released with multi-language support, GPT-5.4 family models, unified model catalog, backtesting date fidelity, and proxy support.\n- [2026-03] **TradingAgents v0.2.2** released with GPT-5.4/Gemini 3.1/Claude 4.6 model coverage, five-tier rating scale, OpenAI Responses API, Anthropic effort control, and cross-platform stability.\n- [2026-02] **TradingAgents v0.2.0** released with multi-provider LLM support (GPT-5.x, Gemini 3.x, Claude 4.x, Grok 4.x) and improved system architecture.\n- [2026-01] **Trading-R1** [Technical Report](https://arxiv.org/abs/2509.11420) released, with [Terminal](https://github.com/TauricResearch/Trading-R1) expected to land soon.\n\n</details>\n<!-- news:end -->\n\n<div align=\"center\">\n\n🚀 [TradingAgents](#tradingagents-framework) | ⚡ [Installation & CLI](#installation-and-cli) | 🎬 [Demo](https://www.youtube.com/watch?v=90gr5lwjIho) | 📦 [Package Usage](#tradingagents-package) | 🤝 [Contributing](#contributing) | 📄 [Citation](#citation)\n\n</div>\n\n> 🎉 **TradingAgents** officially released! We have received numerous inquiries about the work, and we would like to express our thanks for the enthusiasm in our community.\n>\n> So we decided to fully open-source the framework. Looking forward to building impactful projects with you!\n\n## TradingAgents Framework\n\nTradingAgents is a multi-agent trading framework that mirrors the dynamics of real-world trading firms. By deploying specialized LLM-powered agents: from fundamental analysts, sentiment experts, and technical analysts, to trader, risk management team, the platform collaboratively evaluates market conditions and informs trading decisions. Moreover, these agents engage in dynamic discussions to pinpoint the optimal strategy.\n\n<p align=\"center\">\n  <img src=\"assets/schema.png\" style=\"width: 100%; height: auto;\">\n</p>\n\n> TradingAgents framework is designed for research purposes. Trading performance may vary based on many factors, including the chosen backbone language models, model temperature, trading periods, the quality of data, and other non-deterministic factors. [It is not intended as financial, investment, or trading advice.](https://tauric.ai/disclaimer/)\n\nOur framework decomposes complex trading tasks into specialized roles.\n\n### Analyst Team\n- Fundamentals Analyst: Evaluates company financials and performance metrics, identifying intrinsic values and potential red flags.\n- Sentiment Analyst: Aggregates news headlines, StockTwits, and Reddit chatter into a single sentiment read to gauge short-term market mood.\n- News Analyst: Monitors global news and macroeconomic indicators, interpreting the impact of events on market conditions.\n- Technical Analyst: Utilizes technical indicators (like MACD and RSI) to detect trading patterns and forecast price movements.\n\nThe selected analysts work at the same time, each on its own tools, and the research debate starts once all of their reports are in.\n\n<p align=\"center\">\n  <img src=\"assets/analyst.png\" width=\"100%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n### Researcher Team\n- Comprises both bullish and bearish researchers who critically assess the insights provided by the Analyst Team. Through structured debates, they balance potential gains against inherent risks.\n\n<p align=\"center\">\n  <img src=\"assets/researcher.png\" width=\"70%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n### Trader Agent\n- Composes reports from the analysts and researchers to make informed trading decisions, determining the timing and magnitude of trades.\n\n<p align=\"center\">\n  <img src=\"assets/trader.png\" width=\"70%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n### Risk Management and Portfolio Manager\n- Continuously evaluates portfolio risk by assessing market volatility, liquidity, and other risk factors. The risk management team evaluates and adjusts trading strategies, providing assessment reports to the Portfolio Manager for final decision.\n- The Portfolio Manager approves/rejects the transaction proposal. If approved, the order will be sent to the simulated exchange and executed.\n\n<p align=\"center\">\n  <img src=\"assets/risk.png\" width=\"70%\" style=\"display: inline-block; margin: 0 2%;\">\n</p>\n\n## Installation and CLI\n\n### Installation\n\nClone TradingAgents:\n```bash\ngit clone https://github.com/TauricResearch/TradingAgents.git\ncd TradingAgents\n```\n\nTradingAgents needs Python 3.11 or later. Create a virtual environment in any of your favorite environment managers:\n```bash\nconda create -n tradingagents python=3.13\nconda activate tradingagents\n```\n\nOr with [uv](https://docs.astral.sh/uv/):\n```bash\nuv venv --python 3.13\nsource .venv/bin/activate\n```\n\nInstall the package and its dependencies (`uv pip install .` with uv):\n```bash\npip install .\n```\n\n### Docker\n\nAlternatively, run with Docker:\n```bash\ncp .env.example .env  # ad",
+      "rank": 5,
+      "weekly_stars": 5490
+    },
+    {
+      "full_name": "multica-ai/andrej-karpathy-skills",
+      "html_url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+      "homepage": "",
+      "language": "未知",
+      "stars": 227013,
+      "forks": 22663,
+      "open_issues": 138,
+      "topics": [],
+      "license": "未声明",
+      "created_at": "2026-01-27T03:53:13Z",
+      "updated_at": "2026-10-31T06:57:17Z",
+      "pushed_at": "2026-04-20T10:05:04Z",
+      "archived": false,
+      "readme": "# Karpathy-Inspired Claude Code Guidelines\n\n> Check out my new project [Multica](https://github.com/multica-ai/multica) — an open-source platform for running and managing coding agents with reusable skills.\n>\n> Follow me on X: [https://x.com/jiayuan_jy](https://x.com/jiayuan_jy)\n\nA single `CLAUDE.md` file to improve Claude Code behavior, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.\n\nEnglish | [简体中文](./README.zh.md)\n\n## The Problems\n\nFrom Andrej's post:\n\n> \"The models make wrong assumptions on your behalf and just run along with them without checking. They don't manage their confusion, don't seek clarifications, don't surface inconsistencies, don't present tradeoffs, don't push back when they should.\"\n\n> \"They really like to overcomplicate code and APIs, bloat abstractions, don't clean up dead code... implement a bloated construction over 1000 lines when 100 would do.\"\n\n> \"They still sometimes change/remove comments and code they don't sufficiently understand as side effects, even if orthogonal to the task.\"\n\n## The Solution\n\nFour principles in one file that directly address these issues:\n\n| Principle | Addresses |\n|-----------|-----------|\n| **Think Before Coding** | Wrong assumptions, hidden confusion, missing tradeoffs |\n| **Simplicity First** | Overcomplication, bloated abstractions |\n| **Surgical Changes** | Orthogonal edits, touching code you shouldn't |\n| **Goal-Driven Execution** | Leverage through tests-first, verifiable success criteria |\n\n## The Four Principles in Detail\n\n### 1. Think Before Coding\n\n**Don't assume. Don't hide confusion. Surface tradeoffs.**\n\nLLMs often pick an interpretation silently and run with it. This principle forces explicit reasoning:\n\n- **State assumptions explicitly** — If uncertain, ask rather than guess\n- **Present multiple interpretations** — Don't pick silently when ambiguity exists\n- **Push back when warranted** — If a simpler approach exists, say so\n- **Stop when confused** — Name what's unclear and ask for clarification\n\n### 2. Simplicity First\n\n**Minimum code that solves the problem. Nothing speculative.**\n\nCombat the tendency toward overengineering:\n\n- No features beyond what was asked\n- No abstractions for single-use code\n- No \"flexibility\" or \"configurability\" that wasn't requested\n- No error handling for impossible scenarios\n- If 200 lines could be 50, rewrite it\n\n**The test:** Would a senior engineer say this is overcomplicated? If yes, simplify.\n\n### 3. Surgical Changes\n\n**Touch only what you must. Clean up only your own mess.**\n\nWhen editing existing code:\n\n- Don't \"improve\" adjacent code, comments, or formatting\n- Don't refactor things that aren't broken\n- Match existing style, even if you'd do it differently\n- If you notice unrelated dead code, mention it — don't delete it\n\nWhen your changes create orphans:\n\n- Remove imports/variables/functions that YOUR changes made unused\n- Don't remove pre-existing dead code unless asked\n\n**The test:** Every changed line should trace directly to the user's request.\n\n### 4. Goal-Driven Execution\n\n**Define success criteria. Loop until verified.**\n\nTransform imperative tasks into verifiable goals:\n\n| Instead of... | Transform to... |\n|--------------|-----------------|\n| \"Add validation\" | \"Write tests for invalid inputs, then make them pass\" |\n| \"Fix the bug\" | \"Write a test that reproduces it, then make it pass\" |\n| \"Refactor X\" | \"Ensure tests pass before and after\" |\n\nFor multi-step tasks, state a brief plan:\n\n```\n1. [Step] → verify: [check]\n2. [Step] → verify: [check]\n3. [Step] → verify: [check]\n```\n\nStrong success criteria let the LLM loop independently. Weak criteria (\"make it work\") require constant clarification.\n\n## Install\n\n**Option A: Claude Code Plugin (recommended)**\n\nFrom within Claude Code, first add the marketplace:\n```\n/plugin marketplace add forrestchang/andrej-karpathy-skills\n```\n\nThen install the plugin:\n```\n/plugin install andrej-karpathy-skills@karpathy-skills\n```\n\nThis installs the guidelines as a Claude Code plugin, making the skill available across all your projects.\n\n**Option B: CLAUDE.md (per-project)**\n\nNew project:\n```bash\ncurl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md\n```\n\nExisting project (append):\n```bash\necho \"\" >> CLAUDE.md\ncurl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md\n```\n\n## Using with Cursor\n\nThis repository includes a committed Cursor project rule ([`.cursor/rules/karpathy-guidelines.mdc`](.cursor/rules/karpathy-guidelines.mdc)) so the same guidelines apply when you open the project in Cursor. See **[CURSOR.md](CURSOR.md)** for setup, using the rule in other projects, and how this relates to Claude Code.\n\n## Key Insight\n\nFrom Andrej:\n\n> \"LLMs are exceptionally good at looping until they meet specific goals... Don't tell it what to do, give it success criteria and watch it go.\"\n\nThe \"Goal-Driven Execution\" principle captures this: transform imperative instructions into declarative goals with verification loops.\n\n## How to Know It's Working\n\nThese guidelines are working if you see:\n\n- **Fewer unnecessary changes in diffs** — Only requested changes appear\n- **Fewer rewrites due to overcomplication** — Code is simple the first time\n- **Clarifying questions come before implementation** — Not after mistakes\n- **Clean, minimal PRs** — No drive-by refactoring or \"improvements\"\n\n## Customization\n\nThese guidelines are designed to be merged with project-specific instructions. Add them to your existing `CLAUDE.md` or create a new one.\n\nFor project-specific rules, add sections like:\n\n```markdown\n## Project-Specific Guidelines\n\n- Use TypeScript strict mode\n- All API endpoints must have tests\n- Follow the existing error handling patterns in `src/utils/errors.ts`\n```\n\n## Tradeoff Note\n\nThese guidelines bias toward **caution over speed**. For trivial tasks (simple typo fixes, obvious one-liners), use judgment — not every change needs the full rigor.\n\nThe goal is reducing costly mistakes on non-trivial work, not slowing down simple tasks.\n\n## License\n\nMIT\n",
+      "rank": 6,
+      "weekly_stars": 4178
+    },
+    {
+      "full_name": "Leonxlnx/taste-skill",
+      "html_url": "https://github.com/Leonxlnx/taste-skill",
+      "description": "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages",
+      "homepage": "https://tasteskill.dev",
+      "language": "JavaScript",
+      "stars": 106489,
+      "forks": 7205,
+      "open_issues": 8,
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "anti-slop",
+        "claude-code",
+        "codex",
+        "cursor",
+        "design-system",
+        "frontend",
+        "landing-page",
+        "ui-design",
+        "web-design"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-19T21:44:05Z",
+      "updated_at": "2026-10-31T06:56:39Z",
+      "pushed_at": "2026-10-31T03:55:27Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/taste-skill-wordmark-dark.png\" />\n    <img src=\"assets/taste-skill-wordmark.png\" alt=\"Taste Skill\" width=\"340\" />\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://tasteskill.dev\" title=\"Visit tasteskill.dev\"><img src=\"https://img.shields.io/badge/website-tasteskill.dev-24292f?style=flat\" alt=\"Visit tasteskill.dev\" /></a>\n  &nbsp;\n  <a href=\"https://tastecode.dev\" title=\"Visit tastecode.dev\"><img src=\"https://img.shields.io/badge/new-TasteCode-ff6b00?style=flat\" alt=\"New: TasteCode\" /></a>\n  &nbsp;\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-24292f?style=flat&amp;logo=github&amp;logoColor=white\" alt=\"MIT License\" /></a>\n  &nbsp;\n  <a href=\"CHANGELOG.md\"><img src=\"https://img.shields.io/badge/changelog-view-24292f?style=flat\" alt=\"Changelog\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://tastecode.dev\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/readme-tastecode-dark.webp\" />\n      <img src=\"assets/readme-tastecode.webp\" alt=\"TasteCode is here. Taste Skill as a desktop app, with a design agent built in. Free and open source. Download at tastecode.dev\" width=\"100%\" />\n    </picture>\n  </a>\n</p>\n\n<h3 align=\"center\">Sponsors</h3>\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\" width=\"104\">\n      <a href=\"https://interfaces.dev/?utm_source=tasteskill&utm_medium=sponsorship\">\n        <img src=\"assets/sponsors/interfaces-dev-icon.webp\" alt=\"Interfaces\" width=\"52\" height=\"52\" />\n      </a>\n    </td>\n    <td><sub><a href=\"https://interfaces.dev/?utm_source=tasteskill&utm_medium=sponsorship\"><strong>interfaces.dev</strong></a> · A design engineering magazine by <a href=\"https://github.com/jakubkrehel\"><strong>Jakub Krehel</strong></a></sub></td>\n  </tr>\n  <tr>\n    <td align=\"center\" width=\"104\">\n      <a href=\"https://reactbits.dev\">\n        <picture>\n          <source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/sponsors/reactbits-icon-dark.svg\" />\n          <img src=\"assets/sponsors/reactbits-icon-light.svg\" alt=\"React Bits\" width=\"52\" height=\"52\" />\n        </picture>\n      </a>\n    </td>\n    <td><sub><a href=\"https://reactbits.dev\"><strong>React Bits</strong></a> · animated React components for creative interfaces</sub></td>\n  </tr>\n  <tr>\n    <td align=\"center\" width=\"104\"><a href=\"https://img.ly/\"><img src=\"assets/sponsors/imgly-logo.svg\" alt=\"IMG.LY\" width=\"52\" height=\"52\" /></a></td>\n    <td><sub><a href=\"https://img.ly/\"><strong>IMG.LY</strong></a> · CreativeEditor SDK</sub></td>\n  </tr>\n  <tr>\n    <td align=\"center\" width=\"104\"><a href=\"https://www.sent.dm\"><img src=\"assets/sponsors/sentdm.png\" alt=\"Sent.dm\" width=\"52\" height=\"52\" /></a></td>\n    <td><sub><a href=\"https://www.sent.dm\"><strong>Sent.dm</strong></a> · messaging APIs for SMS, WhatsApp, and RCS</sub></td>\n  </tr>\n</table>\n\n<p align=\"center\"><sub><a href=\"https://github.com/sponsors/Leonxlnx\">Become a sponsor</a></sub></p>\n\n**Taste Skill** is an Agent Skill that makes coding agents design websites and app screens instead of assembling the average landing page. It gives the agent an art direction, real pictures and a way to check its own work in a real browser.\n\nPages it has built, each from one brief:\n\n<table>\n  <tr>\n    <td width=\"50%\"><img src=\"examples/v2/coffee-storefront.webp\" alt=\"Coffee shop page with a drawn storefront as its hero\" /></td>\n    <td width=\"50%\"><img src=\"examples/v2/night-dates.webp\" alt=\"Techno night page with its dates set into an archive photograph\" /></td>\n  </tr>\n  <tr>\n    <td width=\"50%\"><img src=\"examples/v2/coffee-roast.webp\" alt=\"Coffee shop page section showing the roast in four photographs\" /></td>\n    <td width=\"50%\"><img src=\"examples/v2/coffee-questions.webp\" alt=\"Coffee shop page questions as stacked index cards\" /></td>\n  </tr>\n</table>\n\nThe photographs are real, found in open archives and credited by the skill ([credits](examples/v2/CREDITS.md)). Watch the [launch film](https://github.com/Leonxlnx/taste-skill/releases/tag/v2.0.0).\n\n## Install\n\n```bash\nnpx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"\n```\n\nThat installs the skill with the [`npx skills`](https://github.com/vercel-labs/agent-skills) CLI.\n\nThe skill runs its scripts with **Node 22+** and an installed **Chrome, Edge or Chromium**. It installs nothing and needs no API keys. Finding pictures needs network access.\n\n<details>\n<summary>Claude Code plugin</summary>\n\nRun these inside Claude Code. The skill is namespaced under `taste-skill:`, so it does not collide with your other skills.\n\n```\n/plugin marketplace add Leonxlnx/taste-skill\n/plugin install taste-skill@taste-skill\n```\n\n`/plugin update` upgrades it later.\n\n</details>\n\n<details>\n<summary>Codex plugin</summary>\n\n```bash\ncodex plugin marketplace add Leonxlnx/taste-skill\ncodex plugin add taste-skill@taste-skill\n```\n\nStart a new Codex session afterwards so the skill is loaded.\n\n</details>\n\n<details>\n<summary>From a clone, linked instead of copied</summary>\n\n`./install.sh` symlinks the skill into Claude Code (`--codex` for Codex, `--all-agents` for both), so a `git pull` updates it in place.\n\n</details>\n\nAlready have the skill? Run the install command again; the install name did not change. Looking for one of the older skills? See [Moved skills](#moved-skills).\n\n## How v2 works\n\nThe skill is built from a study of 247 curated sites. A build runs in six steps:\n\n1. Reads the brief and lists what only this client has.\n2. A script deals three of 20 researched directions and the agent picks one.\n3. Finds the idea: one sentence tying the client's own material to that direction.\n4. Builds with real pictures and footage from open collections, credited.\n5. Checks the page in a real browser at three widths and fails it on slop.\n6. Looks at its own screenshots and fixes the top three problems, up to three rounds.\n\nA build takes roughly 30 to 45 minutes and a few hundred thousand tokens. Details are in the [changelog](CHANGELOG.md) and the [study](skills/taste-skill/references/research.md).\n\nDashboards and app screens (v2.1) take their own route: the skill deals one of the app styles distilled from real product screens, builds the shell, the data, the charts and the tables to those numbers, and checks the result with app rules: quiet panels, aligned figures, colour spent on data, a phone layout where the navigation folds away. A product's landing page builds the app it shows the same way, so its screenshots look like a working product.\n\nv2.1 also checks the frame of every page (a clear title on the first screen, equal margins, no section shoved to one side, no random blank stretches) and moves the way strong award sites do, measured on the latest 100 Awwwards Sites of the Day.\n\n## Moved skills\n\nThis repo holds one skill, `design-taste-frontend`. The others moved to repos of their own and kept their install names:\n\n| Install name | Where it lives now |\n| --- | --- |\n| `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `gpt-taste`, `stitch-design-taste`, `design-taste-frontend-v1`, `design-taste-frontend-v2-experimental` | **[Leonxlnx/taste-skill-classics](https://github.com/Leonxlnx/taste-skill-classics)** |\n| `imagegen-frontend-web`, `imagegen-frontend-mobile`, `brandkit`, `image-to-code` | **[Leonxlnx/imagegen-skills](https://github.com/Leonxlnx/imagegen-skills)** |\n| `redesign-existing-projects` | Part of `design-taste-frontend`, which audits an existing page in a real browser before changing anything |\n| `full-output-enforcement` | Removed. For the same problem, see **[Leonxlnx/unlazy](https://github.com/Leonxlnx/unlazy)** |\n\nInstall a moved skill from its new repo under the same name:\n\n```bash\nnpx skills add https://github.com/Leonxlnx/taste-skill-classics --skill \"high-end-visual-design\"\n```\n\n## Common Questions\n\n**What does the skill need?**  \nNode 22 or newer and Chrome, Edge or Chromium. It installs nothing and uses no API keys. It needs the internet only to find pictures.\n\n**Where do the pictures come from, and can I use them?**  \nFrom open collections such as Wikimedia Commons, Openverse and the Met. Only public domain, CC0, CC BY and CC BY-SA files are offered, and the skill puts the credits on the page. Replace them with your own when you have them.\n\n**Does it work with React, Vue, Svelte, plain HTML?**  \nYes. The rules are about design, not a framework.\n\n**Is it for dashboards and app screens?**  \nYes, since v2.1. The skill tells a page from an app screen and builds a dashboard, an admin view or a settings screen with its own run: a style dealt from a study of real product screens, quiet panels, honest data and charts, and its own checks (`inspect.mjs --app`).\n\n## Support the project\n\nIf Taste Skill helps you, consider sponsoring:\n\n[Sponsor on GitHub](https://github.com/sponsors/Leonxlnx)\n\n### Open Source Supporters\n\n<table align=\"center\">\n  <tr>\n    <td align=\"center\" width=\"104\"><a href=\"https://www.kimi.com\"><img src=\"assets/sponsors/kimi-icon.png\" alt=\"Kimi\" width=\"52\" height=\"52\" /></a></td>\n    <td><a href=\"https://www.kimi.com\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69mt3v89kkekg24gg\" /><img alt=\"Kimi Open Source Friends\" src=\"https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69fudcmosb3pipls0\" height=\"42\" /></picture></a><br /><sub><a href=\"https://platform.kimi.ai?track_id=track-20f0d64bcaba419bb425a3e8c306f65d&aff=taste-skill\"><strong>Get a Kimi API key</strong></a>: taste-skill users get 10% bonus API credits on their first purchase.</sub></td>\n  </tr>\n  <tr>\n    <td align=\"center\" width=\"104\"><a href=\"https://vercel.com/open-source-program\"><img src=\"assets/sponsors/vercel-logo.svg\" alt=\"Vercel\" width=\"52\" height=\"52\" /></a></td>\n    <td><a href=\"https://vercel.com/open-source-program\"><img src=\"assets/vercel-oss-program-badge.svg\" alt=\"Vercel O",
+      "rank": 7,
+      "weekly_stars": 4712
+    },
+    {
+      "full_name": "jakubkrehel/skills",
+      "html_url": "https://github.com/jakubkrehel/skills",
+      "description": "A collection of agent skills that help you build great interfaces.",
+      "homepage": "https://jakub.kr/skills",
+      "language": "Markdown",
+      "stars": 9417,
+      "forks": 359,
+      "open_issues": 10,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-07-10T08:58:36Z",
+      "updated_at": "2026-10-31T06:56:18Z",
+      "pushed_at": "2026-10-25T13:26:17Z",
+      "archived": false,
+      "readme": "<a href=\"https://interfaces.dev/\">\n  <img width=\"320\" height=\"168\" alt=\"interfaces.dev\" src=\"https://ho1jr3x2dcwdu3t5.public.blob.vercel-storage.com/interfaces-og-image.png\" />\n</a>\n\n[![skills.sh](https://skills.sh/b/jakubkrehel/skills)](https://skills.sh/jakubkrehel/skills)\n\nA collection of agent skills that cover UI, typography, colors, accessibility, layout, product writing and help you build a great interface.\n\nThese skills cover topics that I write about on [my personal website](https://jakub.kr/) and my design engineering magazine, [Interfaces](https://interfaces.dev/).\n\n## Skills that help build great interfaces\n\n- [**better-interface**](skills/better-interface/SKILL.md): Reviews a screen, flow or whole interface across **accessibility**, **layout**, **writing**, **typography**, **color** and **UI polish**, and returns one ranked report.\n- [**better-ui**](skills/better-ui/SKILL.md): Polishes surfaces, icons and motion with exact values for **border radius**, **optical alignment**, **shadows**, **icon states** and **animation**.\n- [**better-typography**](skills/better-typography/SKILL.md): Sets and reviews how text renders, from the **type scale** and **spacing** to **font features**, **wrapping**, **truncation** and **punctuation**.\n- [**better-colors**](skills/better-colors/SKILL.md): Builds and checks color systems by **generating palettes**, **naming semantic tokens**, **converting between formats** and **measuring contrast**.\n- [**better-accessibility**](skills/better-accessibility/SKILL.md): Reviews and fixes **keyboard and focus behavior**, **ARIA**, **accessible names**, **forms**, **screen-reader announcements**, **motion** and **zoom** against WCAG 2.2.\n- [**better-layout**](skills/better-layout/SKILL.md): Sets **grouping**, **alignment**, **reading order**, **responsive structure** and room for translated text, so a layout holds up when it is resized, translated or mirrored.\n- [**better-writing**](skills/better-writing/SKILL.md): Writes and reviews interface copy, from **labels** and **errors** to **empty states** and **confirmations**, so it matches the product's voice and tells people what to do next.\n- [**interface-review**](skills/interface-review/SKILL.md): Reviews a **branch**, **pull request** or **uncommitted change** for the interface problems it introduced or regressed, across accessibility, layout, writing, typography, color and UI. User-invoked.\n- [**explain-interface**](skills/explain-interface/SKILL.md): Explains how a website, a visual effect or an animation was built, from a **live URL** or a **screenshot**. User-invoked.\n- [**break**](skills/break/SKILL.md): Renders a component you choose under **every scenario** that can reach it on a temporary page and stress tests it. User-invoked.\n- [**build-design**](skills/build-design/SKILL.md): Builds UI from a Figma file or a design image so it matches the design, using the project's existing tokens and components.\n- [**teardown**](skills/teardown/SKILL.md): Creates a technical illustration of an object and lets you configure it, color it and download as an SVG, PNG or PDF.\n- [**state-machine**](skills/state-machine/SKILL.md): Renders every state of a component you choose on a throwaway page, with mock data and a switcher, so you can work on each state. User-invoked.\n- [**variant**](skills/variant/SKILL.md): Builds multiple **variants** of a component you're working on and helps you iterate and pick one. User-invoked.\n\n## Install\n\n```bash\nnpx skills add jakubkrehel/skills\n```\n\n## Claude Code plugin\n\n```text\n/plugin marketplace add jakubkrehel/skills\n/plugin install interfaces@interfaces\n```\n",
+      "rank": 8,
+      "weekly_stars": 1107
+    },
+    {
+      "full_name": "pingdotgg/t3code",
+      "html_url": "https://github.com/pingdotgg/t3code",
+      "description": "",
+      "homepage": "https://t3.codes",
+      "language": "TypeScript",
+      "stars": 33063,
+      "forks": 8683,
+      "open_issues": 3925,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-02-08T23:46:22Z",
+      "updated_at": "2026-10-31T06:54:24Z",
+      "pushed_at": "2026-10-31T06:57:25Z",
+      "archived": false,
+      "readme": "# T3 Code\n\nT3 Code is an \"agent harness control surface\". It enables control of the agents on your machine with a best-in-class mobile app ([iOS](https://apps.apple.com/us/app/t3-code-remote-claude-more/id6787819824), [Android](https://play.google.com/store/apps/details?id=com.t3tools.t3code)), [web app](https://app.t3.codes) and [Electron-based desktop app](https://t3.codes).\n\nWorks with your subscriptions on Claude Code, Codex, Cursor, Grok Build, OpenCode, and Google Antigravity. If they're set up on your computer, T3 Code can control them.\n\n## \"Wait, what are you selling me?\"\n\nNothing. We built T3 Code because we wanted the best possible development experience with agents. We were inspired by existing solutions like the Codex desktop app, Conductor, Claude Desktop and Cursor Glass, but none met our bar.\n\nWe wanted something performant, remote-ready, and truly open. If we ever go the wrong direction, we want you to have everything you need to fork and build the editor that you want.\n\n## Installation\n\n> [!WARNING]\n> T3 Code currently supports Codex, Claude, Cursor, Grok Build, OpenCode, and Antigravity. Install and authenticate at least one provider before use:\n>\n> - Codex: install [Codex CLI](https://developers.openai.com/codex/cli) and run `codex login`\n> - Claude: install [Claude Code](https://claude.com/product/claude-code) and run `claude auth login`\n> - Cursor: install [Cursor CLI](https://cursor.com/cli) and run `agent login`\n> - Grok Build: install [Grok Build CLI](https://x.ai/cli) and run `grok login`\n> - OpenCode: install [OpenCode](https://opencode.ai) and run `opencode auth login`\n> - Antigravity: enable it in Settings, then use **Install Antigravity** and **Sign in with Google**. No CLI is required.\n\n### Command line\n\n```bash\ncurl -fsSL https://t3.codes/install.sh | sh\n```\n\nOn Windows, in PowerShell:\n\n```powershell\nirm https://t3.codes/install.ps1 | iex\n```\n\nThen run `t3` to start the server and open the local web app. `t3 service install` keeps it running in the background, `t3 update` moves to a newer release, and `t3 --help` has the full reference.\n\nTo try it once without installing, run `npx t3@latest` instead.\n\n### Desktop app\n\nInstall the latest version of the desktop app from [GitHub Releases](https://github.com/pingdotgg/t3code/releases), or from your favorite package registry:\n\n#### Windows (`winget`)\n\n```bash\nwinget install T3Tools.T3Code\n```\n\n#### Windows (`scoop`)\n\n```bash\nscoop install extras/t3code\n```\n\n#### macOS (Homebrew)\n\n```bash\nbrew install --cask t3-code\n```\n\n#### Debian, Ubuntu (`.deb`)\n\nDownload the `.deb` from [GitHub Releases](https://github.com/pingdotgg/t3code/releases), then:\n\n```bash\nsudo apt install ./T3-Code-*.deb\n```\n\n#### Arch Linux (AUR)\n\nStable:\n\n```bash\nyay -S t3code-bin\n```\n\nNightly:\n\n```bash\nyay -S t3code-nightly-bin\n```\n\nThe AUR packaging is maintained in this repository under [`packaging/aur`](./packaging/aur).\n\n#### Nix (nixpkgs)\n\n```bash\nnix profile add github:NixOS/nixpkgs/nixos-unstable#t3code\n```\n\nThe package is maintained in [nixpkgs](https://github.com/NixOS/nixpkgs/tree/nixos-unstable/pkgs/by-name/t3/t3code)\nand includes the desktop app (`t3code-desktop`) and the `t3` command.\nSee [Nix installation](./docs/user/install.md#nix-nixpkgs) for NixOS configuration and updates.\n\n## Some notes\n\nWe are very very early in this project. Expect bugs.\n\nWe are (mostly) not accepting contributions yet. Small fixes may be considered. Big features will not be.\n\n## Documentation\n\nFull docs live in [docs/](./docs). There's no docs site yet.\n\n- [FAQ](./docs/user/faq.md)\n- [Install and first run](./docs/user/install.md)\n- [Permission modes](./docs/user/permission-modes.md)\n- [Keyboard shortcuts](./docs/user/keybindings.md)\n- [Project settings](./docs/user/project-settings.md)\n- [Appearance preferences](./docs/user/appearance.md)\n- [Remote access from a phone or another machine](./docs/user/remote-access.md)\n- [Connect Claude Code, Codex, ChatGPT and other agents over MCP](./docs/user/outside-agents.md)\n- [Keeping app and server in sync](./docs/user/updating.md)\n- [Source control integrations](./docs/user/source-control.md)\n- Multiple accounts: [Codex](./docs/user/providers-codex.md) · [Claude](./docs/user/providers-claude.md)\n- [Run T3 Code as a background service](./docs/user/background-service.md)\n\nBuilding from source? Start at [docs/internals/overview.md](./docs/internals/overview.md).\n\n## If you REALLY want to contribute still.... read this first\n\n### Install `vp`\n\nT3 Code uses Vite+ so you'll need to install the global `vp` command-line tool.\n\n#### macOS / Linux\n\n```bash\ncurl -fsSL https://vite.plus | bash\n```\n\n#### Windows\n\n```bash\nirm https://vite.plus/ps1 | iex\n```\n\nCheckout their getting started guide for more information: https://viteplus.dev/guide/\n\n### Install dependencies\n\n```bash\nvp i\n```\n\nRead [CONTRIBUTING.md](./CONTRIBUTING.md) before reporting a bug or opening a PR.\n\nHave a feature request? Start an [Ideas discussion](https://github.com/pingdotgg/t3code/discussions/categories/ideas).\n\nNeed support? Join the [Discord](https://discord.gg/jn4EGJjrvv).\n",
+      "rank": 9,
+      "weekly_stars": 2775
+    },
+    {
+      "full_name": "anthropics/knowledge-work-plugins",
+      "html_url": "https://github.com/anthropics/knowledge-work-plugins",
+      "description": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
+      "homepage": "",
+      "language": "Python",
+      "stars": 34085,
+      "forks": 3757,
+      "open_issues": 157,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2026-01-23T20:11:54Z",
+      "updated_at": "2026-10-31T06:49:05Z",
+      "pushed_at": "2026-10-30T07:28:00Z",
+      "archived": false,
+      "readme": "# Knowledge Work Plugins\n\nPlugins that turn Claude into a specialist for your role, team, and company. Built for [Claude Cowork](https://claude.com/product/cowork), also compatible with [Claude Code](https://claude.com/product/claude-code).\n\n## Why Plugins\n\nCowork lets you set the goal and Claude delivers finished, professional work. Plugins let you go further: tell Claude how you like work done, which tools and data to pull from, how to handle critical workflows, and what slash commands to expose — so your team gets better and more consistent outcomes.\n\nEach plugin bundles the skills, connectors, slash commands, and sub-agents for a specific job function. Out of the box, they give Claude a strong starting point for helping anyone in that role. The real power comes when you customize them for your company — your tools, your terminology, your processes — so Claude works like it was built for your team.\n\n## Plugin Marketplace\n\nWe're open-sourcing 11 plugins built and inspired by our own work:\n\n| Plugin | How it helps | Connectors |\n|--------|-------------|------------|\n| **[productivity](./productivity)** | Manage tasks, calendars, daily workflows, and personal context so you spend less time repeating yourself. | Slack, Notion, Asana, Linear, Jira, Monday, ClickUp, Microsoft 365 |\n| **[sales](./sales)** | Research prospects, prep for calls, review your pipeline, draft outreach, and build competitive battlecards. | Slack, HubSpot, Close, Clay, ZoomInfo, Notion, Jira, Fireflies, Microsoft 365 |\n| **[customer-support](./customer-support)** | Triage tickets, draft responses, package escalations, research customer context, and turn resolved issues into knowledge base articles. | Slack, Intercom, HubSpot, Guru, Jira, Notion, Microsoft 365 |\n| **[product-management](./product-management)** | Write specs, plan roadmaps, synthesize user research, keep stakeholders updated, and track the competitive landscape. | Slack, Linear, Asana, Monday, ClickUp, Jira, Notion, Figma, Amplitude, Pendo, Intercom, Fireflies |\n| **[marketing](./marketing)** | Draft content, plan campaigns, enforce brand voice, brief on competitors, and report on performance across channels. | Slack, Canva, Figma, HubSpot, Amplitude, Notion, Ahrefs, SimilarWeb, Klaviyo |\n| **[legal](./legal)** | Review contracts, triage NDAs, navigate compliance, assess risk, prep for meetings, and draft templated responses. | Slack, Box, Egnyte, Jira, Microsoft 365 |\n| **[finance](./finance)** | Prep journal entries, reconcile accounts, generate financial statements, analyze variances, manage close, and support audits. | Snowflake, Databricks, BigQuery, Slack, Microsoft 365 |\n| **[data](./data)** | Query, visualize, and interpret datasets — write SQL, run statistical analysis, build dashboards, and validate your work before sharing. | Snowflake, Databricks, BigQuery, Definite, Hex, Amplitude, Jira |\n| **[enterprise-search](./enterprise-search)** | Find anything across email, chat, docs, and wikis — one query across all your company's tools. | Slack, Notion, Guru, Jira, Asana, Microsoft 365 |\n| **[bio-research](./bio-research)** | Connect to preclinical research tools and databases (literature search, genomics analysis, target prioritization) to accelerate early-stage life sciences R&D. | PubMed, BioRender, bioRxiv, ClinicalTrials.gov, ChEMBL, Synapse, Wiley, Owkin, Open Targets, Benchling |\n| **[cowork-plugin-management](./cowork-plugin-management)** | Create new plugins or customize existing ones for your organization's specific tools and workflows. | — |\n\nInstall these directly from Cowork, browse the full collection here on GitHub, or build your own.\n\n## Getting Started\n\n### Cowork\n\nInstall plugins from [claude.com/plugins](https://claude.com/plugins/).\n\n### Claude Code\n\n```bash\n# Add the marketplace first\nclaude plugin marketplace add anthropics/knowledge-work-plugins\n\n# Then install a specific plugin\nclaude plugin install sales@knowledge-work-plugins\n```\n\nOnce installed, plugins activate automatically. Skills fire when relevant, and slash commands are available in your session (e.g., `/sales:call-prep`, `/data:write-query`).\n\n## How Plugins Work\n\nEvery plugin follows the same structure:\n\n```\nplugin-name/\n├── .claude-plugin/plugin.json   # Manifest\n├── .mcp.json                    # Tool connections\n├── commands/                    # Slash commands you invoke explicitly\n└── skills/                      # Domain knowledge Claude draws on automatically\n```\n\n- **Skills** encode the domain expertise, best practices, and step-by-step workflows Claude needs to give you useful help. Claude draws on them automatically when relevant.\n- **Commands** are explicit actions you trigger (e.g., `/finance:reconciliation`, `/product-management:write-spec`).\n- **Connectors** wire Claude to the external tools your role depends on — CRMs, project trackers, data warehouses, design tools, and more — via [MCP servers](https://modelcontextprotocol.io/).\n\nEvery component is file-based — markdown and JSON, no code, no infrastructure, no build steps.\n\n## Making Them Yours\n\nThese plugins are generic starting points. They become much more useful when you customize them for how your company actually works:\n\n- **Swap connectors** — Edit `.mcp.json` to point at your specific tool stack.\n- **Add company context** — Drop your terminology, org structure, and processes into skill files so Claude understands your world.\n- **Adjust workflows** — Modify skill instructions to match how your team actually does things, not how a textbook says to.\n- **Build new plugins** — Use the `cowork-plugin-management` plugin or follow the structure above to create plugins for roles and workflows we haven't covered yet.\n\nAs your team builds and shares plugins, Claude becomes a cross-functional expert. The context you define gets baked into every relevant interaction, so leaders and admins can spend less time enforcing processes and more time improving them.\n\n## Contributing\n\nPlugins are just markdown files. Fork the repo, make your changes, and submit a PR.\n",
+      "rank": 10,
+      "weekly_stars": 2083
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 54,458 个新增 Star，cloudflare/security-audit-skill、AgriciDaniel/claude-seo、pbakaus/impeccable 位居前三。主要开发语言集中在 Python、JavaScript、Rust。头部项目体现的方向包括：A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings；Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.；The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.。",
+    "top_picks": [
+      "cloudflare/security-audit-skill",
+      "AgriciDaniel/claude-seo",
+      "pbakaus/impeccable"
+    ],
+    "projects": [
+      {
+        "full_name": "cloudflare/security-audit-skill",
+        "tagline": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+        "overview": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings 主要语言为 JavaScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 54,410 Stars、3,529 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "AgriciDaniel/claude-seo",
+        "tagline": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
+        "overview": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data. 主要语言为 Python，公开主题包括：ai、ai-seo、claude-code、claude-code-skill。",
+        "core_features": [
+          "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、ai-seo、claude-code、claude-code-skill 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 24,639 Stars、3,279 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "pbakaus/impeccable",
+        "tagline": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.",
+        "overview": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships. 主要语言为 Rust，公开主题包括：agent-skills、ai、anti-slop、design。",
+        "core_features": [
+          "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、ai、anti-slop、design 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 97,391 Stars、5,738 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "obra/superpowers",
+        "tagline": "An agentic skills framework & software development methodology that works.",
+        "overview": "An agentic skills framework & software development methodology that works. 主要语言为 Shell，公开主题包括：ai、brainstorming、coding、obra。",
+        "core_features": [
+          "An agentic skills framework & software development methodology that works.",
+          "主要技术栈：Shell"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai、brainstorming、coding、obra 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Shell 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 309,576 Stars、27,545 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "TauricResearch/TradingAgents",
+        "tagline": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+        "overview": "TradingAgents: Multi-Agents LLM Financial Trading Framework 主要语言为 Python，公开主题包括：agent、finance、llm、multiagent。",
+        "core_features": [
+          "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent、finance、llm、multiagent 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 118,784 Stars、22,706 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "multica-ai/andrej-karpathy-skills",
+        "tagline": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "overview": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls. 主要语言为 未知，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+          "主要技术栈：未知"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 未知 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 227,013 Stars、22,663 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：未声明；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "Leonxlnx/taste-skill",
+        "tagline": "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages",
+        "overview": "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages 主要语言为 JavaScript，公开主题包括：agent-skills、ai-agents、anti-slop、claude-code。",
+        "core_features": [
+          "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、ai-agents、anti-slop、claude-code 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 106,489 Stars、7,205 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "jakubkrehel/skills",
+        "tagline": "A collection of agent skills that help you build great interfaces.",
+        "overview": "A collection of agent skills that help you build great interfaces. 主要语言为 Markdown，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "A collection of agent skills that help you build great interfaces.",
+          "主要技术栈：Markdown"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Markdown 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 9,417 Stars、359 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "pingdotgg/t3code",
+        "tagline": "仓库未提供项目简介。",
+        "overview": "仓库未提供项目简介。 主要语言为 TypeScript，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "仓库未提供项目简介。",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 33,063 Stars、8,683 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "anthropics/knowledge-work-plugins",
+        "tagline": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
+        "overview": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork 主要语言为 Python，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 34,085 Stars、3,757 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
