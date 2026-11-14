@@ -1,0 +1,572 @@
+{
+  "date": "2026-11-14",
+  "repositories": [
+    {
+      "full_name": "sherlock-project/sherlock",
+      "html_url": "https://github.com/sherlock-project/sherlock",
+      "description": "Hunt down social media accounts by username across social networks",
+      "homepage": "https://sherlockproject.xyz",
+      "language": "Python",
+      "stars": 111343,
+      "forks": 12889,
+      "open_issues": 414,
+      "topics": [
+        "cli",
+        "cti",
+        "cybersecurity",
+        "forensics",
+        "hacktoberfest",
+        "information-gathering",
+        "infosec",
+        "linux",
+        "osint",
+        "pentesting",
+        "python",
+        "python3",
+        "reconnaissance",
+        "redteam",
+        "sherlock",
+        "tools"
+      ],
+      "license": "MIT",
+      "created_at": "2018-12-24T14:30:48Z",
+      "updated_at": "2026-11-14T07:34:53Z",
+      "pushed_at": "2026-11-14T05:13:08Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <br>\n  <a href=\"https://sherlockproject.xyz/\" target=\"_blank\"><img src=\"images/sherlock-logo.png\" alt=\"sherlock\"/></a>\n  <br>\n  <span>Hunt down social media accounts by username across <a href=\"https://sherlockproject.xyz/sites\">400+ social networks</a></span>\n  <br>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://sherlockproject.xyz/installation\">Installation</a>\n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n  <a href=\"https://sherlockproject.xyz/usage\">Usage</a>\n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n  <a href=\"https://sherlockproject.xyz/contribute\">Contributing</a>\n</p>\n\n<p align=\"center\">\n<img width=\"70%\" height=\"70%\" src=\"images/demo.png\" alt=\"demo\"/>\n</p>\n\n\n## Installation\n\n<div align=\"center\">\n  <a href=\"https://sponsors.sherlockproject.xyz/go/readme-1\"><img src=\"https://sponsors.sherlockproject.xyz/banner/readme-1\" width=\"100%\"></a>\n</div>\n\n<div align=\"center\">\n<a href=\"https://sponsors.sherlockproject.xyz/go/readme-2\"><img src=\"https://sponsors.sherlockproject.xyz/banner/readme-2\" width=\"49.8%\"></a>&#8202;&#8202;<a href=\"https://sponsors.sherlockproject.xyz/go/readme-3\"><img src=\"https://sponsors.sherlockproject.xyz/banner/readme-3\" width=\"49.8%\"></a>\n</div>\n\n<br>\n\n> [!WARNING]  \n> Packages for ParrotOS and Ubuntu 24.04, maintained by a third party, appear to be __broken__.  \n> Users of these systems should defer to [`uv`](https://docs.astral.sh/uv/)/`pipx`/`pip` or Docker.\n\n| Method | Notes |\n| - | - |\n| `pipx install sherlock-project` | `pip` or [`uv`](https://docs.astral.sh/uv/) may be used in place of `pipx` |\n| `docker run -it --rm sherlock/sherlock` |\n| `dnf install sherlock-project` | |\n\nCommunity-maintained packages are available for Debian (>= 13), Ubuntu (>= 22.10), Homebrew, Kali, and BlackArch. These packages are not directly supported or maintained by the Sherlock Project.\n\nSee all alternative installation methods [here](https://sherlockproject.xyz/installation).\n\n## General usage\n\nTo search for only one user:\n```bash\nsherlock user123\n```\n\nTo search for more than one user:\n```bash\nsherlock user1 user2 user3\n```\n\nAccounts found will be stored in an individual text file with the corresponding username (e.g ```user123.txt```).\n\n```console\n$ sherlock --help\nusage: sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT] [--output OUTPUT] [--csv] [--xlsx] [--site SITE_NAME] [--proxy PROXY_URL] [--dump-response]\n                [--json JSON_FILE] [--timeout TIMEOUT] [--print-all] [--print-found] [--no-color] [--browse] [--local] [--nsfw] [--txt] [--ignore-exclusions]\n                USERNAMES [USERNAMES ...]\n\nSherlock: Find Usernames Across Social Networks (Version 0.16.0)\n\npositional arguments:\n  USERNAMES             One or more usernames to check with social networks. Check similar usernames using {?} (replace to '_', '-', '.').\n\noptions:\n  -h, --help            show this help message and exit\n  --version             Display version information and dependencies.\n  --verbose, -v, -d, --debug\n                        Display extra debugging information and metrics.\n  --folderoutput FOLDEROUTPUT, -fo FOLDEROUTPUT\n                        If using multiple usernames, the output of the results will be saved to this folder.\n  --output OUTPUT, -o OUTPUT\n                        If using single username, the output of the result will be saved to this file.\n  --csv                 Create Comma-Separated Values (CSV) File.\n  --xlsx                Create the standard file for the modern Microsoft Excel spreadsheet (xlsx).\n  --site SITE_NAME      Limit analysis to just the listed sites. Add multiple options to specify more than one site.\n  --proxy PROXY_URL, -p PROXY_URL\n                        Make requests over a proxy. e.g. socks5://127.0.0.1:1080\n  --dump-response       Dump the HTTP response to stdout for targeted debugging.\n  --json JSON_FILE, -j JSON_FILE\n                        Load data from a JSON file or an online, valid, JSON file. Upstream PR numbers also accepted.\n  --timeout TIMEOUT     Time (in seconds) to wait for response to requests (Default: 60)\n  --print-all           Output sites where the username was not found.\n  --print-found         Output sites where the username was found (also if exported as file).\n  --no-color            Don't color terminal output\n  --browse, -b          Browse to all results on default browser.\n  --local, -l           Force the use of the local data.json file.\n  --nsfw                Include checking of NSFW sites from default list.\n  --txt                 Enable creation of a txt file\n  --ignore-exclusions   Ignore upstream exclusions (may return more false positives)\n```\n\n## Credits\n\nThank you to everyone who has contributed to Sherlock! ❤️\n\n<a href=\"https://github.com/sherlock-project/sherlock/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?&columns=25&max=10000&&repo=sherlock-project/sherlock\" alt=\"contributors\"/>\n</a>\n\n## Star History\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://api.star-history.com/svg?repos=sherlock-project/sherlock&type=Date&theme=dark\" />\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"https://api.star-history.com/svg?repos=sherlock-project/sherlock&type=Date\" />\n  <img alt=\"Sherlock Project Star History Chart\" src=\"https://api.star-history.com/svg?repos=sherlock-project/sherlock&type=Date\" />\n</picture>\n\n## License\n\nMIT © Sherlock Project<br/>\nCreator - [Siddharth Dushantha](https://github.com/sdushantha)\n\n<!-- Reference Links -->\n\n[ext_pypi]: https://pypi.org/project/sherlock-project/\n[ext_brew]: https://formulae.brew.sh/formula/sherlock\n",
+      "rank": 1,
+      "weekly_stars": 13364
+    },
+    {
+      "full_name": "anthropics/skills",
+      "html_url": "https://github.com/anthropics/skills",
+      "description": "Public repository for Agent Skills",
+      "homepage": "",
+      "language": "Python",
+      "stars": 194254,
+      "forks": 22856,
+      "open_issues": 1540,
+      "topics": [
+        "agent-skills"
+      ],
+      "license": "未声明",
+      "created_at": "2025-09-22T15:53:31Z",
+      "updated_at": "2026-11-14T07:33:37Z",
+      "pushed_at": "2026-11-14T07:04:17Z",
+      "archived": false,
+      "readme": "> **Note:** This repository contains Anthropic's implementation of skills for Claude. For information about the Agent Skills standard, see [agentskills.io](http://agentskills.io).\n\n[![skills.sh](https://skills.sh/b/anthropics/skills)](https://skills.sh/anthropics/skills)\n\n# Skills\nSkills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. Skills teach Claude how to complete specific tasks in a repeatable way, whether that's creating documents with your company's brand guidelines, analyzing data using your organization's specific workflows, or automating personal tasks.\n\nFor more information, check out:\n- [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)\n- [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude)\n- [How to create custom skills](https://support.claude.com/en/articles/12512198-creating-custom-skills)\n- [Equipping agents for the real world with Agent Skills](https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)\n\n# About This Repository\n\nThis repository contains skills that demonstrate what's possible with Claude's skills system. These skills range from creative applications (art, music, design) to technical tasks (testing web apps, MCP server generation) to enterprise workflows (communications, branding, etc.).\n\nEach skill is self-contained in its own folder with a `SKILL.md` file containing the instructions and metadata that Claude uses. Browse through these skills to get inspiration for your own skills or to understand different patterns and approaches.\n\nMany skills in this repo are open source (Apache 2.0). We've also included the document creation & editing skills that power [Claude's document capabilities](https://www.anthropic.com/news/create-files) under the hood in the [`skills/docx`](./skills/docx), [`skills/pdf`](./skills/pdf), [`skills/pptx`](./skills/pptx), and [`skills/xlsx`](./skills/xlsx) subfolders. These are also open source (Apache 2.0), and we wanted to share them with developers as a reference for more complex skills that are actively used in a production AI application.\n\n## Disclaimer\n\n**These skills are provided for demonstration and educational purposes only.** While some of these capabilities may be available in Claude, the implementations and behaviors you receive from Claude may differ from what is shown in these skills. These skills are meant to illustrate patterns and possibilities. Always test skills thoroughly in your own environment before relying on them for critical tasks.\n\n# Skill Sets\n- [./skills](./skills): Skill examples for Creative & Design, Development & Technical, Enterprise & Communication, and Document Skills\n- [./spec](./spec): The Agent Skills specification\n- [./template](./template): Skill template\n\n# Try in Claude Code, Claude.ai, and the API\n\n## Claude Code\nYou can register this repository as a Claude Code Plugin marketplace by running the following command in Claude Code:\n```\n/plugin marketplace add anthropics/skills\n```\n\nThen, to install a specific set of skills:\n1. Select `Browse and install plugins`\n2. Select `anthropic-agent-skills`\n3. Select `document-skills` or `example-skills`\n4. Select `Install now`\n\nAlternatively, directly install either Plugin via:\n```\n/plugin install document-skills@anthropic-agent-skills\n/plugin install example-skills@anthropic-agent-skills\n```\n\nAfter installing the plugin, you can use the skill by just mentioning it. For instance, if you install the `document-skills` plugin from the marketplace, you can ask Claude Code to do something like: \"Use the PDF skill to extract the form fields from `path/to/some-file.pdf`\"\n\n## Claude.ai\n\nThese example skills are all already available to paid plans in Claude.ai. \n\nTo use any skill from this repository or upload custom skills, follow the instructions in [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude#h_a4222fa77b).\n\n## Claude API\n\nYou can use Anthropic's pre-built skills, and upload custom skills, via the Claude API. See the [Skills API Quickstart](https://docs.claude.com/en/api/skills-guide#creating-a-skill) for more.\n\n# Creating a Basic Skill\n\nSkills are simple to create - just a folder with a `SKILL.md` file containing YAML frontmatter and instructions. You can use the **template-skill** in this repository as a starting point:\n\n```markdown\n---\nname: my-skill-name\ndescription: A clear description of what this skill does and when to use it\n---\n\n# My Skill Name\n\n[Add your instructions here that Claude will follow when this skill is active]\n\n## Examples\n- Example usage 1\n- Example usage 2\n\n## Guidelines\n- Guideline 1\n- Guideline 2\n```\n\nThe frontmatter requires only two fields:\n- `name` - A unique identifier for your skill (lowercase, hyphens for spaces)\n- `description` - A complete description of what the skill does and when to use it\n\nThe markdown content below contains the instructions, examples, and guidelines that Claude will follow. For more details, see [How to create custom skills](https://support.claude.com/en/articles/12512198-creating-custom-skills).\n\n# Partner Skills\n\nSkills are a great way to teach Claude how to get better at using specific pieces of software. As we see awesome example skills from partners, we may highlight some of them here:\n\n- **Notion** - [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0)\n",
+      "rank": 2,
+      "weekly_stars": 6169
+    },
+    {
+      "full_name": "milind-soni/OpenMausBot",
+      "html_url": "https://github.com/milind-soni/OpenMausBot",
+      "description": "Open-source Grok Bot alternative with a virtual machine that bots can use",
+      "homepage": "https://www.mausbot.com/",
+      "language": "TypeScript",
+      "stars": 22340,
+      "forks": 3109,
+      "open_issues": 1077,
+      "topics": [
+        "ai-agents",
+        "claude-code",
+        "codex",
+        "computer-use",
+        "docker",
+        "electron",
+        "grok",
+        "grok-bot",
+        "grok-bot-alternative",
+        "self-hosted",
+        "typescript"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-08-11T18:58:55Z",
+      "updated_at": "2026-11-14T07:31:37Z",
+      "pushed_at": "2026-11-14T07:10:25Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n# OpenMausBot\n\n**The open-source Grok Bot alternative: your own team of AI bots, in a chat app.**\n\n[**openmausbot.com**](https://www.openmausbot.com) &nbsp;·&nbsp; [Download](https://www.openmausbot.com/download) &nbsp;·&nbsp; [Open source Grok Bot alternative, compared](https://www.openmausbot.com/blog/grok-bot-vs-openmausbot)\n\n<sub>OpenMausBot is an open-source Grok Bot alternative: an independent project inspired by **Grok Bot**, and the open-source alternative to **Meta Muse**, **OpenAI dots** and **Cue by Manus** — bring-your-own-agent, local-first, on the models you already have. Also known as **MausBot**; formerly **OpenGrokBot**. Not affiliated with xAI, Meta, OpenAI or Manus.</sub>\n\nEvery bot in the sidebar is a real agent — Claude or Codex running locally under the hood — with its own\npersonality, its own model, its own cloud computer, and its own connected apps.\nTalk to them like contacts. Watch them work. Approve what matters.\n\n![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)\n![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)\n![Electron](https://img.shields.io/badge/Electron-macOS%20%C2%B7%20Windows%20%C2%B7%20Ubuntu-2B2E3A?logo=electron&logoColor=9FEAF9)\n![Agents](https://img.shields.io/badge/agents-Claude%20·%20Codex-d97757)\n[![Release](https://img.shields.io/github/v/release/milind-soni/OpenMausBot?label=release&color=1084fe&cacheSeconds=300)](https://github.com/milind-soni/OpenMausBot/releases/latest)\n![PRs](https://img.shields.io/badge/PRs-welcome-38d591)\n\n<br>\n\n<a href=\"https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot.dmg\">\n  <img src=\"https://img.shields.io/github/v/release/milind-soni/OpenMausBot?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20%20Download%20for%20Mac%20%28Apple%20silicon%29&labelColor=070707&color=1084fe&cacheSeconds=300\" alt=\"Download the latest OpenMausBot for Mac with Apple silicon (.dmg)\" height=\"40\">\n</a>\n&nbsp;\n<a href=\"https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot-intel.dmg\">\n  <img src=\"https://img.shields.io/github/v/release/milind-soni/OpenMausBot?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20%20Download%20for%20Mac%20%28Intel%29&labelColor=070707&color=2a9d8f&cacheSeconds=300\" alt=\"Download the latest OpenMausBot for Intel Macs (.dmg)\" height=\"40\">\n</a>\n&nbsp;\n<a href=\"https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot-setup.exe\">\n  <img src=\"https://img.shields.io/github/v/release/milind-soni/OpenMausBot?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20%20Download%20for%20Windows&labelColor=070707&color=4cc2ff&cacheSeconds=300\" alt=\"Download the latest OpenMausBot for Windows (.exe)\" height=\"40\">\n</a>\n&nbsp;\n<a href=\"https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot-amd64.deb\">\n  <img src=\"https://img.shields.io/github/v/release/milind-soni/OpenMausBot?style=for-the-badge&label=%E2%AC%87%EF%B8%8F%20%20Download%20for%20Ubuntu&labelColor=070707&color=e95420&cacheSeconds=300\" alt=\"Download the latest OpenMausBot for Ubuntu (.deb)\" height=\"40\">\n</a>\n\n<sub>[latest release](https://github.com/milind-soni/OpenMausBot/releases/latest) &nbsp;·&nbsp; macOS: Apple silicon & Intel · signed & notarized .dmg &nbsp;·&nbsp; Windows: x64 installer &nbsp;·&nbsp; Ubuntu 24.04 x64: .deb or AppImage beta &nbsp;·&nbsp; [all releases](https://github.com/milind-soni/OpenMausBot/releases)</sub>\n\n<br>\n\n<a href=\"https://github.com/sponsors/milind-soni\">\n  <img src=\"https://img.shields.io/badge/%E2%9D%A4%EF%B8%8F%20%20Support%20OpenMausBot-GitHub%20Sponsors-38d591?style=for-the-badge&labelColor=070707\" alt=\"Support OpenMausBot via GitHub Sponsors\" height=\"40\">\n</a>\n\n<br>\n<br>\n\n<sub>Powered by <a href=\"https://boat.dev\">boat.dev</a></sub>\n<br>\n<a href=\"https://boat.dev\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/sponsors/boat-logo-white.svg\">\n    <img src=\"docs/assets/sponsors/boat-logo.svg\" alt=\"Boat (boat.dev)\" height=\"34\">\n  </picture>\n</a>\n\n<br>\n<br>\n\n<sub>Inference provider sponsor</sub>\n<br>\n<a href=\"https://modelgo.ai/?utm_source=openmausbot&utm_medium=sponsorship&utm_content=readme&campaign_id=openmausbot&ad_group_id=readme\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"docs/assets/sponsors/modelgo-logo-white.svg\">\n    <img src=\"docs/assets/sponsors/modelgo-logo.svg\" alt=\"ModelGo (modelgo.ai)\" height=\"22\">\n  </picture>\n</a>\n\n<br>\n<br>\n\n<img src=\"docs/screenshots/hero.png\" alt=\"OpenMausBot — a Telegram-style chat app where every chat is a real AI agent\" width=\"900\">\n\n</div>\n\n---\n\n> ⚠️ **No affiliation with any cryptocurrency.** OpenMausBot has no token. Any coin using the OpenMausBot, Maus, or SupaMaus name is not created, endorsed, or affiliated with this project or its maintainer. I have received no tokens, payment, or allocation from anyone, and I will not be endorsing any token.\n\n## Why\n\nOne assistant in one box is the wrong shape for agents. OpenMausBot is an independent, open-source project inspired by **Grok Bot** —\nit keeps the idea (AI as a *messaging app*: a roster of bots you chat with, each with its own personality,\nmemory of its thread, model, computer, and apps) and rebuilds it open, local-first, and on the agents you\nalready have:\n\n- **Bring your own agents.** Bots run on the `claude`, `codex`, and `grok` CLIs installed on your own machine\n  — your existing logins and subscriptions, no new accounts, no proxy in the middle. Point any engine at a\n  custom CLI binary (a versioned build or wrapper) in **Settings → Engines**.\n- **Local first.** One small harness server on `127.0.0.1` owns every agent process. Transcripts, keys, and\n  events live in `~/.openmausbot`, not a cloud.\n- **Agents with hands.** Each bot can use a cloud Linux desktop, an isolated Local VM, or—where the platform\n  safety boundary is currently certified—your own computer, plus 500+ apps through Composio. Host control is\n  available on macOS and Ubuntu Xorg after explicit opt-in. Ubuntu Wayland host control remains disabled while\n  issue #345 is resolved.\n\n## The open-source alternative to Grok Bot, Muse, dots and Cue\n\nFour closed personal-agent products shipped in seven weeks of 2026, and each one keeps the model, the\ncomputer and your data on its maker's side of the line. OpenMausBot is the open-source version of that\nshape: a team of agents in a chat app, each with its own model, its own computer and its own connected\napps, running on your machine under Apache 2.0. If you searched for an *open Muse*, *open dots*, an\n*open-source Grok Bot*, an *open Instinct* or an *open Cue*, this is the repository.\n\n| Looking for | What it is | How OpenMausBot differs | Read more |\n| --- | --- | --- | --- |\n| **Open source Grok Bot** | xAI's roster of bots on one shared cloud computer, Grok only, from a SuperGrok or Cursor plan | Same roster shape; any model per bot; your own machine; approval cards | [Grok Bot vs OpenMausBot](https://www.openmausbot.com/blog/grok-bot-vs-openmausbot) |\n| **Open Muse** | Meta's single personal agent in a Meta cloud VM, US and Canada only | A team instead of one agent; runs anywhere; data in `~/.openmausbot` | [Meta Muse alternative](https://www.openmausbot.com/blog/open-source-alternative-to-meta-muse) |\n| **Open dots** | OpenAI's always-on agent inside ChatGPT, GPT only, Pro and Business Premium plans | Several agents; your Claude, ChatGPT or Grok login; no plan required | [OpenAI dots alternative](https://www.openmausbot.com/blog/openai-dots-alternative) |\n| **Open Cue** | Manus's invite-only agents with their own phone, email and wallet | No invite; OAuth instead of passwords; open source | [Cue by Manus alternative](https://www.openmausbot.com/blog/open-source-alternative-to-cue-by-manus) |\n| **Open Instinct** | Spear Street's invite-only agent that holds your passwords on a cloud computer | Ask for approval when you want it; signs in over OAuth; your machine | [Instinct AI alternative](https://www.openmausbot.com/blog/instinct-ai-alternative) |\n\nAll five side by side: [Muse vs Grok Bot vs Dots vs Cue](https://www.openmausbot.com/blog/muse-vs-grok-bot-vs-dots-vs-cue),\nand a decision guide in five questions: [Which AI agent should I use?](https://www.openmausbot.com/blog/which-ai-agent-should-i-use)\n\n## Features\n\n<table>\n<tr>\n<td width=\"50%\" valign=\"top\">\n\n### 🧠 Pick a brain per bot\n\nA model picker with a provider rail — Claude and Codex models side by side, defaults marked, unavailable\nproviders dimmed with the reason. Switch a bot's model mid-conversation.\n\n<img src=\"docs/screenshots/model-picker.png\" alt=\"Model picker with provider rail\" width=\"100%\">\n\n</td>\n<td width=\"50%\" valign=\"top\">\n\n### 🖥️ Every bot gets a computer\n\nOpen the Computer panel and the bot's cloud desktop spins up on its own — live screen preview while it\nworks, \"Open desktop\" to take over in your browser, or point the bot at *this Mac* instead.\n\n<img src=\"docs/screenshots/computer-panel.png\" alt=\"Computer panel with live screen preview\" width=\"100%\">\n\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"top\">\n\n### 🙋 Bots ask before they act\n\nShell commands, file edits, and questions surface as inline cards — Allow / Deny / answer in chat. A\npermission broker turns every risky action into a decision you make, for cloud and local computers alike.\n\n<img src=\"docs/screenshots/approval-card.png\" alt=\"Approval and question cards in chat\" width=\"100%\">\n\n</td>\n<td width=\"50%\" valign=\"top\">\n\n### 🔌 Connected apps\n\nA one-click marketplace over Composio Sessions: Gmail, Slack, GitHub, Notion, Linear and hundreds more.\nOAuth once, and every bot can use them as tools.\n\n<img src=\"docs/screenshots/marketplace.png\" alt=\"Connected apps marketplace\" width=\"100%\">\n\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"top\">\n\n### 🗂 Manage bots like chats\n\nRight-click any bot: pin, mark unread, edit profile, duplicate, copy conversation ID, hide, delete. It's a\nmessagi",
+      "rank": 3,
+      "weekly_stars": 7763
+    },
+    {
+      "full_name": "vercel-labs/agent-browser",
+      "html_url": "https://github.com/vercel-labs/agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "homepage": "https://agent-browser.dev",
+      "language": "Rust",
+      "stars": 50833,
+      "forks": 3539,
+      "open_issues": 572,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2026-01-11T05:38:15Z",
+      "updated_at": "2026-11-14T07:33:41Z",
+      "pushed_at": "2026-11-14T04:29:22Z",
+      "archived": false,
+      "readme": "# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n<p>\n  <a href=\"https://vercel.com/labs#labs-products\"><img alt=\"Vercel Labs Product\" src=\"https://img.shields.io/badge/LABS-PRODUCT-0a0a0a.svg?style=for-the-badge&amp;logo=Vercel&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm version: agent-browser\" src=\"https://img.shields.io/npm/v/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://github.com/vercel-labs/agent-browser/blob/main/LICENSE\"><img alt=\"License: Apache-2.0\" src=\"https://img.shields.io/github/license/vercel-labs/agent-browser.svg?style=for-the-badge&amp;labelColor=000000\" height=\"28\"></a>\n  <a href=\"https://www.npmjs.com/package/agent-browser\"><img alt=\"npm downloads per month: agent-browser\" src=\"https://img.shields.io/npm/dm/agent-browser.svg?style=for-the-badge&amp;labelColor=000000&amp;label=npm%20downloads\" height=\"28\"></a>\n  <a href=\"https://skills.sh/vercel-labs/agent-browser\"><img alt=\"skills.sh\" src=\"https://skills.sh/b/vercel-labs/agent-browser?style=for-the-badge\" height=\"28\"></a>\n</p>\n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/selectors).\n- A click fails, instead of reporting success, when the target is hidden, disabled, outside the viewport, or covered by another element such as a consent banner. Dismiss the covering element, take a new snapshot, and retry.\n\nThe full walkthrough is in the [quick start](https://agent-browser.dev/quick-start).\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](https://agent-browser.dev/engines/obscura) engine with `--engine`, drive Mobile Safari in the [iOS Simulator](https://agent-browser.dev/ios), or use a cloud browser provider such as [Browserbase](https://agent-browser.dev/providers/browserbase), [Browserless](https://agent-browser.dev/providers/browserless), [Browser Use](https://agent-browser.dev/providers/browser-use), [Kernel](https://agent-browser.dev/providers/kernel), or [AgentCore](https://agent-browser.dev/providers/agentcore).\n\n## For AI agents\n\nThe CLI ships skills that match its version:\n\n```bash\nagent-browser skills get core                 # the core loop, refs, waiting, and common workflows\nagent-browser skills get core --ref commands  # one reference, such as the full command list\nagent-browser skills get core --full          # adds the full command reference and templates\nagent-browser skills list                     # specialized skills: electron, slack, dogfood, and more\n```\n\nInstall the discovery skill into an agent harness from [skills.sh](https://skills.sh/vercel-labs/agent-browser):\n\n```bash\nnpx skills add vercel-labs/agent-browser\n```\n\nThe installed skill is a thin stub that tells the agent to load `agent-browser skills get core`, so its instructions always match the installed CLI. Or add this to your `AGENTS.md`:\n\n```markdown\nUse `agent-browser` for browser automation. Before the first use, run\n`agent-browser skills get core` and follow it.\n```\n\nFor MCP clients, `agent-browser mcp` starts an MCP server over stdio. See [MCP server](https://agent-browser.dev/commands#mcp-server).\n\n## Commands\n\nRun `agent-browser --help` for the full list, or `agent-browser <command> --help` for one command.\n\n| Group | Commands | Docs |\n|---|---|---|\n| Navigate and read | `open`, `back`, `forward`, `reload`, `read`, `snapshot`, `get`, `is` | [Core](https://agent-browser.dev/commands#core), [Snapshots](https://agent-browser.dev/snapshots) |\n| Interact | `click`, `dblclick`, `fill`, `type`, `press`, `keyboard`, `hover`, `focus`, `select`, `check`, `uncheck`, `scroll`, `drag`, `upload`, `mouse`, `find` | [Core](https://agent-browser.dev/commands#core), [Find elements](https://agent-browser.dev/commands#find-elements) |\n| Wait | `wait` | [Wait](https://agent-browser.dev/commands#wait) |\n| Capture | `screenshot`, `pdf`, `record`, `download`, `diff` | [Recording](https://agent-browser.dev/recording), [Diffing](https://agent-browser.dev/diffing), [Files](https://agent-browser.dev/files) |\n| Page and network state | `cookies`, `storage`, `network`, `set`, `clipboard`, `eval`, `pushstate` | [Network](https://agent-browser.dev/network), [Settings](https://agent-browser.dev/commands#settings) |\n| Tabs, frames, and dialogs | `tab`, `frame`, `dialog` | [Tabs and frames](https://agent-browser.dev/commands#tabs-frames) |\n| Debug and performance | `console`, `errors`, `highlight`, `inspect`, `trace`, `profiler`, `vitals`, `react`, `a11y` | [Debugging](https://agent-browser.dev/debugging), [Profiler](https://agent-browser.dev/profiler), [React](https://agent-browser.dev/react) |\n| Sessions and auth | `session`, `state`, `auth`, `profiles`, `confirm`, `deny` | [Sessions](https://agent-browser.dev/sessions), [Security](https://agent-browser.dev/security) |\n| Agents and integrations | `skills`, `mcp`, `webmcp`, `flow`, `chat`, `batch`, `plugin` | [Skills](https://agent-browser.dev/skills), [WebMCP](https://agent-browser.dev/webmcp), [Plugins](https://agent-browser.dev/plugins) |\n| Observe | `stream`, `dashboard` | [Streaming](https://agent-browser.dev/streaming), [Dashboard](https://agent-browser.dev/dashboard) |\n| Setup | `install`, `upgrade`, `doctor`, `connect`, `close` | [Installation](https://agent-browser.dev/installation) |\n\nFlags, environment variables, and `agent-browser.json` are documented in [Configuration](https://agent-browser.dev/configuration).\n\n## Platforms\n\nNative binaries ship for macOS (ARM64, x64), Linux (ARM64, x64, glibc and musl), and Windows (x64). The npm package picks the right binary for the host.\n\n## Development\n\nBuilding from source requires Node.js 24 or later, pnpm 11 or later, and Rust:\n\n```bash\npnpm install\npnpm build:source               # builds the dashboard and the native CLI\npnpm link --global\nagent-browser install\n```\n\nRun the Rust checks from `cli/`:\n\n```bash\ncargo fmt -- --check\ncargo clippy\ncargo test\ncargo test e2e -- --ignored --test-threads=1   # launches real headless Chrome\n```\n\n[AGENTS.md](AGENTS.md) lists the files to update with each change, the docs checks, and the release process.\n\n## Documentation\n\n- [agent-browser.dev](https://agent-browser.dev): introduction, guides, and reference\n- [Commands](https://agent-browser.dev/commands) and [Configuration](https://agent-browser.dev/configuration)\n- [Security](https://agent-browser.dev/security): the auth vault, domain allowlists, action policies, and content boundaries\n- [Next.js and Vercel](https://agent-browser.dev/next) and [eve](https://agent-browser.dev/eve): running agent-browser in Vercel Sandbox and eve agents\n- [Changelog](CHANGELOG.md)\n\n## License\n\nApache-2.0\n",
+      "rank": 4,
+      "weekly_stars": 4360
+    },
+    {
+      "full_name": "google/elephant-goldfish-model",
+      "html_url": "https://github.com/google/elephant-goldfish-model",
+      "description": "Open-source plugin for designing and reviewing software with agents",
+      "homepage": "https://egm.dev",
+      "language": "Python",
+      "stars": 18742,
+      "forks": 1399,
+      "open_issues": 104,
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "antigravity",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "codex",
+        "codex-plugin",
+        "coding-agents",
+        "context-engineering",
+        "developer-tools",
+        "gemini",
+        "llm",
+        "multi-agent",
+        "prompt-engineering",
+        "spec-driven-development"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2026-09-13T16:31:06Z",
+      "updated_at": "2026-11-14T07:34:32Z",
+      "pushed_at": "2026-11-14T03:30:16Z",
+      "archived": false,
+      "readme": "<p align=\"center\">\n  <a href=\"https://egm.dev\"><img src=\"docs/assets/readme-header.svg\" width=\"480\" height=\"116\" alt=\"Elephant-Goldfish Model\"></a>\n</p>\n\n<p align=\"center\">Design with an elephant. Review with a goldfish.</p>\n\n<p align=\"center\">\n  <a href=\"#install\">Install</a> &ensp;·&ensp;\n  <a href=\"#try-your-first-design\">Quickstart</a> &ensp;·&ensp;\n  <a href=\"docs/getting_started.md\">Documentation</a> &ensp;·&ensp;\n  <a href=\"https://egm.dev\">Website</a>\n</p>\n\n<br>\n\nDevelop ideas with context and review documents with fresh eyes. EGM is an open-source plugin for AI assistants.\n\n**Elephant** holds your project context and drafts the specification. **Goldfish** reviewers examine the draft and referenced source material without the earlier conversation, helping expose unstated assumptions and blind spots. **You** make the architectural trade-offs and approve the specification before implementing.\n\nThe built-in draft and design-review workflow targets software specifications. For other documents, choose reviewers and standards with `/egm-review-loop`. Bootstrap and drift reporting apply to software codebases.\n\nhttps://github.com/user-attachments/assets/93c799a2-10a3-4266-af02-eb79dd33a9a2\n\n## Install\n\nChoose your coding agent. Install the complete plugin so its skills can read the reviewer prompts and document standards.\n\n### ChatGPT and Codex desktop\n\nOpen the [published EGM plugin](https://chatgpt.com/plugins/plugins_6aeb90f47ec88191a3c107e01d3eb357) in the desktop app and install it. This listing is desktop-only. For Codex CLI, use the commands below.\n\n### Antigravity CLI\n\n```sh\nagy plugin install https://github.com/google/elephant-goldfish-model\n```\n\nFor the **Antigravity App** and **Antigravity for IDEs** (Visual Studio Code extension), run `/plugin` or see the [installation instructions](docs/harnesses.md#antigravity-app-and-antigravity-for-ides).\n\n### Claude Code\n\n```sh\nclaude plugin marketplace add google/elephant-goldfish-model\nclaude plugin install egm@egm\n```\n\n### Codex CLI\n\n```sh\ncodex plugin marketplace add google/elephant-goldfish-model\ncodex plugin add egm@egm\n```\n\nStart a new session after installation. For **Claude Cowork** and **ChatGPT Work**, see the [setup guide](docs/harnesses.md).\n\n## Try a 60-second review on existing code\n\nReview an existing design document, README, or PR plan against the live code. You do not need to write a new specification. The commands below use the `/egm:` prefix for Antigravity (agy CLI) and Claude Code. In Codex, select the corresponding EGM skill from the skill picker.\n\n<img src=\"skills/egm-review/assets/icon.svg\" width=\"20\" height=\"20\" align=\"top\" alt=\"\"> **Review an existing document**\n\n```text\n/egm:egm-review docs/designs/webhooks.md\n```\n\nUse the path to your design doc, or to a PR plan saved as Markdown. Fresh reviewers check the design, its clarity, its fit with the code, and its implementation plan.\n\n<img src=\"skills/egm-drift-report/assets/icon.svg\" width=\"20\" height=\"20\" align=\"top\" alt=\"\"> **Check for drift**\n\n```text\n/egm:egm-drift-report docs/designs/\n```\n\nThe agent compares each document in the folder with the current source code and reports where they diverge. You decide whether to update the document or the code.\n\n## Try your first design\n\nOpen your project in your coding agent and choose a feature that needs design decisions. This example adds webhook delivery: what should happen when a delivery fails, or the same event arrives twice?\n\nThe commands below are shown without a prefix. In Antigravity (agy CLI) and Claude Code, add the `/egm:` prefix, for example `/egm:egm-brainstorm`. On agy CLI 1.4.10 an unprefixed name is completed to the prefixed command ([#220](https://github.com/google/elephant-goldfish-model/issues/220)), but 1.4.8 does not ([#196](https://github.com/google/elephant-goldfish-model/issues/196)), so keep the prefix. In Codex, select the corresponding EGM skill from the skill picker. Brainstorming and review require a session that can create fresh subagents.\n\n<img src=\"skills/egm-brainstorm/assets/icon.svg\" width=\"20\" height=\"20\" align=\"top\" alt=\"\"> **Explore the idea**\n\n```text\n/egm-brainstorm Add webhook delivery to this project.\n```\n\nDiscuss requirements and trade-offs with the agent. Fresh reviewers challenge the proposal, and the agent saves the agreed direction in `concepts_brief.md`.\n\n<img src=\"skills/egm-draft/assets/icon.svg\" width=\"20\" height=\"20\" align=\"top\" alt=\"\"> **Draft the specification**\n\n```text\n/egm-draft\n```\n\nThe agent turns the brief into `design_draft.md`, pausing after each section for your feedback in chat.\n\n<img src=\"skills/egm-review/assets/icon.svg\" width=\"20\" height=\"20\" align=\"top\" alt=\"\"> **Review the draft**\n\n```text\n/egm-review design_draft.md\n```\n\nUse the draft path returned by the agent.\n\nFresh reviewers check the design, its clarity, its fit with the code, and its implementation plan. Choose which findings to address. When you approve the design, ask your coding agent to implement it.\n\nSee the [workflow guide](docs/getting_started.md) for the full process, including saving approved specifications under `docs/designs/`.\n\n## How it works\n\n<table>\n  <thead><tr><th align=\"left\">Role</th><th align=\"left\">Context</th><th align=\"left\">Responsibility</th></tr></thead>\n  <tbody>\n    <tr valign=\"top\"><td><strong>Elephant</strong></td><td>Your project, requirements, and earlier decisions</td><td>Explore the problem and draft the specification.</td></tr>\n    <tr valign=\"top\"><td><strong>Goldfish</strong></td><td>The document and its referenced source material, without the earlier conversation</td><td>Find missing assumptions, unclear requirements, and implementation risks.</td></tr>\n    <tr valign=\"top\"><td><strong>You</strong></td><td>The goals and constraints that matter</td><td>Resolve trade-offs, approve the design, and decide what to build.</td></tr>\n  </tbody>\n</table>\n\nGoldfish reviews require fresh subagent contexts. If your agent cannot create them, EGM stops the review. A review does not replace tests or human judgment. See [supported environments and verification limits](docs/harnesses.md#support-status--contributing-other-harnesses).\n\n## Choose a skill\n\nYou can use each skill when you need it. You do not have to follow the full sequence.\n\n<table>\n  <thead><tr><th align=\"left\">Skill</th><th align=\"left\">Use it to…</th></tr></thead>\n  <tbody>\n    <tr valign=\"top\"><td width=\"160\" valign=\"top\"><img src=\"skills/egm-brainstorm/assets/icon.svg\" width=\"20\" height=\"20\" alt=\"\" align=\"top\">&nbsp;<a href=\"skills/egm-brainstorm/SKILL.md\">Brainstorm</a></td><td>Test an idea and write a concept brief.</td></tr>\n    <tr valign=\"top\"><td width=\"160\" valign=\"top\"><img src=\"skills/egm-draft/assets/icon.svg\" width=\"20\" height=\"20\" alt=\"\" align=\"top\">&nbsp;<a href=\"skills/egm-draft/SKILL.md\">Draft</a></td><td>Turn a brief or existing notes into a design document.</td></tr>\n    <tr valign=\"top\"><td width=\"160\" valign=\"top\"><img src=\"skills/egm-resolve/assets/icon.svg\" width=\"20\" height=\"20\" alt=\"\" align=\"top\">&nbsp;<a href=\"skills/egm-resolve/SKILL.md\">Resolve</a></td><td>Work through review findings and agree on changes.</td></tr>\n    <tr valign=\"top\"><td width=\"160\" valign=\"top\"><img src=\"skills/egm-bootstrap/assets/icon.svg\" width=\"20\" height=\"20\" alt=\"\" align=\"top\">&nbsp;<a href=\"skills/egm-bootstrap/SKILL.md\">Bootstrap</a></td><td>Create or update documentation for an existing codebase.</td></tr>\n    <tr valign=\"top\"><td width=\"160\" valign=\"top\"><img src=\"skills/egm-review/assets/icon.svg\" width=\"20\" height=\"20\" alt=\"\" align=\"top\">&nbsp;<a href=\"skills/egm-review/SKILL.md\">Review</a></td><td>Review a design with fresh agents across five stages.</td></tr>\n    <tr valign=\"top\"><td width=\"160\" valign=\"top\"><img src=\"skills/egm-review-loop/assets/icon.svg\" width=\"20\" height=\"20\" alt=\"\" align=\"top\">&nbsp;<a href=\"skills/egm-review-loop/SKILL.md\">Review&nbsp;loop</a></td><td>Run a configured group of reviewers for a specific review task.</td></tr>\n    <tr valign=\"top\"><td width=\"160\" valign=\"top\"><img src=\"skills/egm-drift-report/assets/icon.svg\" width=\"20\" height=\"20\" alt=\"\" align=\"top\">&nbsp;<a href=\"skills/egm-drift-report/SKILL.md\">Drift&nbsp;report</a></td><td>Compare checked-in documents with the current source code.</td></tr>\n  </tbody>\n</table>\n\n## Learn more\n\n- [Getting started](docs/getting_started.md): the workflow and project layout.\n- [Setup](docs/harnesses.md): installation, agent capabilities, and known limits.\n- [Architecture](https://github.com/google/elephant-goldfish-model/blob/main/docs/designs/architecture.md): how skills and reviewers fit together.\n- [Testing](https://github.com/google/elephant-goldfish-model/blob/main/TESTING.md): checks, execution records, and verification limits.\n- [Dave Rensin’s original essay](https://medium.com/@drensin/elephants-goldfish-and-the-new-golden-age-of-software-engineering-c33641a48874): the ideas behind EGM.\n\n## Contribute\n\nSee the [accessibility statement](https://github.com/google/elephant-goldfish-model/blob/main/ACCESSIBILITY.md)\nfor accessibility goals, known limits, and how to report barriers.\n\nRead [contributing](https://github.com/google/elephant-goldfish-model/blob/main/CONTRIBUTING.md) for PRs, [issues](https://github.com/google/elephant-goldfish-model/issues) for bugs, and [discussions](https://github.com/google/elephant-goldfish-model/discussions) for questions.\n\n## License\n\n[Apache 2.0](LICENSE). This is not an officially supported Google product.\n",
+      "rank": 5,
+      "weekly_stars": 5560
+    },
+    {
+      "full_name": "ZhuLinsen/daily_stock_analysis",
+      "html_url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+      "homepage": "https://dsa.zhulinsen.tech",
+      "language": "Python",
+      "stars": 71892,
+      "forks": 57368,
+      "open_issues": 55,
+      "topics": [
+        "a-stock",
+        "ai-agent",
+        "aigc",
+        "llm",
+        "quant",
+        "quantitative-finance",
+        "quantitative-trading"
+      ],
+      "license": "MIT",
+      "created_at": "2026-01-10T06:43:20Z",
+      "updated_at": "2026-11-14T07:35:03Z",
+      "pushed_at": "2026-11-14T07:25:13Z",
+      "archived": false,
+      "readme": "<div align=\"center\">\n\n# 📈 股票智能分析系统\n\n[![GitHub stars](https://img.shields.io/github/stars/ZhuLinsen/daily_stock_analysis?style=social)](https://github.com/ZhuLinsen/daily_stock_analysis/stargazers)\n[![arXiv](https://img.shields.io/badge/arXiv-2608.26990-b31b1b.svg)](https://arxiv.org/abs/2608.26990)\n[![CI](https://github.com/ZhuLinsen/daily_stock_analysis/actions/workflows/ci.yml/badge.svg)](https://github.com/ZhuLinsen/daily_stock_analysis/actions/workflows/ci.yml)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)\n[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Ready-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)\n[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/zhulinsen/daily_stock_analysis)\n\n<p align=\"center\">\n  <a href=\"https://trendshift.io/repositories/18527?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-18527\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/18527\" alt=\"ZhuLinsen%2Fdaily_stock_analysis | Trendshift\" width=\"250\" height=\"55\"/></a>&nbsp;<a href=\"https://hellogithub.com/repository/ZhuLinsen/daily_stock_analysis\" target=\"_blank\"><img src=\"https://api.hellogithub.com/v1/widgets/recommend.svg?rid=6daa16e405ce46ed97b4a57706aeb29f&claim_uid=pfiJMqhR9uvDGlT&theme=neutral\" alt=\"Featured｜HelloGitHub\" width=\"230\" /></a>\n</p>\n\n> 🤖 基于 AI 大模型的 A股/港股/美股/日股/韩股/台股自选股智能分析系统，每日自动分析并推送「决策仪表盘」到企业微信/飞书/Telegram/Discord/Slack/邮箱\n\n[**产品预览**](#-产品预览) · [**功能特性**](#-功能特性) · [**快速开始**](#-快速开始) · [**推送效果**](#-推送效果) · [**文档中心**](docs/INDEX.md) · [**完整指南**](docs/full-guide.md)\n\n简体中文 | [English](docs/README_EN.md) | [繁體中文](docs/README_CHT.md)\n\n</div>\n\n<details open>\n<summary><strong>💖 赞助商 (Sponsors)</strong></summary>\n<hr>\n<div align=\"center\">\n  <p><a href=\"https://modelflare.dev/sign-up?utm_source=github&amp;utm_campaign=daily_stock_analysis\"><img src=\"./docs/assets/modelflare_banner_zh.png\" alt=\"Modelflare\" width=\"720\"></a><br>感谢 <strong>Modelflare</strong> 赞助本项目！由美国 Havenbyte LLC 运营，满血稳定不掺水，低成本接入 GPT、Claude、Gemini、Grok 及 40+ 图片/视频模型。指定 OpenAI 分组提供 <strong>65% / 75% / 85% 每日缓存命中率保障</strong>；单笔充值 <strong>US$20 解锁 GPT 0.015x</strong>，<strong>US$50 解锁 Claude 0.03x</strong>。<a href=\"https://modelflare.dev/sign-up?utm_source=github&amp;utm_campaign=daily_stock_analysis\">专属链接注册</a></p>\n  <hr>\n  <p>\n    <a href=\"https://serpapi.com/github-daily-stock-analysis\" target=\"_blank\"><img src=\"./docs/assets/serpapi_banner_zh.png\" alt=\"轻松抓取搜索引擎上的实时金融新闻数据 - SerpApi\" width=\"300\" height=\"141\" style=\"width: 300px; height: 141px; object-fit: contain;\"></a>\n  </p>\n</div>\n</details>\n\n\n## 🖥️ 产品预览\n\n<p align=\"center\">\n  <a href=\"docs/assets/readme_workspace_tour_20260510.gif\"><img src=\"docs/assets/readme_workspace_preview.gif\" alt=\"DSA Web 工作台演示\" width=\"640\"></a><br>\n  <sub>点击动图查看完整演示</sub>\n</p>\n\n## ✨ 功能特性\n\n| 能力 | 覆盖内容 |\n|------|------|\n| AI 决策报告 | 核心结论、评分、趋势、买卖点位、风险警报、催化因素、操作检查清单 |\n| 多市场数据聚合 | 覆盖 A股、港股、美股、日股、韩股、台股和 ETF，支持行情、K 线、技术指标、新闻、公告、基本面与报告辅助数据；不同市场的数据源和能力边界见 [市场支持边界](docs/market-support.md) |\n| Web / 桌面工作台 | 手动分析、任务进度、历史报告、完整 Markdown、回测、持仓、配置管理、浅色 / 深色主题 |\n| Agent 策略问股 | 多轮追问，支持均线、缠论、波浪、趋势、热点、事件、成长、预期等 15 种内置策略，覆盖 Web/Bot/API |\n| 智能导入与补全 | 图片、CSV/Excel、剪贴板导入；股票代码/名称/拼音/别名补全 |\n| 自动化与推送 | GitHub Actions、Docker、本地定时任务、FastAPI 服务和企业微信/飞书/Telegram/Discord/Slack/邮件推送 |\n\n> 功能细节、字段契约、基本面 P0 超时语义、交易纪律、数据源优先级、Web/API 行为请看 [完整配置与部署指南](docs/full-guide.md)。\n\n### 技术栈与数据来源\n\n| 类型 | 支持 |\n|------|------|\n| AI 模型 | [Modelflare](https://modelflare.dev/sign-up?utm_source=github&utm_campaign=daily_stock_analysis)、[AIHubMix](https://inferera.com/?aff=CfMq)、Gemini、OpenAI 兼容、DeepSeek、通义千问、Claude、Ollama 本地模型等 |\n| 行情数据 | [TickPlus（推荐）](http://www.tickplus.org/register?reg=5433cf922395)、AkShare、Tushare、Pytdx、Baostock、YFinance、Longbridge |\n| 新闻搜索 | [SerpAPI](https://serpapi.com/github-daily-stock-analysis)、[Anspire](https://open.anspire.cn/dsa?share_code=QFBC0FYC)、[Tavily](https://tavily.com/)、[Bocha](https://open.bocha.cn/)、[Brave](https://brave.com/search/api/)、[MiniMax](https://platform.minimaxi.com/)、SearXNG |\n| 社交舆情 | [Stock Sentiment API](https://api.adanos.org/docs)（Reddit / X / Polymarket，仅美股，可选） |\n\n> 项目默认内置 AkShare、Baostock、YFinance 等免费行情源，可零配置运行；免费源受上游限流、接口变动和网络波动影响，稳定性不保证。长期定时、批量分析或更稳定行情建议配置 Tushare、Longbridge 等 token 型数据源，适用市场、Actions 映射和 fallback 规则见 [数据源配置](docs/full-guide.md#数据源配置)。\n\n## 🚀 快速开始\n\n### 方式一：[GitHub Actions（推荐）](https://www.bilibili.com/video/BV11FEb66EXG/)\n\n> 5 分钟完成部署，零成本，无需服务器。\n\n\n#### 1. Fork 本仓库\n\n点击右上角 `Fork` 按钮（顺便点个 Star⭐ 支持一下）\n\n#### 2. 配置 Secrets\n\n`Settings` → `Secrets and variables` → `Actions` → `New repository secret`\n\n**AI 模型配置（至少配置一个）**\n\n默认先选一个模型服务商并填写 API Key；需要多模型、图片识别、本地模型或高级路由时，再参考 [LLM 配置指南](docs/LLM_CONFIG_GUIDE.md)。\n\n| Secret 名称 | 说明 | 必填 |\n|------------|------|:----:|\n| `MODELFLARE_KEY` | [Modelflare](https://modelflare.dev/sign-up?utm_source=github&utm_campaign=daily_stock_analysis) API Key，低成本接入全球热门大模型 | **推荐** |\n| `AIHUBMIX_KEY` | [AIHubMix](https://inferera.com/?aff=CfMq) API Key，一Key切换使用全系模型，无需科学上网，本项目可享 10% 优惠 | **推荐** |\n| `GEMINI_API_KEY` | Google Gemini API Key | 可选 |\n| `ANTHROPIC_API_KEY` | Anthropic Claude API Key | 可选 |\n| `OPENAI_API_KEY` | OpenAI 兼容 API Key（支持 DeepSeek、通义千问等） | 可选 |\n| `OPENAI_BASE_URL` / `OPENAI_MODEL` | 使用 OpenAI 兼容服务时填写 | 可选 |\n\n> Ollama 更适合本地 / Docker 部署，GitHub Actions 推荐使用云端 API。\n\n**通知渠道配置（至少配置一个）**\n\n| Secret 名称 | 说明 |\n|------------|------|\n| `WECHAT_WEBHOOK_URL` | 企业微信机器人 |\n| `FEISHU_WEBHOOK_URL` | 飞书机器人 |\n| `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` | Telegram |\n| `DISCORD_WEBHOOK_URL` | Discord Webhook |\n| `SLACK_BOT_TOKEN` + `SLACK_CHANNEL_ID` | Slack Bot |\n| `EMAIL_SENDER` + `EMAIL_PASSWORD` | 邮件推送 |\n\n更多渠道、签名校验、分组邮件、Markdown 转图片等配置见 [通知渠道详细配置](docs/full-guide.md#通知渠道详细配置)。\n\n**自选股配置（必填）**\n\n| Secret 名称 | 说明 | 必填 |\n|------------|------|:----:|\n| `STOCK_LIST` | 自选股代码，如 `600519,hk00700,AAPL,7203.T,005930.KS,2330.TW`；已登记指数显式代码（如 `sh000016`、`930606.CSI`）经一次性 `--stocks` 或 GitHub Actions 入口支持，规则见 [指数自选股配置](docs/full-guide.md#指数自选股配置) | ✅ |\n\n**新闻源配置（推荐）**\n\n新闻源会显著影响舆情、公告、事件和催化因素质量，建议至少配置一个搜索服务。\n\n| Secret 名称 | 说明 | 必填 |\n|------------|------|:----:|\n| `SERPAPI_API_KEYS` | [SerpAPI](https://serpapi.com/github-daily-stock-analysis)：搜索引擎结果补强，适合实时金融新闻 | **推荐** |\n| `ANSPIRE_API_KEYS` | [Anspire](https://open.anspire.cn/dsa?share_code=QFBC0FYC) 搜索 API Key，可与其模型网关共用 | 可选 |\n| `TAVILY_API_KEYS` | [Tavily](https://tavily.com/)：通用新闻搜索 API | 可选 |\n| `BOCHA_API_KEYS` | [博查搜索](https://open.bocha.cn/)：中文搜索优化，支持 AI 摘要 | 可选 |\n| `BRAVE_API_KEYS` | [Brave Search](https://brave.com/search/api/)：隐私优先，美股资讯补强 | 可选 |\n| `MINIMAX_API_KEYS` | [MiniMax](https://platform.minimaxi.com/)：结构化搜索结果 | 可选 |\n| `SEARXNG_BASE_URLS` | SearXNG 自建实例：无配额兜底，适合私有部署 | 可选 |\n\n更多搜索源、社交舆情和降级规则见 [搜索服务配置](docs/full-guide.md#搜索服务配置)。\n\n**行情数据源配置（可选）**\n\n> 默认使用 AkShare、Baostock、YFinance 等免费数据源，日志中\"未配置\"的提示不影响运行。\n> 如需更稳定的行情，可按市场配置以下 Secret：\n\n| Secret 名称 | 适用市场 | 说明 |\n|------------|:--------:|------|\n| `TICKPLUS_API_KEY` | A 股 / ETF | [TickPlus（推荐）](http://www.tickplus.org/register?reg=5433cf922395)，日 K、实时行情与名称查询 |\n| `TUSHARE_TOKEN` | A 股 | 提升历史行情稳定性 |\n| `LONGBRIDGE_OAUTH_CLIENT_ID` + `LONGBRIDGE_OAUTH_TOKEN_CACHE_B64` | 港股/美股 | 补齐量比、换手率、PE 等字段 |\n\n> 详见 [数据源配置](docs/full-guide.md#数据源配置)。\n\n#### 3. 启用 Actions\n\n`Actions` 标签 → `I understand my workflows, go ahead and enable them`\n\n#### 4. 手动测试\n\n`Actions` → `每日股票分析` → `Run workflow` → `Run workflow`\n\n#### 完成\n\n默认每个**工作日 18:00（北京时间）**自动执行，也可手动触发。默认非交易日（含 A/H/US 节假日）不执行；强制运行、交易日检查、断点续传等规则见 [完整指南](docs/full-guide.md#定时任务配置)。\n\n### 方式二：[客户端配置教程](https://www.bilibili.com/video/BV11FEb66Eyr/) / 本地运行 / Docker 部署\n\n```bash\n# 克隆项目\ngit clone https://github.com/ZhuLinsen/daily_stock_analysis.git && cd daily_stock_analysis\n\n# 安装依赖\npip install -r requirements.txt\n\n# 配置环境变量\ncp .env.example .env && vim .env\n\n# 运行分析\npython main.py\n```\n\n常用命令：\n\n```bash\npython main.py --debug\npython main.py --dry-run\npython main.py --stocks 600519,hk00700,AAPL,2330.TW\npython main.py --market-review\npython main.py --schedule\npython main.py --serve-only\n```\n\n> Docker 部署、定时任务、云服务器访问请参考 [完整指南](docs/full-guide.md)；桌面客户端打包请参考 [桌面端打包说明](docs/desktop-package.md)。\n\n## 📱 推送效果\n\n### 决策仪表盘\n```\n🎯 2026-02-08 决策仪表盘\n共分析3只股票 | 🟢买入:0 🟡观望:2 🔴卖出:1\n\n📊 分析结果摘要\n⚪ 中钨高新(000657): 观望 | 评分 65 | 看多\n⚪ 永鼎股份(600105): 观望 | 评分 48 | 震荡\n🟡 新莱应材(300260): 卖出 | 评分 35 | 看空\n\n⚪ 中钨高新 (000657)\n📰 重要信息速览\n💭 舆情情绪: 市场关注其AI属性与业绩高增长，情绪偏积极，但需消化短期获利盘和主力流出压力。\n📊 业绩预期: 基于舆情信息，公司2025年前三季度业绩同比大幅增长，基本面强劲，为股价提供支撑。\n\n🚨 风险警报:\n\n风险点1：2月5日主力资金大幅净卖出3.63亿元，需警惕短期抛压。\n风险点2：筹码集中度高达35.15%，表明筹码分散，拉升阻力可能较大。\n风险点3：舆情中提及公司历史违规记录及重组相关风险提示，需保持关注。\n✨ 利好催化:\n\n利好1：公司被市场定位为AI服务器HDI核心供应商，受益于AI产业发展。\n利好2：2025年前三季度扣非净利润同比暴涨407.52%，业绩表现强劲。\n📢 最新动态: 【最新消息】舆情显示公司是AI PCB微钻领域龙头，深度绑定全球头部PCB/载板厂。2月5日主力资金净卖出3.63亿元，需关注后续资金流向。\n\n---\n生成时间: 18:00\n```\n\n### 大盘复盘\n```\n🎯 2026-01-10 大盘复盘\n\n📊 主要指数\n- 上证指数: 3250.12 (🟢+0.85%)\n- 深证成指: 10521.36 (🟢+1.02%)\n- 创业板指: 2156.78 (🟢+1.35%)\n\n📈 市场概况\n上涨: 3920 | 下跌: 1349 | 涨停: 155 | 跌停: 3\n\n🔥 板块表现\n领涨: 互联网服务、文化传媒、小金属\n领跌: 保险、航空机场、光伏设备\n```\n\n## ⚙️ 配置说明\n\n完整环境变量、模型渠道、通知渠道、数据源优先级、交易纪律、基本面 P0 语义和部署说明请参考 [完整配置指南](docs/full-guide.md)。\n\n## 🖥️ Web 界面\n\nWeb 工作台提供配置管理、任务监控、手动分析、历史报告、完整 Markdown 报告、Agent 问股、回测、持仓管理、智能导入和浅色 / 深色主题。启动方式：\n\n```bash\npython main.py --webui\npython main.py --webui-only\n```\n\n访问 `http://127.0.0.1:8000` 即可使用。认证、智能导入、搜索补全、历史报告复制、云服务器访问等细节见 [本地 WebUI 管理界面](docs/full-guide.md#本地-webui-管理界面)。\n\n## 🤖 Agent 策略问股\n\n配置任意可用 AI API Key 后，Web `/chat` 页面即可使用策略问股；如需显式关闭可设置 `AGENT_MODE=false`。\n\n- 支持均线金叉、缠论、波浪理论、多头趋势、热点题材、事件驱动、成长质量、预期重估等内置策略\n- 支持实时行情、K 线、技术指标、新闻和风险信息调用\n- 支持多轮追问、会话导出、发送到通知渠道和后台执行\n- 支持自定义策略文件与多 Agent 编排（实验性）\n\n> Agent 具体参数、`skill` 命名兼容、多 Agent 模式和预算护栏见 [完整指南](docs/full-guide.md#本地-webui-管理界面) 与 [LLM 配置指南](docs/LLM_CONFIG_GUIDE.md)。\n\n## 🧩 相关项目 (Related Projects)\n\n> DSA 聚焦日常分析报告；选股实现参考 AlphaSift，AlphaEvo 用于策略验证与进化。\n\n| 项目 | 定位 |\n|------|------|\n| [AlphaSift](https://github.",
+      "rank": 6,
+      "weekly_stars": 3778
+    },
+    {
+      "full_name": "NVIDIA/auto-ontology",
+      "html_url": "https://github.com/NVIDIA/auto-ontology",
+      "description": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+      "homepage": "",
+      "language": "Python",
+      "stars": 12640,
+      "forks": 1039,
+      "open_issues": 122,
+      "topics": [],
+      "license": "Apache-2.0",
+      "created_at": "2026-04-27T21:45:56Z",
+      "updated_at": "2026-11-14T07:33:29Z",
+      "pushed_at": "2026-11-14T00:17:41Z",
+      "archived": false,
+      "readme": "<!--\nSPDX-FileCopyrightText: Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES.\nAll rights reserved.\nSPDX-License-Identifier: Apache-2.0\n-->\n\n# Auto Ontology\n\nAgents can retrieve documents and query databases, but reliability gates agentic analytics: a revenue metric answered faster is worth nothing if the number is wrong. Agents need a context layer that tells them where data lives, what it means, whether to use it, how to use it, where it came from, and what is similar. NVIDIA Auto Ontology is an open library that builds that layer from enterprise metadata, reconciles definitions across systems, and exposes it to any agent harness through MCP, CLI, and API. It complements the semantic models customers already own.\n\nIt enables developers to:\n\n- Discover: generate enterprise ontologies from metadata; connect existing ontologies and semantic models; build AI-ready knowledge graphs.\n- Ground: give agents trusted business meaning for metrics, entities, and relationships; reconcile inconsistent definitions across systems.\n- Validate: check generated queries against certified definitions and lineage; return provenance with every answer.\n- Expose: serve context to any agent harness through MCP, CLI, and API.\nLearn: fold certified corrections and usage back into the ontology, so shared context improves with every question.\n\n## Benchmarks\n\nTo run a text-to-SQL benchmark such as BIRD, refer to the\n[ontology SQL evaluation repository](https://github.com/NVIDIA/ontology-sql-eval/).\n\n> **Licensing & contributions.** Auto Ontology is distributed under the\n> [Apache License 2.0](./LICENSE). Third-party open-source components\n> bundled, linked, or otherwise used by this project are listed in\n> [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md). **This project\n> is currently not accepting external contributions.**\n\n<p>\n<img src=\"./docs/assets/arch.png\" alt=\"Auto Ontology Architecture\" width=\"800\">\n</p>\n\n## Key Features\n\n- **Natural-language querying** of structured data — questions are translated to\n  SQL and executed against connected databases, powered by NVIDIA NIM.\n- **Semantic catalog / ontology layer** over relational sources, stored in\n  Postgres alongside the catalog it describes.\n- **Authentication & RBAC** —using [Better Auth](https://github.com/better-auth/better-auth).\n- **Web UI** for chat, analysis, data catalog, analytics, and settings.\n- **Flexible deployment** — Helm chart for Kubernetes or Docker Compose for a\n  local stack.\n\n## Software Components\n\n| Component           | Technology                                                             | Role                                       | Default port |\n| ------------------- | ---------------------------------------------------------------------- | ------------------------------------------ | ------------ |\n| Frontend            | Next.js 16 (React 19, TypeScript, Tailwind CSS 4), Better Auth, Prisma | Web UI, authentication, API gateway        | 3000         |\n| Backend             | FastAPI (Python 3.12+), LangChain                                      | Chat / NL-to-SQL, catalog, datasource APIs | 3001         |\n| Ingestion worker    | FastAPI (Python 3.12+)                                                 | Ingests tabular data and writes embeddings | 3002         |\n| Postgres + pgvector | Relational Database                                                    | App metadata, the catalog and ontology, vector store | 5432 |\n| HashiCorp Vault     | Optional                                                               | Secure storage of connection credentials   | —            |\n\n### NVIDIA NIM\n\nAuto Ontology uses NVIDIA NIM endpoints for inference — either the hosted\n[NVIDIA API catalog](https://build.nvidia.com) (`integrate.api.nvidia.com`) or\nself-hosted NIMs. The defaults in `.env.example` are:\n\n- **LLM:** `nvidia/nemotron-3.5-lightning-30b-a3b`\n- **Embeddings:** `nvidia/nemotron-3-embed-1b`\n- **Reranking:** `nvidia/llama-nemotron-rerank-vl-1b-v2`\n\nThe endpoints and models are configured via the `DEFAULT_MODELS_ENDPOINT`, `DEFAULT_MODELS_MODEL`,\n`EMBED_ENDPOINT`, and `EMBED_MODEL` environment variables and require a\n`DEFAULT_MODELS_API_KEY`.\n\n#### Model triplets\n\nEach model role is configured by a **triplet** of environment variables —\n`<PREFIX>_ENDPOINT` (URL), `<PREFIX>_API_KEY`, and `<PREFIX>_MODEL`:\n\n| Prefix           | Role                                                        |\n| ---------------- | ----------------------------------------------------------- |\n| `DEFAULT_MODELS` | Shared default; every field below falls back to it.         |\n| `REASONING`      | Main chat / NL-to-SQL model.                                |\n| `NON_REASONING`  | Lighter model used for entity extraction.                   |\n| `EMBED`          | Text-embedding model (must match between ingest and query). |\n| `RERANK`         | Reranker used by the retrieval flow.                        |\n\nYou can set a full triplet, only some of its fields, or none at all — any field\nleft unset falls back to the matching `DEFAULT_MODELS_<FIELD>`. So the simplest\nsetup is to fill in `DEFAULT_MODELS_*` and override per-triplet fields only where\nthey differ (e.g. `EMBED_MODEL`, `NON_REASONING_MODEL`). `*_API_KEY` also falls\nback to the legacy `NVIDIA_API_KEY` for backward compatibility.\n\n## Quickstart\n\nThis runs Auto-Ontology with Docker Compose against Wide World Importers,\nMicrosoft's sample sales database. You need Docker with Compose v2,\n[uv](https://docs.astral.sh/uv/), and an NVIDIA API key (`nvapi-...`) from\n[build.nvidia.com](https://build.nvidia.com).\n\n1. Clone the repository and create `.env`:\n\n   ```bash\n   git clone https://github.com/NVIDIA/auto-ontology.git && cd auto-ontology\n   cp .env.example .env\n   ```\n\n   Then set these values in `.env`:\n\n   ```dotenv\n   DEFAULT_MODELS_API_KEY=nvapi-...\n   AUTH_SECRET=<a long random string, e.g. from openssl rand -base64 32>\n   APP_URL=http://localhost:3000\n   POSTGRES_PASSWORD=<a new password>\n   CONNECTION_STRINGS=postgresql://postgres:<the same password>@postgres:5432/wideworldimporters\n   AUTO_ONTOLOGY_ADMIN_PASSWORD=<a new password>\n   PGADMIN_PASSWORD=<a new password>\n   ```\n\n   Compose publishes Postgres, pgAdmin, and the web app on the host, so replace\n   each default password before you start it. `.env.example` also sets an API\n   key per model role: replace each `nvapi-your-api-key-here` with your key, or\n   delete those lines so they fall back to `DEFAULT_MODELS_API_KEY`.\n\n2. Start Postgres and load the sample database. The seed script lives in\n   auto-ontology-eval; pass it the Postgres password you set:\n\n   ```bash\n   docker compose up -d --wait postgres\n   git clone https://github.com/NVIDIA/auto-ontology-eval.git ../auto-ontology-eval\n   (cd ../auto-ontology-eval && uv sync && cp .env.example .env && \\\n     POSTGRES_PASSWORD='<the same password>' \\\n     uv run python scripts/seed/seed_wwi.py --database-name wideworldimporters --drop)\n   ```\n\n3. Build and start the rest of the stack:\n\n   ```bash\n   docker compose up -d --build\n   ```\n\n4. Open <http://localhost:3000> and sign in with `AUTO_ONTOLOGY_ADMIN_EMAIL` and\n   `AUTO_ONTOLOGY_ADMIN_PASSWORD` from `.env`. Go to **Settings → Semantic\n   Compilation** and turn it on. Ingestion runs at startup; compilation starts\n   immediately and reports **Semantic compilation is ready** when it finishes.\n\n5. Ask a question in **Chat**:\n\n   > What was revenue for the USB food flash drive - sushi roll in Pennsylvania\n   > in June 2015?\n\n   The agent resolves *revenue*, *product*, and *state* to terms in the\n   ontology, follows their relationships to the joins it needs, and runs the\n   query. The answer comes back with its SQL and the steps that produced it,\n   so you can check the result against the source:\n\n   ```text\n   Answer:  Revenue for USB food flash drive - sushi roll in Pennsylvania in\n            June 2015 was $588.80, from 3 invoice lines.\n\n   SQL:     SELECT SUM(il.extendedprice) AS revenue, COUNT(*) AS invoice_lines\n            FROM sales.invoicelines il\n            JOIN sales.invoices i             ON il.invoiceid = i.invoiceid\n            JOIN warehouse.stockitems si      ON il.stockitemid = si.stockitemid\n            JOIN sales.customers c            ON i.customerid = c.customerid\n            JOIN application.cities ct        ON c.deliverycityid = ct.cityid\n            JOIN application.stateprovinces sp ON ct.stateprovinceid = sp.stateprovinceid\n            WHERE si.stockitemname = 'USB food flash drive - sushi roll'\n              AND sp.stateprovincename = 'Pennsylvania'\n              AND i.invoicedate >= '2015-06-01' AND i.invoicedate < '2015-07-01'\n\n   Steps:   Resolved terms: Invoice Line (revenue), Stock Item, State Province, Invoice\n            Joined: invoice line -> invoice -> customer -> city -> state province\n            Validated the filter values against the data, then executed\n   ```\n\n6. Ask something the data can't answer. Wide World Importers has no\n   advertising data, so a question about ad spend has nothing to resolve\n   against. An agent connected through [MCP](#mcp-server) checks answerability\n   first and asks you to clarify:\n\n   ```text\n   You:    What was return on ad spend for the sushi roll flash drive in June 2015?\n   Agent:  check_answerable -> coverage 0.5; no term covers \"ad spend\"\n   Agent:  I can find revenue for that product, but this data has no\n           advertising spend, so I can't compute return on ad spend. Do you\n           want June 2015 revenue instead, or is ad spend tracked in another\n           source I should connect?\n   ```\n\nIf the UI loads without its left navigation after a restart, the browser is\nholding a stale session cookie. Clear site data for `localhost:3000` and sign in\nagain. For other setup failures, see the\n[setup skill's troubleshooting guide](./skills/nvidia-ontology-setup/references/troubleshooting.md).\n\n## How it works\n\n<p>\n<img src=\"./docs/assets/arch.png\" alt=\"Auto-Ontology architecture\" width=\"800\"",
+      "rank": 7,
+      "weekly_stars": 4108
+    },
+    {
+      "full_name": "google-deepmind/mujoco",
+      "html_url": "https://github.com/google-deepmind/mujoco",
+      "description": "Multi-Joint dynamics with Contact. A general purpose physics simulator.",
+      "homepage": "https://mujoco.org",
+      "language": "C++",
+      "stars": 17908,
+      "forks": 2188,
+      "open_issues": 409,
+      "topics": [
+        "mujoco",
+        "physics",
+        "robotics"
+      ],
+      "license": "Apache-2.0",
+      "created_at": "2021-08-27T12:25:48Z",
+      "updated_at": "2026-11-14T07:28:44Z",
+      "pushed_at": "2026-11-13T17:42:32Z",
+      "archived": false,
+      "readme": "<h1>\n  <a href=\"https://mujoco.org\"><img alt=\"MuJoCo\" src=\"banner.png\" width=\"100%\"/></a>\n</h1>\n\n<p>\n  <a href=\"https://mujoco.org\" alt=\"Website\">\n    <img src=\"https://img.shields.io/badge/website-mujoco.org-0053d6\">\n  </a>\n  <a href=\"https://github.com/google-deepmind/mujoco/actions/workflows/build.yml?query=branch%3Amain\" alt=\"GitHub Actions\">\n    <img src=\"https://img.shields.io/github/actions/workflow/status/google-deepmind/mujoco/build.yml?branch=main\">\n  </a>\n  <a href=\"https://mujoco.readthedocs.io/\" alt=\"Documentation\">\n    <img src=\"https://readthedocs.org/projects/mujoco/badge/?version=latest\">\n  </a>\n  <a href=\"https://github.com/google-deepmind/mujoco/blob/main/LICENSE\" alt=\"License\">\n    <img src=\"https://img.shields.io/github/license/google-deepmind/mujoco\">\n  </a>\n</p>\n\n**MuJoCo** stands for **Mu**lti-**Jo**int dynamics with **Co**ntact. It is a\ngeneral purpose physics engine that aims to facilitate research and development\nin robotics, biomechanics, graphics and animation, machine learning, and other\nareas which demand fast and accurate simulation of articulated structures\ninteracting with their environment.\n\nThis repository is maintained by [Google DeepMind](https://www.deepmind.com/).\n\nMuJoCo has a C API and is intended for researchers and developers. The runtime\nsimulation module is tuned to maximize performance and operates on low-level\ndata structures that are preallocated by the built-in XML compiler. The library\nincludes interactive visualization in native desktop windows and web browsers.\nMuJoCo further exposes a large number of utility functions for computing\nphysics-related quantities.\n\nWe also provide [Python bindings] and a plug-in for the [Unity] game engine.\n\n## Documentation\n\nMuJoCo's documentation can be found at [mujoco.readthedocs.io]. Upcoming\nfeatures due for the next release can be found in the [changelog] in the\n\"latest\" branch.\n\n## Getting Started\n\n1. **Try MuJoCo in your browser.**\nVisit [mujoco.org](https://mujoco.org) to explore MuJoCo on desktop or mobile\nwith nothing to install, or open [live.mujoco.org](https://live.mujoco.org) to\ninspect and drag and drop your own models in the WebAssembly version of the\n[MuJoCo Studio] app (slower than native C, since it runs in WebAssembly).\n\n2. **Run a viewer on your machine.**\nFollow the [Getting Started] guide in the documentation to download a prebuilt\nrelease and run the [MuJoCo Studio] app or the classic `simulate` viewer (shown\nin [this video](https://www.youtube.com/watch?v=P83tKA1iz2Y)) on your machine.\n\n3. **Explore our online IPython notebooks.**\nIf you are a Python user, you might want to start with our tutorial notebooks\nrunning on Google Colab:\n\n - The **introductory** tutorial teaches MuJoCo basics:\n   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/python/tutorial.ipynb)\n - The **Model Editing** tutorial shows how to create and edit models procedurally:\n   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/python/mjspec.ipynb)\n - The **rollout** tutorial shows how to use the multithreaded `rollout` module:\n   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/python/rollout.ipynb)\n - The **LQR** tutorial synthesizes a linear-quadratic controller, balancing a\n   humanoid on one leg:\n   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/python/LQR.ipynb)\n - The **least-squares** tutorial explains how to use the Python-based nonlinear\n   least-squares solver:\n   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/python/least_squares.ipynb)\n - The **MJX** tutorial provides usage examples of\n   [MuJoCo XLA](https://mujoco.readthedocs.io/en/stable/mjx.html), a branch of MuJoCo written in JAX:\n   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/mjx/tutorial.ipynb)\n - The **differentiable physics** tutorial trains locomotion policies with\n   analytical gradients automatically derived from MuJoCo's physics step:\n   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/mjx/training_apg.ipynb)\n\n## Installation\n\n### Prebuilt binaries\n\nVersioned releases are available as precompiled binaries from the GitHub\n[releases page], built for Linux (x86-64 and AArch64), Windows (x86-64 only),\nand macOS (universal). This is the recommended way to use the software.\n\n### Building from source\n\nUsers who wish to build MuJoCo from source should consult the [build from\nsource] section of the documentation. However, note that the commit at\nthe tip of the `main` branch may be unstable.\n\n### Python (>= 3.11)\n\nThe native Python bindings, which come pre-packaged with a copy of MuJoCo, can\nbe installed from [PyPI] via:\n\n```bash\npip install mujoco\n```\n\nNote that Pre-built Linux wheels target `manylinux2014`, see\n[here](https://github.com/pypa/manylinux) for compatible distributions. For more\ninformation such as building the bindings from source, see the [Python bindings]\nsection of the documentation.\n\n## Versioning\n\nWe aim to release MuJoCo in the first week of each month. Our versioning\nstandards changed to modified Semantic Versioning in 3.5.0,\nsee [versioning](VERSIONING.md) for details.\n\n## Contributing\n\nWe welcome community engagement: questions, requests for help, bug reports and\nfeature requests. To read more about bug reports, feature requests and more\nambitious contributions, please see our [contributors guide](CONTRIBUTING.md)\nand [style guide](STYLEGUIDE.md).\n\n## Asking Questions\n\nQuestions and requests for help are welcome as a GitHub\n[\"Asking for Help\" Discussion](https://github.com/google-deepmind/mujoco/discussions/categories/asking-for-help)\nand should focus on a specific problem or question.\n\n## Bug reports and feature requests\n\nGitHub [Issues](https://github.com/google-deepmind/mujoco/issues) are reserved\nfor bug reports, feature requests and other development-related subjects.\n\n## Related software\nMuJoCo is the backbone for numerous environment packages. Below we list several\nbindings and converters.\n\n### Bindings\n\nThese packages give users of various languages access to MuJoCo functionality:\n\n#### First-party bindings:\n\n- [Python bindings](https://mujoco.readthedocs.io/en/stable/python.html)\n  - [dm_control](https://github.com/google-deepmind/dm_control), Google\n    DeepMind's related environment stack, includes\n    [PyMJCF](https://github.com/google-deepmind/dm_control/blob/main/dm_control/mjcf/README.md),\n    a module for procedural manipulation of MuJoCo models.\n- [JavaScript bindings and WebAssembly support](/wasm/README.md) (inspired [stillonearth](https://github.com/stillonearth) and [zalo](https://github.com/zalo)'s community projects; [mjswan](https://github.com/ttktjmt/mjswan) extends these with real-time policy control, interactive force\napplication, and more).\n- [C# bindings and Unity plug-in](https://mujoco.readthedocs.io/en/stable/unity.html)\n\n#### Third-party bindings:\n\n- **MATLAB Simulink**: [Simulink Blockset for MuJoCo Simulator](https://github.com/mathworks-robotics/mujoco-simulink-blockset)\n  by [Manoj Velmurugan](https://github.com/vmanoj1996).\n- **Swift**: [swift-mujoco](https://github.com/liuliu/swift-mujoco)\n- **Java**: [mujoco-java](https://github.com/CommonWealthRobotics/mujoco-java)\n- **Julia**: [MuJoCo.jl](https://github.com/JamieMair/MuJoCo.jl)\n- **Rust**: [MuJoCo-rs](https://github.com/davidhozic/mujoco-rs)\n\n### Converters\n\n- **OpenSim**: [MyoConverter](https://github.com/MyoHub/myoconverter) converts\n  OpenSim models to MJCF.\n- **SDFormat**: [gz-mujoco](https://github.com/gazebosim/gz-mujoco/) is a\n  two-way SDFormat <-> MJCF conversion tool.\n- **OBJ**: [obj2mjcf](https://github.com/kevinzakka/obj2mjcf)\n  a script for converting composite OBJ files into a loadable MJCF model.\n- **onshape**: [Onshape to Robot](https://github.com/rhoban/onshape-to-robot)\n  Converts [onshape](https://www.onshape.com/en/) CAD assemblies to MJCF.\n\n## Citation\n\nIf you use MuJoCo for published research, please cite:\n\n```\n@inproceedings{todorov2012mujoco,\n  title={MuJoCo: A physics engine for model-based control},\n  author={Todorov, Emanuel and Erez, Tom and Tassa, Yuval},\n  booktitle={2012 IEEE/RSJ International Conference on Intelligent Robots and Systems},\n  pages={5026--5033},\n  year={2012},\n  organization={IEEE},\n  doi={10.1109/IROS.2012.6386109}\n}\n```\n\n## License and Disclaimer\n\nCopyright 2021 DeepMind Technologies Limited.\n\nBox collision code ([`engine_collision_box.c`](https://github.com/google-deepmind/mujoco/blob/main/src/engine/engine_collision_box.c))\nis Copyright 2016 Svetoslav Kolev.\n\nReStructuredText documents, images, and videos in the `doc` directory are made\navailable under the terms of the Creative Commons Attribution 4.0 (CC BY 4.0)\nlicense. You may obtain a copy of the License at\nhttps://creativecommons.org/licenses/by/4.0/legalcode.\n\nSource code is licensed under the Apache License, Version 2.0. You may obtain a\ncopy of the License at https://www.apache.org/licenses/LICENSE-2.0.\n\nThis is not an officially supported Google product.\n\n[build from source]: https://mujoco.readthedocs.io/en/latest/programming#building-from-source\n[Getting Started]: https://mujoco.readthedocs.io/en/latest/programming#getting-started\n[MuJoCo Studio]: https://mujoco.readthedocs.io/en/latest/studio/\n[Unity]: https://unity.com/\n[releases page]: https://github.com/google-deepmind/mujoco/releases\n[mujoco.readthedocs.io]: https://mujoco.readth",
+      "rank": 8,
+      "weekly_stars": 1764
+    },
+    {
+      "full_name": "mattpocock/skills",
+      "html_url": "https://github.com/mattpocock/skills",
+      "description": "Skills for Real Engineers. Straight from my .agents directory.",
+      "homepage": "https://aihero.dev/skills",
+      "language": "Shell",
+      "stars": 323987,
+      "forks": 27195,
+      "open_issues": 243,
+      "topics": [],
+      "license": "MIT",
+      "created_at": "2026-02-03T11:15:53Z",
+      "updated_at": "2026-11-14T07:32:05Z",
+      "pushed_at": "2026-11-13T12:30:31Z",
+      "archived": false,
+      "readme": "<p>\n  <a href=\"https://www.aihero.dev/s/skills-newsletter\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skills-repo-dark_2x.png\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\">\n      <img alt=\"Skills\" src=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\" width=\"369\">\n    </picture>\n  </a>\n</p>\n\n# Skills For Real Engineers\n\n[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)\n\nMy agent skills that I use every day to do real engineering - not vibe coding.\n\nDeveloping real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.\n\nThese skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy.\n\nIf you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter:\n\n[Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)\n\n## Installation (30-second setup)\n\nA plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.\n\n### 1. Get the skills\n\n<details>\n<summary><strong>Claude Code</strong></summary>\n\n```bash\nclaude plugin install mattpocock-skills@claude-plugins-official\n```\n\nUpdates itself by default.\n\n</details>\n\n<details>\n<summary><strong>Codex</strong></summary>\n\n```bash\ncodex plugin marketplace add mattpocock/skills\ncodex plugin add mattpocock-skills@mattpocock\n```\n\nUpdates itself at startup.\n\n</details>\n\n<details>\n<summary><strong>GitHub Copilot</strong> (CLI and VS Code)</summary>\n\n```bash\ncopilot plugin marketplace add mattpocock/skills\ncopilot plugin install mattpocock-skills@mattpocock\n```\n\nThen, once, add to `~/.copilot/settings.json`:\n\n```json\n{\n  \"extraKnownMarketplaces\": {\n    \"mattpocock\": { \"source\": { \"source\": \"github\", \"repo\": \"mattpocock/skills\" }, \"autoUpdate\": true }\n  }\n}\n```\n\nIn VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/mattpocock/skills`. It updates daily.\n\n</details>\n\n<details>\n<summary><strong>Gemini CLI</strong> (manual updates)</summary>\n\n```bash\ngemini skills install https://github.com/mattpocock/skills.git --path skills/engineering\ngemini skills install https://github.com/mattpocock/skills.git --path skills/productivity\n```\n\nRe-run both commands to update.\n\n</details>\n\n<details>\n<summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>\n\n```bash\nnpx skills@latest add mattpocock/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose\n```\n\nWhen the installer asks which skills to take, include `setup-matt-pocock-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.\n\n</details>\n\n### 2. Run `/setup-matt-pocock-skills`\n\nIn your agent, run it once per repo. It will:\n\n- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)\n- Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)\n- Ask you where you want to save any docs we create\n\n### 3. Bam - you're ready to go.\n\n## Why These Skills Exist\n\nI built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.\n\n### #1: The Agent Didn't Do What I Want\n\n> \"No-one knows exactly what they want\"\n>\n> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)\n\n**The Problem**. The most common failure mode in software development is misalignment. You think the dev knows what you want. Then you see what they've built - and you realize it didn't understand you at all.\n\nThis is just the same in the AI age. There is a communication gap between you and the agent. The fix for this is a **grilling session** - getting the agent to ask you detailed questions about what you're building.\n\n**The Fix** is to use:\n\n- [`/grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses\n- [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)\n\nThese are my most popular skills. They help you align with the agent before you get started, and think deeply about the change you're making. Use them _every_ time you want to make a change.\n\n### #2: The Agent Is Way Too Verbose\n\n> With a ubiquitous language, conversations among developers and expressions of the code are all derived from the same domain model.\n>\n> Eric Evans, [Domain-Driven-Design](https://www.amazon.co.uk/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)\n\n**The Problem**: At the start of a project, devs and the people they're building the software for (the domain experts) are usually speaking different languages.\n\nI felt the same tension with my agents. Agents are usually dropped into a project and asked to figure out the jargon as they go. So they use 20 words where 1 will do.\n\n**The Fix** for this is a shared language. It's a document that helps agents decode the jargon used in the project.\n\n<details>\n<summary>\nExample\n</summary>\n\nHere's an example [glossary](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md) (still named `CONTEXT.md` at that pinned commit, from before the skills renamed the convention), from my `course-video-manager` repo. Which one is easier to read?\n\n- **BEFORE**: \"There's a problem when a lesson inside a section of a course is made 'real' (i.e. given a spot in the file system)\"\n- **AFTER**: \"There's a problem with the materialization cascade\"\n\nThis concision pays off session after session.\n\n</details>\n\nThis is built into [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in ADR's.\n\nIt's hard to explain how powerful this is. It might be the single coolest technique in this repo. Try it, and see.\n\n> [!TIP]\n> A shared language has many other benefits than reducing verbosity:\n>\n> - **Variables, functions and files are named consistently**, using the shared language\n> - As a result, the **codebase is easier to navigate** for the agent\n> - The agent also **spends fewer tokens on thinking**, because it has access to a more concise language\n\n### #3: The Code Doesn't Work\n\n> \"Always take small, deliberate steps. The rate of feedback is your speed limit. Never take on a task that’s too big.\"\n>\n> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)\n\n**The Problem**: Let's say that you and the agent are aligned on what to build. What happens when the agent _still_ produces crap?\n\nIt's time to look at your feedback loops. Without feedback on how the code it produces actually runs, the agent will be flying blind.\n\n**The Fix**: You need the usual tranche of feedback loops: static types, browser access, and automated tests.\n\nFor automated tests, a red-green-refactor loop is critical. This is where the agent writes a failing test first, then fixes the test. This helps give the agent a consistent level of feedback that results in far better code.\n\nI've built a **[`/tdd`](./skills/engineering/tdd/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.\n\nFor debugging, I've also built a **[`/diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md)** skill that wraps best debugging practices into a disciplined loop, gated phase by phase.\n\n### #4: We Built A Ball Of Mud\n\n> \"Invest in the design of the system _every day_.\"\n>\n> Kent Beck, [Extreme Programming Explained](https://www.amazon.co.uk/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)\n\n> \"The best modules are deep. They allow a lot of functionality to be accessed through a simple interface.\"\n>\n> John Ousterhout, [A Philosophy Of Software Design](https://www.amazon.co.uk/Philosophy-Software-Design-2nd/dp/173210221X)\n\n**The Problem**: Most apps built with agents are complex and hard to change. Because agents can radically speed up coding, they also accelerate software entropy. Codebases get more complex at an unprecedented rate.\n\n**The Fix** for this is a radical new approach to AI-powered development: caring about the design of the code.\n\nThis is built in to every layer of these skills:\n\n- [`/to-spec`](./skills/engineering/to-spec/SKILL.md) quizzes you about which modules you're touching before creating a spec\n\nAnd crucially, [`/improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md) surveys a codebase for deepening opportunities and hands you the candidates. I recommend running it on your codebase once every few days. It is a survey, not a rescue: on a genuinely old codebase it will find real candidates, but it won't untangle the mud for you.\n\n### Summary\n\nSoftware engineering fundamentals matter more than ever. These skills are my best effort at condensing these fundamentals into repeatable practices, to help you ship the best apps of your career. Enjoy.\n\n## Reference\n\nThese split on one axis: who can invoke them. **User-invoked** skills are reachable only when you type them (e.g. `/grill-me`); their job is to orchestrate. **Model-invoked** skills can be invoked by you _or_ reached",
+      "rank": 9,
+      "weekly_stars": 7599
+    },
+    {
+      "full_name": "addyosmani/agent-skills",
+      "html_url": "https://github.com/addyosmani/agent-skills",
+      "description": "Production-grade engineering skills for AI coding agents.",
+      "homepage": "https://skills.addy.ie",
+      "language": "JavaScript",
+      "stars": 117257,
+      "forks": 12266,
+      "open_issues": 120,
+      "topics": [
+        "agent-skills",
+        "antigravity",
+        "claude-code",
+        "codex",
+        "cursor",
+        "skills"
+      ],
+      "license": "MIT",
+      "created_at": "2026-02-15T20:20:26Z",
+      "updated_at": "2026-11-14T07:34:15Z",
+      "pushed_at": "2026-11-14T04:33:56Z",
+      "archived": false,
+      "readme": "# Agent Skills\n\n**Production-grade engineering skills for AI coding agents.**\n\nSkills encode the workflows, quality gates, and best practices that senior engineers use when building software. These ones are packaged so AI agents follow them consistently across every phase of development.\n\n<a href=\"https://trendshift.io/repositories/25200\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/25200\" alt=\"addyosmani%2Fagent-skills | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n\n![Addy's Agent Skills](https://addyosmani.com/assets/images/addys-agent-skills.jpg)\n\n```\n  DEFINE          PLAN           BUILD          VERIFY         REVIEW          SHIP\n ┌──────┐      ┌──────┐      ┌──────┐      ┌──────┐      ┌──────┐      ┌──────┐\n │ Idea │ ───▶ │ Spec │ ───▶ │ Code │ ───▶ │ Test │ ───▶ │  QA  │ ───▶ │  Go  │\n │Refine│      │  PRD │      │ Impl │      │Debug │      │ Gate │      │ Live │\n └──────┘      └──────┘      └──────┘      └──────┘      └──────┘      └──────┘\n  /spec          /plan          /build        /test         /review       /ship\n```\n\n---\n\n## Commands\n\n9 slash commands that map to the development lifecycle. Each one activates the right skills automatically.\n\n| What you're doing | Command | Key principle |\n|-------------------|---------|---------------|\n| Define what to build | `/spec` | Spec before code |\n| Plan how to build it | `/plan` | Small, atomic tasks |\n| Build incrementally | `/build` | One slice at a time |\n| Prove it works | `/test` | Tests are proof |\n| Set the quality bar | `/constraints` | Decide it once, enforce it everywhere |\n| Review before merge | `/review` | Improve code health |\n| Audit web performance | `/webperf` | Measure before you optimize |\n| Simplify the code | `/code-simplify` | Clarity over cleverness |\n| Ship to production | `/ship` | Faster is safer |\n\nIn Claude Code these install as plugin commands. Where a built-in command has the same name, as `/review` does, use the namespaced form: `/agent-skills:review`.\n\nWant fewer manual steps once the spec exists? **`/build auto`** generates the plan and implements every task in a single approved pass — you approve the plan once, then it runs autonomously. It removes the human stepping *between* tasks, not the verification: every task is still test-driven and committed individually, and it pauses on failures or risky steps.\n\nSkills also activate automatically based on what you're doing — designing an API triggers `api-and-interface-design`, building UI triggers `frontend-ui-engineering`, and so on.\n\n---\n\n## Quick Start\n\n**Fastest path — any agent, one command.** The open [skills CLI](https://github.com/vercel-labs/skills) installs into 70+ agents (Claude Code, Cursor, Codex, Copilot, Cline, and more):\n\n```bash\nnpx skills add addyosmani/agent-skills            # install all 25 skills\nnpx skills add addyosmani/agent-skills --list     # browse before installing\n```\n\nOr grab individual skills:\n\n```bash\nnpx skills add addyosmani/agent-skills --skill code-review-and-quality   # five-axis review before merge\nnpx skills add addyosmani/agent-skills --skill interview-me              # requirements interrogation, one question at a time\nnpx skills add addyosmani/agent-skills --skill test-driven-development   # red-green-refactor, enforced\n```\n\n> **Installing one skill?** A per-skill `npx` install copies only\n> `skills/<name>/`, not the repo-level `references/` directory. The skill still\n> works, but paths to supplementary shared checklists are unavailable. Use a\n> whole-repo integration, clone the repository, or copy the needed checklist into\n> a `references/` directory inside the installed skill. This portability gap is\n> tracked in [#361](https://github.com/addyosmani/agent-skills/issues/361).\n\nPrefer a native integration? Pick your tool below.\n\n<details>\n<summary><b>Claude Code (recommended)</b></summary>\n\n**Marketplace install:**\n\n```\n/plugin marketplace add addyosmani/agent-skills\n/plugin install agent-skills@addy-agent-skills\n```\n\n> **SSH errors?** The marketplace clones repos via SSH. If you don't have SSH keys set up on GitHub, either [add your SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or use the full HTTPS URL to force HTTPS cloning during the marketplace-add step:\n> ```bash\n> /plugin marketplace add https://github.com/addyosmani/agent-skills.git\n> /plugin install agent-skills@addy-agent-skills\n> ```\n>\n> If `/plugin install` still fails with `git@github.com: Permission denied (publickey)` on Windows or macOS, the recommended workaround is to configure Git once to rewrite GitHub SSH URLs to HTTPS for subprocess clones:\n> ```bash\n> git config --global url.\"https://github.com/\".insteadOf git@github.com:\n> ```\n\n**Local / development:**\n\n```bash\ngit clone https://github.com/addyosmani/agent-skills.git\nclaude --plugin-dir /path/to/agent-skills\n```\n\n</details>\n\n<details>\n<summary><b>Cursor</b></summary>\n\nPut workflow skills under `.cursor/skills/` (sync from `agent-skills/skills/`) and short policies in `.cursor/rules/*.mdc` — do not paste full skills into rules. Both directories live in your project; this repo does not ship a `.cursor/` folder. See [docs/cursor-setup.md](docs/cursor-setup.md).\n\n</details>\n\n<details>\n<summary><b>Antigravity CLI</b></summary>\n\nInstall as a native plugin for skills and subagents. In affected Antigravity CLI releases, legacy command TOMLs are reported as converted but their wrapper commands are not discoverable; invoke the underlying namespaced skills directly. See [docs/antigravity-setup.md](docs/antigravity-setup.md#lifecycle-workflows-and-command-compatibility).\n\n**Install from the repo:**\n\n```bash\nagy plugin install https://github.com/addyosmani/agent-skills.git\n```\n\n**Install from a local clone:**\n\n```bash\ngit clone https://github.com/addyosmani/agent-skills.git\nagy plugin install ./agent-skills\n```\n\n</details>\n\n<details>\n<summary><b>Gemini CLI</b></summary>\n\nInstall as native skills for auto-discovery, or add to `GEMINI.md` for persistent context. See [docs/gemini-cli-setup.md](docs/gemini-cli-setup.md).\n\n**Install from the repo:**\n\n```bash\ngemini skills install https://github.com/addyosmani/agent-skills.git --path skills\n```\n\n**Install from a local clone:**\n\n```bash\ngemini skills install ./agent-skills/skills/\n```\n\n</details>\n\n<details>\n<summary><b>Windsurf</b></summary>\n\nAdd skill contents to your Windsurf rules configuration. See [docs/windsurf-setup.md](docs/windsurf-setup.md).\n\n</details>\n\n<details>\n<summary><b>OpenCode</b></summary>\n\nCopy skills to `.opencode/skills/` (or `~/.config/opencode/skills/`), add a project-local `AGENTS.md`, and use the built-in `skill` tool for agent-driven execution. Optional slash commands can be added under `.opencode/commands/`.\n\nSee [docs/opencode-setup.md](docs/opencode-setup.md).\n\n</details>\n\n<details>\n<summary><b>GitHub Copilot</b></summary>\n\nUse agent definitions from `agents/` as Copilot personas and skill content in `.github/copilot-instructions.md`. The lifecycle slash commands (`/spec`, `/plan`, `/build`, `/test`, `/review`, `/ship`) are Claude Code commands and do not appear in Copilot; invoke the skills by name (`/spec-driven-development`, …) instead. See [docs/copilot-setup.md](docs/copilot-setup.md).\n\nUsing the standalone `copilot` CLI? Install it as a plugin — see [docs/copilot-cli-setup.md](docs/copilot-cli-setup.md).\n\n</details>\n\n<details>\n  <summary><b>Kiro IDE & CLI </b></summary>\n  Skills for Kiro reside under \".kiro/skills/\" and can be stored under Project or Global level. Kiro also supports Agents.md. See Kiro docs at https://kiro.dev/docs/skills/\n</details>\n\n<details>\n<summary><b>Codex</b></summary>\n\nInstall as a native Codex plugin (Codex CLI v0.122+):\n\n```bash\ncodex plugin marketplace add addyosmani/agent-skills\ncodex plugin add agent-skills@agent-skills\n```\n\nThe first command registers the marketplace; the second installs the plugin. Codex reads the root `skills/` directory directly through `.codex-plugin/plugin.json`. Once installed, invoke skills in chat using `@` (e.g., `@spec-driven-development`). See [docs/codex-setup.md](docs/codex-setup.md) for local installation and troubleshooting.\n\n</details>\n\n<details>\n<summary><b>Command Code</b></summary>\n\nInstall natively with the built-in `cmd skills` command. Command Code clones the repo, discovers every `SKILL.md`, and installs into `.commandcode/skills/`:\n\n```bash\ncmd skills add addyosmani/agent-skills            # pick skills to install (project)\ncmd skills add addyosmani/agent-skills --global   # install for all projects (~/.commandcode/skills/)\ncmd skills add addyosmani/agent-skills -s spec-driven-development  # install a specific skill\n```\n\nInstalled skills show up in the TUI slash menu, e.g. `/spec-driven-development`. See [docs/commandcode-setup.md](docs/commandcode-setup.md).\n\n</details>\n\n<details>\n<summary><b>Other Agents</b></summary>\n\nSkills are plain Markdown - they work with any agent that accepts system prompts or instruction files. See [docs/getting-started.md](docs/getting-started.md). Hosts that install the pack but aren't listed above are in [docs/other-hosts.md](docs/other-hosts.md).\n\n</details>\n\n\n\n---\n\n## Adoption\n\nAlready installed? How you roll the pack out depends on your codebase. The **[Adoption Guide](docs/adoption-guide.md)** covers two paths: the full lifecycle from day one for a greenfield project, or an incremental, verification-first rollout for an established codebase.\n\n---\n\n## All 25 Skills\n\nThe commands above are entry points. The pack includes 25 skills total — 24 lifecycle skills plus the `using-agent-skills` meta-skill. Each skill is a structured workflow with steps, verification gates, and anti-rationalization tables. You can also reference any skill directly.\n\n### Meta - Discover which skill applies\n\n| Skill | What It Does | Use When |\n|-------|-------------|----------|\n| [using-agent-skills](skills/using-agent-skills/S",
+      "rank": 10,
+      "weekly_stars": 3502
+    }
+  ],
+  "analysis": {
+    "trend_summary": "本周前十项目合计获得约 57,967 个新增 Star，sherlock-project/sherlock、anthropics/skills、milind-soni/OpenMausBot 位居前三。主要开发语言集中在 Python、TypeScript、Rust。头部项目体现的方向包括：Hunt down social media accounts by username across social networks；Public repository for Agent Skills；Open-source Grok Bot alternative with a virtual machine that bots can use。",
+    "top_picks": [
+      "sherlock-project/sherlock",
+      "anthropics/skills",
+      "milind-soni/OpenMausBot"
+    ],
+    "projects": [
+      {
+        "full_name": "sherlock-project/sherlock",
+        "tagline": "Hunt down social media accounts by username across social networks",
+        "overview": "Hunt down social media accounts by username across social networks 主要语言为 Python，公开主题包括：cli、cti、cybersecurity、forensics。",
+        "core_features": [
+          "Hunt down social media accounts by username across social networks",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 cli、cti、cybersecurity、forensics 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 111,343 Stars、12,889 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "anthropics/skills",
+        "tagline": "Public repository for Agent Skills",
+        "overview": "Public repository for Agent Skills 主要语言为 Python，公开主题包括：agent-skills。",
+        "core_features": [
+          "Public repository for Agent Skills",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 194,254 Stars、22,856 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：未声明；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "milind-soni/OpenMausBot",
+        "tagline": "Open-source Grok Bot alternative with a virtual machine that bots can use",
+        "overview": "Open-source Grok Bot alternative with a virtual machine that bots can use 主要语言为 TypeScript，公开主题包括：ai-agents、claude-code、codex、computer-use。",
+        "core_features": [
+          "Open-source Grok Bot alternative with a virtual machine that bots can use",
+          "主要技术栈：TypeScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 ai-agents、claude-code、codex、computer-use 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 TypeScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 22,340 Stars、3,109 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "vercel-labs/agent-browser",
+        "tagline": "Browser automation CLI for AI agents",
+        "overview": "Browser automation CLI for AI agents 主要语言为 Rust，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Browser automation CLI for AI agents",
+          "主要技术栈：Rust"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Rust 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 50,833 Stars、3,539 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "google/elephant-goldfish-model",
+        "tagline": "Open-source plugin for designing and reviewing software with agents",
+        "overview": "Open-source plugin for designing and reviewing software with agents 主要语言为 Python，公开主题包括：agent-skills、ai-agents、antigravity、claude-code。",
+        "core_features": [
+          "Open-source plugin for designing and reviewing software with agents",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、ai-agents、antigravity、claude-code 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 18,742 Stars、1,399 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "ZhuLinsen/daily_stock_analysis",
+        "tagline": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+        "overview": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs. 主要语言为 Python，公开主题包括：a-stock、ai-agent、aigc、llm。",
+        "core_features": [
+          "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 a-stock、ai-agent、aigc、llm 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 71,892 Stars、57,368 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "NVIDIA/auto-ontology",
+        "tagline": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+        "overview": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows. 主要语言为 Python，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+          "主要技术栈：Python"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Python 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 12,640 Stars、1,039 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "google-deepmind/mujoco",
+        "tagline": "Multi-Joint dynamics with Contact. A general purpose physics simulator.",
+        "overview": "Multi-Joint dynamics with Contact. A general purpose physics simulator. 主要语言为 C++，公开主题包括：mujoco、physics、robotics。",
+        "core_features": [
+          "Multi-Joint dynamics with Contact. A general purpose physics simulator.",
+          "主要技术栈：C++"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 mujoco、physics、robotics 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 C++ 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 17,908 Stars、2,188 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：Apache-2.0；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "mattpocock/skills",
+        "tagline": "Skills for Real Engineers. Straight from my .agents directory.",
+        "overview": "Skills for Real Engineers. Straight from my .agents directory. 主要语言为 Shell，公开主题包括：未设置主题标签。",
+        "core_features": [
+          "Skills for Real Engineers. Straight from my .agents directory.",
+          "主要技术栈：Shell"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 未设置主题标签 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 Shell 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 323,987 Stars、27,195 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      },
+      {
+        "full_name": "addyosmani/agent-skills",
+        "tagline": "Production-grade engineering skills for AI coding agents.",
+        "overview": "Production-grade engineering skills for AI coding agents. 主要语言为 JavaScript，公开主题包括：agent-skills、antigravity、claude-code、codex。",
+        "core_features": [
+          "Production-grade engineering skills for AI coding agents.",
+          "主要技术栈：JavaScript"
+        ],
+        "problems": [
+          "具体解决的问题请结合仓库 README 与文档核实。"
+        ],
+        "use_cases": [
+          "适合关注 agent-skills、antigravity、claude-code、codex 的开发者进一步评估。"
+        ],
+        "audience": [
+          "使用或评估 JavaScript 项目的开发者。"
+        ],
+        "differentiators": [
+          "当前公开热度为 117,257 Stars、12,266 Forks。"
+        ],
+        "quick_start": "请打开仓库 README，按项目维护者提供的安装与运行步骤操作。",
+        "maturity": "需结合版本、提交频率和 Issue 状态进一步判断。",
+        "limitations": [
+          "许可证：MIT；使用前请核对适用范围。",
+          "本段为服务降级时的元数据摘要，未使用 AI 深度分析。"
+        ],
+        "potential": [
+          "进入 GitHub Trending 周榜，近期社区关注度较高。"
+        ]
+      }
+    ]
+  }
+}
